@@ -1,0 +1,47 @@
+version: "3"
+services:
+  development:
+    build: .
+    container_name: app
+    depends_on:
+      - database
+    hostname: development
+    links:
+      - "database:database"
+    ports:
+      - "80:80"
+    networks:
+      - app-env
+    volumes:
+      - ./../htdocs:/var/www:cached
+      - ./apache/vhost.txt:/etc/apache2/sites-enabled/docker-php.conf:cached
+      - ./php/xdebug.ini:/etc/php/8.1/mods-available/xdebug.ini:cached
+      - ./php/cli/php.ini:/etc/php/8.1/cli/php.ini:cached
+    environment:
+      TZ: "Europe/Berlin"
+  database:
+    image: mysql/mysql-server:latest
+    container_name: database
+    environment:
+      - MYSQL_DATABASE=laravel
+      - MYSQL_USER=laravel
+      - MYSQL_PASSWORD=password
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_ROOT_HOST=%
+    ports:
+      - "3306:3306"
+    networks:
+      - app-env
+    hostname: database
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+      - "8080:80"
+    networks:
+      - app-env
+    environment:
+      - "PMA_HOST=database"
+      - "PMA_USER=root"
+      - "PMA_PASSWORD=password"
+networks:
+  app-env:
