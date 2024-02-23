@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('race_insurances', function (Blueprint $table) {
             $table->id();
-            $table->integer('insuranceId');
-            $table->integer('raceId');
+            $table->unsignedBigInteger('insuranceId');
+            $table->unsignedBigInteger('raceId');
 
             $table->foreign('insuranceId')->references('id')->on('insurances');
             $table->foreign('raceId')->references('id')->on('races');

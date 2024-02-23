@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('race_photos', function (Blueprint $table) {
             $table->id();
             $table->string('path');
-            $table->integer('raceId');
+            $table->unsignedBigInteger('raceId');
 
             $table->foreign('raceId')->references('id')->on('races');
         });

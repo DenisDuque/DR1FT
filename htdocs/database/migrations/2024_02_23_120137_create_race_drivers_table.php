@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('race_drivers', function (Blueprint $table) {
             $table->id();
-            $table->integer('driverId');
-            $table->integer('raceId');
+            $table->unsignedBigInteger('driverId');
+            $table->unsignedBigInteger('raceId');
             $table->integer('dorsal')->nullable();
             $table->timestamp('time')->nullable();
 
