@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('race_sponsors', function (Blueprint $table) {
             $table->id();
-            $table->integer('sponsorId');
-            $table->integer('raceId');
+            $table->unsignedBigInteger('sponsorId');
+            $table->unsignedBigInteger('raceId');
             $table->boolean('mainSponsor');
 
             $table->foreign('sponsorId')->references('id')->on('sponsors');
