@@ -23,7 +23,7 @@ services:
     image: mysql/mysql-server:latest
     container_name: database
     environment:
-      - MYSQL_DATABASE=laravel
+      - MYSQL_DATABASE=drift
       - MYSQL_USER=laravel
       - MYSQL_PASSWORD=password
       - MYSQL_ROOT_PASSWORD=password
