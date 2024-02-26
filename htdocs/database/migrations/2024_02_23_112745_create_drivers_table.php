@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('email');
             $table->string('password');
             $table->string('address');
-            $table->timestamp('birthDate');
+            $table->string('birthDate');
             $table->boolean('gender');
             $table->boolean('pro');
             $table->boolean('member');
