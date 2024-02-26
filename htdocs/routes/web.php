@@ -2,6 +2,12 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\AdministratorController;
+use App\Http\Controllers\RaceController;
+use App\Http\Controllers\InsuranceController;
+use App\Http\Controllers\SponsorController;
+use App\Http\Controllers\DriverController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,10 +23,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/admin', function () {
-    return view('administrator.login');
-});
+Route::get('/admin', [AdministratorController::class, 'showLogin']);
+Route::get('/admin/dashboard', [AdministratorController::class, 'showAdministratorPanel']);
 
-Route::get('/admin/dashboard', function () {
-    return view('administrator.dashboard');
-});
+Route::get('/admin/races', [RaceController::class, 'showAdministratorPanel']);
+Route::get('/admin/insurances', [InsuranceController::class, 'showAdministratorPanel']);
+Route::get('/admin/sponsors', [SponsorController::class, 'showAdministratorPanel']);
+Route::get('/admin/drivers', [DriverController::class, 'showAdministratorPanel']);

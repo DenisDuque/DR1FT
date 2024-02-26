@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('races', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
             $table->string('description');
             $table->string('map');
             $table->integer('maxParticipants');
             $table->float('length');
             $table->string('banner');
-            $table->timestamp('date');
+            $table->string('date');
             $table->string('startingPlace');
             $table->float('sponsorCost');
             $table->float('registrationPrice');
