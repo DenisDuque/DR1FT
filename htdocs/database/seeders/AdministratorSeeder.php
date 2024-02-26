@@ -12,13 +12,6 @@ class AdministratorSeeder extends Seeder
      */
     public function run(): void
     {
-        /*
-        \App\Models\Administrator::factory()->create([
-            'name' => 'Default Admin',
-            'email' => 'admin@example.com',
-            'password' => 'admin'
-        ]);
-        */
         \App\Models\Administrator::factory()->count(10)->create();
     }
 }
