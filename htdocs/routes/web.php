@@ -33,3 +33,7 @@ Route::get('/admin/drivers', [DriverController::class, 'showAdministratorPanel']
 
 Route::get('/admin/races/new', [RaceController::class, 'showCreatePanel']);
 Route::post('/admin/races/new', [RaceController::class, 'create'])->name('/admin/races/new');
+
+Route::get('/admin/drivers', [DriverController::class, 'index'])->name('/admin/drivers');
+Route::get('/admin/drivers/new', [DriverController::class, 'new']);
+Route::post('/admin/drivers/new', [DriverController::class, 'create'])->name('/admin/drivers/new');
