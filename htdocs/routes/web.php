@@ -30,3 +30,6 @@ Route::get('/admin/races', [RaceController::class, 'showAdministratorPanel']);
 Route::get('/admin/insurances', [InsuranceController::class, 'showAdministratorPanel']);
 Route::get('/admin/sponsors', [SponsorController::class, 'showAdministratorPanel']);
 Route::get('/admin/drivers', [DriverController::class, 'showAdministratorPanel']);
+
+Route::get('/admin/races/new', [RaceController::class, 'showCreatePanel']);
+Route::post('/admin/races/new', [RaceController::class, 'create'])->name('/admin/races/new');

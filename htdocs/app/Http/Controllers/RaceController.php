@@ -22,5 +22,14 @@ class RaceController extends Controller {
         ]);
     }
 
+    public function showCreatePanel() {
+
+        return view('administrator.races.new');
+    }
+
+    public function create(Request $request) {
+
+    }
+
     
 }
