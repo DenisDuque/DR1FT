@@ -57,7 +57,7 @@ class InsuranceController extends Controller
         if ($insurance) {
             return view('administrator.insurances.edit')->with('insurance', $insurance);
         } else {
-            return redirect()->route('admin.insurances.index')->with('error', 'Insurance not found');
+            return redirect()->route('administrator.insurances.index')->with('error', 'Insurance not found');
         }
     }
 

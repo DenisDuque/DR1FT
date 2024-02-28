@@ -38,6 +38,8 @@ Route::post('/admin/races/edit/{id}', [RaceController::class, 'update'])->name('
 Route::get('/admin/drivers', [DriverController::class, 'index'])->name('/admin/drivers');
 Route::get('/admin/drivers/new', [DriverController::class, 'new']);
 Route::post('/admin/drivers/new', [DriverController::class, 'create'])->name('/admin/drivers/new');
+Route::get('/admin/drivers/edit/{id}', [DriverController::class, 'edit'])->name('admin.drivers.edit');
+Route::post('/admin/drivers/edit/{id}', [DriverController::class, 'update'])->name('admin.drivers.update');
 
 // ADMINISTRATOR: INSURANCES
 Route::get('/admin/insurances', [InsuranceController::class, 'index'])->name('/admin/insurances');

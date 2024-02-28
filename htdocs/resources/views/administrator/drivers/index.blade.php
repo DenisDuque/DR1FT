@@ -35,7 +35,7 @@
                 <td>{{$driver->member}}</td>
                 <td>{{$driver->federationNumber}}</td>
                 <td>{{$driver->points}}</td>
-                <td>Edit | Delete</td>
+                <td><a href="{{ route('admin.drivers.edit', ['id' => $driver->id]) }}">Edit</a></td>
             </tr>
         @endforeach
         
