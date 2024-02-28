@@ -1,3 +1,15 @@
 * {
     color: black;
 }
+
+$primaryBlack: #151418;
+$secondaryBlack: #1e1e1e;
+
+@mixin backgroundGradient($color1, $color2){
+    background: linear-gradient(to top left, $color1, $color2);
+}
+
+.background-admin-gradient{
+    height: 100vh;
+    @include backgroundGradient($primaryBlack, $secondaryBlack);
+}
