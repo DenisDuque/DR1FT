@@ -1,8 +1,10 @@
 @extends('administrator.layouts.master')
 
 @section('content')
-    <h1>All Races</h1>
-    <a class="btn btn-primary" href="/admin/races/new" role="button">Add Race</a>
+    <section class="my-5 d-flex align-items-center justify-content-between">
+        <h1 class="admin-form-title text-white">All Races</h1>
+        <a class="btn btn-primary" href="/admin/races/new" role="button">Add Race</a>
+    </section>
 
     <table class="table table-dark table-hover">
         <thead>

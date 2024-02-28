@@ -1,9 +1,9 @@
 * {
-    color: black;
+    font-family: "Montserrat", sans-serif;
 }
 
 $white: #F7F7F5;
-$grey: #E0DFDE;
+$grey: #cdcdcd;
 
 $primaryBlack: #151418;
 $secondaryBlack: #1e1e1e;
@@ -27,7 +27,7 @@ $gradientRed2: #E93F36;
 .admin-header {
     @include backgroundGradient($gradientRed1, $gradientRed2);
     border-radius: 1rem;
-    height: 6.8vh;
+    height: 68px;
     
     nav {
         height: auto;
@@ -52,7 +52,29 @@ $gradientRed2: #E93F36;
     }
 }
 
+.nav-item {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 3px;
+
+    &:hover:not(&:last-child) {
+        transform: translateY(-0.2rem);
+        transition: transform ease-in-out 0.5s;
+    }
+}
+
+.admin-form-title {
+    font-weight: bold;
+    font-size: 24px;
+}
+
 .btn-primary {
     @include backgroundGradient($gradientRed1, $gradientRed2);
     border: none !important;
+}
+
+@media (min-width: 1400px){
+.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+  max-width: 1550px !important;
+}
 }
