@@ -17,7 +17,8 @@ class Race extends Model
         'date', 
         'startingPlace', 
         'sponsorCost', 
-        'registrationPrice', 
+        'registrationPrice',
+        'pro',
         'active'
     ];
     

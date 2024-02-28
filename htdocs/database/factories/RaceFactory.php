@@ -32,6 +32,7 @@ class RaceFactory extends Factory
             'startingPlace' => fake()->address(),
             'sponsorCost' => fake()->randomFloat(2, 50, 10000),
             'registrationPrice' => fake()->randomFloat(2, 15, 200),
+            'pro' => fake()->boolean(),
             'active' => fake()->boolean(90)
         ];
     }

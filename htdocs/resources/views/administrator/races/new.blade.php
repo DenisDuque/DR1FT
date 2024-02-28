@@ -1,5 +1,11 @@
 @extends('administrator.layouts.master')
 
+@if ($errors->any())
+    @foreach ($errors->all() as $error)
+        <p>{{$error}}</p>
+    @endforeach
+@endif
+
 @section('content')
     <h1>Create a new Race</h1>
     <form action="{{route('/admin/races/new')}}" method="POST" enctype="multipart/form-data">
@@ -24,8 +30,10 @@
         <input type="number" name="raceSponsorCost" value="{{old('raceSponsorCost')}}" required/><br>
         <label for="raceRegistrationPrice">Registration Price:</label>
         <input type="number" name="raceRegistrationPrice" value="{{old('raceRegistrationPrice')}}" required/><br>
+        <label for="raceActive">Pro:</label>
+        <input type="checkbox" name="racePro" value="1" value="{{old('racePro')}}"/><br>
         <label for="raceActive">Visible:</label>
-        <input type="checkbox" name="raceActive" value="1" value="{{old('raceActive')}}" required/><br>
+        <input type="checkbox" name="raceActive" value="1" checked/><br>
         <button type="submit">Create Race</button>
     </form>
 @stop

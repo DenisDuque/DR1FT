@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('startingPlace');
             $table->float('sponsorCost');
             $table->float('registrationPrice');
+            $table->boolean('pro');
             $table->boolean('active');
             $table->timestamps();
         });

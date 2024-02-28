@@ -29,6 +29,18 @@ class RaceController extends Controller {
     }
 
     public function create() {
+
+        request()->validate([
+            'raceName' => 'required|string',
+            'raceDescription' => 'required|string',
+            'raceMaxParticipants' => 'required|integer',
+            'raceLength' => 'required|numeric',
+            'raceDate' => 'required|date|after:tomorrow',
+            'raceCoords' => 'required|string',
+            'raceSponsorCost' => 'required|numeric',
+            'raceRegistrationPrice' => 'required|numeric'
+        ]);
+
         $map = ImageController::storeImage(request(), 'race_maps', 'raceMap');
         $banner = ImageController::storeImage(request(), 'race_banners', 'raceBanner');
 
@@ -44,11 +56,13 @@ class RaceController extends Controller {
                 'startingPlace' => request('raceCoords'),
                 'sponsorCost' => request('raceSponsorCost'),
                 'registrationPrice' => request('raceRegistrationPrice'),
-                'active' => request('raceActive')
+                'pro' => request('racePro') ?? 0,
+                'active' => request('raceActive') ?? 0
             ]);
 
             return redirect()->route('/admin/races');
         } else {
+            // TODO: Devolver popup de error
             echo("NO");
         }
     }
