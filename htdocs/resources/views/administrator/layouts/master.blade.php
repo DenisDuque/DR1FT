@@ -11,23 +11,23 @@
 </head>
 <body class="container background-admin-gradient">
     @section('header')
-        <header class="row">
+        <header class="row admin-header">
             <nav>
                 <ul class="nav">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">DASHBOARD</a>
+                        <a class="nav-link {{ request()->is('admin/dashboard') ? 'active' : '' }}" aria-current="page" href="/admin/dashboard">DASHBOARD</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">RACES</a>
+                        <a class="nav-link {{ request()->is('admin/races') ? 'active' : '' }}" href="/admin/races">RACES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">SPONSORS</a>
+                        <a class="nav-link {{ request()->is('admin/sponsors') ? 'active' : '' }}" href="/admin/sponsors">SPONSORS</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">INSURANCES</a>
+                        <a class="nav-link {{ request()->is('admin/insurances') ? 'active' : '' }}" href="/admin/insurances">INSURANCES</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">DRIVERS</a>
+                        <a class="nav-link {{ request()->is('admin/drivers') ? 'active' : '' }}" href="/admin/drivers">DRIVERS</a>
                     </li>
                     <li class="nav-item">
                         <section>

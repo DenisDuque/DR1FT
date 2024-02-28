@@ -5,4 +5,28 @@
 .background-admin-gradient {
   height: 100vh;
   background: linear-gradient(to top left, #151418, #1e1e1e);
+}
+
+.admin-header {
+  background: linear-gradient(to top left, #A52622, #E93F36);
+  border-radius: 1rem;
+  height: 6.8vh;
+}
+.admin-header nav {
+  height: auto;
+}
+.admin-header nav ul li .nav-link {
+  color: #E0DFDE;
+}
+.admin-header nav ul li .nav-link:hover {
+  color: #F7F7F5;
+}
+.admin-header nav ul li .active {
+  color: #F7F7F5;
+  text-decoration: underline;
+}
+
+.btn-primary {
+  background: linear-gradient(to top left, #A52622, #E93F36);
+  border: none !important;
 }/*# sourceMappingURL=app.css.map */

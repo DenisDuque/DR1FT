@@ -2,8 +2,18 @@
     color: black;
 }
 
+$white: #F7F7F5;
+$grey: #E0DFDE;
+
 $primaryBlack: #151418;
 $secondaryBlack: #1e1e1e;
+
+$darkRed: #D1241C;
+$defaultRed: #DC2E25;
+$lightRed: #E93F36;
+
+$gradientRed1: #A52622;
+$gradientRed2: #E93F36;
 
 @mixin backgroundGradient($color1, $color2){
     background: linear-gradient(to top left, $color1, $color2);
@@ -12,4 +22,37 @@ $secondaryBlack: #1e1e1e;
 .background-admin-gradient{
     height: 100vh;
     @include backgroundGradient($primaryBlack, $secondaryBlack);
+}
+
+.admin-header {
+    @include backgroundGradient($gradientRed1, $gradientRed2);
+    border-radius: 1rem;
+    height: 6.8vh;
+    
+    nav {
+        height: auto;
+        ul {
+            li {
+                .nav-link {
+                    
+                    color: $grey;
+
+                    &:hover {
+                        color: $white;
+                    }
+                    
+                }
+
+                .active {
+                    color: $white;
+                    text-decoration: underline;
+                }
+            }
+        }
+    }
+}
+
+.btn-primary {
+    @include backgroundGradient($gradientRed1, $gradientRed2);
+    border: none !important;
 }

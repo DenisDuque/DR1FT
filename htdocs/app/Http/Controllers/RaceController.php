@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Race;
 use App\Http\Controllers\ImageController;
 
@@ -10,15 +9,8 @@ class RaceController extends Controller {
 
     public function index() {
         $races = Race::get();
-        
-    }
 
-    public function showAdministratorPanel() {
-        $titulo = "NIGGER";
-        $races = Race::get();
-
-        return view('administrator.races.show', [
-            'titulo' => $titulo,
+        return view('administrator.races.index', [
             'races' => $races
         ]);
     }
@@ -67,7 +59,77 @@ class RaceController extends Controller {
         }
     }
 
-    
 
-    
+    public function edit($id) {
+        $race = Race::find($id);
+
+        if ($race) {
+            
+            return view('administrator.races.edit')->with('race', $race);
+        } else {
+            return redirect()->route('admin.races.index')->with('error', 'Race not found');
+        }
+    }
+
+    public function update($id) {
+        $race = Race::find($id);
+
+        if ($race) {
+            request()->validate([
+                'raceName' => 'string',
+                'raceDescription' => 'string',
+                'raceMaxParticipants' => 'integer',
+                'raceLength' => 'numeric',
+                'raceDate' => 'date|after:tomorrow',
+                'raceCoords' => 'string',
+                'raceSponsorCost' => 'numeric',
+                'raceRegistrationPrice' => 'numeric',
+            ]);
+
+            $originalValues = $race->getOriginal();
+
+            $map = ImageController::storeImage(request(), 'race_maps', 'raceMap');
+            $banner = ImageController::storeImage(request(), 'race_banners', 'raceBanner');
+
+            $pro = request()->has('racePro') ? 1 : 0;
+            $active = request()->has('raceActive') ? 1 : 0;
+
+            $updatedValues = [
+                'name' => request('raceName'),
+                'description' => request('raceDescription'),
+                'maxParticipants' => request('raceMaxParticipants'),
+                'length' => request('raceLength'),
+                'date' => request('raceDate'),
+                'startingPlace' => request('raceCoords'),
+                'sponsorCost' => request('raceSponsorCost'),
+                'registrationPrice' => request('raceRegistrationPrice'),
+                'pro' => $pro,
+                'active' => $active,
+            ];
+
+            // Actualizar solo los campos que han cambiado
+            $updatedValues = array_filter($updatedValues, function ($value, $key) use ($originalValues) {
+                return $value !== $originalValues[$key];
+            }, ARRAY_FILTER_USE_BOTH);
+
+            // Si hay nuevos mapas o banners, agregarlos a los valores actualizados
+            if ($map) {
+                $updatedValues['map'] = $map;
+            }
+
+            if ($banner) {
+                $updatedValues['banner'] = $banner;
+            }
+
+            // Actualizar la carrera solo si hay cambios
+            if (!empty($updatedValues)) {
+                $race->update($updatedValues);
+                return redirect()->route('/admin/races')->with('success', 'Race updated correctly.');
+            } else {
+                return redirect()->route('/admin/races')->with('info', 'No changes detected.');
+            }
+        } else {
+            return redirect()->route('/admin/races')->with('error', 'Race not found.');
+        }
+    }
 }
