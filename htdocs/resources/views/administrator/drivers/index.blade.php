@@ -1,8 +1,10 @@
 @extends('administrator.layouts.master')
 
 @section('content')
-    <h1>All Drivers</h1>
-    <a class="btn btn-primary" href="/admin/drivers/new" role="button">Add Driver</a>
+    <section class="my-5 d-flex align-items-center justify-content-between">
+        <h1 class="admin-form-title text-white">All Drivers</h1>
+        <a class="btn btn-primary" href="/admin/drivers/new" role="button"><i class="bi bi-plus-lg"></i> Add Driver</a>
+    </section>
 
     <table class="table table-dark table-hover">
     <thead>

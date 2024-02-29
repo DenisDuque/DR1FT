@@ -24,6 +24,7 @@ class SponsorController extends Controller
         //TODO: Validar el CIF correctamente
 
         request()->validate([
+            'sponsorName' => 'required|string',
             'sponsorCIF' => 'required|string',
             'sponsorAddress' => 'required|string'
         ]);

@@ -22,6 +22,10 @@ $gradientRed2: #E93F36;
     background: linear-gradient(to top left, $color1, $color2);
 }
 
+.bg-admin {
+    @include backgroundGradient($cardBgBlack1, $cardBGBlack2);
+}
+
 .background-admin-gradient{
     height: 100vh;
     @include backgroundGradient($primaryBlack, $secondaryBlack);
@@ -76,6 +80,7 @@ $gradientRed2: #E93F36;
     border: none !important;
 }
 
+
 .card { 
     @include backgroundGradient($cardBgBlack1, $cardBGBlack2);
     color: white;
@@ -88,6 +93,26 @@ $gradientRed2: #E93F36;
 
 .card-text {
     font-size: 12px !important;
+}
+
+.bg-badge-purple {
+    background-color: #ebe5fc;
+    color: #5227cc !important;
+}
+
+.bg-badge-disabled {
+    background-color: #f8d7da;
+    color: #58151c !important;
+}
+
+.table-border {
+    border-radius: 15px !important;
+}
+
+.form-label {
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 1px;
 }
 
 @media (min-width: 1400px){

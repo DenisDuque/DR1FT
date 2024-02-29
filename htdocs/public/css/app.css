@@ -2,6 +2,10 @@
   font-family: "Montserrat", sans-serif;
 }
 
+.bg-admin {
+  background: linear-gradient(to top left, #252328, #282828);
+}
+
 .background-admin-gradient {
   height: 100vh;
   background: linear-gradient(to top left, #151418, #1e1e1e);
@@ -58,6 +62,26 @@
 
 .card-text {
   font-size: 12px !important;
+}
+
+.bg-badge-purple {
+  background-color: #ebe5fc;
+  color: #5227cc !important;
+}
+
+.bg-badge-disabled {
+  background-color: #f8d7da;
+  color: #58151c !important;
+}
+
+.table-border {
+  border-radius: 15px !important;
+}
+
+.form-label {
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 1px;
 }
 
 @media (min-width: 1400px) {

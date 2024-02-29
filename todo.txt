@@ -1,0 +1,3 @@
+- las imagenes no se suben bien en sponsors. (la imagen no se sube)
+- nav responsive
+- grid dashboard

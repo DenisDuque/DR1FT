@@ -1,8 +1,11 @@
 @extends('administrator.layouts.master')
 
 @section('content')
-    <h1>All Insurances</h1>
-    <a class="btn btn-primary" href="/admin/insurances/new" role="button">Add Insurance</a>
+    <section class="my-5 d-flex align-items-center justify-content-between">
+        <h1 class="admin-form-title text-white">All Insurances</h1>
+        <a class="btn btn-primary" href="/admin/insurances/new" role="button"><i class="bi bi-plus-lg"></i> Add Insurance</a>
+    </section>
+
 
     <table class="table table-dark table-hover">
     <thead>
