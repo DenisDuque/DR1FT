@@ -12,7 +12,7 @@
 @section('content')
     <h1 class="admin-form-title text-white">Create Insurance</h1>
 
-    <form class="row g-3 text-white" action="{{route('/admin/insurances/new')}}" method="POST" enctype="multipart/form-data">
+    <form class="row g-3 text-white" action="{{route('admin.insurances.new')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="col-md-6">
             <label for="insuranceCIF" class="form-label">CIF</label>

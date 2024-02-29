@@ -15,7 +15,7 @@ class AdministratorController extends Controller
 
     public function showLogin() {
         if (session('adminAuth')) {
-            return redirect()->route('/admin/dashboard');
+            return redirect()->route('admin.dashboard');
         } else {
             return view('administrator.login');
         }
@@ -36,10 +36,10 @@ class AdministratorController extends Controller
         if ($user && Auth::guard('admin')->attempt(['email' => $email, 'password' => $password])) {
             session(['adminAuth' => true]);
             session(['userName' => $user->name]);
-            return redirect()->route('/admin/dashboard');
+            return redirect()->route('admin.dashboard');
         } else {
             // Las credenciales son incorrectas o el usuario no existe
-            return redirect()->route('/admin')->with('error', 'Credenciales incorrectas');
+            return redirect()->route('admin.login')->with('error', 'Credenciales incorrectas');
         }
     }
 
@@ -52,6 +52,6 @@ class AdministratorController extends Controller
         session()->flush();
 
         // Redirigir a la página de inicio de sesión
-        return redirect()->route('/admin');
+        return redirect()->route('admin.login');
     }
 }

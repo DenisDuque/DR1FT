@@ -11,7 +11,7 @@
 
 @section('content')
     <h1>Create a new Race</h1>
-    <form action="{{route('/admin/races/new')}}" method="POST" enctype="multipart/form-data">
+    <form action="{{route('admin.races.new')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <label for="raceName">Name:</label>
         <input type="text" name="raceName" value="{{old('raceName')}}" required/><br>

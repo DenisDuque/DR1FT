@@ -40,7 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'administrators',
         ],
-        // TODO: Guard driver
+        'driver' => [
+            'driver' => 'session',
+            'provider' => 'drivers',
+        ]
     ],    
 
     /*
@@ -65,7 +68,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Administrator::class,
         ],
-        // TODO: provider de Driver
+        'drivers' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Driver::class,
+        ]
     ],
     
 

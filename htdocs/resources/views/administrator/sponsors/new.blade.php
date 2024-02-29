@@ -12,7 +12,7 @@
 @section('content')
     <h1>Create Sponsor</h1>
 
-    <form class="row g-3" action="{{route('/admin/sponsors/new')}}" method="POST" enctype="multipart/form-data">
+    <form class="row g-3" action="{{route('admin.sponsors.new')}}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="col-md-6">
             <label for="sponsorCIF" class="form-label">CIF</label>

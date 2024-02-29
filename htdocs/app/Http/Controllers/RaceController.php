@@ -52,7 +52,7 @@ class RaceController extends Controller {
                 'active' => request('raceActive') ?? 0
             ]);
 
-            return redirect()->route('/admin/races');
+            return redirect()->route('admin.races');
         } else {
             // TODO: Devolver popup de error
             echo("NO");
@@ -67,7 +67,7 @@ class RaceController extends Controller {
             
             return view('administrator.races.edit')->with('race', $race);
         } else {
-            return redirect()->route('admin.races.index')->with('error', 'Race not found');
+            return redirect()->route('admin.races')->with('error', 'Race not found');
         }
     }
 
@@ -124,12 +124,12 @@ class RaceController extends Controller {
             // Actualizar la carrera solo si hay cambios
             if (!empty($updatedValues)) {
                 $race->update($updatedValues);
-                return redirect()->route('/admin/races')->with('success', 'Race updated correctly.');
+                return redirect()->route('admin.races')->with('success', 'Race updated correctly.');
             } else {
-                return redirect()->route('/admin/races')->with('info', 'No changes detected.');
+                return redirect()->route('admin.races')->with('info', 'No changes detected.');
             }
         } else {
-            return redirect()->route('/admin/races')->with('error', 'Race not found.');
+            return redirect()->route('admin.races')->with('error', 'Race not found.');
         }
     }
 }

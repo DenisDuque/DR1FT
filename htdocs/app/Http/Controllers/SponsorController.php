@@ -40,7 +40,7 @@ class SponsorController extends Controller
                 'active' => request('sponsorActive') ?? 0
             ]);
 
-            return redirect()->route('/admin/sponsors');
+            return redirect()->route('admin.sponsors');
         } else {
             // TODO: Devolver popup de error
             echo("NO");
