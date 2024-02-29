@@ -46,6 +46,20 @@
   border: none !important;
 }
 
+.card {
+  background: linear-gradient(to top left, #252328, #282828);
+  color: white;
+  border-radius: 15px !important;
+}
+
+.card-title {
+  font-size: 16px !important;
+}
+
+.card-text {
+  font-size: 12px !important;
+}
+
 @media (min-width: 1400px) {
   .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
     max-width: 1550px !important;

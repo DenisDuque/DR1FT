@@ -8,6 +8,9 @@ $grey: #cdcdcd;
 $primaryBlack: #151418;
 $secondaryBlack: #1e1e1e;
 
+$cardBgBlack1: #252328;
+$cardBGBlack2: #282828; 
+
 $darkRed: #D1241C;
 $defaultRed: #DC2E25;
 $lightRed: #E93F36;
@@ -73,8 +76,22 @@ $gradientRed2: #E93F36;
     border: none !important;
 }
 
-@media (min-width: 1400px){
-.container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
-  max-width: 1550px !important;
+.card { 
+    @include backgroundGradient($cardBgBlack1, $cardBGBlack2);
+    color: white;
+    border-radius: 15px !important;
 }
+
+.card-title {
+    font-size: 16px !important;
+}
+
+.card-text {
+    font-size: 12px !important;
+}
+
+@media (min-width: 1400px){
+    .container, .container-lg, .container-md, .container-sm, .container-xl, .container-xxl {
+    max-width: 1550px !important;
+    }
 }
