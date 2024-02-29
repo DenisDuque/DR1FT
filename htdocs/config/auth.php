@@ -36,11 +36,12 @@ return [
     */
 
     'guards' => [
-        'web' => [
+        'admin' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'administrators',
         ],
-    ],
+        // TODO: Guard driver
+    ],    
 
     /*
     |--------------------------------------------------------------------------
@@ -60,16 +61,13 @@ return [
     */
 
     'providers' => [
-        'users' => [
+        'administrators' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\Models\Administrator::class,
         ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+        // TODO: provider de Driver
     ],
+    
 
     /*
     |--------------------------------------------------------------------------

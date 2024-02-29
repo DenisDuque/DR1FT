@@ -11,6 +11,19 @@
 <body class="main-bg">
   <!-- Login Form -->
   <div class="container">
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
+    @if ($errors->any())
+        @foreach ($errors->all() as $error)
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>Error: </strong> {{$error}}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endforeach
+    @endif
     <div class="row justify-content-center mt-5">
       <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="card shadow">
@@ -18,21 +31,22 @@
             <h2 class="p-3">Login</h2>
           </div>
           <div class="card-body">
-            <form>
+            <form action="{{route('/admin')}}" method="post">
+              @csrf
               <div class="mb-4">
-                <label for="username" class="form-label">Username/Email</label>
-                <input type="text" class="form-control" id="username" />
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" value="{{old('email')}}"/>
               </div>
               <div class="mb-4">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" id="password" />
+                <input type="password" class="form-control" name="password" value="{{old('password')}}"/>
               </div>
               <div class="mb-4">
-                <input type="checkbox" class="form-check-input" id="remember" />
+                <input type="checkbox" class="form-check-input" name="remember" value="{{old('remember')}}"/>
                 <label for="remember" class="form-label">Remember Me</label>
               </div>
-              <div class="d-grid">
-                <button type="submit" class="btn text-light main-bg">Login</button>
+              <div class="col-12">
+                <button type="submit" class="btn btn-primary">Login</button>
               </div>
             </form>
           </div>

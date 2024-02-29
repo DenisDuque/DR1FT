@@ -25,7 +25,9 @@ Route::get('/', function () {
 
 // ADMINISTRATOR
 Route::get('/admin', [AdministratorController::class, 'showLogin']);
-Route::get('/admin/dashboard', [AdministratorController::class, 'showAdministratorPanel']);
+Route::post('/admin', [AdministratorController::class, 'auth'])->name('/admin');
+Route::get('/admin/logout', [AdministratorController::class, 'logout'])->name('admin/logout');
+Route::get('/admin/dashboard', [AdministratorController::class, 'showAdministratorPanel'])->name('/admin/dashboard');
 
 // ADMINISTRATOR: RACES
 Route::get('/admin/races', [RaceController::class, 'index'])->name('/admin/races');
