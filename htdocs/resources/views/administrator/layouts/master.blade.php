@@ -35,7 +35,7 @@
                     <li class="d-flex align-items-center justify-content-end nav-item flex-grow-1">
                         <i class="bi bi-person"></i>
                         <span>Administrator</span>
-                        <i class="bi bi-box-arrow-left"></i>
+                        <a href="/admin/logout"><i class="bi bi-box-arrow-left"></i></a>
                     </li>
                 </ul>
                 
