@@ -13,8 +13,6 @@
 </head>
 
 <body class="container background-admin-gradient">
-  <!-- Login Form -->
-  <div class="container">
     @if (session('error'))
         <div class="alert alert-danger">
             {{ session('error') }}
@@ -28,22 +26,23 @@
             </div>
         @endforeach
     @endif
-    <div class="row justify-content-center mt-5">
+    <div class="row justify-content-center align-items-center mt-5">
       <div class="col-lg-4 col-md-6 col-sm-6">
         <div class="card shadow">
-          <div class="card-title text-center border-bottom">
+          <div class="card-title text-center">
             <h2 class="p-3">Login</h2>
+            <p class="text-md-center">Please enter your details.</p>
           </div>
           <div class="card-body">
             <form action="{{route('/admin')}}" method="post">
               @csrf
               <div class="mb-4">
                 <label for="email" class="form-label">Email</label>
-                <input type="email" class="form-control" name="email" value="{{old('email')}}"/>
+                <input type="email" class="form-control" name="email" value="{{old('email')}}" placeholder="Enter your email"/>
               </div>
               <div class="mb-4">
                 <label for="password" class="form-label">Password</label>
-                <input type="password" class="form-control" name="password" value="{{old('password')}}"/>
+                <input type="password" class="form-control" name="password" value="{{old('password')}}" placeholder="Password"/>
               </div>
               <div class="mb-4">
                 <input type="checkbox" class="form-check-input" name="remember" value="{{old('remember')}}"/>
@@ -57,7 +56,6 @@
         </div>
       </div>
     </div>
-  </div>
 </body>
 
 </html>
