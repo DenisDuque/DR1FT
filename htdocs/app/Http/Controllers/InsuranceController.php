@@ -43,10 +43,10 @@ class InsuranceController extends Controller
                 'active' => request('insuranceActive') ?? 0
             ]);
 
-            return redirect()->route('/admin/insurances');
+            return redirect()->route('admin.insurances');
         } else {
             // TODO: Devolver popup de error
-            return redirect()->route('/admin/insurances')->with('error', 'There was an error while uploading the image, insurance creation aborted.');
+            return redirect()->route('admin.insurances')->with('error', 'There was an error while uploading the image, insurance creation aborted.');
         }
     }
 
@@ -57,7 +57,7 @@ class InsuranceController extends Controller
         if ($insurance) {
             return view('administrator.insurances.edit')->with('insurance', $insurance);
         } else {
-            return redirect()->route('administrator.insurances.index')->with('error', 'Insurance not found');
+            return redirect()->route('admin.insurances')->with('error', 'Insurance not found');
         }
     }
 
@@ -97,12 +97,12 @@ class InsuranceController extends Controller
             // Actualizar el seguro solo si hay cambios
             if (!empty($updatedValues)) {
                 $insurance->update($updatedValues);
-                return redirect()->route('/admin/insurances')->with('success', 'Insurance updated correctly.');
+                return redirect()->route('admin.insurances')->with('success', 'Insurance updated correctly.');
             } else {
-                return redirect()->route('/admin/insurances')->with('info', 'No changes detected.');
+                return redirect()->route('admin.insurances')->with('info', 'No changes detected.');
             }
         } else {
-            return redirect()->route('/admin/insurances')->with('error', 'Insurance not found.');
+            return redirect()->route('admin.insurances')->with('error', 'Insurance not found.');
         }
     }
     

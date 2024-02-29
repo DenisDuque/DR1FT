@@ -12,7 +12,7 @@
 @section('content')
     <h1>Mostrar crear driver</h1>
 
-    <form class="row g-3" action="{{route('/admin/drivers/new')}}" method="POST">
+    <form class="row g-3" action="{{route('admin.drivers.new')}}" method="POST">
         @csrf
         <div class="col-md-6">
             <label for="driverName" class="form-label">Name</label>

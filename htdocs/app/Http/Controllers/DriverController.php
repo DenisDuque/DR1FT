@@ -33,7 +33,7 @@ class DriverController extends Controller
             'points' => request('driverPoints')
         ]);
 
-        return redirect()->route('/admin/drivers');
+        return redirect()->route('admin.drivers');
     }
 
     public function edit($id) {
@@ -42,7 +42,7 @@ class DriverController extends Controller
         if ($driver) {
             return view('administrator.drivers.edit')->with('driver', $driver);
         } else {
-            return redirect()->route('administrator.drivers.index')->with('error', 'Driver not found');
+            return redirect()->route('admin.drivers')->with('error', 'Driver not found');
         }
     }
 
@@ -84,12 +84,12 @@ class DriverController extends Controller
             // Actualizar el conductor solo si hay cambios
             if (!empty($updatedValues)) {
                 $driver->update($updatedValues);
-                return redirect()->route('/admin/drivers')->with('success', 'Driver updated correctly.');
+                return redirect()->route('admin.drivers')->with('success', 'Driver updated correctly.');
             } else {
-                return redirect()->route('/admin/drivers')->with('info', 'No changes detected.');
+                return redirect()->route('admin.drivers')->with('info', 'No changes detected.');
             }
         } else {
-            return redirect()->route('/admin/drivers')->with('error', 'Driver not found.');
+            return redirect()->route('admin.drivers')->with('error', 'Driver not found.');
         }
     }
 }

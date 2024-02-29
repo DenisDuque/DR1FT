@@ -34,7 +34,7 @@
             <p class="text-md-center">Please enter your details.</p>
           </div>
           <div class="card-body">
-            <form action="{{route('/admin')}}" method="post">
+            <form action="{{route('admin.login')}}" method="post">
               @csrf
               <div class="mb-4">
                 <label for="email" class="form-label">Email</label>
