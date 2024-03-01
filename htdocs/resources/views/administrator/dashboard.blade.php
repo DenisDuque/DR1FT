@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Create a new race</h5>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Start</a>
+                    <a href="/admin/races/new" class="btn btn-primary">Start</a>
                 </div>
             </div>
         </div>
@@ -17,7 +17,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Add a new insurance</h5>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Start</a>
+                    <a href="/admin/insurances/new" class="btn btn-primary">Start</a>
                 </div>
             </div>
         </div>
@@ -26,7 +26,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Add a new sponsor</h5>
                     <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Start</a>
+                    <a href="/admin/sponsors/new" class="btn btn-primary">Start</a>
                 </div>
             </div>
         </div>

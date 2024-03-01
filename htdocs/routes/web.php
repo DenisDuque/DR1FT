@@ -53,6 +53,8 @@ Route::group(['prefix' => '/admin'], function () {
             Route::get('', [SponsorController::class, 'index'])->name('admin.sponsors');
             Route::get('/new', [SponsorController::class, 'new']);
             Route::post('/new', [SponsorController::class, 'create'])->name('admin.sponsors.new');
+            Route::get('/edit/{id}', [SponsorController::class, 'edit'])->name('admin.sponsors.edit');
+            Route::post('/edit/{id}', [SponsorController::class, 'update'])->name('admin.sponsors.update');
         });
     });
 });

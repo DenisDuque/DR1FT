@@ -39,7 +39,7 @@
                     <td class="text-center w-10"><span class="badge rounded-pill bg-badge-purple">{{$race->sponsorCost}}$</span></td>
                     <td class="text-center w-10"><span class="badge rounded-pill bg-badge-purple">{{$race->registrationPrice}}$</span></td>
                     <td>
-                        <a href="http://">Datails</a>
+                        <a href="#">Details</a>
                         <a href="{{ route('admin.races.edit', ['id' => $race->id]) }}">Edit</a>
                     </td>
                 </tr>

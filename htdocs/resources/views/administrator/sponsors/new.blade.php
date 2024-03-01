@@ -36,12 +36,6 @@
                 </div>
                 
                 <div class="col-12">
-                    <!-- <div class="form-check">
-                        <input class="form-check-input" type="checkbox" id="sponsorActive" checked>
-                        <label class="form-check-label" for="sponsorActive">
-                            Visible
-                        </label>
-                    </div> -->
                     <div class="form-check form-switch">
                         <input class="form-check-input" type="checkbox" name="sponsorActive" id="sponsorActive" checked>
                         <label class="form-check-label form-label" for="sponsorActive">Visible</label>

@@ -6,7 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 class ImageController extends Controller {
 
-    public static function storeImage(Request $request, $path, $fieldName = 'image') {
+    /* COMPROBAR FUNCIONAMIENTO COMPLETO DE LA OTRA FUNCIÓN ANTES DE ELIMINAR
+
+    public static function storeImageOriginal(Request $request, $path, $fieldName = 'image') {
         try {
             $request->validate([
                 $fieldName => 'required|image|mimes:png,jpg,jpeg|max:2048'
@@ -19,6 +21,8 @@ class ImageController extends Controller {
                 mkdir('storage/'.$path, 0777, true);
             }
 
+            
+
             // Move the image to the storage path
             if ($request->$fieldName->move(storage_path($path), $imageName)) {
                 // Image upload successful
@@ -30,6 +34,31 @@ class ImageController extends Controller {
             }
         } catch (\Exception $e) {
             // Exception occurred during image upload
+            echo 'Image upload error: ' . $e->getMessage();
+            return false;
+        }
+    }
+
+    */
+
+    public static function storeImage(Request $request, $path, $fieldName = 'image') {
+        try {
+            $request->validate([
+                $fieldName => 'required|image|mimes:png,jpg,jpeg|max:2048'
+            ]);
+
+            $image = $request->file($fieldName);
+
+            // Generar un nombre único para la imagen
+            $imageName = Str::orderedUuid().'.'.$image->extension();
+
+            // Almacenar la imagen en el directorio storage/app/$path
+            $imagePath = $image->storeAs($path, $imageName, 'public');
+
+            // Devolver el nombre de la imagen almacenada
+            return $imageName;
+        } catch (\Exception $e) {
+            // Manejar errores de carga aquí
             echo 'Image upload error: ' . $e->getMessage();
             return false;
         }

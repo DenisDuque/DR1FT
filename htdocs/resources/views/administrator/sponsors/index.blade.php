@@ -23,14 +23,17 @@
                 <td>{{$sponsor->id}}</td>
                 <!-- <td>{{$sponsor->logo}}</td> -->
                 <td><i class="bi bi-image"></i></td>
-                <td>Name 
+                <td>{{$sponsor->name}}
                     @if ($sponsor->active == 0)
                         <span class="badge rounded-pill bg-badge-disabled">Disabled</span>
                     @endif
                 </td>
                 <td>{{$sponsor->cif}}</td>
                 <td>{{$sponsor->address}}</td>
-                <td>Edit | Delete</td>
+                <td>
+                    <a href="#">Details</a>
+                    <a href="{{ route('admin.sponsors.edit', ['id' => $sponsor->id]) }}">Edit</a>
+                </td>
             </tr>
         @endforeach
         
