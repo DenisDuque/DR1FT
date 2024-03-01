@@ -17,7 +17,3 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-/storage/race_banners/*
-/storage/race_maps/*
-/storage/sponsor_logos/*
-/storage/insurance_logos/*
