@@ -18,6 +18,8 @@ $lightRed: #E93F36;
 $gradientRed1: #A52622;
 $gradientRed2: #E93F36;
 
+$adminLinks: #3b36da;
+
 @mixin backgroundGradient($color1, $color2){
     background: linear-gradient(to top left, $color1, $color2);
 }
@@ -53,6 +55,8 @@ $gradientRed2: #E93F36;
                 .active {
                     color: $white;
                     text-decoration: underline;
+                    text-underline-offset: 10px;
+                    text-decoration-thickness: 2px;
                 }
             }
         }
@@ -61,7 +65,7 @@ $gradientRed2: #E93F36;
 
 .nav-item {
     font-size: 16px;
-    font-weight: 500;
+    font-weight: 600;
     letter-spacing: 3px;
 
     &:hover:not(&:last-child) {
@@ -124,6 +128,18 @@ $gradientRed2: #E93F36;
     font-size: 1rem;
     font-weight: 600;
     letter-spacing: 1px;
+}
+
+.w-300px { width: 300px; }
+
+
+.admin-link {
+    color: $adminLinks;
+    text-decoration: none;
+
+    .bi {
+        margin-right: 5px;
+    }
 }
 
 @media (min-width: 1400px){

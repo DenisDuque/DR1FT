@@ -12,7 +12,7 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Date</th>
-            <th scope="col">Place</th>
+            <th scope="col" class="w-300px">Place</th>
             <th scope="col" class="text-center">Max. Drivers</th>
             <th scope="col" class="text-center">Length</th>
             <th scope="col" class="text-center">Sponsor Cost</th>
@@ -23,8 +23,8 @@
         <tbody>
             @foreach($races as $race)
                 <tr>
-                    <td class="py-3">{{$race->id}}</td>
-                    <td>{{$race->name}}
+                    <td class="py-3 align-middle">{{$race->id}}</td>
+                    <td class="py-3 align-middle">{{$race->name}}
                         @if ($race->pro == 1)
                             <span class="badge rounded-pill bg-warning text-dark">PRO</span>
                         @endif
@@ -32,15 +32,15 @@
                             <span class="badge rounded-pill bg-badge-disabled">Disabled</span>
                         @endif
                     </td>
-                    <td><i class="bi bi-calendar-event"></i>{{$race->date}}</td>
-                    <td>{{$race->startingPlace}}</td>
-                    <td class="text-center">{{$race->maxParticipants}}</td>
-                    <td class="text-center">{{$race->length}}</td>
-                    <td class="text-center w-10"><span class="badge rounded-pill bg-badge-purple">{{$race->sponsorCost}}$</span></td>
-                    <td class="text-center w-10"><span class="badge rounded-pill bg-badge-purple">{{$race->registrationPrice}}$</span></td>
-                    <td>
-                        <a href="#">Details</a>
-                        <a href="{{ route('admin.races.edit', ['id' => $race->id]) }}">Edit</a>
+                    <td class="py-3 align-middle"><i class="me-2 bi bi-calendar-event"></i>{{$race->date}}</td>
+                    <td class="py-3 align-middle">{{$race->startingPlace}}</td>
+                    <td class="py-3 text-center align-middle">{{$race->maxParticipants}}</td>
+                    <td class="py-3 text-center align-middle">{{$race->length}}</td>
+                    <td class=" align-middle text-center w-10"><span class="badge rounded-pill bg-badge-purple">{{$race->sponsorCost}}$</span></td>
+                    <td class="align-middle text-center w-10"><span class="badge rounded-pill bg-badge-purple">{{$race->registrationPrice}}$</span></td>
+                    <td class="py-3 text-center align-middle">
+                        <a class="admin-link me-3" href="#"><i class="bi bi-info-circle"></i>Details</a>
+                        <a class="admin-link" href="{{ route('admin.races.edit', ['id' => $race->id]) }}"><i class="bi bi-pencil-square"></i>Edit</a>
                     </td>
                 </tr>
             @endforeach

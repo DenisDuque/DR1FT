@@ -37,7 +37,7 @@
                 <td>{{$driver->member}}</td>
                 <td>{{$driver->federationNumber}}</td>
                 <td>{{$driver->points}}</td>
-                <td><a href="{{ route('admin.drivers.edit', ['id' => $driver->id]) }}"><i class="bi bi-pencil-square"></i>Edit</a></td>
+                <td><a class="admin-link" href="{{ route('admin.drivers.edit', ['id' => $driver->id]) }}"><i class="bi bi-pencil-square"></i>Edit</a></td>
             </tr>
         @endforeach
         

@@ -50,7 +50,7 @@
                 <td class="align-middle">{{$insurance->cif}}</td>
                 <td class="align-middle">{{$insurance->address}}</td>
                 <td class="text-center align-middle"><span class="badge rounded-pill bg-badge-purple">{{$insurance->pricePerRace}}$</span></td>
-                <td class="align-middle"><a href="{{ route('admin.insurances.edit', ['id' => $insurance->id]) }}"><i class="bi bi-pencil-square"></i>Edit</a></td>
+                <td class="align-middle"><a class="admin-link" href="{{ route('admin.insurances.edit', ['id' => $insurance->id]) }}"><i class="bi bi-pencil-square"></i>Edit</a></td>
             </tr>
         @endforeach
         

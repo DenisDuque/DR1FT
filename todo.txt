@@ -1,6 +1,8 @@
 - nav responsive
 - grid dashboard
 - en Crear Sponsor: Error: The sponsor active field must be an integer.
-- vista editar sponsor
 - vista editar driver
 - crear y editar insurance ACTIVAR no funciona (todo sale disabled)
+- vista edit races
+- vista new races
+- datepickers
