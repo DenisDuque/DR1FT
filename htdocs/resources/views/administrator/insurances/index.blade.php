@@ -1,11 +1,29 @@
 @extends('administrator.layouts.master')
 
 @section('content')
-    <section class="my-5 d-flex align-items-center justify-content-between">
+    <section class="mt-5 mb-3 d-flex align-items-center justify-content-between">
         <h1 class="admin-form-title text-white">All Insurances</h1>
         <a class="btn btn-primary" href="/admin/insurances/new" role="button"><i class="bi bi-plus-lg"></i> Add Insurance</a>
     </section>
 
+    @if(session()->has('success'))
+        <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
+            <i class="bi bi-check-circle-fill me-1"></i>
+            <div>
+            {{ session('success') }}
+            </div>
+        </div>
+    @endif
+
+    @if (session()->has('info'))
+        <div class="alert alert-primary d-flex align-items-center alert-dismissible fade show" role="alert">
+            <i class="bi bi-info-circle-fill me-1"></i>
+            <div>
+                {{ session('info') }}
+            </div>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    @endif
 
     <table class="table table-dark table-hover">
     <thead>
@@ -15,22 +33,24 @@
         <th scope="col">Name</th>
         <th scope="col">CIF</th>
         <th scope="col">Address</th>
-        <th scope="col">Price per Race</th>
-        <th scope="col">Active</th>
+        <th scope="col" class="text-center">Price per Race</th>
         <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
         @foreach($insurances as $insurance)
             <tr>
-                <td>{{$insurance->id}}</td>
-                <td>{{$insurance->logo}}</td>
-                <td>{{$insurance->name}}</td>
-                <td>{{$insurance->cif}}</td>
-                <td>{{$insurance->address}}</td>
-                <td>{{$insurance->pricePerRace}}</td>
-                <td>{{$insurance->active}}</td>
-                <td><a href="{{ route('admin.insurances.edit', ['id' => $insurance->id]) }}">Edit</a></td>
+                <td class="align-middle fw-bold">{{$insurance->id}}</td>
+                <td class="align-middle"><img class="img-thumbnail" src="{{ asset('storage/insurance_logos/' . $insurance->logo) }}" alt="{{$insurance->name}}"></td>
+                <td class="align-middle">{{$insurance->name}}
+                    @if ($insurance->active == 0)
+                        <span class="badge rounded-pill bg-badge-disabled">Disabled</span>
+                    @endif
+                </td>
+                <td class="align-middle">{{$insurance->cif}}</td>
+                <td class="align-middle">{{$insurance->address}}</td>
+                <td class="text-center align-middle"><span class="badge rounded-pill bg-badge-purple">{{$insurance->pricePerRace}}$</span></td>
+                <td class="align-middle"><a href="{{ route('admin.insurances.edit', ['id' => $insurance->id]) }}"><i class="bi bi-pencil-square"></i>Edit</a></td>
             </tr>
         @endforeach
         

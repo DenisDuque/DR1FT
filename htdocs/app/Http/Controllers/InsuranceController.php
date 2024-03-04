@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Insurance;
 use App\Http\Controllers\ImageController;
+use Illuminate\Support\Facades\Validator;
+
 
 class InsuranceController extends Controller
 {
@@ -65,12 +67,16 @@ class InsuranceController extends Controller
         $insurance = Insurance::find($id);
     
         if ($insurance) {
-            request()->validate([
-                'insuranceName' => 'string',
-                'insuranceCIF' => 'string',
-                'insuranceCost' => 'numeric',
-                'insuranceAddress' => 'string'
+            $validator = Validator::make(request()->all(), [
+                'insuranceName' => 'required|string',
+                'insuranceCIF' => 'required|string',
+                'insuranceCost' => 'required|numeric',
+                'insuranceAddress' => 'required|string'
             ]);
+    
+            if ($validator->fails()) {
+                return redirect()->back()->withErrors($validator)->withInput();
+            }
     
             $originalValues = $insurance->getOriginal();
     
@@ -84,27 +90,28 @@ class InsuranceController extends Controller
                 'active' => request('insuranceActive') ?? 0
             ];
     
-            // Actualizar solo los campos que han cambiado
-            $updatedValues = array_filter($updatedValues, function ($value, $key) use ($originalValues) {
-                return $value !== $originalValues[$key];
-            }, ARRAY_FILTER_USE_BOTH);
+            // Verificar si hay cambios detectados comparando los valores originales con los nuevos
+            $changesDetected = array_diff_assoc($updatedValues, $originalValues);
+    
+            if (empty($changesDetected) && !$logo) {
+                return redirect()->route('admin.insurances')->with('info', 'No changes detected.');
+            }
     
             // Si hay un nuevo logo, agregarlo a los valores actualizados
             if ($logo) {
                 $updatedValues['logo'] = $logo;
             }
     
-            // Actualizar el seguro solo si hay cambios
-            if (!empty($updatedValues)) {
+            // Actualizar la insurance solo si hay cambios
+            if (!empty($changesDetected) || $logo) {
                 $insurance->update($updatedValues);
                 return redirect()->route('admin.insurances')->with('success', 'Insurance updated correctly.');
-            } else {
-                return redirect()->route('admin.insurances')->with('info', 'No changes detected.');
             }
-        } else {
-            return redirect()->route('admin.insurances')->with('error', 'Insurance not found.');
         }
+    
+        return redirect()->route('admin.insurances')->with('error', 'Insurance not found.');
     }
+    
     
     
 }

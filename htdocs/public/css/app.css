@@ -40,6 +40,17 @@
   transition: transform ease-in-out 0.5s;
 }
 
+.table-dark {
+  --bs-table-bg: $cardBgBlack1 !important;
+  background-color: #252328 !important;
+  border-radius: 15px !important;
+}
+
+.img-thumbnail {
+  width: 100%;
+  max-width: 3rem !important;
+}
+
 .admin-form-title {
   font-weight: bold;
   font-size: 24px;

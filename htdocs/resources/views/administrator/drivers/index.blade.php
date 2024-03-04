@@ -6,7 +6,7 @@
         <a class="btn btn-primary" href="/admin/drivers/new" role="button"><i class="bi bi-plus-lg"></i> Add Driver</a>
     </section>
 
-    <table class="table table-dark table-hover">
+    <table class="table table-dark table-hover shadow overflow-scroll h-75">
     <thead>
         <tr>
         <th scope="col">#</th>
@@ -37,7 +37,7 @@
                 <td>{{$driver->member}}</td>
                 <td>{{$driver->federationNumber}}</td>
                 <td>{{$driver->points}}</td>
-                <td><a href="{{ route('admin.drivers.edit', ['id' => $driver->id]) }}">Edit</a></td>
+                <td><a href="{{ route('admin.drivers.edit', ['id' => $driver->id]) }}"><i class="bi bi-pencil-square"></i>Edit</a></td>
             </tr>
         @endforeach
         

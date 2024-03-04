@@ -20,18 +20,19 @@ class SponsorController extends Controller
     }
 
     public function create() {
-
-        //TODO: Validar el CIF correctamente
-
+        // Validar los datos de entrada
+        // TODO: Validar CIF
         request()->validate([
             'sponsorName' => 'required|string',
             'sponsorCIF' => 'required|string',
             'sponsorAddress' => 'required|string',
         ]);
-
+    
+        // Almacenar el logo
         $logo = ImageController::storeImage(request(), 'sponsor_logos', 'sponsorLogo');
-
+    
         if ($logo) {
+            // Crear el patrocinador
             Sponsor::create([
                 'cif' => request('sponsorCIF'),
                 'logo' => $logo,
@@ -40,13 +41,15 @@ class SponsorController extends Controller
                 'pricePerRace' => request('sponsorCost'),
                 'active' => request()->has('sponsorActive') ? 1 : 0,
             ]);
-
-            return redirect()->route('admin.sponsors');
+    
+            // Redirigir con mensaje de éxito
+            return redirect()->route('admin.sponsors')->with('success', 'Sponsor created successfully.');
         } else {
-            // TODO: Devolver popup de error
-            echo("NO");
+            // Redirigir con mensaje de error
+            return redirect()->route('admin.sponsors')->with('error', 'There was an error while uploading the image, sponsor creation aborted.');
         }
     }
+    
 
     public function edit($id) {
         

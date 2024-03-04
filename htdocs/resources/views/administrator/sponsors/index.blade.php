@@ -1,10 +1,12 @@
 @extends('administrator.layouts.master')
 
 @section('content')
-    <section class="my-5 d-flex align-items-center justify-content-between">
+    <section class="mt-5 mb-3 d-flex align-items-center justify-content-between">
         <h1 class="admin-form-title text-white">All Sponsors</h1>
         <a class="btn btn-primary" href="/admin/sponsors/new" role="button"><i class="bi bi-plus-lg"></i> Add Sponsor</a>
     </section>
+
+    @include('administrator.layouts.notice')
 
     <table class="table table-dark table-hover">
     <thead>
