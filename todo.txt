@@ -3,6 +3,7 @@
 - vista editar driver
 - vista edit races
 - vista new races
+-validacion cif
 - create insurance switch y mover price
 - scroll tabla
 - espacio races/drivers con tabla
