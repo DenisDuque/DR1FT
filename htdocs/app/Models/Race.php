@@ -22,6 +22,21 @@ class Race extends Model
         'active'
     ];
     
+    public function drivers() {
+        return $this->belongsToMany(Driver::class)->withPivot('dorsal', 'time');
+    }
+
+    public function insurances() {
+        return $this->belongsToMany(Insurance::class);
+    }
+
+    public function images() {
+        return $this->hasMany(Image::class);
+    }
+
+    public function sponsors() {
+        return $this->belongsToMany(Sponsor::class)->withPivot('mainSponsor');
+    }
     
 
     use HasFactory;

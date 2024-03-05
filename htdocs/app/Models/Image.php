@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
+
+    public function race() {
+        return $this->belongsTo(Race::class);
+    }
+
     use HasFactory;
 }

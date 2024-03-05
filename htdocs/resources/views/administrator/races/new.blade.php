@@ -72,9 +72,23 @@
                         <label for="raceRegistrationPrice" class="form-label">Registration Price</label>
                         <input type="number" name="raceRegistrationPrice" class="form-control" id="raceRegistrationPrice">
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-4">
                         <label for="raceBanner" class="form-label">Banner</label>
                         <input type="file" name="raceBanner" class="form-control" id="raceBanner">
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputState" class="form-label">Sponsor</label>
+                        <select id="inputState" class="form-select">
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="inputState" class="form-label">Insurance</label>
+                        <select id="inputState" class="form-select">
+                        <option selected>Choose...</option>
+                        <option>...</option>
+                        </select>
                     </div>
                     <div class="col-md-12">
                         <label for="raceDescription" class="form-label">Description</label>

@@ -20,5 +20,9 @@ class Driver extends Model
         'points'
     ];
 
+    public function races() {
+        return $this->belongsToMany(Race::class)->withPivot('dorsal', 'time');
+    }
+
     use HasFactory;
 }

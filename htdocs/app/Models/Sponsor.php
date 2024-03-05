@@ -15,5 +15,9 @@ class Sponsor extends Model
         'active'
     ];
 
+    public function races(){
+        return $this->belongsToMany(Race::class)->withPivot('mainSponsor');
+    }
+
     use HasFactory;
 }

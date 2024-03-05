@@ -15,6 +15,10 @@ class Insurance extends Model
         'pricePerRace',
         'active'
     ];
+
+    public function races() {
+        return $this->belongsToMany(Race::class);
+    }
     
     use HasFactory;
 }
