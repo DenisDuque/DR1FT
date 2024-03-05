@@ -5,4 +5,7 @@
 - crear y editar insurance ACTIVAR no funciona (todo sale disabled)
 - vista edit races
 - vista new races
-- datepickers
+-validacion cif
+- create insurance switch y mover price
+
+- espacio races/drivers con tabla

@@ -2,17 +2,21 @@
   font-family: "Montserrat", sans-serif;
 }
 
+.bg-red-gradient {
+  background: linear-gradient(to top left, #A52622, #E93F36) !important;
+}
+
 .bg-admin {
-  background: linear-gradient(to top left, #252328, #282828);
+  background: linear-gradient(to top left, #252328, #282828) !important;
 }
 
 .background-admin-gradient {
   height: 100vh;
-  background: linear-gradient(to top left, #151418, #1e1e1e);
+  background: linear-gradient(to top left, #151418, #1e1e1e) !important;
 }
 
 .admin-header {
-  background: linear-gradient(to top left, #A52622, #E93F36);
+  background: linear-gradient(to top left, #A52622, #E93F36) !important;
   border-radius: 1rem;
   height: 68px;
 }
@@ -28,11 +32,13 @@
 .admin-header nav ul li .active {
   color: #F7F7F5;
   text-decoration: underline;
+  text-underline-offset: 10px;
+  text-decoration-thickness: 2px;
 }
 
 .nav-item {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 3px;
 }
 .nav-item:hover:not(.nav-item:last-child) {
@@ -54,15 +60,16 @@
 .admin-form-title {
   font-weight: bold;
   font-size: 24px;
+  color: white;
 }
 
 .btn-primary {
-  background: linear-gradient(to top left, #A52622, #E93F36);
+  background: linear-gradient(to top left, #A52622, #E93F36) !important;
   border: none !important;
 }
 
 .card {
-  background: linear-gradient(to top left, #252328, #282828);
+  background: linear-gradient(to top left, #252328, #282828) !important;
   color: white;
   border-radius: 15px !important;
 }
@@ -93,6 +100,18 @@
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 1px;
+}
+
+.w-300px {
+  width: 300px;
+}
+
+.admin-link {
+  color: #3b36da;
+  text-decoration: none;
+}
+.admin-link .bi {
+  margin-right: 5px;
 }
 
 @media (min-width: 1400px) {

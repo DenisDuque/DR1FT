@@ -21,7 +21,11 @@ $gradientRed2: #E93F36;
 $adminLinks: #3b36da;
 
 @mixin backgroundGradient($color1, $color2){
-    background: linear-gradient(to top left, $color1, $color2);
+    background: linear-gradient(to top left, $color1, $color2) !important;
+}
+
+.bg-red-gradient {
+    @include backgroundGradient($gradientRed1, $gradientRed2);
 }
 
 .bg-admin {
@@ -32,6 +36,7 @@ $adminLinks: #3b36da;
     height: 100vh;
     @include backgroundGradient($primaryBlack, $secondaryBlack);
 }
+
 
 .admin-header {
     @include backgroundGradient($gradientRed1, $gradientRed2);
@@ -88,6 +93,7 @@ $adminLinks: #3b36da;
 .admin-form-title {
     font-weight: bold;
     font-size: 24px;
+    color: white
 }
 
 .btn-primary {

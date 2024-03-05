@@ -38,10 +38,10 @@
                     <li class="nav-item mx-4">
                         <a class="nav-link {{ request()->is('admin/drivers') ? 'active' : '' }}" href="/admin/drivers">DRIVERS</a>
                     </li>
-                    <li class="d-flex align-items-center justify-content-end nav-item flex-grow-1">
-                        <i class="bi bi-person"></i>
+                    <li class="d-flex align-items-center justify-content-end nav-item flex-grow-1 text-white">
+                        <i class="bi bi-person me-2"></i>
                         <span>{{ session()->has('userName') ? session('userName') : 'Administrator' }}</span>
-                        <a href="/admin/logout"><i class="bi bi-box-arrow-left"></i></a>
+                        <a class="text-white ms-2" href="/admin/logout"><i class="bi bi-box-arrow-left"></i></a>
                     </li>
                 </ul>
                 

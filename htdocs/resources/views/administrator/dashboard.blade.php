@@ -1,7 +1,8 @@
 @extends('administrator.layouts.master')
 
 @section('content')
-<section class="my-4">
+<section class="my-5">
+    <h1 class="admin-form-title">Quick Actions</h1>
     <div class="row">
         <div class="col-sm-3">
             <div class="card quick-actions-bg">
@@ -41,16 +42,57 @@
         </div>
     </div>
 </section>
-<div class="container text-white">
-  <div class="row">
-    <div class="col-9 div1">Div 1</div>
-    <div class="col-3 div2">Div 2</div>
-    <div class="col-3 div3">Div 3</div>
-    <div class="col-3 div4">Div 4</div>
-    <div class="col-3 div5">Div 5</div>
-    <div class="col-6 div6">Div 6</div>
-    <div class="col-6 div7">Div 7</div>
-    <div class="col-3 div8">Div 8</div>
+<div class="container text-white mt-5">
+  <div class="row gx-3 gy-3">
+    <div class="col-6">
+        <div class="row gy-3">
+            <div class="col-12 rounded bg-red-gradient">
+                <h1 class="admin-form-title">Coming Soon</h1>
+                <div class="row gx-2">
+                    <div class="col-4 card text-center">
+                        <i class="bi bi-card-image"></i>
+                    </div>
+                    <div class="col-4 card text-center">
+                        <i class="bi bi-card-image"></i>
+                    </div>
+                    <div class="col-4 card text-center">
+                        <i class="bi bi-card-image"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 card">
+                <h1 class="admin-form-title">Best Insurances</h1>
+            </div>
+            <div class="col-6">
+                <div class="row gx-2">
+                    <div class="col-12 card">
+                    <h1 class="admin-form-title">Last Race Winner</h1>
+                    </div>
+                </div>
+                <div class="row g-2">
+                    <div class="col-6 card">
+                        <h1 class="admin-form-title">Main Event</h1>
+                    </div>
+                    <div class="col-6 card">
+                        <h1 class="admin-form-title">Last Race</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-3">
+        <div class="row">
+            <div class="col-12 card">
+                <h1 class="admin-form-title">Best Sponsors</h1>
+            </div>
+            <div class="col-12 card">
+                <h1 class="admin-form-title">Most Paid Races</h1>
+            </div>
+        </div>
+    </div>
+    <div class="col-3 card">
+        <h1 class="admin-form-title">Top Drivers</h1>
+    </div>
   </div>
 </div>
 
