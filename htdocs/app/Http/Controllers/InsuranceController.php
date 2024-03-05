@@ -42,7 +42,7 @@ class InsuranceController extends Controller
                 'name' => request('insuranceName'),
                 'address' => request('insuranceAddress'),
                 'pricePerRace' => request('insuranceCost'),
-                'active' => request('insuranceActive') ?? 0
+                'active' => request()->has('insuranceActive') ? 1 : 0
             ]);
 
             return redirect()->route('admin.insurances');
@@ -87,7 +87,7 @@ class InsuranceController extends Controller
                 'name' => request('insuranceName'),
                 'address' => request('insuranceAddress'),
                 'pricePerRace' => request('insuranceCost'),
-                'active' => request('insuranceActive') ?? 0
+                'active' => request()->has('insuranceActive') ? 1 : 0
             ];
     
             // Verificar si hay cambios detectados comparando los valores originales con los nuevos

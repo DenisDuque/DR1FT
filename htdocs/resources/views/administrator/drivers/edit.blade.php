@@ -44,7 +44,7 @@
             </div>
             <div class="col-md-4">
                 <label for="driveBirthDate" class="form-label">Birth Date</label>
-                <input type="text" name="driveBirthDate" class="form-control" id="driveBirthDate" value="{{$driver->birthDate}}">
+                <input type="date" name="driverBirthDate" class="form-control" id="driveBirthDate" value="{{$driver->birthDate}}">
             </div>
             <div class="col-md-3">
                 <label for="driverGender" class="form-label">Gender</label>

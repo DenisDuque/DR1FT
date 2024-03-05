@@ -5,4 +5,4 @@
 - crear y editar insurance ACTIVAR no funciona (todo sale disabled)
 - vista edit races
 - vista new races
-- datepickers
+- scroll tablas

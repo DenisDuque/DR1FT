@@ -28,11 +28,13 @@
 .admin-header nav ul li .active {
   color: #F7F7F5;
   text-decoration: underline;
+  text-underline-offset: 10px;
+  text-decoration-thickness: 2px;
 }
 
 .nav-item {
   font-size: 16px;
-  font-weight: 500;
+  font-weight: 600;
   letter-spacing: 3px;
 }
 .nav-item:hover:not(.nav-item:last-child) {
@@ -93,6 +95,18 @@
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: 1px;
+}
+
+.w-300px {
+  width: 300px;
+}
+
+.admin-link {
+  color: #3b36da;
+  text-decoration: none;
+}
+.admin-link .bi {
+  margin-right: 5px;
 }
 
 @media (min-width: 1400px) {
