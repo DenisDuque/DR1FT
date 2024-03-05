@@ -1,19 +1,19 @@
 @extends('administrator.layouts.master')
 
-@if ($errors->any())
-    @foreach ($errors->all() as $error)
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Error: </strong> {{$error}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endforeach
-@endif
 
 @section('content')
-    <div class="row mt-5 text-white">
-        <div class="col-lg-6 col-md-12">
-            <h1 class="admin-form-title">Edit a sponsor</h1>
-            <small>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</small>
+<div class="row mt-5 text-white">
+    <div class="col-lg-6 col-md-12">
+        <h1 class="admin-form-title">Edit a sponsor</h1>
+        <small>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</small>
+        @if ($errors->any())
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>Error: </strong> {{$error}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+            @endforeach
+        @endif
         </div>
         <div class="col-lg-6 col-md-12 bg-admin p-5 card">
             <form class="row g-3" action="{{ route('admin.sponsors.edit', ['id' => $sponsor->id]) }}" method="POST" enctype="multipart/form-data">
