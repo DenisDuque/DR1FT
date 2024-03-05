@@ -138,6 +138,11 @@ $adminLinks: #3b36da;
 
 .w-300px { width: 300px; }
 
+.h-dashboard { 
+    height: 100%;
+    max-height: 580px;
+ }
+
 
 .admin-link {
     color: $adminLinks;

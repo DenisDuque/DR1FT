@@ -8,8 +8,14 @@
             <div class="card quick-actions-bg">
                 <div class="card-body">
                     <h5 class="card-title">Create a new race</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="/admin/races/new" class="btn btn-primary">Start</a>
+                    <div class="row">
+                        <div class="col-9">
+                            <p class="card-text">Encourage everyone to push their limits.</p>
+                        </div>
+                        <div class="col-3">
+                            <a href="/admin/races/new" class="btn btn-primary">Start</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -17,8 +23,14 @@
             <div class="card quick-actions-bg">
                 <div class="card-body">
                     <h5 class="card-title">Add a new insurance</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="/admin/insurances/new" class="btn btn-primary">Start</a>
+                    <div class="row">
+                        <div class="col-9">
+                            <p class="card-text">Register a insurance to ensure your races.</p>
+                        </div>
+                        <div class="col-3">
+                            <a href="/admin/insurances/new" class="btn btn-primary">Start</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -26,8 +38,14 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Add a new sponsor</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="/admin/sponsors/new" class="btn btn-primary">Start</a>
+                    <div class="row">
+                        <div class="col-9">
+                            <p class="card-text">Register sponsors to enhance your earnings.</p>
+                        </div>
+                        <div class="col-3">
+                            <a href="/admin/sponsors/new" class="btn btn-primary">Start</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -35,56 +53,72 @@
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Upload race photos</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Start</a>
+                    <div class="row">
+                        <div class="col-9">
+                            <p class="card-text">Let the pictures tell the story of a memorable race day.</p>
+                        </div>
+                        <div class="col-2">
+                            <a href="#" class="btn btn-primary">Start</a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<div class="container text-white mt-5">
-  <div class="row gx-3 gy-3 flex-wrap">
+<div class="container-fluid text-white mt-5 h-dashboard">
+  <div class="row g-4">
     <div class="col-6">
-        <div class="row gy-3">
+        <div class="row g-2">
             <div class="col-12 rounded bg-red-gradient">
                 <h1 class="admin-form-title">Coming Soon</h1>
-                <div class="row gx-2">
-                    <div class="col-4 card text-center">
+                <div class="row">
+                    <div class="col-4  text-center">
                         <i class="bi bi-card-image"></i>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat voluptatem temporibus laudantium quasi perspiciatis voluptatum, doloremque porro dolorem? Explicabo consequatur placeat velit doloremque harum vitae omnis. Non nihil quasi autem?
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat voluptatem temporibus 
                     </div>
-                    <div class="col-4 card text-center">
+                    <div class="col-4  text-center">
                         <i class="bi bi-card-image"></i>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, officia explicabo aut amet, dolorem qui eos ut iste, doloremque dignissimos molestias optio? Dolore molestias dolores quis fuga vel in consectetur?
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, officia explicabo aut amet, 
                     </div>
-                    <div class="col-4 card text-center">
+                    <div class="col-4 text-center">
                         <i class="bi bi-card-image"></i>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias autem rem at. Est consequatur, quaerat doloribus reprehenderit quibusdam facilis ab ipsam unde ea, dolorem quidem! Fugiat, cupiditate?
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
                     </div>
                 </div>
             </div>
             <div class="col-6 card">
                 <h1 class="admin-form-title">Best Insurances</h1>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
             </div>
             <div class="col-6">
-                <div class="row gx-2">
+                <div class="row g-2">
                     <div class="col-12 card">
                     <h1 class="admin-form-title">Last Race Winner</h1>
                     </div>
                 </div>
-                <div class="row g-2">
+                <div class="row gy-2">
                     <div class="col-6 card">
-                        <h1 class="admin-form-title">Main Event</h1>
+                        
+
+                            <h1 class="admin-form-title">Main Event</h1>
+                        
                     </div>
                     <div class="col-6 card">
+                        
                         <h1 class="admin-form-title">Last Race</h1>
+                        
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="col-3">
-        <div class="row flex-wrap">
+        <div class="row g-2">
             <div class="col-12 card">
                 <h1 class="admin-form-title">Best Sponsors</h1>
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe suscipit dicta repellendus hic, aut repellat consequatur ullam veritatis placeat maxime inventore eaque laudantium, enim dolorem sequi laboriosam necessitatibus quas veniam.

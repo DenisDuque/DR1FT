@@ -106,6 +106,11 @@
   width: 300px;
 }
 
+.h-dashboard {
+  height: 100%;
+  max-height: 580px;
+}
+
 .admin-link {
   color: #3b36da;
   text-decoration: none;

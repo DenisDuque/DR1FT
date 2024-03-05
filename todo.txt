@@ -4,8 +4,11 @@
 - vista editar driver
 - crear y editar insurance ACTIVAR no funciona (todo sale disabled)
 - vista edit races
-- vista new races
+- vista new races (IMPORTATNTE)
 -validacion cif
 - create insurance switch y mover price
 - scroll tabla
 - espacio races/drivers con tabla
+
+- notice edit races sin cambios
+- notice success races

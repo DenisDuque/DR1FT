@@ -20,59 +20,71 @@
                 <small>Encourage everyone to push their limits.</small>
             </div>
             <div class="row bg-admin p-5 card">
-                <form class="row g-3" action="{{route('admin.races.new')}}" method="POST" enctype="multipart/form-data">
+                     
+                <form class="row g-2" action="{{route('admin.races.new')}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="col-lg-12 col-md-6">
+                    <div class="col-md-8">
                         <label for="raceName" class="form-label">Name</label>
-                        <input type="text" class="form-control" name="raceName" value="{{old('raceName')}}" required/>
+                        <input type="text" name="raceName" class="form-control" id="raceName">
                     </div>
-                    <div class="col-lg-12 col-md-6">
-                        <label for="raceDate">Date</label>
-                        <input type="date" name="raceDate" value="{{old('raceDate')}}" required/>
+                    <div class="col-md-4">
+                        <label for="raceDate" class="form-label">Date</label>
+                        <input type="date" name="raceDate" class="form-control" id="raceDate">
                     </div>
-                    <div class="col-lg-12 col-md-6">
-                        <label for="raceDescription">Description</label>
-                        <input type="text" class="form-control" name="raceDescription" value="{{old('raceDescription')}}" required/>
+                    <div class="col-7">
+                        <label for="raceMaxParticipants" class="form-label">Max. Participants</label>
+                        <input type="range" name="raceMaxParticipants" class="form-range" id="raceMaxParticipants" min="8" max="32">
                     </div>
-                    <div class="col-lg-12 col-md-6">
-                        <label for="raceMap">Map</label>
-                        <input type="file" class="form-control" name="raceMap" value="{{old('raceMap')}}" required/>
+                    <div class="col-2 d-flex align-items-center">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="racePro" name="racePro">
+                            <label class="form-check-label" for="racePro">
+                                Professional
+                            </label>
+                        </div>
                     </div>
-                    <div class="col-lg-12 col-md-6">
-                        <label for="raceMaxParticipants">Max. Participants</label>
-                        <input type="range" class="form-range" min="8" max="20" name="raceMaxParticipants" value="{{old('raceMaxParticipants')}}" required/>
+                    <div class="col-3 d-flex align-items-center">
+                        <div class="form-check form-switch">
+                            <input class="form-check-input" type="checkbox" role="switch" id="raceActive" name="raceActive" checked>
+                            <label class="form-check-label" for="raceActive">
+                                Visible
+                            </label>
+                        
+                        </div>
                     </div>
-                    <div class="col-lg-12 col-md-6">
-                        <label for="raceLength">Length (km)</label>
-                        <input type="number" class="form-control" name="raceLength" value="{{old('raceLength')}}" required/>
+                    <div class="col-md-5">
+                        <label for="raceCoords" class="form-label">Coords</label>
+                        <input type="text" name="raceCoords" class="form-control" id="raceCoords">
                     </div>
-                    <div class="col-lg-12 col-md-6">
-                        <label for="raceBanner">Banner</label>
-                        <input type="file" class="form-control" name="raceBanner" value="{{old('raceBanner')}}" required/>
+                    <div class="col-md-5">
+                        <label for="raceMap" class="form-label">Map</label>
+                        <input type="file" name="raceMap" class="form-control" id="raceMap">
                     </div>
-                    <div class="col-lg-12 col-md-6">
-                        <label for="raceCoords">Place (coords)</label>
-                        <input type="text" class="form-control" name="raceCoords" value="{{old('raceCoords')}}" required/>
+                    <div class="col-md-2">
+                        <label for="raceLength" class="form-label">Length</label>
+                        <input type="number" name="raceLength" class="form-control" id="raceLength">
                     </div>
-                    <div class="col-lg-12 col-md-6">
-                        <label for="raceSponsorCost">Sponsor Cost</label>
-                        <input type="number" class="form-control" name="raceSponsorCost" value="{{old('raceSponsorCost')}}" required/>
+                    <div class="col-md-6">
+                        <label for="raceSponsorCost" class="form-label">Sponsor Cost</label>
+                        <input type="number" name="raceSponsorCost" class="form-control" id="raceSponsorCost">
                     </div>
-                    <div class="col-lg-12 col-md-6">
-                        <label for="raceRegistrationPrice">Registration Price</label>
-                        <input type="number" class="form-control" name="raceRegistrationPrice" value="{{old('raceRegistrationPrice')}}" required/>
+                    <div class="col-md-6">
+                        <label for="raceRegistrationPrice" class="form-label">Registration Price</label>
+                        <input type="number" name="raceRegistrationPrice" class="form-control" id="raceRegistrationPrice">
                     </div>
-                    <div class="form-check form-switch">
-                        <label for="raceActive">Pro</label>
-                        <input type="checkbox" class="form-check-input" name="racePro" value="1" value="{{old('racePro')}}"/>
+                    <div class="col-md-6">
+                        <label for="raceBanner" class="form-label">Banner</label>
+                        <input type="file" name="raceBanner" class="form-control" id="raceBanner">
                     </div>
-                    <div class="form-check form-switch">
-                        <label for="raceActive">Visible</label>
-                        <input type="checkbox" class="form-check-input" name="raceActive" value="1" checked/>
+                    <div class="col-md-12">
+                        <label for="raceDescription" class="form-label">Description</label>
+                        <textarea name="raceDescription" class="form-control" id="raceDescription" placeholder="Type Something..."></textarea>
                     </div>
                     <div class="col-12 text-end">
-                        <button type="submit" class="btn btn-success"><i class="bi bi-check-lg"></i> Save</button>
+                        <button type="submit" class="btn btn-success"><i class="bi bi-check-lg"></i>Save</button>
                     </div>
+                </form>  
+            </div>
         </div>
     </div>
 @stop

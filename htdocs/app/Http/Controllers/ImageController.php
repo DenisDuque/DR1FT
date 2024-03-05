@@ -44,7 +44,7 @@ class ImageController extends Controller {
     public static function storeImage(Request $request, $path, $fieldName = 'image') {
         try {
             $request->validate([
-                $fieldName => 'required|image|mimes:png,jpg,jpeg|max:2048'
+                $fieldName => 'required|image|mimes:png,jpg,jpeg'
             ]);
 
             $image = $request->file($fieldName);

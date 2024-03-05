@@ -81,7 +81,7 @@ class RaceController extends Controller {
                 'raceDescription' => 'string',
                 'raceMaxParticipants' => 'integer',
                 'raceLength' => 'numeric',
-                'raceDate' => 'date|after:tomorrow',
+                'raceDate' => 'date',
                 'raceCoords' => 'string',
                 'raceSponsorCost' => 'numeric',
                 'raceRegistrationPrice' => 'numeric',
