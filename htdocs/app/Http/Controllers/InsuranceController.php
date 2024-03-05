@@ -28,7 +28,7 @@ class InsuranceController extends Controller
 
         request()->validate([
             'insuranceName' => 'required|string',
-            'insuranceCIF' => 'required|string',
+            'insuranceCIF' => 'required|string|regex:/^([a-zA-Z])[0-9]{7}([a-zA-Z0-9])$/',
             'insuranceCost' => 'required|numeric',
             'insuranceAddress' => 'required|string'
         ]);
@@ -67,17 +67,13 @@ class InsuranceController extends Controller
         $insurance = Insurance::find($id);
     
         if ($insurance) {
-            $validator = Validator::make(request()->all(), [
+            request()->validate([
                 'insuranceName' => 'required|string',
-                'insuranceCIF' => 'required|string',
+                'insuranceCIF' => 'required|string|regex:/^([a-zA-Z])[0-9]{7}([a-zA-Z0-9])$/',
                 'insuranceCost' => 'required|numeric',
                 'insuranceAddress' => 'required|string'
             ]);
-    
-            if ($validator->fails()) {
-                return redirect()->back()->withErrors($validator)->withInput();
-            }
-    
+
             $originalValues = $insurance->getOriginal();
     
             $logo = ImageController::storeImage(request(), 'insurance_logos', 'insuranceLogo');

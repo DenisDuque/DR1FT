@@ -20,7 +20,7 @@
                 @csrf
                 <div class="col-md-6">
                     <label for="insuranceCIF" class="form-label">CIF</label>
-                    <input type="text" name="insuranceCIF" class="form-control" id="insuranceCIF" value="{{old('insuranceCIF')}}" required>
+                    <input type="text" name="insuranceCIF" class="form-control" id="insuranceCIF" value="{{old('insuranceCIF')}}" placeholder="Example: B12345678" required>
                 </div>
                 <div class="col-md-6">
                     <label for="insuranceName" class="form-label">Name</label>
