@@ -1,27 +1,8 @@
+@import 'mixins.scss';
+@import 'variables.scss';
+
 * {
     font-family: "Montserrat", sans-serif;
-}
-
-$white: #F7F7F5;
-$grey: #cdcdcd;
-
-$primaryBlack: #151418;
-$secondaryBlack: #1e1e1e;
-
-$cardBgBlack1: #252328;
-$cardBGBlack2: #282828; 
-
-$darkRed: #D1241C;
-$defaultRed: #DC2E25;
-$lightRed: #E93F36;
-
-$gradientRed1: #A52622;
-$gradientRed2: #E93F36;
-
-$adminLinks: #3b36da;
-
-@mixin backgroundGradient($color1, $color2){
-    background: linear-gradient(to top left, $color1, $color2) !important;
 }
 
 .bg-red-gradient {
@@ -158,3 +139,6 @@ $adminLinks: #3b36da;
     max-width: 1550px !important;
     }
 }
+
+// ADMINISTRATOR LOGIN
+

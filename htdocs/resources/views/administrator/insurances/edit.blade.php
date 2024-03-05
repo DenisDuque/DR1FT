@@ -40,7 +40,7 @@
                 </div>
                 
                 <div class="col-12">
-                    <div class="form-check">
+                    <div class="form-check form-switch">
                         <input class="form-check-input" name="insuranceActive" type="checkbox" id="insuranceActive" {{ $insurance->active == 1 ? 'checked' : '' }}>
                         <label class="form-check-label" for="insuranceActive">
                             Visible
