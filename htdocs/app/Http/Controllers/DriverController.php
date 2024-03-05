@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Driver;
+use Carbon\Carbon;
 
 class DriverController extends Controller
 {
@@ -40,6 +41,7 @@ class DriverController extends Controller
         $driver = Driver::find($id);
 
         if ($driver) {
+            $driver->birthDate = Carbon::createFromFormat('d-m-Y', $driver->birthDate)->format('Y-m-d');
             return view('administrator.drivers.edit')->with('driver', $driver);
         } else {
             return redirect()->route('admin.drivers')->with('error', 'Driver not found');
@@ -68,7 +70,7 @@ class DriverController extends Controller
                 'email' => request('driverEmail'),
                 'password' => request('driverPassword'),
                 'address' => request('driverAddress'),
-                'birthDate' => request('driverBirthDate'),
+                'birthDate' => Carbon::createFromFormat('Y-m-d', request('driverBirthDate'))->format('d-m-Y'),
                 'gender' => request('driverGender'),
                 'pro' => request('driverPro') ? 1 : 0,
                 'member' => request('driverMember') ? 1 : 0,

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Race;
 use App\Http\Controllers\ImageController;
+use Carbon\Carbon;
 
 class RaceController extends Controller {
 
@@ -44,7 +45,7 @@ class RaceController extends Controller {
                 'maxParticipants' => request('raceMaxParticipants'),
                 'length' => request('raceLength'),
                 'banner' => $banner,
-                'date' => request('raceDate'),
+                'date' => Carbon::createFromFormat('Y-m-d', request('raceDate'))->format('d-m-Y'),
                 'startingPlace' => request('raceCoords'),
                 'sponsorCost' => request('raceSponsorCost'),
                 'registrationPrice' => request('raceRegistrationPrice'),
@@ -62,9 +63,9 @@ class RaceController extends Controller {
 
     public function edit($id) {
         $race = Race::find($id);
-
+        
         if ($race) {
-            
+            $race->date = Carbon::createFromFormat('d-m-Y', $race->date)->format('Y-m-d');
             return view('administrator.races.edit')->with('race', $race);
         } else {
             return redirect()->route('admin.races')->with('error', 'Race not found');
@@ -99,7 +100,7 @@ class RaceController extends Controller {
                 'description' => request('raceDescription'),
                 'maxParticipants' => request('raceMaxParticipants'),
                 'length' => request('raceLength'),
-                'date' => request('raceDate'),
+                'date' => Carbon::createFromFormat('Y-m-d', request('raceDate'))->format('d-m-Y'),
                 'startingPlace' => request('raceCoords'),
                 'sponsorCost' => request('raceSponsorCost'),
                 'registrationPrice' => request('raceRegistrationPrice'),
