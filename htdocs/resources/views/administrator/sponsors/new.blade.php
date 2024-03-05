@@ -20,19 +20,19 @@
                 @csrf
                 <div class="col-lg-12 col-md-6">
                     <label for="sponsorName" class="form-label">Name</label>
-                    <input type="text" name="sponsorName" class="form-control" id="sponsorName"  value="{{old('sponsorName')}}">
+                    <input type="text" name="sponsorName" class="form-control" id="sponsorName">
                 </div>
                 <div class="col-md-6">
                     <label for="sponsorCIF" class="form-label">CIF</label>
-                    <input type="text" name="sponsorCIF" class="form-control" id="sponsorCIF"  value="{{old('sponsorCIF')}}">
+                    <input type="text" name="sponsorCIF" class="form-control" id="sponsorCIF" >
                 </div>
                 <div class="col-md-6">
                     <label for="sponsorLogo" class="form-label">Logo</label>
-                    <input type="file" name="sponsorLogo" class="form-control" id="sponsorLogo"  value="{{old('sponsorLogo')}}">
+                    <input type="file" name="sponsorLogo" class="form-control" id="sponsorLogo">
                 </div>
                 <div class="col-12">
                     <label for="sponsorAddress" class="form-label">Address</label>
-                    <input type="text" name="sponsorAddress" class="form-control" id="sponsorAddress" placeholder="1234 Main St"  value="{{old('sponsorAddress')}}">
+                    <input type="text" name="sponsorAddress" class="form-control" id="sponsorAddress" placeholder="1234 Main St">
                 </div>
                 
                 <div class="col-12">

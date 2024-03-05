@@ -1,12 +1,12 @@
 - nav responsive
 - grid dashboard
-- vista editar driver
+
 - vista edit races
+- vista detalle race
 - vista new races (IMPORTATNTE)
--validacion cif
+
 - create insurance switch y mover price
 - scroll tabla
-- espacio races/drivers con tabla
 
 - notice edit races sin cambios
 - notice success races
