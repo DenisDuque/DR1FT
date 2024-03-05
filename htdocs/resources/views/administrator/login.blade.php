@@ -41,11 +41,11 @@
             @csrf
             <div class="mb-4">
               <label for="email" class="form-label">Email</label>
-              <input type="email" class="form-control" name="email" value="{{old('email')}}" placeholder="Enter your email"/>
+              <input type="email" class="form-control  text-white" name="email" value="{{old('email')}}" placeholder="Enter your email"/>
             </div>
             <div class="mb-4">
               <label for="password" class="form-label">Password</label>
-              <input type="password" class="form-control" name="password" value="{{old('password')}}" placeholder="Password"/>
+              <input type="password" class="form-control  text-white" name="password" value="{{old('password')}}" placeholder="Password"/>
             </div>
             <div class="mb-4">
               <input type="checkbox" class="form-check-input" name="remember" value="{{old('remember')}}"/>

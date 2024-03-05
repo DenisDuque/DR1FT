@@ -49,8 +49,8 @@ class RaceController extends Controller {
                 'startingPlace' => request('raceCoords'),
                 'sponsorCost' => request('raceSponsorCost'),
                 'registrationPrice' => request('raceRegistrationPrice'),
-                'pro' => request('racePro') ?? 0,
-                'active' => request('raceActive') ?? 0
+                'pro' =>  request()->has('racePro') ? 1 : 0,
+                'active' =>  request()->has('raceActive') ? 1 : 0,
             ]);
 
             return redirect()->route('admin.races');
