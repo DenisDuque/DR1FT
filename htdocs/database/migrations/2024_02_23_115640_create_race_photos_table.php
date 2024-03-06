@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('path');
             $table->unsignedBigInteger('raceId');
-
+            $table->timestamps();
             $table->foreign('raceId')->references('id')->on('races');
         });
     }

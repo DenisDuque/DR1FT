@@ -3,12 +3,11 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Illuminate\Support\Str;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Sponsor>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Insurance>
  */
-class SponsorFactory extends Factory
+class InsuranceFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,7 +19,8 @@ class SponsorFactory extends Factory
         return [
             'cif' => chr(rand(65, 90)).fake()->randomNumber(8),
             'name' => fake()->name(),
-            'logo' => 'defaultSponsorLogo.png',
+            'logo' => 'defaultInsuranceLogo.png',
+            'pricePerRace' => fake()->randomFloat(2, 15, 200),
             'address' => fake()->address(),
             'active' => fake()->boolean(90)
         ];

@@ -10,13 +10,16 @@ class DatabaseSeeder extends Seeder
     /**
      * Seed the application's database.
      */
-    public function run(): void
-{
-    $this->call([
-        AdministratorSeeder::class,
-        DriverSeeder::class,
-        SponsorSeeder::class,
-        RaceSeeder::class
-    ]);
-}
+    public function run(): void {
+        $this->call([
+            AdministratorSeeder::class,
+            DriverSeeder::class,
+            InsuranceSeeder::class,
+            SponsorSeeder::class,
+            RaceSeeder::class,
+            RaceDriverSeeder::class,
+            RaceSponsorSeeder::class,
+            RaceInsuranceSeeder::class
+        ]);
+    }
 }
