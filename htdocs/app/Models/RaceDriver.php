@@ -9,9 +9,11 @@ class RaceDriver extends Model
 {
     use HasFactory;
 
+    protected $table = 'race_driver';
+
     protected $fillable = [
-        'driverId', 
-        'raceId', 
+        'driver_id', 
+        'race_id', 
         'dorsal', 
         'time'
     ];

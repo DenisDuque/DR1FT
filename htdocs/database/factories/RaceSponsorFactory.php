@@ -26,8 +26,8 @@ class RaceSponsorFactory extends Factory
         $raceIds = \App\Models\Race::pluck('id')->toArray();
 
         return [
-            'sponsorId' => $this->faker->randomElement($sponsorIds),
-            'raceId' => $this->faker->randomElement($raceIds),
+            'sponsor_id' => $this->faker->randomElement($sponsorIds),
+            'race_id' => $this->faker->randomElement($raceIds),
             'mainSponsor' => fake()->boolean(),
         ];
     }

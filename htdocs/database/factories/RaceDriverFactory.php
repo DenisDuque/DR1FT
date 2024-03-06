@@ -21,8 +21,8 @@ class RaceDriverFactory extends Factory
         $raceIds = \App\Models\Race::pluck('id')->toArray();
 
         return [
-            'driverId' => $this->faker->randomElement($driverIds),
-            'raceId' => $this->faker->randomElement($raceIds),
+            'driver_id' => $this->faker->randomElement($driverIds),
+            'race_id' => $this->faker->randomElement($raceIds),
             'dorsal' => null,
             'time' => null
         ];

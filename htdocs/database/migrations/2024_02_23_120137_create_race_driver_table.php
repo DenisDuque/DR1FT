@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('race_drivers', function (Blueprint $table) {
+        Schema::create('race_driver', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('driverId');
-            $table->unsignedBigInteger('raceId');
+            $table->unsignedBigInteger('driver_id');
+            $table->unsignedBigInteger('race_id');
             $table->integer('dorsal')->nullable();
             $table->string('time')->nullable();
             $table->timestamps();
 
-            $table->foreign('driverId')->references('id')->on('drivers');
-            $table->foreign('raceId')->references('id')->on('races');
+            $table->foreign('driver_id')->references('id')->on('drivers');
+            $table->foreign('race_id')->references('id')->on('races');
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('race_drivers');
+        Schema::dropIfExists('race_driver');
     }
 };
