@@ -9,9 +9,11 @@ class RaceSponsor extends Model
 {
     use HasFactory;
 
+    protected $table = 'race_sponsor';
+
     protected $fillable = [
-        'sponsorId', 
-        'raceId', 
+        'sponsor_id', 
+        'race_id', 
         'mainSponsor'
     ];
 }

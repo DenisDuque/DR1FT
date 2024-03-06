@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('race_insurances', function (Blueprint $table) {
+        Schema::create('race_sponsor', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('insuranceId');
-            $table->unsignedBigInteger('raceId');
+            $table->unsignedBigInteger('sponsor_id');
+            $table->unsignedBigInteger('race_id');
+            $table->boolean('mainSponsor');
             $table->timestamps();
-            $table->foreign('insuranceId')->references('id')->on('insurances');
-            $table->foreign('raceId')->references('id')->on('races');
+            $table->foreign('sponsor_id')->references('id')->on('sponsors');
+            $table->foreign('race_id')->references('id')->on('races');
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('race_insurances');
+        Schema::dropIfExists('race_sponsor');
     }
 };

@@ -28,6 +28,7 @@ Route::group(['prefix' => '/admin'], function () {
             Route::post('/new', [RaceController::class, 'create'])->name('admin.races.new');
             Route::get('/edit/{id}', [RaceController::class, 'edit'])->name('admin.races.edit');
             Route::post('/edit/{id}', [RaceController::class, 'update'])->name('admin.races.update');
+            Route::get('/show/{id}', [RaceController::class, 'show'])->name('admin.races.show');
         });
 
         // ADMINISTRATOR: DRIVERS

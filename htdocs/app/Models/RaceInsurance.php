@@ -9,8 +9,10 @@ class RaceInsurance extends Model
 {
     use HasFactory;
 
+    protected $table = 'race_insurance';
+
     protected $fillable = [
-        'insuranceId', 
-        'raceId'
+        'insurance_id', 
+        'race_id'
     ];
 }

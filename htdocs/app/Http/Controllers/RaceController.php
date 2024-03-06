@@ -133,4 +133,15 @@ class RaceController extends Controller {
             return redirect()->route('admin.races')->with('error', 'Race not found.');
         }
     }
+
+    public function show($id) {
+        $race = Race::find($id);
+
+        if ($race) {
+            $race->date = Carbon::createFromFormat('d-m-Y', $race->date)->format('Y-m-d');
+            return view('administrator.races.show')->with('race', $race);
+        } else {
+            return redirect()->route('admin.races')->with('error', 'Race not found');
+        }
+    }
 }

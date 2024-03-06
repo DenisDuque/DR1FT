@@ -23,8 +23,8 @@ class RaceInsuranceFactory extends Factory
         $raceIds = \App\Models\Race::pluck('id')->toArray();
 
         return [
-            'insuranceId' => $this->faker->randomElement($insuranceIds),
-            'raceId' => $this->faker->randomElement($raceIds)
+            'insurance_id' => $this->faker->randomElement($insuranceIds),
+            'race_id' => $this->faker->randomElement($raceIds)
         ];
     }
 }
