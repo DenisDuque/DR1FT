@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;
 
 class AdminAuth
 {
@@ -17,6 +18,15 @@ class AdminAuth
     public function handle(Request $request, Closure $next): Response
     {
         if (Auth::guard('admin')->check()) {
+            
+            $currentPage = $request->route()->getName();
+
+            if (!Str::startsWith($currentPage, 'admin.races.new')) {
+                // Continuar con la solicitud y no destruir las variables de sesión
+                session()->forget(['raceDetails', 'raceInsurances', 'raceSponsors']);
+            }
+        
+            // Si la ruta no comienza con 'admin.races', destruir las variables de sesión
             return $next($request);
         }
 

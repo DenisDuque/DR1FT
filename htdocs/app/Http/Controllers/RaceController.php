@@ -6,6 +6,8 @@ use App\Models\Race;
 use App\Http\Controllers\ImageController;
 use App\Models\Sponsor;
 use App\Models\Insurance;
+use App\Models\RaceInsurance;
+use App\Models\RaceSponsor;
 use Carbon\Carbon;
 
 class RaceController extends Controller {
@@ -25,8 +27,7 @@ class RaceController extends Controller {
         return view('administrator.races.new', compact('sponsors', 'insurances'));
     }
 
-    public function create() {
-
+    public function verify_details() {
         request()->validate([
             'raceName' => 'required|string',
             'raceDescription' => 'required|string',
@@ -35,14 +36,16 @@ class RaceController extends Controller {
             'raceDate' => 'required|date|after:tomorrow',
             'raceCoords' => 'required|string',
             'raceSponsorCost' => 'required|numeric',
-            'raceRegistrationPrice' => 'required|numeric'
+            'raceRegistrationPrice' => 'required|numeric',
+            'raceBanner'=> 'required|image|mimes:png,jpg,jpeg',
+            'raceMap'=> 'required|image|mimes:png,jpg,jpeg'
         ]);
 
         $map = ImageController::storeImage(request(), 'race_maps', 'raceMap');
         $banner = ImageController::storeImage(request(), 'race_banners', 'raceBanner');
 
         if ($map && $banner) {
-            Race::create([
+            $data = [
                 'name' => request('raceName'),
                 'description' => request('raceDescription'),
                 'map' => $map,
@@ -55,15 +58,114 @@ class RaceController extends Controller {
                 'registrationPrice' => request('raceRegistrationPrice'),
                 'pro' =>  request()->has('racePro') ? 1 : 0,
                 'active' =>  request()->has('raceActive') ? 1 : 0,
-            ]);
+            ];
 
-            return redirect()->route('admin.races');
+            session(['raceDetails' => $data]);
+    
+            return redirect()->route('admin.races.new.insurances');
         } else {
-            // TODO: Devolver popup de error
-            echo("NO");
+            return redirect()->back()->with('error', 'There was an error with the images selected');
         }
     }
 
+    public function new_insurances() {
+        $insurances = Insurance::all();
+        return view('administrator.races.insurances', [
+            'insurances' => $insurances
+        ]);
+    }
+
+    public function verify_insurances() {
+        // Verifica si hay al menos un checkbox marcado
+        if (request()->has('raceInsurances') && is_array(request()->input('raceInsurances')) && count(request()->input('raceInsurances')) > 0) {
+            // Hay checkboxes marcados, procede a la siguiente página
+    
+            // Puedes obtener los IDs de las insurances marcadas así
+            $selectedInsuranceIds = request()->input('raceInsurances');
+    
+            // Verifica que todos los insuranceIds seleccionados existan en la base de datos
+            $validInsuranceIds = Insurance::whereIn('id', $selectedInsuranceIds)->pluck('id')->toArray();
+    
+            // Verifica si todos los IDs seleccionados existen en la base de datos
+            if (count($validInsuranceIds) === count($selectedInsuranceIds)) {
+                // Todos los IDs son válidos, procede con las acciones necesarias, por ejemplo, almacenarlos en la sesión
+                session(['raceInsurances' => $validInsuranceIds]);
+    
+                return redirect()->route('admin.races.new.sponsors');
+            } else {
+                // Al menos uno de los IDs seleccionados no existe, puedes redirigir o realizar otras acciones
+                return redirect()->back()->with('error', 'Invalid insurance selection.');
+            }
+        } else {
+            // No hay checkboxes marcados, puedes redirigir o realizar otras acciones
+            return redirect()->back()->with('error', 'You need to select at least 1 insurance.');
+        }
+    }
+
+    public function new_sponsors() {
+        $sponsors = Sponsor::all();
+        return view('administrator.races.sponsors', [
+            'sponsors' => $sponsors
+        ]);
+    }
+
+    public function verify_sponsors() {
+        // Verificar si hay al menos un checkbox marcado
+        if (request()->has('raceSponsors') && is_array(request()->input('raceSponsors')) && count(request()->input('raceSponsors')) > 0) {
+            $selectedSponsorIds = request()->input('raceSponsors');
+            $mainSponsorIds = request()->input('mainSponsors');
+    
+            $validSponsorIds = Sponsor::whereIn('id', $selectedSponsorIds)->pluck('id')->toArray();
+    
+            // Verificar si todos los IDs seleccionados existen en la base de datos
+            if (count($validSponsorIds) === count($selectedSponsorIds)) {
+                // Crear carrera
+                $race = session('raceDetails');
+    
+                $newRace = Race::create([
+                    'name' => $race['name'],
+                    'description' => $race['description'],
+                    'map' => $race['map'],
+                    'maxParticipants' => $race['maxParticipants'],
+                    'length' => $race['length'],
+                    'banner' => $race['banner'],
+                    'date' => $race['date'],
+                    'startingPlace' => $race['startingPlace'],
+                    'sponsorCost' => $race['sponsorCost'],
+                    'registrationPrice' => $race['registrationPrice'],
+                    'pro' => $race['pro'],
+                    'active' => $race['active'],
+                ]);
+    
+                // Asignar Insurances
+                $insurances = session('raceInsurances');
+                
+                foreach ($insurances as $insurance) {
+                    RaceInsurance::create([
+                        'insurance_id' => $insurance,
+                        'race_id' => $newRace->id, // Corregir para obtener el ID de la carrera recién creada
+                    ]);
+                }
+    
+                // Asignar Sponsors
+                foreach ($selectedSponsorIds as $sponsor) {
+                    RaceSponsor::create([
+                        'sponsor_id' => $sponsor,
+                        'race_id' => $newRace->id,
+                        'mainSponsor' => in_array($sponsor, $mainSponsorIds) ? 1 : 0,
+                    ]);
+                }
+
+                return redirect()->route('admin.races');
+            } else {
+                // Al menos uno de los IDs seleccionados no existe, puedes redirigir o realizar otras acciones
+                return redirect()->back()->with('error', 'Invalid sponsor selection.');
+            }
+        } else {
+            // No hay checkboxes marcados, puedes redirigir o realizar otras acciones
+            return redirect()->back()->with('error', 'You need to select at least 1 sponsor.');
+        }
+    }
 
     public function edit($id) {
         $race = Race::find($id);

@@ -18,20 +18,23 @@ Route::group(['prefix' => '/admin'], function () {
     Route::post('', [AdministratorController::class, 'auth'])->name('admin.login');
     Route::get('/logout', [AdministratorController::class, 'logout'])->name('admin.logout');
 
-    Route::middleware(['RaceCreating'])->group(function () {
+    Route::middleware(['admin.auth'])->group(function () {
         Route::get('/dashboard', [AdministratorController::class, 'showAdministratorPanel'])->name('admin.dashboard');
 
         // ADMINISTRATOR: RACES
         Route::prefix('/races')->group(function () {
             Route::get('', [RaceController::class, 'index'])->name('admin.races');
             Route::get('/new', [RaceController::class, 'new']);
-            Route::post('/new', [RaceController::class, 'create'])->name('admin.races.new');
+            Route::post('/new', [RaceController::class, 'verify_details'])->name('admin.races.new');
             Route::middleware(['race.creating'])->group(function () {
-                Route::get('/new/insurances', [RaceController::class, 'new_insurances'])->name('admin.races.insurances');
-                Route::post('/new/insurances', [RaceController::class, 'check_insurances'])->name('admin.races.insurances');
-                Route::get('/new/sponsors', [RaceController::class, 'new_sponsors'])->name('admin.races.sponsors');
-                Route::get('/new/sponsors', [RaceController::class, 'check_sponsors'])->name('admin.races.sponsors');
+                Route::get('/new/insurances', [RaceController::class, 'new_insurances'])->name('admin.races.new.insurances');
+                Route::post('/new/insurances', [RaceController::class, 'verify_insurances'])->name('admin.races.new.insurances');
+                Route::get('/new/sponsors', [RaceController::class, 'new_sponsors'])->name('admin.races.new.sponsors');
+                Route::post('/new/sponsors', [RaceController::class, 'verify_sponsors'])->name('admin.races.new.sponsors');
             });
+            Route::get('/show/{id}', [RaceController::class, 'show'])->name('admin.races.show');
+            Route::get('/edit/{id}', [RaceController::class, 'edit'])->name('admin.races.edit');
+            Route::post('/edit/{id}', [RaceController::class, 'update'])->name('admin.races.update');
         });
 
         // ADMINISTRATOR: DRIVERS

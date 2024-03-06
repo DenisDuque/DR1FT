@@ -84,30 +84,12 @@
                         <label for="raceBanner" class="form-label">Banner</label>
                         <input type="file" name="raceBanner" class="form-control" id="raceBanner">
                     </div>
-                    <div class="col-md-4">
-                        <label for="inputState" class="form-label">Sponsor</label>
-                        <select id="inputState" class="form-select">
-                            <option selected>Choose...</option>
-                            @foreach ($sponsors as $sponsor)
-                                <option value="{{ $sponsor->id }}">{{ $sponsor->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="inputState" class="form-label">Insurance</label>
-                        <select id="inputState" class="form-select">
-                            <option selected>Choose...</option>
-                            @foreach ($insurances as $insurance)
-                                <option value="{{ $insurance->id }}">{{ $insurance->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
                     <div class="col-md-12">
                         <label for="raceDescription" class="form-label">Description</label>
                         <textarea name="raceDescription" class="form-control" id="raceDescription" placeholder="Type Something..."></textarea>
                     </div>
                     <div class="col-12 text-end">
-                        <button type="submit" class="btn btn-success"><i class="bi bi-check-lg"></i>Save</button>
+                        <button type="submit" class="btn btn-success"><i class="bi bi-check-lg"></i>Next</button>
                     </div>
                 </form>  
             </div>

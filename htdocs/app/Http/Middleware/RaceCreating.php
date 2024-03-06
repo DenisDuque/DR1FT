@@ -15,12 +15,17 @@ class RaceCreating
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (session()->has('race') && is_array(session('race'))) {
-            // Continuar con la solicitud
-            return $next($request);
+        if (session()->has('raceDetails')) {
+            if ($request->route()->getName() == 'admin.races.new.sponsors') {
+                if (session()->has('raceInsurances')) {
+                    return $next($request);
+                }
+            } else {
+                return $next($request);
+            }
         }
 
         // Si no existe, redirigir o devolver una respuesta denegada
-        return redirect()->route('admin.races')->with('error', 'An error has occurred while creating the race');
+        return redirect()->route('admin.races.new')->with('error', 'An error has occurred while creating the race');
     }
 }
