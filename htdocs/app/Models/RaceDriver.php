@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class RaceDriver extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'driverId', 
+        'raceId', 
+        'dorsal', 
+        'time'
+    ];
 }
