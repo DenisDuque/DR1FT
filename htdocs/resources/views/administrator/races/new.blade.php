@@ -12,13 +12,14 @@
 @section('content')
     <div class="row mt-5 text-white">
         <div class="col-lg-5 col-md-12">
-            banner | map
+            <h1 class="admin-form-title">Create Race</h1>
+            <small>Encourage everyone to push their limits.</small>
+            <div class="row">
+                banner | map
+                
+            </div>
         </div>
         <div class="col-lg-7 col-md-12 ">
-            <div class="row">
-                <h1 class="admin-form-title">Create Race</h1>
-                <small>Encourage everyone to push their limits.</small>
-            </div>
             <div class="row bg-admin p-5 card">
                      
                 <form class="row g-2" action="{{route('admin.races.new')}}" method="POST" enctype="multipart/form-data">
@@ -79,15 +80,19 @@
                     <div class="col-md-4">
                         <label for="inputState" class="form-label">Sponsor</label>
                         <select id="inputState" class="form-select">
-                        <option selected>Choose...</option>
-                        <option>...</option>
+                            <option selected>Choose...</option>
+                            @foreach ($sponsors as $sponsor)
+                                <option value="{{ $sponsor->id }}">{{ $sponsor->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-md-4">
                         <label for="inputState" class="form-label">Insurance</label>
                         <select id="inputState" class="form-select">
-                        <option selected>Choose...</option>
-                        <option>...</option>
+                            <option selected>Choose...</option>
+                            @foreach ($insurances as $insurance)
+                                <option value="{{ $insurance->id }}">{{ $insurance->name }}</option>
+                            @endforeach
                         </select>
                     </div>
                     <div class="col-md-12">

@@ -14,6 +14,10 @@
         <div class="col-lg-5 col-md-12">
             <div class="row">
                 <div class="col-12">
+                    <h1 class="admin-form-title">Edit Race</h1>
+                    <small>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</small>
+                </div>
+                <div class="col-12">
                     <span>BANNER</span>
                     <span>MAP</span>
                 </div>
@@ -23,10 +27,6 @@
             </div>
         </div>
         <div class="col-lg-7 col-md-12">
-            <div class="row">
-                <h1 class="admin-form-title">Edit Race</h1>
-                <small>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</small>
-            </div>
             <div class="row bg-admin p-5 card">
                 <form class="row g-2" action="{{ route('admin.races.edit', ['id' => $race->id]) }}" method="POST" enctype="multipart/form-data">
                 @csrf
