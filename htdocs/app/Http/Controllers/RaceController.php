@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Race;
 use App\Http\Controllers\ImageController;
+use App\Models\Sponsor;
+use App\Models\Insurance;
 use Carbon\Carbon;
 
 class RaceController extends Controller {
@@ -17,8 +19,10 @@ class RaceController extends Controller {
     }
 
     public function new() {
+        $sponsors = Sponsor::all();
+        $insurances = Insurance::all();
 
-        return view('administrator.races.new');
+        return view('administrator.races.new', compact('sponsors', 'insurances'));
     }
 
     public function create() {
