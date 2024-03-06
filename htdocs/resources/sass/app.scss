@@ -60,6 +60,24 @@
     }
 }
 
+.form-nav-item {
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    color: $grey;
+
+    .active {
+       
+            color: $defaultRed;
+        
+    }
+
+    &:hover {
+        transform: translateY(-0.2rem);
+        transition: transform ease-in-out 0.5s;
+    }
+}
+
 .table-dark {
     --bs-table-bg: $cardBgBlack1 !important;
     background-color: $cardBgBlack1 !important;

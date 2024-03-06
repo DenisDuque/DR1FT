@@ -46,6 +46,20 @@
   transition: transform ease-in-out 0.5s;
 }
 
+.form-nav-item {
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: #cdcdcd;
+}
+.form-nav-item .active {
+  color: #DC2E25;
+}
+.form-nav-item:hover {
+  transform: translateY(-0.2rem);
+  transition: transform ease-in-out 0.5s;
+}
+
 .table-dark {
   --bs-table-bg: $cardBgBlack1 !important;
   background-color: #252328 !important;
