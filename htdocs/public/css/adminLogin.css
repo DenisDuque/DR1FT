@@ -52,7 +52,7 @@
   letter-spacing: 3px;
   color: #cdcdcd;
 }
-.form-nav-item .active:link {
+.form-nav-item .active {
   color: #DC2E25;
 }
 .form-nav-item:hover {
