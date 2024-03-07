@@ -24,12 +24,14 @@
             </div>
         </div>
         <div class="row bg-admin card">
-                <div class="col-12 shadow p-3">
+                <div class="col-12 shadow text-white d-flex align-items">
                     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                        <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="#">DETAILS</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">INSURANCES</li>
-                            <li class="breadcrumb-item active" aria-current="page">SPONSORS</li>
+                        <ol class="breadcrumb p-2">
+                            <li class="breadcrumb-item text-white"><a href="#">DETAILS</a></li>
+                            
+                            <li class="breadcrumb-item active text-white" aria-current="page">INSURANCES</li>
+                        
+                            <li class="breadcrumb-item active text-white" aria-current="page">SPONSORS</li>
                         </ol>
                     </nav>
                 </div>
@@ -93,7 +95,7 @@
                         <textarea name="raceDescription" class="form-control" id="raceDescription" placeholder="Type Something..."></textarea>
                     </div>
                     <div class="col-12 text-end">
-                        <button type="submit" class="btn btn-success"><i class="bi bi-check-lg"></i>Next</button>
+                        <button type="submit" class="btn btn-success text-white"><i class="bi bi-check-lg"></i>Next</button>
                     </div>
                 </form>  
             </div>
