@@ -47,8 +47,11 @@
                         <tbody>
                             @foreach($insurances as $insurance)
                                 <tr>
-                                    <td class="align-middle fw-bold"><input class="form-check-input" type="checkbox" role="switch" name="raceInsurances[]" value="{{$insurance->id}}"></td>
-                                    <td class="align-middle"><img class="img-thumbnail" src="{{ asset('storage/insurance_logos/' . $insurance->logo) }}" alt="{{$insurance->name}}"></td>
+                                    <td class="align-middle fw-bold"><input class="form-check-input" type="checkbox" name="raceInsurances[]" value="{{$insurance->id}}"></td>
+                                    <td class="align-middle">
+
+                                        <img class="img-thumbnail" src="{{ asset('storage/insurance_logos/' . $insurance->logo) }}" alt="{{$insurance->name}}">
+                                    </td>
                                     <td class="align-middle">{{$insurance->name}}
                                         @if ($insurance->active == 0)
                                             <span class="badge rounded-pill bg-badge-disabled">Disabled</span>

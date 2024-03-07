@@ -8,16 +8,20 @@
     </div>
     <div class="col-lg-7 col-md-12 ">
         <div class="row my-2">
-            <h1 class="admin-form-title">Create Race</h1>
-            <small>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</small>
-            @if ($errors->any())
-                @foreach ($errors->all() as $error)
-                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                        <strong>Error: </strong> {{$error}}
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
-                @endforeach
-            @endif
+            <div class="col-6">
+                <h1 class="admin-form-title">Create Race</h1>
+                <small>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</small>
+            </div>
+            <div class="col-6">
+                @if ($errors->any())
+                    @foreach ($errors->all() as $error)
+                        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            <strong>Error: </strong> {{$error}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                    @endforeach
+                @endif
+            </div>
         </div>
         <div class="row bg-admin card">
                 <div class="col-12 shadow p-3">
