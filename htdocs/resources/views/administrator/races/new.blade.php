@@ -2,9 +2,13 @@
 
 
 @section('content')
+
 <div class="row mt-5 text-white">
     <div class="col-lg-5 col-md-12">
         banner | map
+        <div id="bannerPreview" class="mt-2"></div>
+        <div id="mapPreview" class="mt-2"></div>
+
     </div>
     <div class="col-lg-7 col-md-12 ">
         <div class="row my-2">
@@ -24,14 +28,14 @@
             </div>
         </div>
         <div class="row bg-admin card">
-                <div class="col-12 shadow text-white d-flex align-items">
+                <div class="col-12 shadow text-white d-flex align-items-center">
                     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                        <ol class="breadcrumb p-2">
-                            <li class="breadcrumb-item text-white"><a href="#">DETAILS</a></li>
+                        <ol class="breadcrumb m-0 p-3">
+                            <li class="breadcrumb-item active">DETAILS</li>
                             
-                            <li class="breadcrumb-item active text-white" aria-current="page">INSURANCES</li>
+                            <li class="breadcrumb-item" aria-current="page">INSURANCES</li>
                         
-                            <li class="breadcrumb-item active text-white" aria-current="page">SPONSORS</li>
+                            <li class="breadcrumb-item" aria-current="page">SPONSORS</li>
                         </ol>
                     </nav>
                 </div>
@@ -39,19 +43,51 @@
                     @csrf
                     <div class="col-md-8">
                         <label for="raceName" class="form-label">Name</label>
-                        <input type="text" name="raceName" class="form-control" id="raceName">
+                        <input type="text" name="raceName" class="form-control" id="raceName" value="{{old('raceName')}}">
                     </div>
                     <div class="col-md-4">
                         <label for="raceDate" class="form-label">Date</label>
-                        <input type="date" name="raceDate" class="form-control" id="raceDate">
+                        <input type="date" name="raceDate" class="form-control" id="raceDate" value="{{old('raceDate')}}">
                     </div>
                     <div class="col-7">
-                        <label for="raceMaxParticipants" class="form-label">Max. Participants</label>
-                        <input type="range" name="raceMaxParticipants" class="form-range" id="raceMaxParticipants" min="8" max="32">
+                        {{-- <input type="range" name="raceMaxParticipants" class="form-range" id="raceMaxParticipants" min="8" max="32"> --}}
+                        
+                            <div class="row justify-content-center">
+                                <div class="col-lg-12 col-md-8 -col-sm-10 col-12">
+                                    <div class="range-item">
+                                    <label for="raceMaxParticipants" class="form-label col-12">Max. Participants</label>
+                                    
+                                    <div class="range-input d-flex position-relative">
+                                    <input type="range" min="8" max="32" class="form-range" name="raceMaxParticipants" value="{{old('raceMaxParticipants')}}" />
+                                    <div class="range-line">
+                                        <span class="active-line"></span>
+                                    </div>
+                                    <div class="dot-line">
+                                        <span class="active-dot"></span>
+                                        <span class="value-indicator"></span>
+                                    </div>
+                                    </div>
+                                    <ul class="list-inline list-unstyled">
+                                    <li class="list-inline-item">
+                                        <span>8</span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <span>16</span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <span>24</span>
+                                    </li>
+                                    <li class="list-inline-item">
+                                        <span>32</span>
+                                    </li>
+                                    </ul>
+                                </div>
+                                </div>
+                            </div> 
                     </div>
                     <div class="col-2 d-flex align-items-center">
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" id="racePro" name="racePro">
+                            <input class="form-check-input" type="checkbox" role="switch" id="racePro" name="racePro" value="{{old('racePro')}}">
                             <label class="form-check-label" for="racePro">
                                 Professional
                             </label>
@@ -59,7 +95,7 @@
                     </div>
                     <div class="col-3 d-flex align-items-center">
                         <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" role="switch" id="raceActive" name="raceActive" checked>
+                            <input class="form-check-input" type="checkbox" role="switch" id="raceActive" name="raceActive" value="{{old('raceActive')}}" checked>
                             <label class="form-check-label" for="raceActive">
                                 Visible
                             </label>
@@ -68,37 +104,38 @@
                     </div>
                     <div class="col-md-5">
                         <label for="raceCoords" class="form-label">Coords</label>
-                        <input type="text" name="raceCoords" class="form-control" id="raceCoords">
+                        <input type="text" name="raceCoords" class="form-control" id="raceCoords" value="{{old('raceCoords')}}">
                     </div>
                     <div class="col-md-5">
                         <label for="raceMap" class="form-label">Map</label>
-                        <input type="file" name="raceMap" class="form-control" id="raceMap">
+                        <input type="file" name="raceMap" class="form-control" id="raceMap" value="{{old('raceMap')}}">
                     </div>
                     <div class="col-md-2">
                         <label for="raceLength" class="form-label">Length</label>
-                        <input type="number" name="raceLength" class="form-control" id="raceLength">
+                        <input type="number" name="raceLength" class="form-control" id="raceLength" value="{{old('raceLength')}}">
                     </div>
                     <div class="col-md-6">
                         <label for="raceSponsorCost" class="form-label">Sponsor Cost</label>
-                        <input type="number" name="raceSponsorCost" class="form-control" id="raceSponsorCost">
+                        <input type="number" name="raceSponsorCost" class="form-control" id="raceSponsorCost" value="{{old('raceSponsorCost')}}">
                     </div>
                     <div class="col-md-6">
                         <label for="raceRegistrationPrice" class="form-label">Registration Price</label>
-                        <input type="number" name="raceRegistrationPrice" class="form-control" id="raceRegistrationPrice">
+                        <input type="number" name="raceRegistrationPrice" class="form-control" id="raceRegistrationPrice" value="{{old('raceRegistrationPrice')}}">
                     </div>
                     <div class="col-md-4">
                         <label for="raceBanner" class="form-label">Banner</label>
-                        <input type="file" name="raceBanner" class="form-control" id="raceBanner">
+                        <input type="file" name="raceBanner" class="form-control" id="raceBanner" value="{{old('raceBanner')}}">
                     </div>
                     <div class="col-md-12">
                         <label for="raceDescription" class="form-label">Description</label>
-                        <textarea name="raceDescription" class="form-control" id="raceDescription" placeholder="Type Something..."></textarea>
+                        <textarea name="raceDescription" class="form-control" id="raceDescription" value="{{old('raceDescription')}}" placeholder="Type Something..."></textarea>
                     </div>
                     <div class="col-12 text-end">
-                        <button type="submit" class="btn btn-success text-white"><i class="bi bi-check-lg"></i>Next</button>
+                        <button type="submit" class="btn btn-success text-white">Next<i class="bi bi-chevron-double-right"></i></button>
                     </div>
                 </form>  
             </div>
         </div>
     </div>
+    <script src="{{asset('js/range.js')}}"></script>
 @stop

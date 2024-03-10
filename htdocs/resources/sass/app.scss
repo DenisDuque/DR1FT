@@ -2,8 +2,10 @@
 @import url('https://fonts.bunny.net/css?family=Nunito');
 
 // Variables
+@import 'variables';
 @import 'variables_app';
 @import 'mixins';
+@import 'range';
 
 // Bootstrap
 @import '../../node_modules/bootstrap/scss/bootstrap';
@@ -24,6 +26,17 @@
 .background-admin-gradient{
     height: 100vh;
     @include backgroundGradient($primaryBlack, $secondaryBlack);
+}
+
+.breadcrumb-item {
+    font-weight: 500;
+    letter-spacing: 2px;
+    &.active {
+        color: $defaultRed !important;
+        text-decoration: underline;
+        text-underline-offset: 8px;
+        text-decoration-thickness: 2px;
+    } 
 }
 
 
