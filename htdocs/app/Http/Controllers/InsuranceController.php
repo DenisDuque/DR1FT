@@ -108,6 +108,12 @@ class InsuranceController extends Controller
         return redirect()->route('admin.insurances')->with('error', 'Insurance not found.');
     }
     
-    
+    public function search() {
+        $searchTerm = request()->input('searchTerm');
+
+        $insurances = Insurance::where('name', 'like', "%$searchTerm%")->get();
+
+        return response()->json($insurances);
+    }
     
 }

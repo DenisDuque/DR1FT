@@ -104,4 +104,12 @@ class SponsorController extends Controller
             return redirect()->route('admin.sponsors')->with('error', 'Sponsor not found.');
         }
     }
+
+    public function search() {
+        $searchTerm = request()->input('searchTerm');
+
+        $sponsors = Sponsor::where('name', 'like', "%$searchTerm%")->get();
+
+        return response()->json($sponsors);
+    }
 }

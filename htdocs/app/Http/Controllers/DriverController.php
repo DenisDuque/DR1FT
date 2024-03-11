@@ -94,4 +94,12 @@ class DriverController extends Controller
             return redirect()->route('admin.drivers')->with('error', 'Driver not found.');
         }
     }
+
+    public function search() {
+        $searchTerm = request()->input('searchTerm');
+
+        $drivers = Driver::where('name', 'like', "%$searchTerm%")->get();
+
+        return response()->json($drivers);
+    }
 }

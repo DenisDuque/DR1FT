@@ -250,4 +250,12 @@ class RaceController extends Controller {
             return redirect()->route('admin.races')->with('error', 'Race not found');
         }
     }
+
+    public function search() {
+        $searchTerm = request()->input('searchTerm');
+
+        $races = Race::where('name', 'like', "%$searchTerm%")->get();
+
+        return response()->json($races);
+    }
 }
