@@ -40,7 +40,7 @@
                 <!-- CAMBIAR ACTION FORM -->
                 <form class="w-100 p-0 m-0" action="{{route('admin.races.new.insurances')}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    <div class="table-responsive mh-75">
+                    <div class="table-responsive" style="max-height: 35rem;">
                         <table class="table table-dark table-hover overflow-hidden" style="height: 20rem;">
                             <thead>
                                 <tr>
