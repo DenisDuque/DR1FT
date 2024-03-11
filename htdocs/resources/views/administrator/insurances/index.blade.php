@@ -3,8 +3,11 @@
 @section('content')
     <section class="mt-5 mb-3 d-flex align-items-center justify-content-between">
         <h1 class="admin-form-title text-white">All Insurances</h1>
+        <input id="insurances-search" type="text" placeholder="Search">
         <a class="btn btn-primary" href="/admin/insurances/new" role="button"><i class="bi bi-plus-lg"></i> Add Insurance</a>
     </section>
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @if(session()->has('success'))
         <div class="alert alert-success d-flex align-items-center alert-dismissible fade show" role="alert">
@@ -37,7 +40,7 @@
         <th scope="col">Actions</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody  id="insurances-table-body">
         @foreach($insurances as $insurance)
             <tr>
                 <td class="align-middle fw-bold">{{$insurance->id}}</td>

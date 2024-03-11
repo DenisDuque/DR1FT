@@ -3,11 +3,12 @@
 @section('content')
     <section class="mt-5 mb-3 d-flex align-items-center justify-content-between">
         <h1 class="admin-form-title text-white">All Sponsors</h1>
+        <input id="sponsors-search" type="text" placeholder="Search">
         <a class="btn btn-primary" href="/admin/sponsors/new" role="button"><i class="bi bi-plus-lg"></i> Add Sponsor</a>
     </section>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     @include('administrator.layouts.notice')
-
     <table class="table table-dark table-hover">
     <thead>
         <tr>
@@ -19,7 +20,7 @@
             <th scope="col" class="py-3 text-center">Actions</th>
         </tr>
     </thead>
-    <tbody>
+    <tbody id="sponsors-table-body">
         @foreach($sponsors as $sponsor)
             <tr>
                 <td class="py-3 text-center align-middle fw-bold">{{$sponsor->id}}</td>

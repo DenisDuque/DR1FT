@@ -3,8 +3,11 @@
 @section('content')
     <section class="mt-5 mb-3 d-flex align-items-center justify-content-between">
         <h1 class="admin-form-title text-white">All Races</h1>
+        <input id="races-search" type="text" placeholder="Search">
         <a class="btn btn-primary" href="/admin/races/new" role="button"><i class="bi bi-plus-lg"></i> Add Race</a>
     </section>
+
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <table class="table table-dark table-hover table-border">
         <thead>
@@ -20,7 +23,7 @@
             <th scope="col" class="text-center">Actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="races-table-body">
             @foreach($races as $race)
                 <tr>
                     <td class="py-3 align-middle">{{$race->id}}</td>
