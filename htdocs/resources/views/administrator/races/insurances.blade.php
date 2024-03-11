@@ -48,7 +48,7 @@
                                 <th scope="col">Logo</th>
                                 <th scope="col">CIF</th>
                                 <th scope="col">Name</th>
-                                <th scope="col" class="text-center">Price per Race</th>
+                                <th scope="col" class="text-center"><button id="sortInsurances"><i class="bi bi-arrow-down-up"></i></button>Price per Race</th>
                                 
                                 </tr>
                             </thead>
