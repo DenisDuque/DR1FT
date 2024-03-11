@@ -18,6 +18,22 @@
   cursor: pointer;
 }
 
+.range-input .value-indicator {
+  position: absolute;
+  top: -25px; /* Ajusta la posición según tu diseño */
+  left: 50%;
+  transform: translateX(-50%);
+  display: none; /* Inicialmente oculto */
+  background-color: #fff; /* Color de fondo del valor */
+  padding: 2px 6px; /* Ajusta el padding según tu diseño */
+  border-radius: 4px; /* Ajusta el radio de borde según tu diseño */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra si es necesario */
+}
+
+.range-input input:focus + .dot-line .value-indicator {
+  display: block; /* Muestra el valor cuando se hace clic en la bola */
+}
+
 .range-item ul {
   display: flex;
   flex-wrap: nowrap;
@@ -2277,6 +2293,7 @@ progress {
 }
 .form-label {
   margin-bottom: 0.5rem;
+  color: white;
 }
 
 .col-form-label {
@@ -2601,6 +2618,10 @@ textarea.form-control-lg {
 .form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label {
   cursor: default;
   opacity: 0.5;
+}
+
+.form-check-label {
+  color: white;
 }
 
 .form-switch {
@@ -4857,18 +4878,12 @@ textarea.form-control-lg {
 }
 
 .breadcrumb {
-  --bs-breadcrumb-padding-x: 0;
-  --bs-breadcrumb-padding-y: 0;
-  --bs-breadcrumb-margin-bottom: 1rem;
   --bs-breadcrumb-bg: ;
   --bs-breadcrumb-border-radius: ;
   --bs-breadcrumb-divider-color: var(--bs-secondary-color);
-  --bs-breadcrumb-item-padding-x: 0.5rem;
   --bs-breadcrumb-item-active-color: var(--bs-secondary-color);
   display: flex;
   flex-wrap: wrap;
-  padding: var(--bs-breadcrumb-padding-y) var(--bs-breadcrumb-padding-x);
-  margin-bottom: var(--bs-breadcrumb-margin-bottom);
   font-size: var(--bs-breadcrumb-font-size);
   list-style: none;
   background-color: var(--bs-breadcrumb-bg);
@@ -4881,8 +4896,14 @@ textarea.form-control-lg {
 .breadcrumb-item + .breadcrumb-item::before {
   float: left;
   padding-right: var(--bs-breadcrumb-item-padding-x);
-  color: white;
+  color: var(--bs-breadcrumb-divider-color);
   content: var(--bs-breadcrumb-divider, "/") /* rtl: var(--bs-breadcrumb-divider, "/") */;
+}
+.breadcrumb-item::after {
+  content: ">";
+}
+.breadcrumb-item:last-child::after {
+  content: "";
 }
 .breadcrumb-item.active {
   color: var(--bs-breadcrumb-item-active-color);
