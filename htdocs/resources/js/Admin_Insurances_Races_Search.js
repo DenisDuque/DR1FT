@@ -57,6 +57,7 @@ class Admin_Insurances_Races_Search {
                                 this.sortInput.innerHTML = '<i class="bi bi-arrow-down-up"></i>'
                                 break;
                         }
+                        this.updateTable();
                     });
                 }
             }
@@ -143,4 +144,4 @@ class Admin_Insurances_Races_Search {
       }
 }
 
-const insurancesSearch = new Admin_Insurances_Search();
+const insurancesRacesSearch = new Admin_Insurances_Races_Search();

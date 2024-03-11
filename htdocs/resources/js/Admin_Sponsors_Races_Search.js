@@ -100,4 +100,4 @@ class Admin_Sponsors_Races_Search {
       }
 }
 
-const sponsorsSearch = new Admin_Sponsors_Search();
+const sponsorsRacesSearch = new Admin_Sponsors_Races_Search();
