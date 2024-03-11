@@ -37,6 +37,7 @@
                         </ol>
                     </nav>
                 </div>
+                <input id="insurances-races-search" type="text" placeholder="Search">
                 <!-- CAMBIAR ACTION FORM -->
                 <form class="w-100 p-0 m-0" action="{{route('admin.races.new.insurances')}}" method="POST" enctype="multipart/form-data">
                     @csrf
@@ -49,10 +50,9 @@
                                 <th scope="col">CIF</th>
                                 <th scope="col">Name</th>
                                 <th scope="col" class="text-center"><button id="sortInsurances"><i class="bi bi-arrow-down-up"></i></button>Price per Race</th>
-                                
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="insurances-races-table-body">
                                 @foreach($insurances as $insurance)
                                     <tr>
                                         <td class="align-middle fw-bold"><input class="form-check-input" type="checkbox" name="raceInsurances[]" value="{{$insurance->id}}"></td>
