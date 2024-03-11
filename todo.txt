@@ -3,10 +3,16 @@
 
 - vista edit races
 - vista detalle race
-- vista new races (IMPORTATNTE)
 
-- create insurance switch y mover price
-- scroll tabla
 
-- notice edit races sin cambios
-- notice success races
+- [NOTICE] edit races sin cambios
+
+- [JQUERY] click breadcrumb de crear races mal
+
+- [ERROR] si no selecionas main sponsor en NEW RACE
+- [ERROR] cargando imagen BANNER en NEW RACE
+    >> [INFO] no se suben imagenes a race_banners
+
+
+[HOW TO PDF] => https://www.itsolutionstuff.com/post/laravel-10-generate-pdf-file-using-dompdf-exampleexample.html
+[HOW TO SCROLL] => https://codepen.io/flexcode/pen/poxVRpN 

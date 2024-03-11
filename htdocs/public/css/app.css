@@ -12195,6 +12195,10 @@ textarea.form-control-lg {
   background: linear-gradient(to top left, #151418, #1e1e1e) !important;
 }
 
+.fixed-cel {
+  background-color: #252328 !important;
+}
+
 .breadcrumb-item {
   font-weight: 500;
   letter-spacing: 2px;
@@ -12211,6 +12215,10 @@ textarea.form-control-lg {
 
 #bannerPreview > img {
   height: 40rem !important;
+}
+
+.sm-table {
+  background-color: transparent !important;
 }
 
 .admin-header {

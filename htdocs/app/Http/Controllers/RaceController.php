@@ -156,7 +156,7 @@ class RaceController extends Controller {
                     ]);
                 }
 
-                return redirect()->route('admin.races');
+                return redirect()->route('admin.races')->with('success', 'Race created successfuly');
             } else {
                 // Al menos uno de los IDs seleccionados no existe, puedes redirigir o realizar otras acciones
                 return redirect()->back()->with('error', 'Invalid sponsor selection.');

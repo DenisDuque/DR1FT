@@ -30,13 +30,13 @@
                     <label for="insuranceLogo" class="form-label">Logo</label>
                     <input type="file" name="insuranceLogo" class="form-control" id="insuranceLogo" value="{{$insurance->logo}}">
                 </div>
-                <div class="col-12">
-                    <label for="insuranceAddress" class="form-label">Address</label>
-                    <input type="text" name="insuranceAddress" class="form-control" id="insuranceAddress" placeholder="1234 Main St" value="{{$insurance->address}}">
-                </div>
                 <div class="col-md-6">
                     <label for="insuranceCost" class="form-label">Price Per Race</label>
                     <input type="number" name="insuranceCost" class="form-control" id="insuranceCost" value="{{$insurance->pricePerRace}}">
+                </div>
+                <div class="col-12">
+                    <label for="insuranceAddress" class="form-label">Address</label>
+                    <input type="text" name="insuranceAddress" class="form-control" id="insuranceAddress" placeholder="1234 Main St" value="{{$insurance->address}}">
                 </div>
                 
                 <div class="col-12">
@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-success"><i class="bi bi-check-lg"></i>Update</button>
+                    <button type="submit" class="btn btn-success text-white"><i class="bi bi-check-lg"></i>Update</button>
                 </div>
             </form>
         </div>

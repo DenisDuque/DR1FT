@@ -59,21 +59,21 @@ $(document).ready(function() {
         $("#bannerPreview").hide();
         $("#mapPreview").show();
     }
-}
+  }
 
-// Llamar a la función toggleViews para mostrar la vista inicial
-toggleViews("banner");
+  // Llamar a la función toggleViews para mostrar la vista inicial
+  toggleViews("banner");
 
-// Agregar evento de clic a los elementos de encabezado para alternar las vistas
-$(".breadcrumb-item").click(function() {
-    // Obtener el contenedor específico del elemento clicado
-    var container = $(this).closest('.preview-container');
-    // Remover la clase "active" solo de los elementos dentro de ese contenedor
-    container.find(".breadcrumb-item").removeClass("active");
-    // Agregar la clase "active" solo al elemento clicado
-    $(this).addClass("active");
-    var view = $(this).text().toLowerCase();
-    toggleViews(view);
-});
+  // Agregar evento de clic a los elementos de encabezado para alternar las vistas
+  $(".breadcrumb-item").click(function() {
+      // Obtener el contenedor específico del elemento clicado
+      var container = $(this).closest('.preview-container');
+      // Remover la clase "active" solo de los elementos dentro de ese contenedor
+      container.find(".breadcrumb-item").removeClass("active");
+      // Agregar la clase "active" solo al elemento clicado
+      $(this).addClass("active");
+      var view = $(this).text().toLowerCase();
+      toggleViews(view);
+  });
 
 });

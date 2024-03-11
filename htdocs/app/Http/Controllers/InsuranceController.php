@@ -45,7 +45,7 @@ class InsuranceController extends Controller
                 'active' => request()->has('insuranceActive') ? 1 : 0
             ]);
 
-            return redirect()->route('admin.insurances');
+            return redirect()->route('admin.insurances')->with('success', 'Insurance created successfuly.');
         } else {
             // TODO: Devolver popup de error
             return redirect()->route('admin.insurances')->with('error', 'There was an error while uploading the image, insurance creation aborted.');

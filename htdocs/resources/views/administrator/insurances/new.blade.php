@@ -48,7 +48,7 @@
                     </div>
                 </div>
                 <div class="col-12 text-end">
-                    <button type="submit" class="btn btn-success"><i class="bi bi-check-lg"></i> Save</button>
+                    <button type="submit" class="btn btn-success text-white"><i class="bi bi-check-lg"></i> Save</button>
                 </div>
             </form>
         </div>
