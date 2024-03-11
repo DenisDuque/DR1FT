@@ -4,19 +4,22 @@
 @section('content')
 
 <div class="row mt-5 text-white">
-    <div class="col-lg-5 col-md-12">
-        banner | map
+    <div class="col-lg-5 col-md-12 preview-container">
+        <div class="d-flex justify-content-center">
+            <h3 class="text-uppercase breadcrumb-item active fs-5 mx-2" role="button">banner</h3>
+            <h3 class="text-uppercase breadcrumb-item fs-5 mx-2" role="button">map</h3>
+        </div>
+        
         <div id="bannerPreview" class="mt-2"></div>
         <div id="mapPreview" class="mt-2"></div>
-
     </div>
-    <div class="col-lg-7 col-md-12 ">
+    <div class="col-lg-7 col-md-12">
         <div class="row my-2">
             <div class="col-6">
                 <h1 class="admin-form-title">Create Race</h1>
                 <small>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</small>
             </div>
-            <div class="col-6">
+            <div class="col-6 overflow-auto">
                 @if ($errors->any())
                     @foreach ($errors->all() as $error)
                         <div class="alert alert-danger alert-dismissible fade show" role="alert">
@@ -31,11 +34,11 @@
                 <div class="col-12 shadow text-white d-flex align-items-center">
                     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                         <ol class="breadcrumb m-0 p-3">
-                            <li class="breadcrumb-item active">DETAILS</li>
-                            
-                            <li class="breadcrumb-item" aria-current="page">INSURANCES</li>
-                        
-                            <li class="breadcrumb-item" aria-current="page">SPONSORS</li>
+                            <li class="breadcrumb-item me-2 active">DETAILS</li>
+                            <span class="me-2">></span>
+                            <li class="breadcrumb-item me-2" aria-current="page">INSURANCES</li>
+                            <span class="me-2">></span>
+                            <li class="breadcrumb-item me-2" aria-current="page">SPONSORS</li>
                         </ol>
                     </nav>
                 </div>
@@ -122,7 +125,7 @@
                         <label for="raceRegistrationPrice" class="form-label">Registration Price</label>
                         <input type="number" name="raceRegistrationPrice" class="form-control" id="raceRegistrationPrice" value="{{old('raceRegistrationPrice')}}">
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 col-lg-6">
                         <label for="raceBanner" class="form-label">Banner</label>
                         <input type="file" name="raceBanner" class="form-control" id="raceBanner" value="{{old('raceBanner')}}">
                     </div>
@@ -137,5 +140,5 @@
             </div>
         </div>
     </div>
-    <script src="{{asset('js/range.js')}}"></script>
+    
 @stop

@@ -31,12 +31,20 @@
 .breadcrumb-item {
     font-weight: 500;
     letter-spacing: 2px;
+
+    &::before {
+        content: '' !important;
+    }
     &.active {
         color: $defaultRed !important;
         text-decoration: underline;
         text-underline-offset: 8px;
         text-decoration-thickness: 2px;
     } 
+}
+
+#bannerPreview > img {
+    height: 40rem !important;
 }
 
 
