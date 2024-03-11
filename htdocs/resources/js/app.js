@@ -13,10 +13,13 @@ function previewImage(input, preview) {
         var reader = new FileReader();
 
         reader.onload = function (e) {
-            $(preview).html('<img src="' + e.target.result + '" class="img-fluid" alt="Preview">');
+            $(preview).html('<img src="' + e.target.result + '" class="img-fluid mx-auto d-block" alt="Preview">');
         };
 
         reader.readAsDataURL(input.files[0]);
+    } else {
+        // Si no se selecciona ningún archivo, mostrar el icono por defecto
+        $(preview).html('<i class="bi bi-card-image"></i>');
     }
 }
 
@@ -29,3 +32,5 @@ $('#raceBanner').change(function () {
 $('#raceMap').change(function () {
     previewImage(this, '#mapPreview');
 });
+
+
