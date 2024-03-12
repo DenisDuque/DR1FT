@@ -32,8 +32,7 @@
             @foreach($sponsors as $sponsor)
                 <tr>
                     <td class="py-3 text-center align-middle fw-bold">{{$sponsor->id}}</td>
-                    <!-- <td>{{$sponsor->logo}}</td> -->
-                    <td class="py-3 align-middle"><i class="bi bi-image"></i></td>
+                    <td><img class="img-thumbnail" src="{{ asset('storage/sponsor_logos/' . $sponsor->logo) }}" alt="{{$sponsor->name}}"></td>
                     <td class="py-3 align-middle">{{$sponsor->cif}}</td>
                     <td class="py-3 align-middle">{{$sponsor->name}}
                         @if ($sponsor->active == 0)
@@ -42,7 +41,7 @@
                     </td>
                     <td class="py-3 align-middle">{{$sponsor->address}}</td>
                     <td class="py-3 align-middle text-center">
-                        <a href="http://" class="admin-link me-1"><i class="bi bi-file-earmark-arrow-down"></i>Download</a>
+                        <a href="{{ route('generate-pdf', ['sponsorId' => $sponsor->id]) }}" class="admin-link me-1"><i class="bi bi-file-earmark-arrow-down"></i>PDF</a>
                         <a href="{{ route('admin.sponsors.edit', ['id' => $sponsor->id]) }}" class="admin-link"><i class="bi bi-pencil-square"></i>Edit</a>
                     </td>
                 </tr>

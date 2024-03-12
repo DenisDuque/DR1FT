@@ -13,6 +13,8 @@
 - [ERROR] cargando imagen BANNER en NEW RACE
     >> [INFO] no se suben imagenes a race_banners
 
+- [INFO] SOLO los corredores PRO tienen número de federación.
+
 
 [HOW TO PDF] => https://www.itsolutionstuff.com/post/laravel-10-generate-pdf-file-using-dompdf-exampleexample.html
 [HOW TO SCROLL] => https://codepen.io/flexcode/pen/poxVRpN 

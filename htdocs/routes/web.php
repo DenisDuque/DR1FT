@@ -7,6 +7,7 @@ use App\Http\Controllers\RaceController;
 use App\Http\Controllers\InsuranceController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\DriverController;
+use App\Http\Controllers\PDFController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -62,6 +63,7 @@ Route::group(['prefix' => '/admin'], function () {
             Route::post('/new', [SponsorController::class, 'create'])->name('admin.sponsors.new');
             Route::get('/edit/{id}', [SponsorController::class, 'edit'])->name('admin.sponsors.edit');
             Route::post('/edit/{id}', [SponsorController::class, 'update'])->name('admin.sponsors.update');
+            Route::get('/generate-pdf/{sponsorId}', [PDFController::class, 'generateSponsorPDF'])->name('generate-pdf');
         });
     });
 });
