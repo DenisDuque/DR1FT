@@ -37,6 +37,8 @@
                     </ol>
                 </nav>
             </div>
+            <input id="sponsors-races-search" type="text" placeholder="Search">
+            <meta name="csrf-token" content="{{ csrf_token() }}">
             <!-- CAMBIAR ACTION FORM -->
             <form class="w-100 p-0 m-0" action="{{route('admin.races.new.sponsors')}}" method="POST" enctype="multipart/form-data">
                 @csrf
@@ -51,7 +53,7 @@
                                 <th scope="col" class="py-3 text-center">Main Sponsor</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody id="sponsors-races-table-body">
                             @foreach($sponsors as $sponsor)
                                 <tr>
                                     <td class="py-3 text-center align-middle fw-bold"><input class="form-check-input" type="checkbox" role="switch" name="raceSponsors[]" value="{{$sponsor->id}}"></td>
