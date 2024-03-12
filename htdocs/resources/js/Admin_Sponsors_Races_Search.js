@@ -83,7 +83,6 @@ class Admin_Sponsors_Races_Search {
     }
 
     generateSponsorTable(sponsor) {
-        const sponsorActive = sponsor.active == 1 ? '' : '<span class="badge rounded-pill bg-badge-disabled">Disabled</span>';
         if (sponsor.active) {
             return `
             <tr>
@@ -97,7 +96,7 @@ class Admin_Sponsors_Races_Search {
         } else {
             return '';
         }
-      }
+    }
 }
 
 const sponsorsRacesSearch = new Admin_Sponsors_Races_Search();

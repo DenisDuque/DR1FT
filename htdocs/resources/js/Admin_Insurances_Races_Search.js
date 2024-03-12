@@ -22,7 +22,7 @@ class Admin_Insurances_Races_Search {
             this.sortTypes = ['none', 'low-high', 'high-low']
             this.sort = 0;
             
-            this.sortInput = document.getElementById('#sortInsurances');
+            this.sortInput = document.getElementById('sortInsurances');
 
             // Adding Event Listeners to searchbar
             if (this.searchInput) {
@@ -44,7 +44,7 @@ class Admin_Insurances_Races_Search {
                             this.sort = 0;
                         }
 
-                        switch (this.sortTypes[sort]) {
+                        switch (this.sortTypes[this.sort]) {
                             case "low-high":
                                 this.sortInput.innerHTML = '<i class="bi bi-arrow-down"></i>'
                                 break;
@@ -99,13 +99,13 @@ class Admin_Insurances_Races_Search {
                         };
                     });
 
-                    switch (this.sortTypes[sort]) {
+                    switch (this.sortTypes[this.sort]) {
                         case "low-high":
-                            insurancesJSON.sort((a, b) => a.price - b.price);
+                            insurancesJSON.sort((a, b) => a.pricePerRace - b.pricePerRace);
                             break;
 
                         case "high-low":
-                            insurancesJSON.sort((a, b) => b.price - a.price);
+                            insurancesJSON.sort((a, b) => b.pricePerRace - a.pricePerRace);
                             break;
     
                         default:
