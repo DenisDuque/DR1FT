@@ -14,9 +14,12 @@ class PDFController extends Controller
         // Obtener el sponsor específico por su ID
         $sponsor = Sponsor::with('races')->find($sponsorId);
 
+        $totalSponsorCost = $sponsor->races->sum('sponsorCost');
+
         $data = [
             'sponsor' => $sponsor,
             'races' => $sponsor->races,
+            'totalSponsorCost' => $totalSponsorCost,
         ];
 
         // Generar el PDF usando la vista 'myPDF' y los datos proporcionados
