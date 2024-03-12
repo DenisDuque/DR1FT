@@ -19,6 +19,11 @@ class Admin_Insurances_Search {
             this.searchInput = document.getElementById('insurances-search');
             this.searchTerm = "";
 
+            this.sortTypes = ['none', 'low-high', 'high-low']
+            this.sort = 0;
+
+            this.sortInput = document.getElementById('sortInsurances');
+            
             // Adding Event Listeners to searchbar
             if (this.searchInput) {
                 this.searchInput.addEventListener('change', (event) => {
@@ -30,6 +35,31 @@ class Admin_Insurances_Search {
                     this.searchTerm = event.target.value;
                     this.updateTable();
                 });
+
+                if (this.sortInput) {
+                    this.sortInput.addEventListener('click', () => {
+                        this.sort++;
+
+                        if (this.sort > 2) {
+                            this.sort = 0;
+                        }
+
+                        switch (this.sortTypes[this.sort]) {
+                            case "low-high":
+                                this.sortInput.innerHTML = '<i class="bi bi-arrow-down"></i>'
+                                break;
+    
+                            case "high-low":
+                                this.sortInput.innerHTML = '<i class="bi bi-arrow-up"></i>'
+                                break;
+        
+                            default:
+                                this.sortInput.innerHTML = '<i class="bi bi-arrow-down-up"></i>'
+                                break;
+                        }
+                        this.updateTable();
+                    });
+                }
             }
         });
     }
@@ -69,6 +99,20 @@ class Admin_Insurances_Search {
                             active: insurance.active
                         };
                     });
+
+                    switch (this.sortTypes[this.sort]) {
+                        case "low-high":
+                            insurancesJSON.sort((a, b) => a.pricePerRace - b.pricePerRace);
+                            break;
+
+                        case "high-low":
+                            insurancesJSON.sort((a, b) => b.pricePerRace - a.pricePerRace);
+                            break;
+    
+                        default:
+                            break;
+                    }
+
                     const tableContent = insurancesJSON.map(insurance => this.generateInsuranceTable(insurance)).join('');
                     resolve(tableContent);
                 } else {

@@ -26,7 +26,7 @@
                 <th scope="col" class="sticky-top fixed-cel">CIF</th>
                 <th scope="col" class="sticky-top fixed-cel">Name</th>
                 <th scope="col" class="sticky-top fixed-cel">Address</th>
-                <th scope="col" class="text-center sticky-top fixed-cel">Price per Race</th>
+                <th scope="col" class="text-center sticky-top fixed-cel"><button id="sortInsurances" type="button"><i class="bi bi-arrow-down-up"></i></button>Price per Race</th>
                 <th scope="col" class="sticky-top fixed-cel">Actions</th>
             </tr>
         </thead>
