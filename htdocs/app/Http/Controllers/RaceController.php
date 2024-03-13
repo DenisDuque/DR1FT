@@ -258,4 +258,12 @@ class RaceController extends Controller {
 
         return response()->json($races);
     }
+
+    public function find() {
+        $id = request()->input('id');
+
+        $race = Race::find($id);
+
+        return response()->json($race);
+    }
 }
