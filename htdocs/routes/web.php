@@ -73,4 +73,6 @@ Route::middleware(['ajax'])->group(function () {
     Route::post('/drivers/search', [DriverController::class, 'search'])->name('admin.races.search');
     Route::post('/insurances/search', [InsuranceController::class, 'search'])->name('admin.races.search');
     Route::post('/sponsors/search', [SponsorController::class, 'search'])->name('admin.races.search');
+
 });
+Route::post('/races/find', [RaceController::class, 'find'])->name('admin.races.find');
