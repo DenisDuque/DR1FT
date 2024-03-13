@@ -15,7 +15,7 @@ class RaceController extends Controller {
     public function mainPage() {
         $races = Race::get();
 
-        return view('main.page', [
+        return view('index', [
             'races' => $races
         ]);
     }
