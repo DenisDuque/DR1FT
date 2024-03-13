@@ -10,6 +10,7 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
         <title>@yield('title')</title>
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         <!-- jQuery -->
@@ -24,16 +25,6 @@
             box-sizing: border-box;
             user-select: none;
             }
-/* 
-            body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            color: #fff;
-            background: #141414;
-            font-family: "Poppins", sans-serif;
-            text-transform: uppercase;
-            } */
             h2 {
             font-size: clamp(1rem, 5vw, 5rem);
             font-weight: bold;
@@ -57,6 +48,14 @@
             position: fixed;
             visibility: hidden;
             }
+            #video-background {
+                position: fixed;
+                right: 0;
+                bottom: 0;
+                min-width: 100%;
+                min-height: 100%;
+                filter: brightness(0.8);
+            }
             section .outer,
             section .inner {
             width: 100%;
@@ -68,34 +67,27 @@
             align-items: center;
             justify-content: center;
             position: absolute;
-            height: 100%;
+            height: 100vh;
             width: 100%;
             top: 0;
-            background-size: cover;
-            background-position: center;
+            
             }
             section .bg h2 {
-            z-index: 2;
+            z-index: 1;
             }
             section .bg .clip-text {
             overflow: hidden;
             }
-            .first .bg {
-            background-image: linear-gradient(
-                180deg,
-                rgba(0, 0, 0, 0.6) 0%,
-                rgba(0, 0, 0, 0.3) 100%
-                ),
-                url("https://64.media.tumblr.com/d7b19889c0b6d3c605f4f34d1343e3ea/tumblr_p4ntm40HMW1wco4ano1_1280.jpg");
-            }
-            .second .bg {
-                background-image: linear-gradient(
+            
+            /* .second .bg {
+                /* background-image: linear-gradient(
                 180deg,
                 rgba(0, 0, 0, 0.6) 0%,
                 rgba(0, 0, 0, 0.3) 100%
                 ),
                 url("https://64.media.tumblr.com/3de2c2eab9cbac5aa7c1f641eb4e7ccc/tumblr_nj8curbq8F1sbh9awo1_500.jpg");
-            }
+
+            } */
             .third .bg {
                 background-image: linear-gradient(
                 180deg,
@@ -122,12 +114,6 @@
                 background-position: 50% 45%;
             }
 
-            .section-heading {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            }
             .section-heading i {
             font-size: 3rem;
             margin: 1rem;
@@ -142,35 +128,47 @@
         </style>
     </head>
     <body>
-        <div>
-            <div class="row fixed-top z-index-1">
-                <div class="col-2">
-                    <p>DR1FT</p>
-                </div>
-                <div class="col-10">
-                    <ul class="nav justify-content-end">
-                        <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Active</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link disabled">Disabled</a>
-                        </li>
-                    </ul>
+            <div class="container fixed-top z-index-1 mt-3">
+                <div class="row">
+                    <div class="col-2">
+                        <h1 class="drift">DR1FT</h1>
+                    </div>
+                    <div class="col-10">
+                        <ul class="nav justify-content-end user-nav">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="#">HOME</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">RACES</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">GALLERY</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#">MEMBERSHIP</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link " href="#">SIGN IN</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
            
             <section class="first">
                 <div class="outer">
                     <div class="inner">
-                    <div class="bg one">
-                        <h2 class="section-heading">Scroll Down</h2>
-                    </div>
+                        <div class="bg one">
+                            <video autoplay muted loop id="video-background">
+                                <source src="{{asset('storage/video/race.mp4')}}" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <div class="section-heading">
+                                <h2>CHASE <span>VICTORY</span></h2>
+                                <h2>DRIVE THE DREAM</h2>
+                            </div>
+                        </div>
+                    
                     </div>
                 </div>
             </section>
@@ -179,7 +177,51 @@
                 <div class="outer">
                     <div class="inner">
                     <div class="bg">
-                        <h2 class="section-heading">Infinite Scroll using GSAP</h2>
+                        <div class="container">
+                            <h2>COMING SOON</h2>
+                            <div class="row">
+                                <div class="flip-card col-3" tabIndex="0">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                    <h3>Hover</h3>
+                                    </div>
+                                    <div class="flip-card-back">
+                                    <h3>W</h3>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="flip-card col-3" tabIndex="0">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                    <h3>Hover</h3>
+                                    </div>
+                                    <div class="flip-card-back">
+                                    <h3>W</h3>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="flip-card col-3" tabIndex="0">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                    <h3>Hover</h3>
+                                    </div>
+                                    <div class="flip-card-back">
+                                    <h3>W</h3>
+                                    </div>
+                                </div>
+                                </div>
+                                <div class="flip-card col-3" tabIndex="0">
+                                <div class="flip-card-inner">
+                                    <div class="flip-card-front">
+                                    <h3>Hover</h3>
+                                    </div>
+                                    <div class="flip-card-back">
+                                    <h3>W</h3>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     </div>
                 </div>
@@ -218,7 +260,7 @@
                     </div>
                 </div>
             </section>
-        </div>
+        
     </body>
 </html>
 

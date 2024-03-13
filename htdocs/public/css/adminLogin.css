@@ -12182,6 +12182,14 @@ textarea.form-control-lg {
   font-family: "Montserrat", sans-serif;
 }
 
+.drift {
+  font-family: "Racing Sans One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  color: #DC2E25;
+  font-size: 24px;
+}
+
 .bg-red-gradient {
   background: linear-gradient(to top left, #A52622, #E93F36) !important;
 }
@@ -12197,6 +12205,38 @@ textarea.form-control-lg {
 
 .fixed-cel {
   background-color: #252328 !important;
+}
+
+.user-nav .nav-link {
+  color: white;
+  font-size: 16px !important;
+}
+.user-nav .nav-link.active {
+  color: #D1241C;
+}
+
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1; /* Asegúrate de que el texto esté encima del video */
+  color: #ffffff;
+}
+.section-heading span {
+  color: #DC2E25;
+}
+.section-heading h2:first-child, .section-heading .h2:first-child {
+  font-size: 128px;
+  letter-spacing: 14px;
+}
+.section-heading h2:last-child, .section-heading .h2:last-child {
+  font-size: 96px;
+  letter-spacing: 20px;
 }
 
 .breadcrumb-item {
