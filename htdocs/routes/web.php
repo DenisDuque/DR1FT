@@ -10,7 +10,7 @@ use App\Http\Controllers\DriverController;
 use App\Http\Controllers\PDFController;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('index');
 });
 
 // ADMINISTRATOR
