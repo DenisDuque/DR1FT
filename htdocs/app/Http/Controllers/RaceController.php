@@ -12,6 +12,14 @@ use Carbon\Carbon;
 
 class RaceController extends Controller {
 
+    public function mainPage() {
+        $races = Race::get();
+
+        return view('main.page', [
+            'races' => $races
+        ]);
+    }
+
     public function index() {
         $races = Race::get();
 
@@ -19,6 +27,7 @@ class RaceController extends Controller {
             'races' => $races
         ]);
     }
+
 
     public function new() {
         $sponsors = Sponsor::all();

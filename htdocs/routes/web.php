@@ -9,9 +9,7 @@ use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\PDFController;
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', [RaceController::class, 'mainPage'])->name('main.page');
 
 // ADMINISTRATOR
 Route::group(['prefix' => '/admin'], function () {
