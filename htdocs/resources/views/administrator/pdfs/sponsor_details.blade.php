@@ -31,15 +31,20 @@
             <p><strong>CIF:</strong> {{ $sponsor->cif }}</p>
             <p><strong>Nombre:</strong> {{ $sponsor->name }}</p>
             <p><strong>Dirección:</strong> {{ $sponsor->address }}</p>
+            <p><strong>Total cost:</strong>{{$totalSponsorCost}}</p>
 
         </div>
-        <table class="table table-striped">
+        <table class="table table-striped table-sm">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">First</th>
-                    <th scope="col">Last</th>
-                    <th scope="col">Handle</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Date</th>
+                    <th scope="col" class="w-300px">Place</th>
+                    <th scope="col" class="text-center">Max. Drivers</th>
+                    <th scope="col" class="text-center">Length</th>
+                    <th scope="col" class="text-center">Sponsor Cost</th>
+                    <th class="text-center">Registration Price</th>
                 </tr>
             </thead>
             <tbody>

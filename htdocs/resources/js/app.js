@@ -7,6 +7,7 @@ import './Admin_Races_Search';
 import './Admin_Sponsors_Search';
 import './Admin_Sponsors_Races_Search';
 import './Admin_Edit_Races';
+import './page_scroll';
 
 // Función para mostrar la vista previa de la imagen
 function previewImage(input, preview) {
