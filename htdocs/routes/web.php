@@ -11,6 +11,9 @@ use App\Http\Controllers\PDFController;
 
 Route::get('/', [RaceController::class, 'mainPage'])->name('main.page');
 
+Route::get('/login', [DriverController::class, 'showLogin']);
+Route::post('/login', [DriverController::class, 'auth'])->name('user.login');
+
 // ADMINISTRATOR
 Route::group(['prefix' => '/admin'], function () {
     Route::get('', [AdministratorController::class, 'showLogin']);
@@ -74,3 +77,4 @@ Route::middleware(['ajax'])->group(function () {
 
 });
 Route::post('/races/find', [RaceController::class, 'find'])->name('admin.races.find');
+Route::get('/races/find/{id}', [RaceController::class, 'find'])->name('admin.races.find');

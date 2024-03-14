@@ -25,6 +25,7 @@ class Kernel extends HttpKernel
 
     protected $routeMiddleware = [
         'admin.auth' => \App\Http\Middleware\AdminAuth::class,
+        'user.auth' => \App\Http\Middleware\DriverAuth::class,
         'race.creating' => \App\Http\Middleware\RaceCreating::class,
         'ajax' => \App\Http\Middleware\OnlyAjaxRequests::class,
     ];

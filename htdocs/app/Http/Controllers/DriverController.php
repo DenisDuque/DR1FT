@@ -2,12 +2,49 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Driver;
 use Carbon\Carbon;
 
 class DriverController extends Controller
 {
+
+    public function showLogin() {
+        return view('login');
+    }
+
+    public function auth() {
+
+        request()->validate([
+            'email' => 'required|email',
+            'password' => 'required',
+        ]);
+
+        $email = request()->input('email');
+        $password = request()->input('password');
+
+        $user = Driver::where('email', $email)->first();
+
+        if ($user && Auth::guard('user')->attempt(['email' => $email, 'password' => $password])) {
+            return redirect()->route('main.page');
+        } else {
+            // Las credenciales son incorrectas o el usuario no existe
+            return redirect()->route('user.login')->with('error', 'Credenciales incorrectas');
+        }
+    }
+
+    public function logout() {
+        // Cerrar la sesión del guard 'admin'
+        Auth::guard('user')->logout();
+
+        // Limpiar cualquier dato almacenado en la sesión
+        session()->flush();
+
+        // Redirigir a la página de inicio de sesión
+        return redirect()->route('admin.login');
+    }
+
     public function index() {
         $drivers = Driver::get();
 
