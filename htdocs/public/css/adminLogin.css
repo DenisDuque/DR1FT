@@ -213,6 +213,60 @@ input[type=range]:disabled::-moz-range-thumb {
   border: 4px solid rgba(0, 0, 0, 0);
 }
 
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+  height: 300px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  backface-visibility: hidden;
+  -moz-backface-visibility: hidden;
+}
+
+.flip-card:focus {
+  outline: 0;
+}
+
+.flip-card:hover .flip-card-inner,
+.flip-card:focus .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.flip-card-front {
+  background: linear-gradient(to left, #4364f7, #6fb1fc);
+  color: black;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.flip-card-back {
+  background: linear-gradient(to right, #4364f7, #6fb1fc);
+  color: white;
+  transform: rotateY(180deg);
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 /*!
  * Bootstrap  v5.3.3 (https://getbootstrap.com/)
  * Copyright 2011-2024 The Bootstrap Authors
@@ -12190,6 +12244,12 @@ textarea.form-control-lg {
   font-size: 24px;
 }
 
+.index-page-headers {
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: 10px;
+}
+
 .bg-red-gradient {
   background: linear-gradient(to top left, #A52622, #E93F36) !important;
 }
@@ -12207,6 +12267,10 @@ textarea.form-control-lg {
   background-color: #252328 !important;
 }
 
+.second .bg {
+  background: linear-gradient(to top left, #252328, #282828) !important;
+}
+
 .user-nav .nav-link {
   color: white;
   font-size: 16px !important;
@@ -12216,10 +12280,6 @@ textarea.form-control-lg {
 }
 
 .section-heading {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -12231,12 +12291,12 @@ textarea.form-control-lg {
   color: #DC2E25;
 }
 .section-heading h2:first-child, .section-heading .h2:first-child {
-  font-size: 128px;
-  letter-spacing: 14px;
+  font-size: 8rem;
+  letter-spacing: 10px;
 }
 .section-heading h2:last-child, .section-heading .h2:last-child {
-  font-size: 96px;
-  letter-spacing: 20px;
+  font-size: 6rem;
+  letter-spacing: 18px;
 }
 
 .breadcrumb-item {

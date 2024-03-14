@@ -12244,6 +12244,14 @@ textarea.form-control-lg {
   font-size: 24px;
 }
 
+.index-page-headers {
+  font-weight: 600;
+  font-size: 1.5rem;
+  letter-spacing: 5px;
+  text-align: center;
+  color: white;
+}
+
 .bg-red-gradient {
   background: linear-gradient(to top left, #A52622, #E93F36) !important;
 }

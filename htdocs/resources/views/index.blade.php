@@ -177,9 +177,15 @@
                 <div class="outer">
                     <div class="inner">
                     <div class="bg">
-                        <div class="container">
-                            <h2>COMING SOON</h2>
+                        <div class="container h-75">
                             <div class="row">
+                                <h2 class="index-page-headers">COMING SOON</h2>
+                            </div>
+                            <div class="row mt-5">
+                                @foreach ($races as $race)
+                                    <p class="text-white">{{$race}}</p>
+                                @endforeach
+
                                 <div class="flip-card col-3" tabIndex="0">
                                 <div class="flip-card-inner">
                                     <div class="flip-card-front">
