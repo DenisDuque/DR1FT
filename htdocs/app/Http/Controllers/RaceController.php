@@ -13,19 +13,21 @@ use Carbon\Carbon;
 class RaceController extends Controller {
 
     public function mainPage() {
-        // Obtener la fecha actual
-        $today = Carbon::now()->toDateString();
-
+        // Obtener la fecha actual formateada como día - mes - año
+        $today = Carbon::now()->format('d-m-Y');
+    
         // Obtener las próximas 4 carreras
         $races = Race::where('date', '>=', $today)
                     ->orderBy('date')
                     ->limit(4)
                     ->get();
-
+    
         return view('index', [
             'races' => $races
         ]);
     }
+    
+    
 
     public function index() {
         $races = Race::get();

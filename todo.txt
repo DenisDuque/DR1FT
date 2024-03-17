@@ -2,7 +2,8 @@
 - grid dashboard
 
 - vista edit races
-- vista detalle race
+
+- FECHAS
 
 
 - [NOTICE] edit races sin cambios

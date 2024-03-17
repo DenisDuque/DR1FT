@@ -148,7 +148,7 @@
                                 <a class="nav-link " href="#">MEMBERSHIP</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="#">SIGN IN</a>
+                                <a class="nav-link " href="{{route('user.login')}}">SIGN IN</a>
                             </li>
                         </ul>
                     </div>
@@ -183,49 +183,40 @@
                             </div>
                             <div class="row mt-5">
                                 @foreach ($races as $race)
-                                    <p class="text-white">{{$race}}</p>
-                                @endforeach
+                                
+                                    <div class="flip-card col-3" tabIndex="0">
+                                        <div class="flip-card-inner">
+                                            <div class="flip-card-front p-4">
+                                                <h3>Hover</h3>
+                                            </div>
+                                            <div class="flip-card-back p-4">
+                                                <h4>{{$race->name}}</h4>
+                                               
+                                                <span class=" badge rounded-pill bg-light text-dark"><i class="bi bi-calendar2-week-fill"></i>{{$race->date}}</span>
+                                                @if ($race->pro == 1)
+                                                    <span class=" badge rounded-pill bg-warning text-dark">PRO</span>
+                                                @endif
+                                                <span class=" badge rounded-pill bg-info text-dark"><i class="bi bi-people-fill"></i>Max. {{$race->maxParticipants}}</span>
+                                                <span class=" badge rounded-pill bg-badge-purple">{{$race->length}} Km</span>
 
-                                <div class="flip-card col-3" tabIndex="0">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front">
-                                    <h3>Hover</h3>
+                                                <h5>Location</h5>
+                                                <p><i class="bi bi-geo-alt-fill"></i>{{$race->startingPlace}}</p>
+
+                                                <h5>Main Sponsors</h5>
+                                                
+                                                @foreach($race->sponsors as $sponsor)
+                                                    @if($sponsor->pivot->mainSponsor == 1)
+                                                        <img class="img-thumbnail mb-1" src="{{ asset('storage/sponsor_logos/' . $sponsor->logo) }}" alt="{{$sponsor->name}}">
+                                                    @endif
+                                                @endforeach
+                                                
+                                                <h5>More Information</h5>
+                                                <p>{{$race->description}}</p>
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="flip-card-back">
-                                    <h3>W</h3>
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="flip-card col-3" tabIndex="0">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front">
-                                    <h3>Hover</h3>
-                                    </div>
-                                    <div class="flip-card-back">
-                                    <h3>W</h3>
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="flip-card col-3" tabIndex="0">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front">
-                                    <h3>Hover</h3>
-                                    </div>
-                                    <div class="flip-card-back">
-                                    <h3>W</h3>
-                                    </div>
-                                </div>
-                                </div>
-                                <div class="flip-card col-3" tabIndex="0">
-                                <div class="flip-card-inner">
-                                    <div class="flip-card-front">
-                                    <h3>Hover</h3>
-                                    </div>
-                                    <div class="flip-card-back">
-                                    <h3>W</h3>
-                                    </div>
-                                </div>
-                                </div>
+                                @endforeach
+                               
                             </div>
                         </div>
                     </div>

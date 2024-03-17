@@ -215,16 +215,16 @@ input[type=range]:disabled::-moz-range-thumb {
 
 .flip-card {
   background-color: transparent;
-  width: 300px;
-  height: 300px;
+  width: 343px;
+  height: 550px;
   perspective: 1000px;
+  border-radius: 15px !important;
 }
 
 .flip-card-inner {
   position: relative;
   width: 100%;
   height: 100%;
-  text-align: center;
   transition: transform 0.6s;
   transform-style: preserve-3d;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -252,19 +252,15 @@ input[type=range]:disabled::-moz-range-thumb {
   background: linear-gradient(to left, #4364f7, #6fb1fc);
   color: black;
   z-index: 2;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 15px;
 }
 
 .flip-card-back {
-  background: linear-gradient(to right, #4364f7, #6fb1fc);
+  background: linear-gradient(to top left, #151418, #1e1e1e) !important;
   color: white;
   transform: rotateY(180deg);
   z-index: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  border-radius: 15px;
 }
 
 /*!
@@ -2347,7 +2343,6 @@ progress {
 }
 .form-label {
   margin-bottom: 0.5rem;
-  color: white;
 }
 
 .col-form-label {
@@ -2672,10 +2667,6 @@ textarea.form-control-lg {
 .form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label {
   cursor: default;
   opacity: 0.5;
-}
-
-.form-check-label {
-  color: white;
 }
 
 .form-switch {
@@ -4932,12 +4923,18 @@ textarea.form-control-lg {
 }
 
 .breadcrumb {
+  --bs-breadcrumb-padding-x: 0;
+  --bs-breadcrumb-padding-y: 0;
+  --bs-breadcrumb-margin-bottom: 1rem;
   --bs-breadcrumb-bg: ;
   --bs-breadcrumb-border-radius: ;
   --bs-breadcrumb-divider-color: var(--bs-secondary-color);
+  --bs-breadcrumb-item-padding-x: 0.5rem;
   --bs-breadcrumb-item-active-color: var(--bs-secondary-color);
   display: flex;
   flex-wrap: wrap;
+  padding: var(--bs-breadcrumb-padding-y) var(--bs-breadcrumb-padding-x);
+  margin-bottom: var(--bs-breadcrumb-margin-bottom);
   font-size: var(--bs-breadcrumb-font-size);
   list-style: none;
   background-color: var(--bs-breadcrumb-bg);
@@ -4950,7 +4947,7 @@ textarea.form-control-lg {
 .breadcrumb-item + .breadcrumb-item::before {
   float: left;
   padding-right: var(--bs-breadcrumb-item-padding-x);
-  color: var(--bs-breadcrumb-divider-color);
+  color: white;
   content: var(--bs-breadcrumb-divider, "/") /* rtl: var(--bs-breadcrumb-divider, "/") */;
 }
 .breadcrumb-item.active {
