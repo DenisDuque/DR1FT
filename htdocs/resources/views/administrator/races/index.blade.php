@@ -43,10 +43,10 @@
                                 <span class="badge rounded-pill bg-badge-disabled">Disabled</span>
                             @endif
                         </td>
-                        <td class="py-3 align-middle"><i class="me-2 bi bi-calendar-event"></i>{{$race->date}}</td>
+                        <td class="py-3 align-middle"><span class="badge rounded-pill text-bg-light"><i class="me-1 bi bi-calendar2-week-fill"></i>{{$race->date}}</span></td>
                         <td class="py-3 align-middle">{{$race->startingPlace}}</td>
                         <td class="py-3 text-center align-middle">{{$race->maxParticipants}}</td>
-                        <td class="py-3 text-center align-middle">{{$race->length}}</td>
+                        <td class="py-3 text-center align-middle">{{$race->length}} Km</td>
                         <td class=" align-middle text-center w-10"><span class="badge rounded-pill bg-badge-purple">{{$race->sponsorCost}}$</span></td>
                         <td class="align-middle text-center w-10"><span class="badge rounded-pill bg-badge-purple">{{$race->registrationPrice}}$</span></td>
                         <td class="py-3 text-center align-middle">
