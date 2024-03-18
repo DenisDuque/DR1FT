@@ -88,14 +88,14 @@
                 url("https://64.media.tumblr.com/3de2c2eab9cbac5aa7c1f641eb4e7ccc/tumblr_nj8curbq8F1sbh9awo1_500.jpg");
 
             } */
-            .third .bg {
+            /* .third .bg {
                 background-image: linear-gradient(
                 180deg,
                 rgba(0, 0, 0, 0.6) 0%,
                 rgba(0, 0, 0, 0.3) 100%
                 ),
                 url(https://i0.wp.com/oregongirlaroundtheworld.com/wp-content/uploads/2015/07/img_3494.jpg?fit=3754%2C1738);
-            }
+            } */
             .fourth .bg {
                 background-image: linear-gradient(
                 180deg,
@@ -139,7 +139,7 @@
                                 <a class="nav-link active" aria-current="page" href="#">HOME</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">RACES</a>
+                                <a class="nav-link" href="{{route('races.all')}}">RACES</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">GALLERY</a>
@@ -226,9 +226,18 @@
             <section class="third">
                 <div class="outer">
                     <div class="inner">
-                    <div class="bg">
-                        <h2 class="section-heading">Keep Scrolling</h2>
-                    </div>
+                        <div class="bg">
+                            <div class="container h-75">
+                                <div class="row">
+                                    <h2 class="index-page-headers">MEMBERSHIP PLANS</h2>
+                                </div>
+                                <div class="row mt-5">
+                                    
+                                    sdfs
+                                   
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>

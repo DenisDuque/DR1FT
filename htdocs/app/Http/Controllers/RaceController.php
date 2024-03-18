@@ -26,6 +26,13 @@ class RaceController extends Controller {
             'races' => $races
         ]);
     }
+
+    public function allRaces() {
+        
+        $races = Race::where('active', 1)->get();
+        
+        return view('page.races', ['races' => $races]);
+    }
     
     
 
@@ -261,12 +268,13 @@ class RaceController extends Controller {
     public function show($id) {
         $race = Race::find($id);
 
-        if ($race) {
-            $race->date = Carbon::createFromFormat('d-m-Y', $race->date)->format('Y-m-d');
-            return view('administrator.races.show')->with('race', $race);
-        } else {
-            return redirect()->route('admin.races')->with('error', 'Race not found');
-        }
+        // if ($race) {
+        //     $race->date = Carbon::createFromFormat('d-m-Y', $race->date)->format('Y-m-d');
+        //     return view('administrator.races.show')->with('race', $race);
+        // } else {
+        //     return redirect()->route('admin.races')->with('error', 'Race not found');
+        // }
+        return view('page.raceDetails', ['race' => $race]);
     }
 
     public function search() {

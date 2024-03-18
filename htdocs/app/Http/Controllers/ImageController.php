@@ -29,4 +29,8 @@ class ImageController extends Controller {
             return false;
         }
     }
+
+    public static function gallery(){
+        return view('page.gallery');
+    }
 }

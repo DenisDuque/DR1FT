@@ -15,7 +15,20 @@
     >> [INFO] no se suben imagenes a race_banners
 
 - [INFO] SOLO los corredores PRO tienen número de federación.
+- [INFO] SOLO se pueden inscribir si falta justo 1 mes
 
+===================== PÁGINAS USUARIO =====================
+
+    => DETALLE CARRERA
+        - [JS] Slider de imagenes
+        - Classificación
+        - Inscripción
+
+    => LISTAR CARRERAS
+        - [JS] Filtro Order by
+        - [CSS] estilos cartas
+
+    => GALLERY -> Imagenes de carreras aleatorias
 
 [HOW TO PDF] => https://www.itsolutionstuff.com/post/laravel-10-generate-pdf-file-using-dompdf-exampleexample.html
 [HOW TO SCROLL] => https://codepen.io/flexcode/pen/poxVRpN 

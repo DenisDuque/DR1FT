@@ -6,6 +6,7 @@
 @import 'variables_app';
 @import 'mixins';
 @import 'range';
+@import 'gallery';
 @import 'flip-cards';
 
 // Bootstrap
@@ -30,7 +31,21 @@
     letter-spacing: 5px;
     text-align: center;
     color: white;
+    position: relative;
+
+    &::after {
+        content: '';
+        position: absolute;
+        border-radius: 5px;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -10px; 
+        width: 60px;
+        height: 3px;
+        background-color: $defaultRed;
+    }
 }
+
 
 .bg-red-gradient {
     @include backgroundGradient($gradientRed1, $gradientRed2);
@@ -45,11 +60,20 @@
     @include backgroundGradient($primaryBlack, $secondaryBlack);
 }
 
+.card-all-races {
+    @include backgroundGradient($primaryBlack, $secondaryBlack);
+
+}
+
+.page-header-bg {
+    background-color: $secondaryBlack !important;
+}
+
 .fixed-cel {
     background-color: $cardBgBlack1 !important;
 }
 
-.second .bg {
+.bg {
     @include backgroundGradient($cardBgBlack1, $cardBGBlack2);
 }
 

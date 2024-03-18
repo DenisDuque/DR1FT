@@ -7,9 +7,15 @@ use App\Http\Controllers\RaceController;
 use App\Http\Controllers\InsuranceController;
 use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\DriverController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PDFController;
 
 Route::get('/', [RaceController::class, 'mainPage'])->name('main.page');
+Route::get('/races', [RaceController::class, 'allRaces'])->name('races.all');
+Route::get('/races/{race}', [RaceController::class, 'show'])->name('race.detail');
+Route::get('/gallery', [ImageController::class, 'gallery'])->name('page.gallery');
+
+
 
 Route::get('/login', [DriverController::class, 'showLogin']);
 Route::post('/login', [DriverController::class, 'auth'])->name('user.login');

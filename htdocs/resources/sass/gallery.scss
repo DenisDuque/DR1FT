@@ -1,0 +1,41 @@
+figure {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-auto-rows: auto;
+    grid-auto-flow: dense;
+    justify-items: stretch;
+    align-items: stretch;
+    gap: 2svmin;
+  
+    img {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+  
+    @media (min-width: 500px) {
+      grid-template-columns: repeat(2, 1fr);
+  
+      img:nth-of-type(11) {
+        grid-row: span 2 / auto;
+      }
+    }
+  
+    @media (min-width: 1000px) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1svmin;
+  
+      img:nth-of-type(3),
+      img:nth-of-type(12) {
+        grid-row: span 2 / auto;
+        grid-column: span 2 / auto;
+      }
+  
+      img:nth-of-type(5),
+      img:nth-of-type(15) {
+        grid-column: span 2 / auto;
+      }
+    }
+  }
+  
