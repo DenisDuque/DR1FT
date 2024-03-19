@@ -28,7 +28,7 @@ class RaceFactory extends Factory
             'maxParticipants' => fake()->numberBetween(8, 20),
             'length' => fake()->randomFloat(2, 0, 300),
             'banner' => 'defaultRaceBanner.png',
-            'date' => fake()->date('d-m-Y'),
+            'date' => fake()->date('Y-m-d'),
             'startingPlace' => fake()->address(),
             'sponsorCost' => fake()->randomFloat(2, 50, 10000),
             'registrationPrice' => fake()->randomFloat(2, 15, 200),
