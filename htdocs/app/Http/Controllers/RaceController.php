@@ -9,6 +9,7 @@ use App\Models\Insurance;
 use App\Models\RaceInsurance;
 use App\Models\RaceSponsor;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class RaceController extends Controller {
 
@@ -267,6 +268,7 @@ class RaceController extends Controller {
 
     public function show($id) {
         $race = Race::find($id);
+        $insurances = Insurance::all();
 
         // if ($race) {
         //     $race->date = Carbon::createFromFormat('d-m-Y', $race->date)->format('Y-m-d');
@@ -274,7 +276,10 @@ class RaceController extends Controller {
         // } else {
         //     return redirect()->route('admin.races')->with('error', 'Race not found');
         // }
-        return view('page.raceDetails', ['race' => $race]);
+        return view('page.raceDetails', [
+            'race' => $race, 
+            'insurances' => $insurances
+        ]);
     }
 
     public function search() {
@@ -292,4 +297,45 @@ class RaceController extends Controller {
 
         return response()->json($race);
     }
+
+    public function assignRaceNumbers($raceId) {
+        // Obtener la carrera por su ID
+        $race = Race::findOrFail($raceId);
+        
+        // Obtener todos los corredores de la carrera ordenados por su ID
+        $drivers = $race->drivers()->orderBy('id')->get();
+        
+        // Verificar el número máximo de participantes permitidos en la carrera
+        $maxParticipants = $race->maxParticipants;
+        
+        // Verificar el número actual de participantes en la carrera
+        $currentParticipants = $drivers->count();
+        
+        // Verificar si ya se han asignado dorsales
+        $assignedNumbers = DB::table('race_driver')
+                            ->where('race_id', $raceId)
+                            ->pluck('dorsal')
+                            ->toArray();
+        
+        // Calcular los dorsales disponibles
+        $availableNumbers = array_diff(range(1, $maxParticipants), $assignedNumbers);
+        
+        // Verificar si hay suficientes dorsales disponibles para todos los corredores
+        if (count($availableNumbers) < $currentParticipants) {
+            // No hay suficientes dorsales disponibles
+            return redirect()->back()->with('error', 'No hay suficientes dorsales disponibles para todos los corredores.');
+        }
+        
+        // Asignar dorsales a los corredores
+        foreach ($drivers as $index => $driver) {
+            // Asignar el siguiente dorsal disponible al corredor
+            $dorsal = array_shift($availableNumbers);
+            
+            // Guardar el dorsal asignado en la tabla pivot 'race_driver'
+            $driver->races()->updateExistingPivot($raceId, ['dorsal' => $dorsal]);
+        }
+        
+        return redirect()->back()->with('success', 'Se han asignado los dorsales correctamente.');
+    }
+    
 }

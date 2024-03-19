@@ -7,6 +7,7 @@ import './Admin_Races_Search';
 import './Admin_Sponsors_Search';
 import './Admin_Sponsors_Races_Search';
 import './Admin_Edit_Races';
+import './race_details';
 import './page_scroll';
 
 $(document).ready(function() {

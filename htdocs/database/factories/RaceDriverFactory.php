@@ -3,6 +3,8 @@
 namespace Database\Factories;
 
 use App\Models\RaceDriver;
+use App\Models\Race;
+use App\Models\Driver;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class RaceDriverFactory extends Factory

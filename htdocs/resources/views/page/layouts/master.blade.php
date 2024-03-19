@@ -44,7 +44,12 @@
                             <a class="nav-link " href="#">MEMBERSHIP</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link " href="{{route('user.login')}}">SIGN IN</a>
+                            @if(session()->has('user_id'))
+                                <a class="nav-link " href="{{route('user.login')}}">PROFILE</a>
+                            @else
+                                <a class="nav-link " href="{{route('user.login')}}">SIGN IN</a>
+                            @endif
+
                         </li>
                     </ul>
                 </div>

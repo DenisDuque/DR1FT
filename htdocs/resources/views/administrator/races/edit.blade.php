@@ -31,6 +31,7 @@
                 <div class="col-6">
                     <h1 class="admin-form-title">Edit Race</h1>
                     <small>Lorem ipsum, dolor sit amet consectetur adipisicing elit.</small>
+                    <a href="{{route('admin.races.asignRaceNumbers', ['raceId' => $race->id])}}" class="btn btn-primary">Assign Participants Number</a>
                 </div>
                 <div class="col-6 overflow-auto">
                     @if ($errors->any())
@@ -151,6 +152,7 @@
                         <button type="submit" class="btn btn-success text-white">Next<i class="bi bi-chevron-double-right"></i></button>
                     </div>
                 </form>
+
             </div>
         </div>
     </div>

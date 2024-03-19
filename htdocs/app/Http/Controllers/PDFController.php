@@ -28,4 +28,22 @@ class PDFController extends Controller
         // Descargar el PDF
         return $pdf->download('sponsor_details.pdf');
     }
+
+    public function generateRacePDF($raceId){
+        // Obtener la carrera específica por su ID junto con los datos de los pilotos que participan en ella
+        $race = Race::with('drivers')->find($raceId);
+    
+        // Datos de la carrera
+        $raceData = [
+            'race' => $race,
+            'participants' => $race->drivers->pluck('name')->toArray(), // Obtener solo los nombres de los participantes
+        ];
+    
+        // Generar el PDF usando la vista 'race_details' y los datos proporcionados
+        $pdf = PDF::loadView('administrator.pdfs.race_details', $raceData);
+    
+        // Descargar el PDF
+        return $pdf->download('race_details.pdf');
+    }
+    
 }

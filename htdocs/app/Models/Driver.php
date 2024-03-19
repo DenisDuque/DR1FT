@@ -24,7 +24,7 @@ class Driver extends Model implements Authenticatable
     ];
 
     public function races() {
-        return $this->belongsToMany(Race::class)->withPivot('dorsal', 'time');
+        return $this->belongsToMany(Race::class, 'race_driver')->withPivot('dorsal', 'time');
     }
 
     use HasFactory;

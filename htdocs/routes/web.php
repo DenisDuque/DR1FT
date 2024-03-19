@@ -43,6 +43,9 @@ Route::group(['prefix' => '/admin'], function () {
             Route::get('/show/{id}', [RaceController::class, 'show'])->name('admin.races.show');
             Route::get('/edit/{id}', [RaceController::class, 'edit'])->name('admin.races.edit');
             Route::post('/edit/{id}', [RaceController::class, 'update'])->name('admin.races.update');
+            Route::get('/race-pdf/{raceId}', [PDFController::class, 'generateRacePDF'])->name('generate.race.pdf');
+            Route::get('/assignRaceNumbers/{raceId}', [RaceController::class, 'assignRaceNumbers'])->name('admin.races.asignRaceNumbers');
+
         });
 
         // ADMINISTRATOR: DRIVERS

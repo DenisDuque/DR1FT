@@ -23,7 +23,7 @@ class Race extends Model
     ];
     
     public function drivers() {
-        return $this->belongsToMany(Driver::class)->withPivot('dorsal', 'time');
+        return $this->belongsToMany(Driver::class, 'race_driver')->withPivot('dorsal', 'time');
     }
 
     public function insurances() {

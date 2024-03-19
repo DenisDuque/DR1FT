@@ -27,6 +27,8 @@ class DriverController extends Controller
         $user = Driver::where('email', $email)->first();
 
         if ($user && Auth::guard('user')->attempt(['email' => $email, 'password' => $password])) {
+            session(['user_id' => $user->id]);
+            //dd('user id:'.session('user_id'));
             return redirect()->route('main.page');
         } else {
             // Las credenciales son incorrectas o el usuario no existe
