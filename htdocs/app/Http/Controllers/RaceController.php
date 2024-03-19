@@ -14,7 +14,7 @@ class RaceController extends Controller {
 
     public function mainPage() {
         // Obtener la fecha actual formateada como día - mes - año
-        $today = Carbon::now()->format('d-m-Y');
+        $today = Carbon::now()->format('Y-m-d');
     
         // Obtener las próximas 4 carreras
         $races = Race::where('date', '>=', $today)
@@ -154,7 +154,7 @@ class RaceController extends Controller {
                     'maxParticipants' => $race['maxParticipants'],
                     'length' => $race['length'],
                     'banner' => $race['banner'],
-                    'date' => $race['date'],
+                    'date' => Carbon::createFromFormat('d-m-Y', $race['date'])->format('Y-m-d'),
                     'startingPlace' => $race['startingPlace'],
                     'sponsorCost' => $race['sponsorCost'],
                     'registrationPrice' => $race['registrationPrice'],
@@ -196,7 +196,6 @@ class RaceController extends Controller {
         $race = Race::find($id);
         
         if ($race) {
-            $race->date = Carbon::createFromFormat('d-m-Y', $race->date)->format('Y-m-d');
             return view('administrator.races.edit')->with('race', $race);
         } else {
             return redirect()->route('admin.races')->with('error', 'Race not found');
@@ -231,7 +230,7 @@ class RaceController extends Controller {
                 'description' => request('raceDescription'),
                 'maxParticipants' => request('raceMaxParticipants'),
                 'length' => request('raceLength'),
-                'date' => Carbon::createFromFormat('Y-m-d', request('raceDate'))->format('d-m-Y'),
+                'date' => request('raceDate'),
                 'startingPlace' => request('raceCoords'),
                 'sponsorCost' => request('raceSponsorCost'),
                 'registrationPrice' => request('raceRegistrationPrice'),

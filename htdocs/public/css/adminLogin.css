@@ -213,6 +213,46 @@ input[type=range]:disabled::-moz-range-thumb {
   border: 4px solid rgba(0, 0, 0, 0);
 }
 
+figure {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-auto-rows: auto;
+  grid-auto-flow: dense;
+  justify-items: stretch;
+  align-items: stretch;
+  gap: 2svmin;
+}
+figure img {
+  width: 100%;
+  aspect-ratio: 16/9;
+  -o-object-fit: cover;
+     object-fit: cover;
+  border-radius: 10px;
+}
+@media (min-width: 500px) {
+  figure {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  figure img:nth-of-type(11) {
+    grid-row: span 2/auto;
+  }
+}
+@media (min-width: 1000px) {
+  figure {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1svmin;
+  }
+  figure img:nth-of-type(3),
+  figure img:nth-of-type(12) {
+    grid-row: span 2/auto;
+    grid-column: span 2/auto;
+  }
+  figure img:nth-of-type(5),
+  figure img:nth-of-type(15) {
+    grid-column: span 2/auto;
+  }
+}
+
 .flip-card {
   background-color: transparent;
   width: 343px;
@@ -243,6 +283,7 @@ input[type=range]:disabled::-moz-range-thumb {
 
 .flip-card-front,
 .flip-card-back {
+  ax-height: 15rem;
   position: absolute;
   width: 100%;
   height: 100%;
@@ -2343,7 +2384,6 @@ progress {
 }
 .form-label {
   margin-bottom: 0.5rem;
-  color: white;
 }
 
 .col-form-label {
@@ -2668,10 +2708,6 @@ textarea.form-control-lg {
 .form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label {
   cursor: default;
   opacity: 0.5;
-}
-
-.form-check-label {
-  color: white;
 }
 
 .form-switch {
@@ -4928,12 +4964,18 @@ textarea.form-control-lg {
 }
 
 .breadcrumb {
+  --bs-breadcrumb-padding-x: 0;
+  --bs-breadcrumb-padding-y: 0;
+  --bs-breadcrumb-margin-bottom: 1rem;
   --bs-breadcrumb-bg: ;
   --bs-breadcrumb-border-radius: ;
   --bs-breadcrumb-divider-color: var(--bs-secondary-color);
+  --bs-breadcrumb-item-padding-x: 0.5rem;
   --bs-breadcrumb-item-active-color: var(--bs-secondary-color);
   display: flex;
   flex-wrap: wrap;
+  padding: var(--bs-breadcrumb-padding-y) var(--bs-breadcrumb-padding-x);
+  margin-bottom: var(--bs-breadcrumb-margin-bottom);
   font-size: var(--bs-breadcrumb-font-size);
   list-style: none;
   background-color: var(--bs-breadcrumb-bg);
@@ -12246,6 +12288,18 @@ textarea.form-control-lg {
   letter-spacing: 5px;
   text-align: center;
   color: white;
+  position: relative;
+}
+.index-page-headers::after {
+  content: "";
+  position: absolute;
+  border-radius: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: -10px;
+  width: 60px;
+  height: 3px;
+  background-color: #DC2E25;
 }
 
 .bg-red-gradient {
@@ -12259,6 +12313,14 @@ textarea.form-control-lg {
 .background-admin-gradient {
   height: 100vh;
   background: linear-gradient(to top left, #151418, #1e1e1e) !important;
+}
+
+.card-all-races {
+  background: linear-gradient(to top left, #151418, #1e1e1e) !important;
+}
+
+.page-header-bg {
+  background-color: #1e1e1e !important;
 }
 
 .fixed-cel {
