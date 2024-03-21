@@ -18,6 +18,19 @@
             <p>Registration Price: {{$race->registrationPrice}}</p>
             <p>Max. Participants: {{$race->maxParticipants}}</p>
             <p>Date: {{$race->date}}</p>
+            <!-- Agregar esto al principio de la vista para mostrar los errores de validación -->
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
+
+<!-- Tu formulario va aquí -->
+
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
                 Participate
@@ -38,8 +51,14 @@
                             @else
                                 <a class="nav-link " href="{{route('user.login')}}">SIGN IN</a>
                             @endif --}}
-                        <form class="row g-3 text-white" action="{{route('admin.drivers.new')}}" method="POST">
+                        <form class="row g-3 text-white" action="{{route('race.register')}}" method="POST">
                             @csrf
+                            @if(session()->has('user_id'))
+                                <input type="hidden" name="member" value="1">
+                            @else
+                                <input type="hidden" name="member" value="0">
+                            @endif
+                            <input type="hidden" name="race_id" value="{{$race->id}}">
                             <div class="col-md-12">
                                 <label for="driverName" class="form-label ">Name</label>
                                 <input type="text" name="driverName" class="form-control" id="driverName" value="{{old('driverName')}}">
@@ -67,7 +86,7 @@
                                 <label for="driverFederation" class="form-label" id="federation-label">Nº Federation</label>
                                 <input type="number" name="driverFederation" class="form-control" id="driverFederation">
 
-                                <select class="form-select form-select-sm hidden-select" aria-label=".form-select-sm example">
+                                <select name="driverInsurance" class="form-select form-select-sm hidden-select" aria-label=".form-select-sm example">
                                     <option selected>Open this select menu</option>
                                     @foreach ($insurances as $insurance)
                                         <option value="{{$insurance->id}}">{{$insurance->name}} - {{$insurance->pricePerRace}}$</option>
@@ -92,12 +111,13 @@
                             </div>
                            
                             
+                            <button type="submit" class="btn btn-success"><i class="bi bi-check-lg"></i> Save</button>
                             
                         </form>
                     </div>
                     <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary text-white">Save changes</button>
+                        <button type="button" class="btn btn-secondary text-white" data-bs-dismiss="modal">Close</button>
+
                     </div>
                 </div>
                 </div>

@@ -14,7 +14,7 @@ Route::get('/', [RaceController::class, 'mainPage'])->name('main.page');
 Route::get('/races', [RaceController::class, 'allRaces'])->name('races.all');
 Route::get('/races/{race}', [RaceController::class, 'show'])->name('race.detail');
 Route::get('/gallery', [ImageController::class, 'gallery'])->name('page.gallery');
-
+Route::post('/race/register', [RaceController::class, 'registerDriver'])->name('race.register');
 
 
 Route::get('/login', [DriverController::class, 'showLogin']);
