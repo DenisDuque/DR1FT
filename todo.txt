@@ -12,7 +12,7 @@
 
 - [ERROR] Jquery crear race admin no funciona
 - [TODO] quitar insurances deshabilitadas en el crear race
-
+- [TODO] limitar height de textareas
 
 
 - EL DRIVER ELIJE UNA INSURANCE DE LA LISTA DE RACE_INSURANCES

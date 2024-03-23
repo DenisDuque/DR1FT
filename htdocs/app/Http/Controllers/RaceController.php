@@ -199,7 +199,6 @@ class RaceController extends Controller {
 
     public function edit($id) {
         $race = Race::find($id);
-        
         if ($race) {
             return view('administrator.races.edit')->with('race', $race);
         } else {

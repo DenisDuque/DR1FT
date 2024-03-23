@@ -3,13 +3,14 @@ class Admin_Edit_Races {
         document.addEventListener('DOMContentLoaded', () => {
             this.editRacesNav = document.getElementById('edit-races-nav');
             this.raceId = document.getElementById('edit-races-race-id');
+            const self = this;
             if (this.raceId) {
                 // Adding Event Listeners to elements
                 if (this.editRacesNav) {
                     this.navList = this.editRacesNav.getElementsByTagName("li");
                     
                     if (this.navList && this.navList.length > 0) {
-                        const self = this;
+                        
                         Array.from(this.navList).forEach(navElement => {
                             navElement.addEventListener('click', function(event) {
                                 const selectedElement = event.target;
@@ -32,6 +33,12 @@ class Admin_Edit_Races {
                         
                     }
                 }
+                this.photosInput = document.getElementById('gropFile');
+                this.photosInput.addEventListener('change', function(event) {
+                    let files = event.target.files;
+                    console.log(files);
+                    self.displayFilesList(files);
+                });
             }
         });
     }
@@ -50,7 +57,19 @@ class Admin_Edit_Races {
             }
             
         });
-    }    
+    }
+
+    displayFilesList(files) {
+        let tmp = '<div id="files-list">';
+        for (let i = 0; i < files.length; i++) {
+            if (files[i]) {
+                tmp +='<img src="'+URL.createObjectURL(files[i])+'" />'
+            }
+        }
+        tmp += '</div>';
+        this.photosInput.style.display = "none";
+        document.getElementById('fileList').innerHTML = tmp; 
+    }
 }
 
 const adminEditRaces = new Admin_Edit_Races();

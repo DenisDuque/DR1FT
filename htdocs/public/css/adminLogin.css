@@ -2384,7 +2384,6 @@ progress {
 }
 .form-label {
   margin-bottom: 0.5rem;
-  color: white;
 }
 
 .col-form-label {
@@ -2709,10 +2708,6 @@ textarea.form-control-lg {
 .form-check-input[disabled] ~ .form-check-label, .form-check-input:disabled ~ .form-check-label {
   cursor: default;
   opacity: 0.5;
-}
-
-.form-check-label {
-  color: white;
 }
 
 .form-switch {
@@ -4969,12 +4964,18 @@ textarea.form-control-lg {
 }
 
 .breadcrumb {
+  --bs-breadcrumb-padding-x: 0;
+  --bs-breadcrumb-padding-y: 0;
+  --bs-breadcrumb-margin-bottom: 1rem;
   --bs-breadcrumb-bg: ;
   --bs-breadcrumb-border-radius: ;
   --bs-breadcrumb-divider-color: var(--bs-secondary-color);
+  --bs-breadcrumb-item-padding-x: 0.5rem;
   --bs-breadcrumb-item-active-color: var(--bs-secondary-color);
   display: flex;
   flex-wrap: wrap;
+  padding: var(--bs-breadcrumb-padding-y) var(--bs-breadcrumb-padding-x);
+  margin-bottom: var(--bs-breadcrumb-margin-bottom);
   font-size: var(--bs-breadcrumb-font-size);
   list-style: none;
   background-color: var(--bs-breadcrumb-bg);
@@ -4987,7 +4988,7 @@ textarea.form-control-lg {
 .breadcrumb-item + .breadcrumb-item::before {
   float: left;
   padding-right: var(--bs-breadcrumb-item-padding-x);
-  color: var(--bs-breadcrumb-divider-color);
+  color: white;
   content: var(--bs-breadcrumb-divider, "/") /* rtl: var(--bs-breadcrumb-divider, "/") */;
 }
 .breadcrumb-item.active {
@@ -12350,12 +12351,12 @@ textarea.form-control-lg {
   color: #DC2E25;
 }
 .section-heading h2:first-child, .section-heading .h2:first-child {
-  font-size: 8rem;
-  letter-spacing: 10px;
+  font-size: 9.6vw;
+  letter-spacing: 0.7vw;
 }
 .section-heading h2:last-child, .section-heading .h2:last-child {
-  font-size: 6rem;
-  letter-spacing: 18px;
+  font-size: 7.2vw;
+  letter-spacing: 1.3vw;
 }
 
 .breadcrumb-item {
