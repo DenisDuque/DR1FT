@@ -10,6 +10,14 @@
 
 - [JQUERY] click breadcrumb de crear races mal
 
+- [ERROR] Jquery crear race admin no funciona
+- [TODO] quitar insurances deshabilitadas en el crear race
+
+
+
+- EL DRIVER ELIJE UNA INSURANCE DE LA LISTA DE RACE_INSURANCES
+
+
 - [ERROR] si no selecionas main sponsor en NEW RACE
 - [ERROR] cargando imagen BANNER en NEW RACE
     >> [INFO] no se suben imagenes a race_banners

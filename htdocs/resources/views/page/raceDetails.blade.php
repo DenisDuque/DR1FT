@@ -31,8 +31,14 @@
 
 <!-- Tu formulario va aquí -->
 
+            
+
             <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            @php
+                $nextMonth = date('Y-m-d', strtotime('+1 month')); // Fecha del próximo mes
+                $today = date('Y-m-d'); // Fecha de hoy
+            @endphp
+            <button type="button" class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#exampleModal" @if ($race->date <= $nextMonth || $race->date <= $today) disabled @endif>
                 Participate
             </button>
             
@@ -83,15 +89,20 @@
                                 
                             </div>
                             <div class="col-md-4">
-                                <label for="driverFederation" class="form-label" id="federation-label">Nº Federation</label>
-                                <input type="number" name="driverFederation" class="form-control" id="driverFederation">
+                                @if ($race->pro == 1)
+                                    <label for="driverFederation" class="form-label" id="federation-lbl">Nº Federation</label>
+                                    <input type="number" name="driverFederation" class="form-control" id="drvFederation">
+                                @else
+                                    <label for="driverFederation" class="form-label" id="federation-label">Nº Federation</label>
+                                    <input type="number" name="driverFederation" class="form-control" id="driverFederation">
 
-                                <select name="driverInsurance" class="form-select form-select-sm hidden-select" aria-label=".form-select-sm example">
-                                    <option selected>Open this select menu</option>
-                                    @foreach ($insurances as $insurance)
-                                        <option value="{{$insurance->id}}">{{$insurance->name}} - {{$insurance->pricePerRace}}$</option>
-                                    @endforeach
-                                </select>
+                                    <select name="driverInsurance" class="form-select form-select-sm hidden-select" aria-label=".form-select-sm example">
+                                        <option selected>Open this select menu</option>
+                                        @foreach ($insurances as $insurance)
+                                            <option value="{{$insurance->id}}">{{$insurance->name}} - {{$insurance->pricePerRace}}$</option>
+                                        @endforeach
+                                    </select>
+                                @endif
                             </div>
                             <div class="col-12">
                                 <label for="driverAddress" class="form-label ">Address</label>

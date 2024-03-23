@@ -2,11 +2,9 @@
 
 namespace Database\Factories;
 
+use App\Models\Race;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-/**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Race>
- */
 class RaceFactory extends Factory
 {
     public static $fakeNames = [
@@ -14,6 +12,7 @@ class RaceFactory extends Factory
         "PRO Philadelphia 2024",
         "OPEN Worlds 2024"
     ];
+
     /**
      * Define the model's default state.
      *
@@ -22,18 +21,18 @@ class RaceFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->randomElement(static::$fakeNames),
-            'description' => fake()->name(),
+            'name' => $this->faker->randomElement(static::$fakeNames),
+            'description' => $this->faker->name(),
             'map' => 'defaultRaceMap.png',
-            'maxParticipants' => fake()->numberBetween(8, 20),
-            'length' => fake()->randomFloat(2, 0, 300),
+            'maxParticipants' => $this->faker->numberBetween(8, 20),
+            'length' => $this->faker->randomFloat(2, 0, 300),
             'banner' => 'defaultRaceBanner.png',
-            'date' => fake()->date('Y-m-d'),
-            'startingPlace' => fake()->address(),
-            'sponsorCost' => fake()->randomFloat(2, 50, 10000),
-            'registrationPrice' => fake()->randomFloat(2, 15, 200),
-            'pro' => fake()->boolean(),
-            'active' => fake()->boolean(90)
+            'date' => $this->faker->dateTimeBetween('now', '+1 year')->format('Y-m-d'),
+            'startingPlace' => $this->faker->address(),
+            'sponsorCost' => $this->faker->randomFloat(2, 50, 10000),
+            'registrationPrice' => $this->faker->randomFloat(2, 15, 200),
+            'pro' => $this->faker->boolean(),
+            'active' => $this->faker->boolean(90)
         ];
     }
 }
