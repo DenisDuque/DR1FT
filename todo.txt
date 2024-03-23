@@ -1,13 +1,22 @@
-- nav responsive
-- grid dashboard
+- nav responsive (en proceso)
 
-- vista edit races
+===================== PÁGINAS ADMIN =======================
 
-- FECHAS
+    => RACES
 
+        - [CREAR]
+            - [TODO] quitar insurances deshabilitadas en el crear race
+            - [ERROR] click breadcrumb de crear races mal jquery
+            - [ERROR] Jquery crear race admin no funciona
+            - [ERROR] si no selecionas main sponsor en NEW RACE
+            - [ERROR] cargando imagen BANNER en NEW RACE
+                >> [INFO] no se suben imagenes a race_banners
 
-- [NOTICE] edit races sin cambios
+        - [EDITAR]
+            - [CSS] vista formularios editar
+            - [NOTICE] edit races sin cambios
 
+<<<<<<< HEAD
 - [JQUERY] click breadcrumb de crear races mal
 
 - [ERROR] Jquery crear race admin no funciona
@@ -24,6 +33,10 @@
 
 - [INFO] SOLO los corredores PRO tienen número de federación.
 - [INFO] SOLO se pueden inscribir si falta justo 1 mes
+=======
+        - [DELETE]
+            - [NOTICE] mensaje al eliminar
+>>>>>>> e91bd398a4c3d01292449c0719aca48322f6f257
 
 ===================== PÁGINAS USUARIO =====================
 
@@ -31,6 +44,10 @@
         - [JS] Slider de imagenes
         - Classificación
         - Inscripción
+        - [INFO] SOLO los corredores PRO tienen número de federación.
+        - [INFO] SOLO se pueden inscribir si falta justo 1 mes
+        - [INFO] EL DRIVER ELIJE UNA INSURANCE DE LA LISTA DE RACE_INSURANCES
+        - [NOTICE] inscribirse en una carrera (success y error)
 
     => LISTAR CARRERAS
         - [JS] Filtro Order by
