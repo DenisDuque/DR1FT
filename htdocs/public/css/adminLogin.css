@@ -12350,6 +12350,9 @@ textarea.form-control-lg {
 .section-heading span {
   color: #DC2E25;
 }
+.section-heading h2, .section-heading .h2 {
+  max-width: 1200px;
+}
 .section-heading h2:first-child, .section-heading .h2:first-child {
   font-size: 9.6vw;
   letter-spacing: 0.7vw;
@@ -12504,6 +12507,31 @@ textarea.form-control-lg {
     max-width: 1550px !important;
   }
 }
+#file-container {
+  height: 20rem;
+  width: 25rem;
+  border: 2px solid black;
+  border-radius: 10px;
+}
+#file-container #gropFile {
+  width: inherit;
+  height: inherit;
+  opacity: 0;
+}
+#file-container #gropFile img {
+  height: inherit;
+}
+#file-container #fileList {
+  width: inherit;
+  height: inherit;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+#file-container #fileList img {
+  height: 10rem;
+}
+
 /*// Glow Border Animation //*/
 .animated-border-box, .animated-border-box-glow {
   max-height: 90vh;

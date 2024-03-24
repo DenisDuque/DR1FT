@@ -99,12 +99,15 @@
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 1; /* Asegúrate de que el texto esté encima del video */
-    color: #ffffff; 
+    color: #ffffff;
+    width: 100%;
+    max-width: 1850px;
     span {
         color: $defaultRed;
     }
 
     h2 {
+        max-width: 1200px;
         &:first-child{
             font-size: 9.6vw;
             letter-spacing: 0.7vw;

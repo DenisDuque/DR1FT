@@ -2,6 +2,11 @@
 
 ===================== PÁGINAS ADMIN =======================
 
+    => DASHBOARD
+        - [BACKEND]
+
+        - [FRONTEND]
+    
     => RACES
 
         - [CREAR]
@@ -11,42 +16,31 @@
             - [ERROR] si no selecionas main sponsor en NEW RACE
             - [ERROR] cargando imagen BANNER en NEW RACE
                 >> [INFO] no se suben imagenes a race_banners
+            - [JS] mostrar icono (?) cuando aún no hay selecionado nada en el banner ni en el mapa
 
         - [EDITAR]
             - [CSS] vista formularios editar
             - [NOTICE] edit races sin cambios
-
-<<<<<<< HEAD
-- [JQUERY] click breadcrumb de crear races mal
-
-- [ERROR] Jquery crear race admin no funciona
-- [TODO] quitar insurances deshabilitadas en el crear race
-- [TODO] limitar height de textareas
-
-
-- EL DRIVER ELIJE UNA INSURANCE DE LA LISTA DE RACE_INSURANCES
-
-
-- [ERROR] si no selecionas main sponsor en NEW RACE
-- [ERROR] cargando imagen BANNER en NEW RACE
-    >> [INFO] no se suben imagenes a race_banners
-
-- [INFO] SOLO los corredores PRO tienen número de federación.
-- [INFO] SOLO se pueden inscribir si falta justo 1 mes
-=======
-        - [DELETE]
-            - [NOTICE] mensaje al eliminar
->>>>>>> e91bd398a4c3d01292449c0719aca48322f6f257
+            - [PHP] insurances y sponsors con el checked si lo tienen
 
 ===================== PÁGINAS USUARIO =====================
+
+    => INDEX
+        - [CSS] próximas carreras
+        - [CSS] cartas de membership
+        - footer
+        - [CSS] filtro al video principal
+
+    => PROFILE
 
     => DETALLE CARRERA
         - [JS] Slider de imagenes
         - Classificación
-        - Inscripción
+        - Inscripción -> CASI ACABADA
         - [INFO] SOLO los corredores PRO tienen número de federación.
         - [INFO] SOLO se pueden inscribir si falta justo 1 mes
         - [INFO] EL DRIVER ELIJE UNA INSURANCE DE LA LISTA DE RACE_INSURANCES
+        - [INFO] Si es MEMBER tendrá descuentos en el momento de inscribirse
         - [NOTICE] inscribirse en una carrera (success y error)
 
     => LISTAR CARRERAS

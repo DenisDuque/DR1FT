@@ -14,7 +14,7 @@
                     <tr>
                         <td class="align-middle fw-bold"><input class="form-check-input" type="checkbox" name="raceInsurances[]" value="{{$insurance->id}}"></td>
                         <td class="align-middle">
-                            <img class="img-thumbnail" src="{{ asset('storage/insurance_logos/' . $insurance->logo) }}" alt="{{$insurance->name}}">
+                            <img class="img-thumbnail" src="{{ asset('storage/insurance_logos/' . $insurance->logo) }}" alt="{{ $insurance->name }}">
                         </td>
                         <td class="align-middle">{{$insurance->cif}}</td>
                         <td class="align-middle">{{$insurance->name}}

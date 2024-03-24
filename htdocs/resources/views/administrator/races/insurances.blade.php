@@ -55,20 +55,22 @@
                             </thead>
                             <tbody id="insurances-races-table-body">
                                 @foreach($insurances as $insurance)
-                                    <tr>
-                                        <td class="align-middle fw-bold"><input class="form-check-input" type="checkbox" name="raceInsurances[]" value="{{$insurance->id}}"></td>
-                                        <td class="align-middle">
-    
-                                            <img class="img-thumbnail" src="{{ asset('storage/insurance_logos/' . $insurance->logo) }}" alt="{{$insurance->name}}">
-                                        </td>
-                                        <td class="align-middle">{{$insurance->cif}}</td>
-                                        <td class="align-middle">{{$insurance->name}}
-                                            @if ($insurance->active == 0)
-                                                <span class="badge rounded-pill bg-badge-disabled">Disabled</span>
-                                            @endif
-                                        </td>
-                                        <td class="text-center align-middle"><span class="badge rounded-pill bg-badge-purple">{{$insurance->pricePerRace}}$</span></td>
-                                    </tr>
+                                    @if ($insurance->active == 1)
+                                        <tr>
+                                            <td class="align-middle fw-bold"><input class="form-check-input" type="checkbox" name="raceInsurances[]" value="{{$insurance->id}}"></td>
+                                            <td class="align-middle">
+        
+                                                <img class="img-thumbnail" src="{{ asset('storage/insurance_logos/' . $insurance->logo) }}" alt="{{$insurance->name}}">
+                                            </td>
+                                            <td class="align-middle">{{$insurance->cif}}</td>
+                                            <td class="align-middle">{{$insurance->name}}
+                                                @if ($insurance->active == 0)
+                                                    <span class="badge rounded-pill bg-badge-disabled">Disabled</span>
+                                                @endif
+                                            </td>
+                                            <td class="text-center align-middle"><span class="badge rounded-pill bg-badge-purple">{{$insurance->pricePerRace}}$</span></td>
+                                        </tr>
+                                    @endif
                                 @endforeach
                                 
                             </tbody>
@@ -79,58 +81,7 @@
                         </div>
                 </form>  
             </div>
-            <div class="col-12 shadow text-white d-flex align-items-center">
-                <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-                    <ol class="breadcrumb m-0 p-3">
-                        <li class="breadcrumb-item me-2">DETAILS</li>
-                        <span class="me-2">></span>
-                        <li class="breadcrumb-item me-2 active" aria-current="page">INSURANCES</li>
-                        <span class="me-2">></span>
-                        <li class="breadcrumb-item me-2" aria-current="page">SPONSORS</li>
-                        
-                    </ol>
-                </nav>
-            </div>
-            <!-- CAMBIAR ACTION FORM -->
-            <form class="w-100 p-0 m-0" action="{{route('admin.races.new.insurances')}}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="table-responsive" style="max-height: 35rem;">
-                    <table class="table table-dark table-hover overflow-hidden mt-2" style="height: 20rem;">
-                        <thead>
-                            <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Logo</th>
-                            <th scope="col">CIF</th>
-                            <th scope="col">Name</th>
-                            <th scope="col" class="text-center">Price per Race</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach($insurances as $insurance)
-                                <tr>
-                                    <td class="align-middle fw-bold"><input class="form-check-input" type="checkbox" name="raceInsurances[]" value="{{$insurance->id}}"></td>
-                                    <td class="align-middle">
-
-                                        <img class="img-thumbnail" src="{{ asset('storage/insurance_logos/' . $insurance->logo) }}" alt="{{$insurance->name}}">
-                                    </td>
-                                    <td class="align-middle">{{$insurance->cif}}</td>
-                                    <td class="align-middle">{{$insurance->name}}
-                                        @if ($insurance->active == 0)
-                                            <span class="badge rounded-pill bg-badge-disabled">Disabled</span>
-                                        @endif
-                                    </td>
-                                    <td class="text-center align-middle"><span class="badge rounded-pill bg-badge-purple">{{$insurance->pricePerRace}}$</span></td>
-                                </tr>
-                            @endforeach
-                            
-                        </tbody>
-                        </table>
-                    </div>
-                    <div class="col-12 text-end my-2">
-                        <button type="submit" class="btn btn-success text-white">Next<i class="bi bi-chevron-double-right"></i></button>
-                    </div>
-                </div>
-            </form>  
+           
         </div>
     </div>
 @stop

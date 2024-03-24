@@ -33,14 +33,30 @@
 
             
 
-            <!-- Button trigger modal -->
             @php
                 $nextMonth = date('Y-m-d', strtotime('+1 month')); // Fecha del próximo mes
                 $today = date('Y-m-d'); // Fecha de hoy
+                $raceDate = date('Y-m-d', strtotime($race->date)); // Convertir la fecha de la carrera al formato Y-m-d
             @endphp
-            <button type="button" class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#exampleModal" @if ($race->date <= $nextMonth || $race->date <= $today) disabled @endif>
-                Participate
-            </button>
+                <div class="row">
+                <div class="col-2">
+                    <button type="button" class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#exampleModal" @if ($raceDate <= $nextMonth || $raceDate <= $today) disabled @endif>
+                        Participate
+                    </button>
+                </div>
+                <div class="col-10">
+                    @if ($raceDate <= $nextMonth || $raceDate <= $today)
+                        <div class="alert alert-primary d-flex align-items-center" role="alert">
+                            <i class="bi bi-info-circle-fill me-1"></i>
+                            <div>
+                                This race is disabled until there's 1 month left
+                            </div>
+                        </div>
+                    @endif
+                </div>
+            </div>
+
+
             
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">

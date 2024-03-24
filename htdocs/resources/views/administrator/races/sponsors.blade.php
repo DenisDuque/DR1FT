@@ -55,28 +55,26 @@
                         </thead>
                         <tbody id="sponsors-races-table-body">
                             @foreach($sponsors as $sponsor)
-                                <tr>
-                                    <td class="py-3 text-center align-middle fw-bold"><input class="form-check-input" type="checkbox" role="switch" name="raceSponsors[]" value="{{$sponsor->id}}"></td>
-                                    <!-- <td>{{$sponsor->logo}}</td> -->
-                                    <td class="py-3 align-middle"><i class="bi bi-image"></i></td>
-                                    <td class="py-3 align-middle">{{$sponsor->cif}}</td>
-                                    <td class="py-3 align-middle">{{$sponsor->name}}
-                                        @if ($sponsor->active == 0)
-                                            <span class="badge rounded-pill bg-badge-disabled">Disabled</span>
-                                        @endif
-                                    </td>
-                                    <td class="py-3 text-center align-middle fw-bold"><input class="form-check-input" type="checkbox" role="switch" name="mainSponsors[]" value="{{$sponsor->id}}"></td>
-                                </tr>
+                                @if ($sponsor->active == 1)
+                                    <tr>
+                                        <td class="py-3 text-center align-middle fw-bold"><input class="form-check-input" type="checkbox" role="switch" name="raceSponsors[]" value="{{$sponsor->id}}"></td>
+                                        <td class="align-middle"><img class="img-thumbnail" src="{{ asset('storage/sponsor_logos/' . $sponsor->logo) }}" alt="{{$sponsor->name}}"></td>
+                                        
+                                        <td class="py-3 align-middle">{{$sponsor->cif}}</td>
+                                        <td class="py-3 align-middle">{{$sponsor->name}}</td>
+                                        <td class="py-3 text-center align-middle fw-bold"><input class="form-check-input" type="checkbox" role="switch" name="mainSponsors[]" value="{{$sponsor->id}}"></td>
+                                    </tr>
+                                @endif
                             @endforeach
                             
                         </tbody>
-                        </table>
-                        <div class="col-12 text-end">
-                            <button type="submit" class="btn btn-success"><i class="bi bi-check-lg"></i>Save</button>
-                        </div>
-                    </form>
+                    </table>
+                    <div class="col-12 text-end">
+                        <button type="submit" class="btn btn-success"><i class="bi bi-check-lg"></i>Save</button>
+                    </div>
                 </div> 
-            </div>
+            </form>
         </div>
     </div>
+</div>
 @stop

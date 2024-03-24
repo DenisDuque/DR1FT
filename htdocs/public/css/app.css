@@ -12346,9 +12346,14 @@ textarea.form-control-lg {
   transform: translate(-50%, -50%);
   z-index: 1; /* Asegúrate de que el texto esté encima del video */
   color: #ffffff;
+  width: 100%;
+  max-width: 1850px;
 }
 .section-heading span {
   color: #DC2E25;
+}
+.section-heading h2, .section-heading .h2 {
+  max-width: 1200px;
 }
 .section-heading h2:first-child, .section-heading .h2:first-child {
   font-size: 9.6vw;
