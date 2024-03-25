@@ -12346,6 +12346,8 @@ textarea.form-control-lg {
   transform: translate(-50%, -50%);
   z-index: 1; /* Asegúrate de que el texto esté encima del video */
   color: #ffffff;
+  width: 100%;
+  max-width: 1850px;
 }
 .section-heading span {
   color: #DC2E25;
@@ -12530,6 +12532,11 @@ textarea.form-control-lg {
 }
 #file-container #fileList img {
   height: 10rem;
+}
+
+.pricing-card {
+  border-radius: 15px;
+  background: linear-gradient(to top left, #151418, #1e1e1e) !important;
 }
 
 /*// Glow Border Animation //*/

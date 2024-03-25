@@ -310,3 +310,45 @@
         }
     }
 }
+
+.pricing-container {
+    color: white;
+    .col-4 {
+        .pricing-card {
+            border-radius: 15px;
+            position: relative;
+            @include backgroundGradient($primaryBlack, $secondaryBlack);
+            
+            .badge {
+                width: 6rem;
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                top: -10px;
+                z-index: 1;
+            }
+            
+        }
+
+        &:nth-child(1) .pricing-card {
+            border: 2px solid #EBE5FC; // Primer pricing-card
+        }
+
+        &:nth-child(2) .pricing-card {
+            border: 2px solid #CFF4FC; // Segundo pricing-card
+            .bg-badge-blue {
+                background-color: #CFF4FC;
+                color: #055160;
+            }
+        }
+
+        &:nth-child(3) .pricing-card {
+            border: 2px solid #FFF3CD; // Tercer pricing-card
+            .bg-badge-gold {
+                background-color: #FFF3CD;
+                color: #664D03;
+            }
+        }
+    }
+}
+  

@@ -235,10 +235,60 @@
                                 <div class="row">
                                     <h2 class="index-page-headers">MEMBERSHIP PLANS</h2>
                                 </div>
-                                <div class="row mt-5">
+                                <div class="row pricing-container gx-5 mt-5">
                                     
-                                    sdfs
-                                   
+                                    <div class="col-4">
+                                        <div class="pricing-card p-3">
+                                            <span class="badge rounded-pill bg-badge-purple">FREE</span>
+                                            <h1 class="text-center">100</h1>
+                                            <hr>
+                                            <div class="px-4 py-2">
+                                                <p class="pricing"><i class="bi bi-check-circle-fill"></i>PRIORITY QUEUE</p>
+                                                <p><i class="bi bi-check-circle-fill"></i>PRIORITY QUEUE</p>
+                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
+                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
+                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
+                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
+                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
+                                                <i class="bi bi-x-circle-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="pricing-card p-3">
+                                            <span class="badge rounded-pill bg-badge-blue">PREMIUM</span>
+                                            <h1 class="text-center">100</h1>
+                                            <hr>
+                                            <div class="px-4 py-2">
+                                                <p><i class="bi bi-check-circle-fill"></i>PRIORITY QUEUE</p>
+                                                <p><i class="bi bi-check-circle-fill"></i>PRIORITY QUEUE</p>
+                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
+                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
+                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
+                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
+                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
+                                                
+                                                <i class="bi bi-x-circle-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-4">
+                                        <div class="pricing-card p-3">
+                                            <span class="badge rounded-pill bg-badge-gold">VIP</span>
+                                            <h1 class="text-center">100</h1>
+                                            <hr>
+                                            <div class="px-4 py-2">
+                                                <p><i class="bi bi-check-circle-fill"></i>PRIORITY QUEUE</p>
+                                                <p><i class="bi bi-check-circle-fill"></i>PRIORITY QUEUE</p>
+                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
+                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
+                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
+                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
+                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
+                                                <i class="bi bi-x-circle-fill"></i>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
