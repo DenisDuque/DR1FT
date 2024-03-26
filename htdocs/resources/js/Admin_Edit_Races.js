@@ -82,7 +82,6 @@ class Admin_Edit_Races {
         const deleteButtons = document.querySelectorAll('.delete-file');
         deleteButtons.forEach(function(button) {
             if (button) {
-                // Da error en consola, motivo desconocido.
                 button.addEventListener('click', function() {
                     if (button && button.parentNode) {
                         button.parentNode.remove(); 
