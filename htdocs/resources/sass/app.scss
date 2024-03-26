@@ -283,34 +283,29 @@
     }
 }
 
-#file-container {
-    height: 20rem;
-    width: 25rem;
-    border: 2px solid black;
-    border-radius: 10px;
+#gropFile {
+    width: 20rem;
+    height: 10rem;
+    opacity: 0;
+    border: 1px solid black;
 
-    #gropFile {
-        width: inherit;
+    img {
         height: inherit;
-        opacity: 0;
-
-        img {
-            height: inherit;
-        }
-    }
-
-    #fileList {
-        width: inherit;
-        height: inherit;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-
-        img {
-            height: 10rem;
-        }
     }
 }
+
+#fileList {
+    width: inherit;
+    height: inherit;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    img {
+        height: 10rem;
+    }
+}
+
 
 .pricing-container {
     color: white;

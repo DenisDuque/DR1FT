@@ -60,15 +60,36 @@ class Admin_Edit_Races {
     }
 
     displayFilesList(files) {
-        let tmp = '<div id="files-list">';
+        let tmp = '';
         for (let i = 0; i < files.length; i++) {
-            if (files[i]) {
-                tmp +='<img src="'+URL.createObjectURL(files[i])+'" />'
+            let file = files[i];
+            if (file) {
+                tmp += `
+                <div id="file-` + i + `" class="files-list d-flex">
+                    <img src="` + URL.createObjectURL(file) + `" />
+                    <p>` + file.name + `</p>
+                    <button type="button" class="btn-close delete-file" data-bs-dismiss="alert" aria-label="Delete"></button>
+                </div>
+                `;
             }
         }
-        tmp += '</div>';
         this.photosInput.style.display = "none";
         document.getElementById('fileList').innerHTML = tmp; 
+        this.addDeleteFileEvent();
+    }
+
+    addDeleteFileEvent() {
+        const deleteButtons = document.querySelectorAll('.delete-file');
+        deleteButtons.forEach(function(button) {
+            if (button) {
+                // Da error en consola, motivo desconocido.
+                button.addEventListener('click', function() {
+                    if (button && button.parentNode) {
+                        button.parentNode.remove(); 
+                    }
+                });
+            }
+        });
     }
 }
 
