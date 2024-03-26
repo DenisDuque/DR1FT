@@ -8,6 +8,7 @@
 @import 'range';
 @import 'gallery';
 @import 'flip-cards';
+@import 'toggle_btn';
 
 // Bootstrap
 @import '../../node_modules/bootstrap/scss/bootstrap';
@@ -326,6 +327,16 @@
                 transform: translateX(-50%);
                 top: -10px;
                 z-index: 1;
+            }
+
+            p {
+                font-size: 14px;
+                font-weight: 600;
+                letter-spacing: 3px;
+
+                .bi-check-circle-fill { color: #79CA52; width: 25px; }
+
+                .bi-x-circle-fill { color: $defaultRed; width: 25px; }
             }
             
         }

@@ -235,6 +235,21 @@
                                 <div class="row">
                                     <h2 class="index-page-headers">MEMBERSHIP PLANS</h2>
                                 </div>
+                                <div class="row">
+                                    <div class="col-12">
+                                        
+                                        <div class="select-left" id="container">
+                                            <div id="item"></div>
+                                            <div class="left">
+                                                <span>MONTHLY</span>
+                                            </div>
+                                            <div class="right">
+                                                <span>YEARLY</span>
+                                            </div>
+                                        </div>
+                                        
+                                    </div>
+                                </div>
                                 <div class="row pricing-container gx-5 mt-5">
                                     
                                     <div class="col-4">
@@ -243,14 +258,14 @@
                                             <h1 class="text-center">100</h1>
                                             <hr>
                                             <div class="px-4 py-2">
-                                                <p class="pricing"><i class="bi bi-check-circle-fill"></i>PRIORITY QUEUE</p>
-                                                <p><i class="bi bi-check-circle-fill"></i>PRIORITY QUEUE</p>
-                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
-                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
-                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
-                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
-                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
-                                                <i class="bi bi-x-circle-fill"></i>
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>PRIORITY QUEUE</p>
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>25% OFF IN MERCHANDISING</p>
+                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
+                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
+                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
+                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
+                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
+                                               
                                             </div>
                                         </div>
                                     </div>
@@ -260,15 +275,15 @@
                                             <h1 class="text-center">100</h1>
                                             <hr>
                                             <div class="px-4 py-2">
-                                                <p><i class="bi bi-check-circle-fill"></i>PRIORITY QUEUE</p>
-                                                <p><i class="bi bi-check-circle-fill"></i>PRIORITY QUEUE</p>
-                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
-                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
-                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
-                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
-                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>PRIORITY QUEUE</p>
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>25% OFF IN MERCHANDISING</p>
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
+                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
+                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
+                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
                                                 
-                                                <i class="bi bi-x-circle-fill"></i>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -278,14 +293,14 @@
                                             <h1 class="text-center">100</h1>
                                             <hr>
                                             <div class="px-4 py-2">
-                                                <p><i class="bi bi-check-circle-fill"></i>PRIORITY QUEUE</p>
-                                                <p><i class="bi bi-check-circle-fill"></i>PRIORITY QUEUE</p>
-                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
-                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
-                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
-                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
-                                                <p><i class="bi bi-x-circle-fill"></i></i>PRIORITY QUEUE</p>
-                                                <i class="bi bi-x-circle-fill"></i>
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>PRIORITY QUEUE</p>
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>25% OFF IN MERCHANDISING</p>
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>PRIORITY QUEUE</p>
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>PRIORITY QUEUE</p>
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>PRIORITY QUEUE</p>
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>PRIORITY QUEUE</p>
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>PRIORITY QUEUE</p>
+                                                
                                             </div>
                                         </div>
                                     </div>

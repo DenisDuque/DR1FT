@@ -31,7 +31,19 @@
 
 <!-- Tu formulario va aquí -->
 
-            
+            <!-- Botón para corredores registrados -->
+            @if(session()->has('user_id'))
+                <div class="row mt-3">
+                    <div class="col-12">
+                        <form action="{{ route('race.register') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="member" value="1">
+                            <input type="hidden" name="race_id" value="{{ $race->id }}">
+                            <button type="submit" class="btn btn-primary">Participate as Registered Runner</button>
+                        </form>
+                    </div>
+                </div>
+            @endif
 
             @php
                 $nextMonth = date('Y-m-d', strtotime('+1 month')); // Fecha del próximo mes

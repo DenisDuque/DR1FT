@@ -51,3 +51,4 @@
 
 [HOW TO PDF] => https://www.itsolutionstuff.com/post/laravel-10-generate-pdf-file-using-dompdf-exampleexample.html
 [HOW TO SCROLL] => https://codepen.io/flexcode/pen/poxVRpN 
+[HOW TO TOGGLE BTN] => https://codepen.io/HiddeDeRidder/pen/REYmQB 

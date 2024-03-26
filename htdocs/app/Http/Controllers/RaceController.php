@@ -342,7 +342,31 @@ class RaceController extends Controller {
 
     public function registerDriver(Request $request)
 {
-    // Validar los datos del formulario
+    // Si el corredor es un miembro registrado
+    if ($request->input('member') == 1) {
+        // Obtener el ID del corredor desde la sesión
+        $driverId = session()->get('user_id');
+
+        // Comprobar si el corredor ya está inscrito en la carrera
+        $existingRaceDriver = RaceDriver::where('race_id', $request->race_id)
+            ->where('driver_id', $driverId)
+            ->exists();
+
+        // Si el corredor ya está inscrito, redirigir con un mensaje de error
+        if ($existingRaceDriver) {
+            return redirect()->back()->with('error', 'You are already registered for this race.');
+        }
+
+        // Si no está inscrito, crear un nuevo registro en la tabla RaceDriver
+        $raceDriver = new RaceDriver();
+        $raceDriver->race_id = $request->race_id;
+        $raceDriver->driver_id = $driverId;
+        $raceDriver->save();
+
+        return redirect()->back()->with('success', 'You have been successfully registered for the race!');
+    }
+
+    // Si el corredor no es un miembro registrado, validar los datos del formulario
     $validatedData = $request->validate([
         'driverName' => 'required|string',
         'driveBirthDate' => 'required|date',
@@ -350,15 +374,13 @@ class RaceController extends Controller {
         'driverPro' => 'nullable|boolean',
         'driverFederation' => 'nullable|numeric',
         'driverAddress' => 'required|string',
-        'driverEmail' => 'required|email|unique:drivers,email',
+        'driverEmail' => 'required|email',
         'driverPassword' => 'required|string',
-        'member' => 'in:0,1',
     ]);
 
-    // Comprueba si ya existe un conductor con el correo electrónico proporcionado
+    // Crear un nuevo conductor si no existe
     $driver = Driver::where('email', $validatedData['driverEmail'])->first();
 
-    // Si no existe, crea un nuevo conductor
     if (!$driver) {
         $driver = new Driver();
         $driver->name = $validatedData['driverName'];
@@ -369,38 +391,15 @@ class RaceController extends Controller {
         $driver->email = $validatedData['driverEmail'];
         $driver->password = bcrypt($validatedData['driverPassword']);
         $driver->pro = $request->has('driverPro') ? 1 : 0;
-        $driver->member = $validatedData['member'];
+        $driver->member = $request->input('member');
         $driver->points = 0;
         $driver->save();
     }
 
-    $raceDriver = new RaceDriver();
-    $raceDriver->race_id = $request->race_id; // Ajusta esto según la forma en que obtienes el ID de la carrera
-    $raceDriver->driver_id = $driver->id;
-    $raceDriver->save();
+    // Resto del código para inscribir al conductor en la carrera...
 
-    // Si la opción PRO está activada, no se selecciona ningún seguro
-    // Si la opción PRO está desactivada y se seleccionó un seguro, guardar en RaceDriverInsurance
-    if (!$request->has('driverPro') && $request->input('driverInsurance') !== null) {
-        $raceDriverInsurance = new RaceDriverInsurance();
-        $raceDriverInsurance->race_id = $request->race_id;
-        $raceDriverInsurance->driver_id = $driver->id;
-        $raceDriverInsurance->insurance_id = $request->input('driverInsurance');
-        $raceDriverInsurance->save();
-    }
-
-    // Registra al conductor en la carrera
-    // Aquí deberías tener la lógica para registrar al conductor en la carrera
-    // Esto puede variar dependiendo de cómo esté implementada tu lógica de negocios.
-    // Podrías guardar la relación entre el conductor y la carrera en una tabla pivote.
-
-    // Redirige a alguna página de confirmación o vuelve al formulario
     return redirect()->back()->with('success', 'Driver registered successfully!');
 }
-
-
-
-    
 
     
 }
