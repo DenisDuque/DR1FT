@@ -341,65 +341,84 @@ class RaceController extends Controller {
     }
 
     public function registerDriver(Request $request)
-{
-    // Si el corredor es un miembro registrado
-    if ($request->input('member') == 1) {
-        // Obtener el ID del corredor desde la sesión
-        $driverId = session()->get('user_id');
-
-        // Comprobar si el corredor ya está inscrito en la carrera
-        $existingRaceDriver = RaceDriver::where('race_id', $request->race_id)
-            ->where('driver_id', $driverId)
-            ->exists();
-
-        // Si el corredor ya está inscrito, redirigir con un mensaje de error
-        if ($existingRaceDriver) {
-            return redirect()->back()->with('error', 'You are already registered for this race.');
+    {
+        // Si el usuario está autenticado, registrarlo automáticamente como miembro
+        if (auth()->check()) {
+            // Comprobar si el usuario ya está inscrito en la carrera
+            $existingRaceDriver = RaceDriver::where('race_id', $request->race_id)
+                ->where('driver_id', auth()->id())
+                ->exists();
+    
+            // Si el usuario ya está inscrito, redirigir con un mensaje de error
+            if ($existingRaceDriver) {
+                return redirect()->back()->with('error', 'You are already registered for this race.');
+            }
+    
+            // Crear un nuevo registro en la tabla RaceDriver
+            $raceDriver = new RaceDriver();
+            $raceDriver->race_id = $request->race_id;
+            $raceDriver->driver_id = auth()->id();
+            $raceDriver->save();
+    
+            return redirect()->back()->with('success', 'You have been successfully registered for the race!');
         }
-
-        // Si no está inscrito, crear un nuevo registro en la tabla RaceDriver
-        $raceDriver = new RaceDriver();
-        $raceDriver->race_id = $request->race_id;
-        $raceDriver->driver_id = $driverId;
-        $raceDriver->save();
-
-        return redirect()->back()->with('success', 'You have been successfully registered for the race!');
+    
+        // Si el usuario no está autenticado, validar los datos del formulario
+        $validatedData = $request->validate([
+            'driverName' => 'required|string',
+            'driveBirthDate' => 'required|date',
+            'driverGender' => 'required|in:0,1',
+            'driverPro' => 'nullable|boolean',
+            'driverFederation' => 'nullable|numeric',
+            'driverAddress' => 'required|string',
+            'driverEmail' => 'required|email|unique:drivers,email',
+            'driverPassword' => 'required|string',
+        ]);
+    
+        // Crear un nuevo conductor si no existe
+        $driver = Driver::where('email', $validatedData['driverEmail'])->first();
+    
+        if (!$driver) {
+            $driver = new Driver();
+            $driver->name = $validatedData['driverName'];
+            $driver->birthDate = $validatedData['driveBirthDate'];
+            $driver->gender = $validatedData['driverGender'];
+            $driver->federationNumber = $validatedData['driverFederation'] ?? 0;
+            $driver->address = $validatedData['driverAddress'];
+            $driver->email = $validatedData['driverEmail'];
+            $driver->password = bcrypt($validatedData['driverPassword']);
+            $driver->pro = $request->has('driverPro') ? 1 : 0;
+            $driver->member = $request->input('member');
+            $driver->points = 0;
+            $driver->save();
+    
+            // Crear el registro en RaceDriver
+            $raceDriver = new RaceDriver();
+            $raceDriver->race_id = $request->race_id;
+            $raceDriver->driver_id = $driver->id;
+            $raceDriver->save();
+    
+            return redirect()->back()->with('success', 'Driver registered successfully!');
+        }
+    
+        // Si el conductor ya existe, mostrar un mensaje de error
+        return redirect()->back()->with('error', 'User with provided email already exists. Please log in or use a different email.');
     }
 
-    // Si el corredor no es un miembro registrado, validar los datos del formulario
-    $validatedData = $request->validate([
-        'driverName' => 'required|string',
-        'driveBirthDate' => 'required|date',
-        'driverGender' => 'required|in:0,1',
-        'driverPro' => 'nullable|boolean',
-        'driverFederation' => 'nullable|numeric',
-        'driverAddress' => 'required|string',
-        'driverEmail' => 'required|email',
-        'driverPassword' => 'required|string',
-    ]);
+    public function verificarCredenciales(Request $request) {
+        $email = $request->input('email');
+        $password = $request->input('password');
 
-    // Crear un nuevo conductor si no existe
-    $driver = Driver::where('email', $validatedData['driverEmail'])->first();
+        // Verificar si las credenciales son válidas
+        $driver = Driver::where('email', $email)->first();
 
-    if (!$driver) {
-        $driver = new Driver();
-        $driver->name = $validatedData['driverName'];
-        $driver->birthDate = $validatedData['driveBirthDate'];
-        $driver->gender = $validatedData['driverGender'];
-        $driver->federationNumber = $validatedData['driverFederation'] ?? 0;
-        $driver->address = $validatedData['driverAddress'];
-        $driver->email = $validatedData['driverEmail'];
-        $driver->password = bcrypt($validatedData['driverPassword']);
-        $driver->pro = $request->has('driverPro') ? 1 : 0;
-        $driver->member = $request->input('member');
-        $driver->points = 0;
-        $driver->save();
+        if ($driver && Hash::check($password, $driver->password)) {
+            return response()->json(['success' => true, 'driver' => $driver]);
+        } else {
+            return response()->json(['success' => false, 'message' => 'Credenciales inválidas']);
+        }
     }
 
-    // Resto del código para inscribir al conductor en la carrera...
-
-    return redirect()->back()->with('success', 'Driver registered successfully!');
-}
 
     
 }

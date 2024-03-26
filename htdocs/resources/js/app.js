@@ -12,6 +12,8 @@ import './admin_race';
 import './btn_toggle';
 import './page_scroll';
 
+
+
 $(document).ready(function() {
     console.log('document ready');
     $(window).on('unload', function() {

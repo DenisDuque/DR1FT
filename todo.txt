@@ -25,6 +25,9 @@
 
 ===================== PÁGINAS USUARIO =====================
 
+    => LOGIN
+        - [NOTICE] avisar al usuario de credenciales incorrectos
+
     => INDEX
         - [CSS] próximas carreras
         - [CSS] cartas de membership

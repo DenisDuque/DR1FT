@@ -149,7 +149,9 @@
                                 <input type="password" name="driverPasswordConfirm" class="form-control" id="driverPasswordConfirm" value="{{old('driverPasswordConfirm')}}">
                             </div>
                            
-                            
+                            <!-- Agrega un botón para verificar credenciales -->
+                            <button type="button" id="check-credentials" class="btn btn-primary">Verificar Credenciales</button>
+
                             <button type="submit" class="btn btn-success"><i class="bi bi-check-lg"></i> Save</button>
                             
                         </form>
