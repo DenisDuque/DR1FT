@@ -1,5 +1,5 @@
 <div id="edit-race-drivers" class="editRaceSection d-none table-responsive" style="max-height: 35rem;">
-    <a href="{{route('admin.races.asignRaceNumbers', ['raceId' => $race->id])}}" class="btn btn-primary"><i class="fa-solid fa-arrows-rotate"></i>Load Dorsal Numbers</a>
+    <button id="load-dorsals" class="btn btn-primary"><i class="fa-solid fa-arrows-rotate"></i>Load Dorsal Numbers</button>
     <table class="table table-dark table-hover overflow-hidden mt-2">
         <thead>
             <tr>

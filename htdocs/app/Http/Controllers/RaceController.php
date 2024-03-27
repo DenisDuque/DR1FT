@@ -300,44 +300,31 @@ class RaceController extends Controller {
         return response()->json($race);
     }
 
-    public function assignRaceNumbers($raceId) {
-        // Obtener la carrera por su ID
+    public function generateDorsals() {
+        $raceId = 11;//request()->input('searchTerm');
         $race = Race::findOrFail($raceId);
         
-        // Obtener todos los corredores de la carrera ordenados por su ID
-        $drivers = $race->drivers()->orderBy('id')->get();
-        
-        // Verificar el número máximo de participantes permitidos en la carrera
+        $driversWithNullDorsal = $race->drivers()->whereNull('dorsal')->get();
         $maxParticipants = $race->maxParticipants;
         
-        // Verificar el número actual de participantes en la carrera
-        $currentParticipants = $drivers->count();
-        
-        // Verificar si ya se han asignado dorsales
         $assignedNumbers = DB::table('race_driver')
                             ->where('race_id', $raceId)
                             ->pluck('dorsal')
                             ->toArray();
-        
-        // Calcular los dorsales disponibles
-        $availableNumbers = array_diff(range(1, $maxParticipants), $assignedNumbers);
-        
-        // Verificar si hay suficientes dorsales disponibles para todos los corredores
-        if (count($availableNumbers) < $currentParticipants) {
-            // No hay suficientes dorsales disponibles
-            return redirect()->back()->with('error', 'No hay suficientes dorsales disponibles para todos los corredores.');
+        foreach ($driversWithNullDorsal as $driver) {
+            for ($i = 0; $i < $maxParticipants; $i++) { 
+                if (!in_array($i, $assignedNumbers) && $driver->dorsal === NULL) {
+                    $driver->dorsal = $i;
+                    array_push($assignedNumbers, $i);
+                    RaceDriver::where('race_id', $raceId)
+                        ->where('driver_id', $driver->id)
+                        ->update(['dorsal' => $i]);
+                }
+            }
         }
-        
-        // Asignar dorsales a los corredores
-        foreach ($drivers as $index => $driver) {
-            // Asignar el siguiente dorsal disponible al corredor
-            $dorsal = array_shift($availableNumbers);
-            
-            // Guardar el dorsal asignado en la tabla pivot 'race_driver'
-            $driver->races()->updateExistingPivot($raceId, ['dorsal' => $dorsal]);
-        }
-        
-        return redirect()->back()->with('success', 'Se han asignado los dorsales correctamente.');
+
+        $drivers = $race->drivers()->get();
+        return response()->json($drivers);
     }
 
     public function registerDriver(Request $request)
