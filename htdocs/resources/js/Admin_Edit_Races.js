@@ -73,18 +73,34 @@ class Admin_Edit_Races {
                 `;
             }
         }
-        this.photosInput.style.display = "none";
         document.getElementById('fileList').innerHTML = tmp; 
         this.addDeleteFileEvent();
     }
 
     addDeleteFileEvent() {
+        const self = this;
         const deleteButtons = document.querySelectorAll('.delete-file');
         deleteButtons.forEach(function(button) {
             if (button) {
                 button.addEventListener('click', function() {
                     if (button && button.parentNode) {
-                        button.parentNode.remove(); 
+                        const parentId = button.parentNode.id;
+                        const fileId = parseInt(parentId.match(/\d+/)[0]);
+                        let files = document.getElementById('gropFile').files;
+                        let dataTransfer = new DataTransfer();
+                        for (let i = 0; i < files.length; i++) {
+                            if (i !== fileId) {
+                                let file = files[i];
+                                dataTransfer.items.add(file);
+                            }
+                        }
+                        self.photosInput.files = dataTransfer.files;
+                        /*
+                        for (let index = 0; index < self.photosInput.files.length; index++) {
+                            console.log(self.photosInput.files[index]);
+                        }
+                        */
+                        button.parentNode.remove();
                     }
                 });
             }
