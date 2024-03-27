@@ -32,8 +32,9 @@ class Admin_Edit_Races {
                     }
                     this.loadDorsalsBtn = document.getElementById('load-dorsals');
                     if (this.loadDorsalsBtn) {
-                        this.loadDorsalsBtn.addEventListener('click', function() {
-                            document.getElementById('drivers-races-table-body').innerHTML = self.fetchDrivers();
+                        this.loadDorsalsBtn.addEventListener('click', function(event) {
+                            event.preventDefault();
+                            self.updateDrivers();
                         });
                     }
                     this.photosInput = document.getElementById('gropFile');
@@ -111,10 +112,14 @@ class Admin_Edit_Races {
         });
     }
 
+    async updateDrivers() {
+        document.getElementById('drivers-races-table-body').innerHTML = await this.fetchDrivers();
+    }
+
     async fetchDrivers() {
         return new Promise(async (resolve, reject) => {
             const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-            fetch('/race/generateDorsals', {
+            fetch('/races/drivers/generateDorsals', {
                 method: 'POST',
                 body: JSON.stringify({ searchTerm: this.raceId }),
                 headers: {
@@ -135,6 +140,9 @@ class Admin_Edit_Races {
                         return {
                             id: driver.id,
                             name: driver.name,
+                            federationNumber: driver.federationNumber,
+                            dorsal: driver.pivot.dorsal,
+                            email: driver.email
                         };
                     });
 
@@ -153,10 +161,11 @@ class Admin_Edit_Races {
     }
 
     generateDriverTable(driver) {
+        let dorsal = driver.dorsal ? driver.dorsal : 'NO';
         return `
         <tr>
             <td class="py-3 text-center align-middle fw-bold">${driver.id}</td>
-            <td class="py-3 text-center align-middle">{{${driver.dorsal} ? ${driver.dorsal} : 'NO'}}</td>
+            <td class="py-3 text-center align-middle">${dorsal}</td>
             <td class="py-3 align-middle">${driver.federationNumber}</td>
             <td class="py-3 align-middle">${driver.name}</td>
             <td class="py-3 align-middle">${driver.email}</td>

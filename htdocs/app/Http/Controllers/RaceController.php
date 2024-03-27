@@ -301,7 +301,7 @@ class RaceController extends Controller {
     }
 
     public function generateDorsals() {
-        $raceId = request()->input('searchTerm');
+        $raceId = 11;//request()->input('searchTerm');
         $race = Race::findOrFail($raceId);
         
         $driversWithNullDorsal = $race->drivers()->whereNull('dorsal')->get();
