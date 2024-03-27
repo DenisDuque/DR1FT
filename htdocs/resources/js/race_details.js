@@ -31,7 +31,7 @@ $(document).ready(function() {
     });
     $('#check-credentials').click(function () { 
        verificarCredenciales();
-        
+        console.log('click check credenciales')
     });
 });
 
@@ -40,9 +40,11 @@ $(document).ready(function() {
 function verificarCredenciales() {
     const email = document.getElementById('driverEmail').value;
     const password = document.getElementById('driverPassword').value;
-    const token = document.querySelector('input[name="_token"]');
+    console.log(email);
+    console.log(password);
+    const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-    fetch('/verificar-credenciales', {
+    fetch('/credenciales', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -52,6 +54,7 @@ function verificarCredenciales() {
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data);
         if (data.success) {
             // Autorellenar los campos del formulario con los datos del conductor
             document.getElementById('driverName').value = data.driver.name;

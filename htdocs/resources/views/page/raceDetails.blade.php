@@ -85,7 +85,7 @@
                             @else
                                 <a class="nav-link " href="{{route('user.login')}}">SIGN IN</a>
                             @endif --}}
-                        <form class="row g-3 text-white" action="{{route('race.register')}}" method="POST">
+                        <form class="row g-3 text-white" action="{{route('race.register')}}" method="post">
                             @csrf
                             @if(session()->has('user_id'))
                                 <input type="hidden" name="member" value="1">

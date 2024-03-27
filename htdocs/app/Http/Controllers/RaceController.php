@@ -405,17 +405,18 @@ class RaceController extends Controller {
         return redirect()->back()->with('error', 'User with provided email already exists. Please log in or use a different email.');
     }
 
-    public function verificarCredenciales(Request $request) {
-        $email = $request->input('email');
-        $password = $request->input('password');
-
+    public function verificarCredenciales() {
+        $email = request()->input('email');
+        $password = request()->input('password');
+        
         // Verificar si las credenciales son válidas
         $driver = Driver::where('email', $email)->first();
 
         if ($driver && Hash::check($password, $driver->password)) {
             return response()->json(['success' => true, 'driver' => $driver]);
         } else {
-            return response()->json(['success' => false, 'message' => 'Credenciales inválidas']);
+            return response()->json(['success' => false, 'message' => 'Credenciales inválidas', 'attempted_email' => $email,
+            'attempted_password' => $password]);
         }
     }
 
