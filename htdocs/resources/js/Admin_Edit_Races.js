@@ -29,16 +29,20 @@ class Admin_Edit_Races {
                                 }
                             });
                         });
-
-                        
                     }
+                    this.loadDorsalsBtn = document.getElementById('load-dorsals');
+                    if (this.loadDorsalsBtn) {
+                        this.loadDorsalsBtn.addEventListener('click', function() {
+                            document.getElementById('drivers-races-table-body').innerHTML = self.fetchDrivers();
+                        });
+                    }
+                    this.photosInput = document.getElementById('gropFile');
+                    this.photosInput.addEventListener('change', function(event) {
+                        let files = event.target.files;
+                        console.log(files);
+                        self.displayFilesList(files);
+                    });
                 }
-                this.photosInput = document.getElementById('gropFile');
-                this.photosInput.addEventListener('change', function(event) {
-                    let files = event.target.files;
-                    console.log(files);
-                    self.displayFilesList(files);
-                });
             }
         });
     }
@@ -106,6 +110,58 @@ class Admin_Edit_Races {
             }
         });
     }
+
+    async fetchDrivers() {
+        return new Promise(async (resolve, reject) => {
+            const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+            fetch('/race/generateDorsals', {
+                method: 'POST',
+                body: JSON.stringify({ searchTerm: this.raceId }),
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-Token': token,
+                    'X-Requested-With': 'XMLHttpRequest'
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al realizar la solicitud');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.length > 0) {
+                    const driversJSON = data.map(driver => {
+                        return {
+                            id: driver.id,
+                            name: driver.name,
+                        };
+                    });
+
+                    const tableContent = driversJSON.map(driver => this.generateDriverTable(driver)).join('');
+                    resolve(tableContent);
+                } else {
+                    resolve("<p>No drivers in this race.</p>");
+                }
+                
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                reject(error.message);
+            });
+        });
+    }
+
+    generateDriverTable(driver) {
+        return `
+        <tr>
+            <td class="py-3 text-center align-middle fw-bold">${driver.id}</td>
+            <td class="py-3 text-center align-middle">{{${driver.dorsal} ? ${driver.dorsal} : 'NO'}}</td>
+            <td class="py-3 align-middle">${driver.federationNumber}</td>
+            <td class="py-3 align-middle">${driver.name}</td>
+            <td class="py-3 align-middle">${driver.email}</td>
+        </tr>`;
+      }
 }
 
 const adminEditRaces = new Admin_Edit_Races();
