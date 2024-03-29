@@ -33,6 +33,34 @@ $(document).ready(function() {
        verificarCredenciales();
         console.log('click check credenciales')
     });
+
+    var links = $('nav ul li a');
+    var content = $('div.content');
+    var border = $('span');
+    var lis = $('nav ul li');
+
+    links.each(function(i) {
+        $(this).on('click', function(e) {
+            e.preventDefault();
+
+            var activLinks = $('nav ul li a.activ');
+            var activContent = $('section > div.activ');
+
+            activLinks.removeClass('activ');
+            activContent.removeClass('activ');
+
+            $(this).addClass('activ');
+            var attr = $(this).attr('href');
+
+            var activ = $(attr);
+            activ.addClass('activ');
+
+            var lisLength = lis.length;
+            var lisWidth = 100 / lisLength;
+            var position = i * lisWidth;
+            border.css('left', position + '%');
+        });
+    });
 });
 
 
@@ -58,8 +86,9 @@ function verificarCredenciales() {
         if (data.success) {
             // Autorellenar los campos del formulario con los datos del conductor
             document.getElementById('driverName').value = data.driver.name;
-            document.getElementById('driveBirthDate').value = data.driver.birth_date;
+            document.getElementById('driveBirthDate').value = data.driver.birthDate;
             document.getElementById('driverGender').value = data.driver.gender;
+            document.getElementById('driverAddress').value = data.driver.address;
             // Otros campos del formulario...
         } else {
             alert(data.message); // Mostrar mensaje de error

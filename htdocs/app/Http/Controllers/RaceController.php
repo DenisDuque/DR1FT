@@ -14,6 +14,8 @@ use Illuminate\Support\Facades\DB;
 use App\Models\RaceDriver;
 use App\Models\RaceDriverInsurance;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
 
 class RaceController extends Controller {
 
@@ -330,10 +332,10 @@ class RaceController extends Controller {
     public function registerDriver(Request $request)
     {
         // Si el usuario está autenticado, registrarlo automáticamente como miembro
-        if (auth()->check()) {
+        if (auth('user')->check()) {
             // Comprobar si el usuario ya está inscrito en la carrera
             $existingRaceDriver = RaceDriver::where('race_id', $request->race_id)
-                ->where('driver_id', auth()->id())
+                ->where('driver_id', auth('user')->id())
                 ->exists();
     
             // Si el usuario ya está inscrito, redirigir con un mensaje de error
@@ -344,7 +346,7 @@ class RaceController extends Controller {
             // Crear un nuevo registro en la tabla RaceDriver
             $raceDriver = new RaceDriver();
             $raceDriver->race_id = $request->race_id;
-            $raceDriver->driver_id = auth()->id();
+            $raceDriver->driver_id = auth('user')->id();
             $raceDriver->save();
     
             return redirect()->back()->with('success', 'You have been successfully registered for the race!');

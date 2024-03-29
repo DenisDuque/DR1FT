@@ -49,6 +49,7 @@
     => LISTAR CARRERAS
         - [JS] Filtro Order by
         - [CSS] estilos cartas
+        - [RESPONSIVE] cambiar tamaño columnas cartas
 
     => GALLERY -> Imagenes de carreras aleatorias
 

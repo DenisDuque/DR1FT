@@ -358,3 +358,108 @@
     }
 }
   
+
+.race-detail-header {
+    font-weight: bold;
+    font-size: 3rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+}
+
+main.race-details-nav-tabs-container {
+
+.clearfix:before,
+.clearfix:after {
+    content: " ";
+    display: table;
+}
+
+.clearfix:after {
+    clear: both;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: #000;
+}
+
+header {
+    width: 100%;
+
+    nav {
+        width: 100%;
+        margin-top: 20px;
+
+        ul {
+            width: 100%;
+
+            li {
+                float: left;
+                width: 33%;
+                line-height: 20px;
+                text-align: center;
+            }
+        }
+
+        span {
+            display: block;
+            height: 3px;
+            width: 33%;
+            background: red;
+            position: relative;
+            left: 0;
+            transition: 0.3s ease-in-out;
+        }
+    }
+}
+
+section {
+    margin-top: 50px;
+
+    p {
+        text-align: center;
+        margin: 30px auto;
+        padding: 0 10%;
+    }
+
+    div {
+        width: 90%;
+        margin: 0 auto;
+        display: none;
+
+        &.activ {
+            display: block;
+        }
+    }
+
+    div.content {
+        h2 {
+            margin: 10px 0 40px 20%;
+        }
+
+        p {
+            display: block;
+            margin: 0 auto;
+            width: 60%;
+            line-height: 1.7;
+        }
+    }
+
+    @media screen and (max-width: 600px) {
+        div.content {
+            h2 {
+                margin: 10px 0 40px 5%;
+            }
+
+            p {
+                width: 95%;
+            }
+        }
+    }
+}
+
+}

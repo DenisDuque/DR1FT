@@ -8,16 +8,23 @@
             <img class="img-fluid rounded" src="{{asset('storage/race_banners/'.$race->banner)}}" alt="" srcset="">
         </div>
         <div class="col-md-8 text-white">
-            <h1 class="text-white">{{$race->name}}
+            <h1 class="text-white race-detail-header">{{$race->name}}
                 @if ($race->pro == 1)
                     <span class="badge rounded-pill bg-warning text-dark">PRO</span>
                 @endif
             </h1>
+            <div class="row">
+                <div class="col">
+                    <span class="badge rounded-pill text-bg-light"><i class="me-1 bi bi-calendar2-week-fill"></i>{{$race->date}}</span>
+                    <span class=" badge rounded-pill bg-info text-dark"><i class="bi bi-people-fill"></i>Max. {{$race->maxParticipants}}</span>
+                    <span class=" badge rounded-pill bg-badge-purple">{{$race->length}} Km</span>
+                </div>
+            </div>
             <p>{{$race->startingPlace}}</p>
-            <p>Sponsor Cost: {{$race->sponsorCost}}</p>
             <p>Registration Price: {{$race->registrationPrice}}</p>
-            <p>Max. Participants: {{$race->maxParticipants}}</p>
-            <p>Date: {{$race->date}}</p>
+
+            
+
             <!-- Agregar esto al principio de la vista para mostrar los errores de validación -->
             @if ($errors->any())
             <div class="alert alert-danger">
@@ -27,35 +34,34 @@
                     @endforeach
                 </ul>
             </div>
-            @endif
-
-<!-- Tu formulario va aquí -->
-
-            <!-- Botón para corredores registrados -->
-            @if(session()->has('user_id'))
-                <div class="row mt-3">
-                    <div class="col-12">
-                        <form action="{{ route('race.register') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="member" value="1">
-                            <input type="hidden" name="race_id" value="{{ $race->id }}">
-                            <button type="submit" class="btn btn-primary">Participate as Registered Runner</button>
-                        </form>
-                    </div>
-                </div>
-            @endif
+            @endif            
 
             @php
                 $nextMonth = date('Y-m-d', strtotime('+1 month')); // Fecha del próximo mes
                 $today = date('Y-m-d'); // Fecha de hoy
                 $raceDate = date('Y-m-d', strtotime($race->date)); // Convertir la fecha de la carrera al formato Y-m-d
             @endphp
-                <div class="row">
-                <div class="col-2">
-                    <button type="button" class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#exampleModal" @if ($raceDate <= $nextMonth || $raceDate <= $today) disabled @endif>
-                        Participate
-                    </button>
-                </div>
+            <div class="row">
+                    <!-- Botón para corredores registrados -->
+                    @if(session()->has('user_id'))
+                    
+                        <div class="col-2">
+                            <form action="{{ route('race.register') }}" method="POST">
+                                @csrf
+                                <input type="hidden" name="member" value="1">
+                                <input type="hidden" name="race_id" value="{{ $race->id }}">
+                                <button type="submit" class="btn btn-primary text-white">Participate</button>
+                            </form>
+                        </div>
+                
+                    @else
+                        <div class="col-2">
+                            <button type="button" class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#exampleModal" @if ($raceDate <= $nextMonth || $raceDate <= $today) disabled @endif>
+                                Participate
+                            </button>
+                        </div>
+                    @endif
+                
                 <div class="col-10">
                     @if ($raceDate <= $nextMonth || $raceDate <= $today)
                         <div class="alert alert-primary d-flex align-items-center" role="alert">
@@ -64,11 +70,49 @@
                                 This race is disabled until there's 1 month left
                             </div>
                         </div>
+                    @else
+                        <div class="alert alert-primary" role="alert">
+                            <i class="bi bi-info-circle-fill me-1"></i>
+                            If you have already participated in one of our races, try <a href="{{route('user.login')}}" class="alert-link">logging in</a>, and make it easier!
+                      </div>
                     @endif
                 </div>
+
             </div>
-
-
+            <main class="race-details-nav-tabs-container">
+            <header class="clearfix">
+                <nav class="container-fluid">
+                    <ul class="clearfix">
+                        <li><a href="#one" class="activ">INFORMATION</a></li>
+                        <li><a href="#two">MAP</a></li>
+                        <li><a href="#three">LOCATION</a></li>
+                        
+                    </ul>
+                    <span></span>
+                </nav>
+            </header>
+            <section class="row">
+                <div class="col-xs-12 content activ" id="one">
+                    
+                    <p>
+                        ONE
+                    </p>
+                </div>
+                <div class="col-xs-12 content" id="two">
+                    
+                    <p>
+                        TWO
+                    </p>
+                </div>
+                <div class="col-xs-12 content" id="three">
+                    
+                    <p>
+                        THREE
+                    </p>
+                </div>
+                
+            </section>
+        </main>
             
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -167,6 +211,9 @@
             
         </div>
     </div>
+
+    
+
     <!-- Aquí puedes agregar el contenido específico para esta vista -->
     <div class="col-lg-12 col-md-12 preview-container my-5">
         <div class="d-flex justify-content-center">

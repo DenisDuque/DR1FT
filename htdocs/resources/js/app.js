@@ -20,4 +20,3 @@ $(document).ready(function() {
         console.log("La página se está descargando");
     });
 });
-console.log('aa');
