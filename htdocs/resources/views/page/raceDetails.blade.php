@@ -5,7 +5,7 @@
 @section('content')
     <div class="row mt-5">
         <div class="col-md-4">
-            <img class="img-fluid rounded" src="{{asset('storage/race_banners/'.$race->banner)}}" alt="" srcset="">
+            <img class="img-fluid rounded" src="{{asset('storage/race_banners/'.$race->banner)}}" alt="{{$race->name}}">
         </div>
         <div class="col-md-8 text-white">
             <h1 class="text-white race-detail-header">{{$race->name}}
@@ -13,35 +13,20 @@
                     <span class="badge rounded-pill bg-warning text-dark">PRO</span>
                 @endif
             </h1>
-            <div class="row">
+            <div class="row py-2">
                 <div class="col">
                     <span class="badge rounded-pill text-bg-light"><i class="me-1 bi bi-calendar2-week-fill"></i>{{$race->date}}</span>
                     <span class=" badge rounded-pill bg-info text-dark"><i class="bi bi-people-fill"></i>Max. {{$race->maxParticipants}}</span>
-                    <span class=" badge rounded-pill bg-badge-purple">{{$race->length}} Km</span>
+                    <span class=" badge rounded-pill bg-badge-purple"><i class="bi bi-speedometer2"></i>{{$race->length}} Km</span>
                 </div>
-            </div>
-            <p>{{$race->startingPlace}}</p>
-            <p>Registration Price: {{$race->registrationPrice}}</p>
-
-            
-
-            <!-- Agregar esto al principio de la vista para mostrar los errores de validación -->
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif            
+            </div>         
 
             @php
                 $nextMonth = date('Y-m-d', strtotime('+1 month')); // Fecha del próximo mes
                 $today = date('Y-m-d'); // Fecha de hoy
                 $raceDate = date('Y-m-d', strtotime($race->date)); // Convertir la fecha de la carrera al formato Y-m-d
             @endphp
-            <div class="row">
+            <div class="row my-4">
                     <!-- Botón para corredores registrados -->
                     @if(session()->has('user_id'))
                     
@@ -60,6 +45,12 @@
                                 Participate
                             </button>
                         </div>
+                        <div class="col-10">
+                            <div class="alert alert-primary" role="alert">
+                                <i class="bi bi-info-circle-fill me-1"></i>
+                                If you have already participated in one of our races, try <a href="{{route('user.login')}}" class="alert-link">logging in</a>, and make it easier!
+                            </div>
+                        </div>
                     @endif
                 
                 <div class="col-10">
@@ -70,15 +61,17 @@
                                 This race is disabled until there's 1 month left
                             </div>
                         </div>
-                    @else
-                        <div class="alert alert-primary" role="alert">
-                            <i class="bi bi-info-circle-fill me-1"></i>
-                            If you have already participated in one of our races, try <a href="{{route('user.login')}}" class="alert-link">logging in</a>, and make it easier!
-                      </div>
                     @endif
                 </div>
 
             </div>
+            <div class="row mt-2">
+                <div class="col">
+                    @include('administrator.layouts.notice')
+                </div>
+            </div>
+            
+
             <main class="race-details-nav-tabs-container">
             <header class="clearfix">
                 <nav class="container-fluid">
@@ -86,31 +79,44 @@
                         <li><a href="#one" class="activ">INFORMATION</a></li>
                         <li><a href="#two">MAP</a></li>
                         <li><a href="#three">LOCATION</a></li>
-                        
+                        <li><a href="#four">CLASSIFICATION</a></li>
+					<li><a href="#five">GALLERY</a></li>
                     </ul>
                     <span></span>
+                    
                 </nav>
             </header>
-            <section class="row">
+            <section class="row px-4 py-2">
                 <div class="col-xs-12 content activ" id="one">
-                    
                     <p>
-                        ONE
+                        {{$race->description}}
                     </p>
+                    <p><strong>Registration Price: {{$race->registrationPrice}}$</strong></p>
+                    <h4>Sponsors</h4>
+                    @foreach ($sponsors as $sponsor)
+                        <img class="img-thumbnail rounded" src="{{asset('storage/sponsor_logos/'.$sponsor->logo)}}" alt="{{$sponsor->name}}">
+                        
+                    @endforeach
                 </div>
                 <div class="col-xs-12 content" id="two">
-                    
-                    <p>
-                        TWO
-                    </p>
+                    <img class="img-fluid rounded" src="{{asset('storage/race_maps/'.$race->map)}}" alt="{{$race->name}}">
                 </div>
                 <div class="col-xs-12 content" id="three">
                     
+                    <p><i class="bi bi-geo-alt-fill me-1"></i>{{$race->startingPlace}}</p>
+                </div>
+                <div class="col-xs-12 content" id="four">
+                    
                     <p>
-                        THREE
+                        four
                     </p>
                 </div>
-                
+                <div class="col-xs-12 content" id="five">
+                    
+                    <p>
+                        five
+                    </p>
+                </div>
             </section>
         </main>
             
@@ -130,6 +136,16 @@
                                 <a class="nav-link " href="{{route('user.login')}}">SIGN IN</a>
                             @endif --}}
                         <form class="row g-3 text-white" action="{{route('race.register')}}" method="post">
+                            <!-- Agregar esto al principio de la vista para mostrar los errores de validación -->
+                            @if ($errors->any())
+                                <div class="alert alert-danger">
+                                    <ul>
+                                        @foreach ($errors->all() as $error)
+                                            <li>{{ $error }}</li>
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            @endif   
                             @csrf
                             @if(session()->has('user_id'))
                                 <input type="hidden" name="member" value="1">
@@ -193,8 +209,7 @@
                                 <input type="password" name="driverPasswordConfirm" class="form-control" id="driverPasswordConfirm" value="{{old('driverPasswordConfirm')}}">
                             </div>
                            
-                            <!-- Agrega un botón para verificar credenciales -->
-                            <button type="button" id="check-credentials" class="btn btn-primary">Verificar Credenciales</button>
+                            
 
                             <button type="submit" class="btn btn-success"><i class="bi bi-check-lg"></i> Save</button>
                             
@@ -215,12 +230,12 @@
     
 
     <!-- Aquí puedes agregar el contenido específico para esta vista -->
-    <div class="col-lg-12 col-md-12 preview-container my-5">
+    {{-- <div class="col-lg-12 col-md-12 preview-container my-5">
         <div class="d-flex justify-content-center">
             <h3 class="text-uppercase breadcrumb-item active fs-5 mx-2 text-white" role="button">gallery</h3>
             <h3 class="text-uppercase breadcrumb-item fs-5 mx-2 text-white" role="button">classification</h3>
         </div>
         
         
-    </div>
+    </div> --}}
 @endsection

@@ -9,7 +9,7 @@ class Image extends Model
 {
 
     public function race() {
-        return $this->belongsTo(Race::class);
+        return $this->belongsToMany(Race::class);
     }
 
     use HasFactory;

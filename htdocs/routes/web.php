@@ -15,7 +15,7 @@ Route::get('/races', [RaceController::class, 'allRaces'])->name('races.all');
 Route::get('/races/{race}', [RaceController::class, 'show'])->name('race.detail');
 Route::get('/gallery', [ImageController::class, 'gallery'])->name('page.gallery');
 Route::post('/race/register', [RaceController::class, 'registerDriver'])->name('race.register')->middleware('auth:user');
-Route::post('/credenciales', [RaceController::class, 'verificarCredenciales'])->name('credenciales');
+Route::get('/profile/{driver}', [DriverController::class, 'profile'])->name('page.profile');
 
 Route::get('/login', [DriverController::class, 'showLogin'])->name('user.showLogin');
 Route::post('/login', [DriverController::class, 'auth'])->name('user.login');
