@@ -10,9 +10,10 @@
             </tr>
         </thead>
         <tbody id="sponsors-races-table-body">
-            @foreach($race->sponsors as $sponsor)
+            @foreach($sponsors as $sponsor)
                 <tr>
-                    <td class="py-3 text-center align-middle fw-bold"><input class="form-check-input" type="checkbox" role="switch" name="raceSponsors[]" value="{{$sponsor->id}}"></td>
+                    <td class="py-3 text-center align-middle fw-bold"><input class="form-check-input" type="checkbox" role="switch" name="raceSponsors[]" value="{{$sponsor->id}}"
+                        {{ $race->sponsors->pluck('id')->contains($sponsor->id) ? 'checked' : '' }}></td>
                     <!-- <td>{{$sponsor->logo}}</td> -->
                     <td class="py-3 align-middle"><i class="bi bi-image"></i></td>
                     <td class="py-3 align-middle">{{$sponsor->cif}}</td>

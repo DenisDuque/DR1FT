@@ -12,9 +12,10 @@
         </thead>
         <tbody id="drivers-races-table-body">
             @foreach($race->drivers as $driver)
+            
                 <tr>
                     <td class="py-3 text-center align-middle fw-bold">{{$driver->id}}</td>
-                    <td class="py-3 text-center align-middle">{{$driver->dorsal ? $driver->dorsal : 'NO'}}</td>
+                    <td class="py-3 text-center align-middle">{{$driver->pivot->dorsal ?? 'NO' }}</td>
                     <td class="py-3 align-middle">{{$driver->federationNumber}}</td>
                     <td class="py-3 align-middle">{{$driver->name}}</td>
                     <td class="py-3 align-middle">{{$driver->email}}</td>

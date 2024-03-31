@@ -12,6 +12,6 @@ class RaceDriverSeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\RaceDriver::factory()->count(200)->create();
+        \App\Models\RaceDriver::factory()->count(50)->create();
     }
 }
