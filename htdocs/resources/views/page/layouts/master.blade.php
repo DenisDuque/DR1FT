@@ -46,7 +46,8 @@
                         </li>
                         <li class="nav-item">
                             @if(session()->has('user_id'))
-                                <a class="nav-link " href="{{route('user.login')}}">PROFILE</a>
+                                <a class="nav-link" href="{{ route('page.profile', ['driver' => session('user_id')]) }}">PROFILE</a>
+
                             @else
                                 <a class="nav-link " href="{{route('user.login')}}">SIGN IN</a>
                             @endif

@@ -368,20 +368,16 @@ class RaceController extends Controller {
 
     public function show($id) {
         $race = Race::find($id);
-        $insurances = Insurance::all();
+        $insurances = $race->insurances;
+        $sponsors = $race->sponsors;
 
-        // if ($race) {
-        //     $race->date = Carbon::createFromFormat('d-m-Y', $race->date)->format('Y-m-d');
-        //     return view('administrator.races.show')->with('race', $race);
-        // } else {
-        //     return redirect()->route('admin.races')->with('error', 'Race not found');
-        // }
         return view('page.raceDetails', [
             'race' => $race, 
-            'insurances' => $insurances
+            'insurances' => $insurances,
+            'sponsors' => $sponsors
         ]);
     }
-
+    
     public function search() {
         $searchTerm = request()->input('searchTerm');
 
@@ -430,24 +426,34 @@ class RaceController extends Controller {
     {
         // Si el usuario está autenticado, registrarlo automáticamente como miembro
         if (auth('user')->check()) {
+            // Obtener la carrera
+            $race = Race::find($request->race_id);
+
+            // Verificar si la carrera es "pro" y el usuario no es profesional
+            if ($race->pro && !auth('user')->user()->pro) {
+                return redirect()->back()->with('error', 'You cannot register for this race as you are not a pro user.');
+            }
+
             // Comprobar si el usuario ya está inscrito en la carrera
             $existingRaceDriver = RaceDriver::where('race_id', $request->race_id)
                 ->where('driver_id', auth('user')->id())
                 ->exists();
-    
+
             // Si el usuario ya está inscrito, redirigir con un mensaje de error
             if ($existingRaceDriver) {
                 return redirect()->back()->with('error', 'You are already registered for this race.');
             }
-    
+
             // Crear un nuevo registro en la tabla RaceDriver
             $raceDriver = new RaceDriver();
             $raceDriver->race_id = $request->race_id;
             $raceDriver->driver_id = auth('user')->id();
             $raceDriver->save();
-    
+
             return redirect()->back()->with('success', 'You have been successfully registered for the race!');
         }
+
+
     
         // Si el usuario no está autenticado, validar los datos del formulario
         $validatedData = $request->validate([
@@ -491,20 +497,20 @@ class RaceController extends Controller {
         return redirect()->back()->with('error', 'User with provided email already exists. Please log in or use a different email.');
     }
 
-    public function verificarCredenciales() {
-        $email = request()->input('email');
-        $password = request()->input('password');
+    // public function verificarCredenciales() {
+    //     $email = request()->input('email');
+    //     $password = request()->input('password');
         
-        // Verificar si las credenciales son válidas
-        $driver = Driver::where('email', $email)->first();
+    //     // Verificar si las credenciales son válidas
+    //     $driver = Driver::where('email', $email)->first();
 
-        if ($driver && Hash::check($password, $driver->password)) {
-            return response()->json(['success' => true, 'driver' => $driver]);
-        } else {
-            return response()->json(['success' => false, 'message' => 'Credenciales inválidas', 'attempted_email' => $email,
-            'attempted_password' => $password]);
-        }
-    }
+    //     if ($driver && Hash::check($password, $driver->password)) {
+    //         return response()->json(['success' => true, 'driver' => $driver]);
+    //     } else {
+    //         return response()->json(['success' => false, 'message' => 'Credenciales inválidas', 'attempted_email' => $email,
+    //         'attempted_password' => $password]);
+    //     }
+    // }
 
 
     

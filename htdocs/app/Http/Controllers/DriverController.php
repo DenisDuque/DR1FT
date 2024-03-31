@@ -47,6 +47,16 @@ class DriverController extends Controller
         return redirect()->route('admin.login');
     }
 
+    public function profile($id) {
+        $driver = Driver::findOrFail($id);
+        $races = $driver->races;
+
+        return view("page.profile", [
+            'driver' => $driver,
+            'races' => $races
+        ]);
+    }
+
     public function index() {
         $drivers = Driver::get();
 
