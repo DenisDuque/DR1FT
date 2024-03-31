@@ -349,7 +349,6 @@ class RaceController extends Controller {
     public function updatePhotos($race, $request) {
         if ($request->has('raceSponsors') && is_array($request->input('raceSponsors')) && count($request->input('raceSponsors')) > 0) {
             // Hay checkboxes marcados
-            $photos = $request->input('racePhotos');
             $photosNames = ImageController::storeImages($request, 'race_photos', 'racePhoto');
             if ($photosNames) {
                 $data = [];
