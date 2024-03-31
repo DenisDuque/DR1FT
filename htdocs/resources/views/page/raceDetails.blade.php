@@ -48,7 +48,7 @@
                         <div class="col-10">
                             <div class="alert alert-primary" role="alert">
                                 <i class="bi bi-info-circle-fill me-1"></i>
-                                If you have already participated in one of our races, try <a href="{{route('user.login')}}" class="alert-link">logging in</a>, and make it easier!
+                                If you have already participated in one of our races, try <a href="{{route('user.showLogin')}}" class="alert-link">logging in</a>, and make it easier!
                             </div>
                         </div>
                     @endif
@@ -119,11 +119,20 @@
                 </div>
             </section>
         </main>
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif 
             
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg text-white">
-                <div class="modal-content bg">
+                <div class="modal-content">
                     <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Registration Form</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -136,16 +145,9 @@
                                 <a class="nav-link " href="{{route('user.login')}}">SIGN IN</a>
                             @endif --}}
                         <form class="row g-3 text-white" action="{{route('race.register')}}" method="post">
+                              
+
                             <!-- Agregar esto al principio de la vista para mostrar los errores de validación -->
-                            @if ($errors->any())
-                                <div class="alert alert-danger">
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            @endif   
                             @csrf
                             @if(session()->has('user_id'))
                                 <input type="hidden" name="member" value="1">

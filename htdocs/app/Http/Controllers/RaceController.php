@@ -451,10 +451,9 @@ class RaceController extends Controller {
             $raceDriver->save();
 
             return redirect()->back()->with('success', 'You have been successfully registered for the race!');
-        }
 
-
-    
+        } 
+        
         // Si el usuario no está autenticado, validar los datos del formulario
         $validatedData = $request->validate([
             'driverName' => 'required|string',
@@ -495,22 +494,11 @@ class RaceController extends Controller {
     
         // Si el conductor ya existe, mostrar un mensaje de error
         return redirect()->back()->with('error', 'User with provided email already exists. Please log in or use a different email.');
+
+
+    
     }
 
-    // public function verificarCredenciales() {
-    //     $email = request()->input('email');
-    //     $password = request()->input('password');
-        
-    //     // Verificar si las credenciales son válidas
-    //     $driver = Driver::where('email', $email)->first();
-
-    //     if ($driver && Hash::check($password, $driver->password)) {
-    //         return response()->json(['success' => true, 'driver' => $driver]);
-    //     } else {
-    //         return response()->json(['success' => false, 'message' => 'Credenciales inválidas', 'attempted_email' => $email,
-    //         'attempted_password' => $password]);
-    //     }
-    // }
 
 
     
