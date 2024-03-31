@@ -328,8 +328,8 @@ class RaceController extends Controller {
 
                 foreach ($validSponsorsIds as $sponsorId) {
                     $data[] = [
-                        'race_id' => $race->id,
-                        'sponsor_id' => $sponsorId
+                        'sponsor_id' => $sponsorId,
+                        'race_id' => $race->id
                     ];
                 }
             
@@ -347,9 +347,9 @@ class RaceController extends Controller {
     }
 
     public function updatePhotos($race, $request) {
-        if ($request->has('raceSponsors') && is_array($request->input('raceSponsors')) && count($request->input('raceSponsors')) > 0) {
-            // Hay checkboxes marcados
-            $photosNames = ImageController::storeImages($request, 'race_photos', 'racePhoto');
+        if ($request->has('racePhotos') && is_array($request->input('racePhotos')) && count($request->input('racePhotos')) > 0) {
+            // Hay imágenes
+            $photosNames = ImageController::storeImages($request, 'race_photos', 'racePhotos');
             if ($photosNames) {
                 $data = [];
                 foreach ($photosNames as $photo) {
@@ -358,7 +358,8 @@ class RaceController extends Controller {
                         'race_id' => $race->id
                     ];
                 }
-                // Insertar los datos en la tabla race_sponsors
+                dd($data);
+                // Insertar los datos en la tabla race_photos
                 RacePhoto::insert($data);
             }
         

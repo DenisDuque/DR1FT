@@ -11,21 +11,19 @@
             </thead>
             <tbody id="insurances-races-table-body">
                 @foreach($insurances as $insurance)
-                    <tr>
-                        <td class="align-middle fw-bold"><input class="form-check-input" type="checkbox" name="raceInsurances[]" value="{{$insurance->id}}" 
-                            {{ $race->insurances->pluck('id')->contains($insurance->id) ? 'checked' : '' }}>
-                        </td>
-                        <td class="align-middle">
-                            <img class="img-thumbnail" src="{{ asset('storage/insurance_logos/' . $insurance->logo) }}" alt="{{ $insurance->name }}">
-                        </td>
-                        <td class="align-middle">{{$insurance->cif}}</td>
-                        <td class="align-middle">{{$insurance->name}}
-                            @if ($insurance->active == 0)
-                                <span class="badge rounded-pill bg-badge-disabled">Disabled</span>
-                            @endif
-                        </td>
-                        <td class="text-center align-middle"><span class="badge rounded-pill bg-badge-purple">{{$insurance->pricePerRace}}$</span></td>
-                    </tr>
+                    @if ($insurance->active != 0)
+                        <tr>
+                            <td class="align-middle fw-bold"><input class="form-check-input" type="checkbox" name="raceInsurances[]" value="{{$insurance->id}}" 
+                                {{ $race->insurances->pluck('id')->contains($insurance->id) ? 'checked' : '' }}>
+                            </td>
+                            <td class="align-middle">
+                                <img class="img-thumbnail" src="{{ asset('storage/insurance_logos/' . $insurance->logo) }}" alt="{{ $insurance->name }}">
+                            </td>
+                            <td class="align-middle">{{$insurance->cif}}</td>
+                            <td class="align-middle">{{$insurance->name}}</td>
+                            <td class="text-center align-middle"><span class="badge rounded-pill bg-badge-purple">{{$insurance->pricePerRace}}$</span></td>
+                        </tr>
+                    @endif
                 @endforeach
             </tbody>
         </table>
