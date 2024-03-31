@@ -119,9 +119,9 @@ class Admin_Edit_Races {
     async fetchDrivers() {
         return new Promise(async (resolve, reject) => {
             const token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-            fetch('/races/drivers/generateDorsals', {
+            fetch('/generateDorsals', {
                 method: 'POST',
-                body: JSON.stringify({ searchTerm: this.raceId }),
+                body: JSON.stringify({ searchTerm: this.raceId.value}),
                 headers: {
                     'Content-Type': 'application/json',
                     'X-CSRF-Token': token,

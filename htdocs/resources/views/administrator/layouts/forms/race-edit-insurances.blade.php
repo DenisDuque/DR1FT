@@ -10,9 +10,11 @@
                 </tr>
             </thead>
             <tbody id="insurances-races-table-body">
-                @foreach($race->insurances as $insurance)
+                @foreach($insurances as $insurance)
                     <tr>
-                        <td class="align-middle fw-bold"><input class="form-check-input" type="checkbox" name="raceInsurances[]" value="{{$insurance->id}}"></td>
+                        <td class="align-middle fw-bold"><input class="form-check-input" type="checkbox" name="raceInsurances[]" value="{{$insurance->id}}" 
+                            {{ $race->insurances->contains('insurance_id', $insurance->id) ? 'checked' : '' }}>
+                        </td>
                         <td class="align-middle">
                             <img class="img-thumbnail" src="{{ asset('storage/insurance_logos/' . $insurance->logo) }}" alt="{{ $insurance->name }}">
                         </td>

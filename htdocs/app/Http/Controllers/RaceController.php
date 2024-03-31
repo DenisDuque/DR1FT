@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
 use App\Models\RaceDriver;
 use App\Models\RaceDriverInsurance;
+use App\Models\RacePhoto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
@@ -201,8 +202,11 @@ class RaceController extends Controller {
 
     public function edit($id) {
         $race = Race::find($id);
+        $sponsors = Sponsor::all();
+        $insurances = Insurance::all();
+        
         if ($race) {
-            return view('administrator.races.edit')->with('race', $race);
+            return view('administrator.races.edit')->with(compact('race', 'sponsors', 'insurances'));
         } else {
             return redirect()->route('admin.races')->with('error', 'Race not found');
         }
@@ -212,62 +216,154 @@ class RaceController extends Controller {
         $race = Race::find($id);
 
         if ($race) {
-            request()->validate([
-                'raceName' => 'string',
-                'raceDescription' => 'string',
-                'raceMaxParticipants' => 'integer',
-                'raceLength' => 'numeric',
-                'raceDate' => 'date',
-                'raceCoords' => 'string',
-                'raceSponsorCost' => 'numeric',
-                'raceRegistrationPrice' => 'numeric',
-            ]);
-
-            $originalValues = $race->getOriginal();
-
-            $map = ImageController::storeImage(request(), 'race_maps', 'raceMap');
-            $banner = ImageController::storeImage(request(), 'race_banners', 'raceBanner');
-
-            $pro = request()->has('racePro') ? 1 : 0;
-            $active = request()->has('raceActive') ? 1 : 0;
-
-            $updatedValues = [
-                'name' => request('raceName'),
-                'description' => request('raceDescription'),
-                'maxParticipants' => request('raceMaxParticipants'),
-                'length' => request('raceLength'),
-                'date' => request('raceDate'),
-                'startingPlace' => request('raceCoords'),
-                'sponsorCost' => request('raceSponsorCost'),
-                'registrationPrice' => request('raceRegistrationPrice'),
-                'pro' => $pro,
-                'active' => $active,
-            ];
-
-            // Actualizar solo los campos que han cambiado
-            $updatedValues = array_filter($updatedValues, function ($value, $key) use ($originalValues) {
-                return $value !== $originalValues[$key];
-            }, ARRAY_FILTER_USE_BOTH);
-
-            // Si hay nuevos mapas o banners, agregarlos a los valores actualizados
-            if ($map) {
-                $updatedValues['map'] = $map;
-            }
-
-            if ($banner) {
-                $updatedValues['banner'] = $banner;
-            }
-
-            // Actualizar la carrera solo si hay cambios
-            if (!empty($updatedValues)) {
-                $race->update($updatedValues);
-                return redirect()->route('admin.races')->with('success', 'Race updated correctly.');
-            } else {
-                return redirect()->route('admin.races')->with('info', 'No changes detected.');
-            }
+            RaceController::updateDetails($race, request());
+            RaceController::updateInsurances($race, request());
+            RaceController::updatePhotos($race, request());
+            echo("FUNCIONA");
         } else {
             return redirect()->route('admin.races')->with('error', 'Race not found.');
         }
+    }
+
+    public function updateDetails($race, $request) {
+        $request->validate([
+            'raceName' => 'string',
+            'raceDescription' => 'string',
+            'raceMaxParticipants' => 'integer',
+            'raceLength' => 'numeric',
+            'raceDate' => 'date',
+            'raceCoords' => 'string',
+            'raceSponsorCost' => 'numeric',
+            'raceRegistrationPrice' => 'numeric',
+        ]);
+
+        $originalValues = $race->getOriginal();
+        if ($request->has('raceMap')) {
+            $map = ImageController::storeImage($request, 'race_maps', 'raceMap');
+        }
+        if ($request->has('raceBanner')) {
+            $banner = ImageController::storeImage($request, 'race_banners', 'raceBanner');
+        }
+        $pro = $request->has('racePro') ? 1 : 0;
+        $active = $request->has('raceActive') ? 1 : 0;
+
+        $updatedValues = [
+            'name' => $request['raceName'],
+            'description' => $request['raceDescription'],
+            'maxParticipants' => $request['raceMaxParticipants'],
+            'length' => $request['raceLength'],
+            'date' => $request['raceDate'],
+            'startingPlace' => $request['raceCoords'],
+            'sponsorCost' => $request['raceSponsorCost'],
+            'registrationPrice' => $request['raceRegistrationPrice'],
+            'pro' => $pro,
+            'active' => $active,
+        ];
+
+        // Actualizar solo los campos que han cambiado
+        $updatedValues = array_filter($updatedValues, function ($value, $key) use ($originalValues) {
+            return $value !== $originalValues[$key];
+        }, ARRAY_FILTER_USE_BOTH);
+
+        // Si hay nuevos mapas o banners, agregarlos a los valores actualizados
+        if (isset($map)) {
+            $updatedValues['map'] = $map;
+        }
+
+        if (isset($banner)) {
+            $updatedValues['banner'] = $banner;
+        }
+
+        // Actualizar la carrera solo si hay cambios
+        if (!empty($updatedValues)) {
+            $race->update($updatedValues);
+        }
+    }
+
+    public function updateInsurances($race, $request) {
+        if ($request->has('raceInsurances') && is_array($request->input('raceInsurances')) && count($request->input('raceInsurances')) > 0) {
+            // Hay checkboxes marcados
+            $selectedInsuranceIds = $request->input('raceInsurances');
+    
+            // Verifica que todos los insuranceIds seleccionados existan en la base de datos
+            $validInsuranceIds = Insurance::whereIn('id', $selectedInsuranceIds)->pluck('id')->toArray();
+            if (count($validInsuranceIds) === count($selectedInsuranceIds)) {
+                // Todos los IDs son válidos, procede con las acciones necesarias, por ejemplo, almacenarlos en la sesión
+                RaceInsurance::where('race_id', $race->id)->delete();
+
+                $data = [];
+
+                foreach ($validInsuranceIds as $insuranceId) {
+                    $data[] = [
+                        'race_id' => $race->id,
+                        'insurance_id' => $insuranceId
+                    ];
+                }
+            
+                // Insertar los datos en la tabla race_insurances
+                RaceInsurance::insert($data);
+    
+            } else {
+                // Al menos uno de los IDs seleccionados no existe, puedes redirigir o realizar otras acciones
+                return redirect()->back()->with('error', 'Invalid insurance selection.');
+            }
+        } else {
+            // No hay checkboxes marcados, puedes redirigir o realizar otras acciones
+            return redirect()->back()->with('error', 'You need to select at least 1 insurance.');
+        }
+    }
+
+    public function updateSponsors($race, $request) {
+        if ($request->has('raceSponsors') && is_array($request->input('raceSponsors')) && count($request->input('raceSponsors')) > 0) {
+            // Hay checkboxes marcados
+            $selectedSponsorsIds = $request->input('raceSponsors');
+    
+            // Verifica que todos los sponsorIds seleccionados existan en la base de datos
+            $validSponsorsIds = Sponsor::whereIn('id', $selectedSponsorsIds)->pluck('id')->toArray();
+            if (count($validSponsorsIds) === count($selectedSponsorsIds)) {
+                // Todos los IDs son válidos, procede con las acciones necesarias, por ejemplo, almacenarlos en la sesión
+                RaceSponsor::where('race_id', $race->id)->delete();
+
+                $data = [];
+
+                foreach ($validSponsorsIds as $sponsorId) {
+                    $data[] = [
+                        'race_id' => $race->id,
+                        'sponsor_id' => $sponsorId
+                    ];
+                }
+            
+                // Insertar los datos en la tabla race_sponsors
+                RaceSponsor::insert($data);
+    
+            } else {
+                // Al menos uno de los IDs seleccionados no existe, puedes redirigir o realizar otras acciones
+                return redirect()->back()->with('error', 'Invalid sponsor selection.');
+            }
+        } else {
+            // No hay checkboxes marcados, puedes redirigir o realizar otras acciones
+            return redirect()->back()->with('error', 'You need to select at least 1 sponsor.');
+        }
+    }
+
+    public function updatePhotos($race, $request) {
+        if ($request->has('raceSponsors') && is_array($request->input('raceSponsors')) && count($request->input('raceSponsors')) > 0) {
+            // Hay checkboxes marcados
+            $photos = $request->input('racePhotos');
+            $photosNames = ImageController::storeImages($request, 'race_photos', 'racePhoto');
+            if ($photosNames) {
+                $data = [];
+                foreach ($photosNames as $photo) {
+                    $data[] = [
+                        'path' => $photo,
+                        'race_id' => $race->id
+                    ];
+                }
+                // Insertar los datos en la tabla race_sponsors
+                RacePhoto::insert($data);
+            }
+        
+        } 
     }
 
     public function show($id) {
@@ -303,7 +399,7 @@ class RaceController extends Controller {
     }
 
     public function generateDorsals() {
-        $raceId = 11;//request()->input('searchTerm');
+        $raceId = request()->input('searchTerm');
         $race = Race::findOrFail($raceId);
         
         $driversWithNullDorsal = $race->drivers()->whereNull('dorsal')->get();
@@ -313,6 +409,7 @@ class RaceController extends Controller {
                             ->where('race_id', $raceId)
                             ->pluck('dorsal')
                             ->toArray();
+                            
         foreach ($driversWithNullDorsal as $driver) {
             for ($i = 0; $i < $maxParticipants; $i++) { 
                 if (!in_array($i, $assignedNumbers) && $driver->dorsal === NULL) {
