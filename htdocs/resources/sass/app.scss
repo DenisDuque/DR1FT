@@ -486,3 +486,29 @@ main.race-details-nav-tabs-container {
     
 
 }
+
+
+.no-gutters {
+    margin-right: 0;
+    margin-left: 0;
+  
+    > .col,
+    > [class*="col-"] {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+  
+  
+  .cell {
+    min-height: 100px;
+    border: 2px solid green;
+    margin: 10px;
+    border-radius: 15px;
+  }
+  .cell__big {
+    border-color: red;
+    height: auto;
+    display: flex;
+    height: calc(100% - 2rem);
+  }

@@ -44,7 +44,7 @@ class DriverController extends Controller
         session()->flush();
 
         // Redirigir a la página de inicio de sesión
-        return redirect()->route('admin.login');
+        return redirect()->back();
     }
 
     public function profile($id) {
