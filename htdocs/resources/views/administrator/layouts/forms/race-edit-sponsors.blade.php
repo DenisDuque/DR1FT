@@ -19,7 +19,19 @@
                         <td class="py-3 align-middle"><i class="bi bi-image"></i></td>
                         <td class="py-3 align-middle">{{$sponsor->cif}}</td>
                         <td class="py-3 align-middle">{{$sponsor->name}}</td>
-                        <td class="py-3 text-center align-middle fw-bold"><input class="form-check-input" type="checkbox" role="switch" name="mainSponsors[]" value="{{$sponsor->id}}"></td>
+                        <td class="py-3 text-center align-middle fw-bold">
+                            <input class="form-check-input" type="checkbox" role="switch" name="mainSponsors[]" value="{{$sponsor->id}}"
+                            @php
+                                $raceSponsor = $race->sponsors->where('id', $sponsor->id)->first();
+                            @endphp
+                                
+
+                            @if ($raceSponsor)
+                                {{ $raceSponsor->pivot->mainSponsor == 1 ? 'checked' : '' }}
+                            @endif
+                       
+                            >
+                        </td>
                     </tr>
                 @endif
             @endforeach   

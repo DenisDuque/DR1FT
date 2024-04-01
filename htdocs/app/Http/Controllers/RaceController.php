@@ -214,10 +214,10 @@ class RaceController extends Controller {
 
     public function update($id) {
         $race = Race::find($id);
-
         if ($race) {
             RaceController::updateDetails($race, request());
             RaceController::updateInsurances($race, request());
+            RaceController::updateSponsors($race, request());
             RaceController::updatePhotos($race, request());
             echo("FUNCIONA");
         } else {
@@ -288,7 +288,6 @@ class RaceController extends Controller {
             // Verifica que todos los insuranceIds seleccionados existan en la base de datos
             $validInsuranceIds = Insurance::whereIn('id', $selectedInsuranceIds)->pluck('id')->toArray();
             if (count($validInsuranceIds) === count($selectedInsuranceIds)) {
-                // Todos los IDs son válidos, procede con las acciones necesarias, por ejemplo, almacenarlos en la sesión
                 RaceInsurance::where('race_id', $race->id)->delete();
 
                 $data = [];
@@ -316,24 +315,25 @@ class RaceController extends Controller {
     public function updateSponsors($race, $request) {
         if ($request->has('raceSponsors') && is_array($request->input('raceSponsors')) && count($request->input('raceSponsors')) > 0) {
             // Hay checkboxes marcados
-            $selectedSponsorsIds = $request->input('raceSponsors');
-    
-            // Verifica que todos los sponsorIds seleccionados existan en la base de datos
-            $validSponsorsIds = Sponsor::whereIn('id', $selectedSponsorsIds)->pluck('id')->toArray();
-            if (count($validSponsorsIds) === count($selectedSponsorsIds)) {
-                // Todos los IDs son válidos, procede con las acciones necesarias, por ejemplo, almacenarlos en la sesión
+            $selectedSponsorIds = $request->input('raceSponsors');
+            $selectedMainSponsorIds = $request->input('mainSponsors');
+            // Verifica que todos los sponsors seleccionados existan en la base de datos
+            $validSponsorIds = Sponsor::whereIn('id', $selectedSponsorIds)->pluck('id')->toArray();
+            if (count($validSponsorIds) === count($selectedSponsorIds)) {
                 RaceSponsor::where('race_id', $race->id)->delete();
 
                 $data = [];
 
-                foreach ($validSponsorsIds as $sponsorId) {
+                foreach ($validSponsorIds as $sponsorId) {
+
                     $data[] = [
+                        'race_id' => $race->id,
                         'sponsor_id' => $sponsorId,
-                        'race_id' => $race->id
+                        'mainSponsor' => in_array($sponsorId, $selectedMainSponsorIds) ? 1 : 0
                     ];
                 }
             
-                // Insertar los datos en la tabla race_sponsors
+                // Insertar los datos en la tabla race_insurances
                 RaceSponsor::insert($data);
     
             } else {
