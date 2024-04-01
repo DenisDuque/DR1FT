@@ -151,4 +151,11 @@ class DriverController extends Controller
 
         return response()->json($drivers);
     }
+
+    public static function getTopDrivers() {
+        $topDrivers = Driver::orderByDesc('points')
+                        ->limit(10)
+                        ->get();
+        return $topDrivers;
+    }
 }

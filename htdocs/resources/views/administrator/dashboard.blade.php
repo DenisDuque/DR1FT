@@ -155,6 +155,13 @@
     </div>
     <div class="col-3 card">
         <h1 class="admin-form-title">Top Drivers</h1>
+        @foreach ($topDrivers as $driver)
+        <div>
+            <i class="bi bi-trophy"></i>
+            <h5>{{$driver->name}}</h5>
+            <p>{{$driver->points}}</p>
+        </div>
+        @endforeach
     </div>
   </div>
 </div>

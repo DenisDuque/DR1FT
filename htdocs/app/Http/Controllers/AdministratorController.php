@@ -9,8 +9,10 @@ use App\Models\Administrator;
 class AdministratorController extends Controller
 {
     public function showAdministratorPanel() {
-
-        return view('administrator.dashboard');
+        $topDrivers = DriverController::getTopDrivers();
+        //$topSponsors = SponsorController::getTopSponsors();
+        
+        return view('administrator.dashboard')->with(compact('topDrivers'));
     }
 
     public function showLogin() {

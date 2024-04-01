@@ -112,4 +112,13 @@ class SponsorController extends Controller
 
         return response()->json($sponsors);
     }
+
+    public static function getTopSponsors() {
+        $topSponsors = Sponsor::withSum('races', 'sponsorCost')
+            ->orderByDesc('races_sum_sponsorCost')
+            ->take(4)
+            ->get();
+
+        return $topSponsors;
+    }
 }
