@@ -10,7 +10,7 @@ class ImageController extends Controller {
     public static function storeImage(Request $request, $path, $fieldName = 'image') {
         try {
             $request->validate([
-                $fieldName => 'required|mimes:png,jpg,jpeg'
+                $fieldName => 'required|array'
             ]);
 
             $image = $request->file($fieldName);
@@ -33,13 +33,12 @@ class ImageController extends Controller {
     public static function storeImages(Request $request, $path, $fieldName = 'images') {
         try {
             $request->validate([
-                $fieldName => 'array',
                 $fieldName . '.*' => 'mimes:png,jpg,jpeg'
             ]);
     
             $imageNames = [];
-            
-            foreach ($request->file($fieldName) as $image) {
+            $images = $request->file($fieldName);
+            foreach ($images as $image) {
                 // Generar un nombre único para la imagen
                 $imageName = Str::orderedUuid() . '.' . $image->extension();
     

@@ -10,4 +10,9 @@ class RacePhoto extends Model
     use HasFactory;
 
     protected $table = 'race_photo';
+
+    protected $fillable = [
+        'path', 
+        'race_id'
+    ];
 }

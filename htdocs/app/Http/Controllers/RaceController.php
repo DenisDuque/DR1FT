@@ -347,7 +347,7 @@ class RaceController extends Controller {
     }
 
     public function updatePhotos($race, $request) {
-        if ($request->has('racePhotos') && is_array($request->input('racePhotos')) && count($request->input('racePhotos')) > 0) {
+        if ($request->hasFile('racePhotos')) {
             // Hay imágenes
             $photosNames = ImageController::storeImages($request, 'race_photos', 'racePhotos');
             if ($photosNames) {
@@ -358,12 +358,13 @@ class RaceController extends Controller {
                         'race_id' => $race->id
                     ];
                 }
-                dd($data);
                 // Insertar los datos en la tabla race_photos
                 RacePhoto::insert($data);
             }
         
-        } 
+        } else {
+            dd("NO FUNCIONA");
+        }
     }
 
     public function show($id) {
