@@ -91,11 +91,6 @@
 }
 
 .section-heading {
-    // display: flex;
-    // flex-direction: column;
-    // align-items: center;
-    // justify-content: center;
-    
     position: absolute;
     top: 50%;
     left: 50%;
@@ -103,19 +98,19 @@
     z-index: 1; /* Asegúrate de que el texto esté encima del video */
     color: #ffffff;
     width: 100%;
-    max-width: 1850px;
+    //max-width: 1850px;
     span {
         color: $defaultRed;
     }
 
-    h2 {
-        max-width: 1200px;
+    h2 { 
+        //max-width: 1200px;
         &:first-child{
-            font-size: 9.6vw;
+            font-size: 128px;
             letter-spacing: 0.7vw;
         }
         &:last-child{
-            font-size: 7.2vw;
+            font-size: 96px;
             letter-spacing: 1.3vw;
         }
     }

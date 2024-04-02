@@ -44,7 +44,6 @@
         - [INFO] SOLO se pueden inscribir si falta justo 1 mes
         - [INFO] EL DRIVER ELIJE UNA INSURANCE DE LA LISTA DE RACE_INSURANCES
         - [INFO] Si es MEMBER tendrá descuentos en el momento de inscribirse
-        - [NOTICE] inscribirse en una carrera (success y error)
 
     => LISTAR CARRERAS
         - [JS] Filtro Order by
@@ -56,3 +55,4 @@
 [HOW TO PDF] => https://www.itsolutionstuff.com/post/laravel-10-generate-pdf-file-using-dompdf-exampleexample.html
 [HOW TO SCROLL] => https://codepen.io/flexcode/pen/poxVRpN 
 [HOW TO TOGGLE BTN] => https://codepen.io/HiddeDeRidder/pen/REYmQB 
+[HOW TO GRID] => https://codepen.io/cdtapay/pen/wNdWXb
