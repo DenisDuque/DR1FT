@@ -490,7 +490,7 @@ class RaceController extends Controller {
             $raceDriver->driver_id = $driver->id;
             $raceDriver->save();
     
-            return redirect()->back()->with('success', 'Driver registered successfully!');
+            return redirect()->back()->with('success', 'You have been successfully registered for the race!');
         }
     
         // Si el conductor ya existe, mostrar un mensaje de error

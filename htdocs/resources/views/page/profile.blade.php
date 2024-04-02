@@ -10,8 +10,11 @@
     <div class="container-fluid">
         <div class="row no-gutters">
           <div class="col-5">
-            <div class="cell shadow">
+            <div class="cell shadow text-white p-4">
                 <h1 class="text-white">{{$driver->name}}</h1>
+                <p>{{$driver->email}}</p>
+                <p>{{$driver->gender}}, {{$driver->birthDate}}</p>
+                <p>{{$driver->created_at}}</p>
             </div>
           </div>
           <div class="col-4">
