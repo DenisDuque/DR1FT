@@ -482,28 +482,46 @@ main.race-details-nav-tabs-container {
 
 }
 
+.profile-container{
 
-.no-gutters {
-    margin-right: 0;
-    margin-left: 0;
-  
-    > .col,
-    > [class*="col-"] {
-      padding-right: 0;
-      padding-left: 0;
+    .no-gutters {
+        margin-right: 0;
+        margin-left: 0;
+      
+        > .col,
+        > [class*="col-"] {
+          padding-right: 0;
+          padding-left: 0;
+        }
+      }
+      
+      
+      .cell {
+        min-height: 150px;
+        //border: 2px solid green;
+        margin: 10px;
+        border-radius: 15px;
+        @include backgroundGradient($primaryBlack, $secondaryBlack);
+      }
+      .cell__big {
+        //border-color: red;
+        height: auto;
+        display: flex;
+        height: calc(100% - 2rem);
+      }
+
+    h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: white;
+
     }
-  }
-  
-  
-  .cell {
-    min-height: 100px;
-    border: 2px solid green;
-    margin: 10px;
-    border-radius: 15px;
-  }
-  .cell__big {
-    border-color: red;
-    height: auto;
-    display: flex;
-    height: calc(100% - 2rem);
-  }
+    .red-cell {
+        @include backgroundGradient($gradientRed1, $gradientRed2);
+    }
+    .bi-gift, .bi-question-circle-fill  { 
+        color: $defaultRed; 
+        font-size: x-large;
+    }
+}
+

@@ -425,10 +425,10 @@ class RaceController extends Controller {
 
     public function registerDriver(Request $request)
     {
-        
         $race = Race::find($request->race_id);
-        // Verificar si la carrera ha alcanzado el límite máximo de participantes
-        if ($race->participants()->count() >= $race->maxParticipants) {
+        $participantCount = RaceDriver::where('race_id', $request->race_id)->count();
+
+        if ($participantCount >= $race->maxParticipants) {
             return redirect()->back()->with('error', 'Sorry, this race has reached its maximum number of participants.');
         }
 

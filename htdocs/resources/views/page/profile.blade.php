@@ -7,21 +7,50 @@
     
     <a href="{{route('user.logout')}}">salir</a>
 
-    <div class="container-fluid">
+    <div class="container-fluid profile-container">
         <div class="row no-gutters">
           <div class="col-5">
             <div class="cell shadow text-white p-4">
-                <h1 class="text-white">{{$driver->name}}</h1>
+                <div class="row">
+                  <div class="col">
+                    <h1 class="text-white">{{$driver->name}}</h1>
+                  </div>
+                  <div class="col text-end">
+                    <small>{{$driver->created_at}}</small>
+                  </div>
+                </div>
                 <p>{{$driver->email}}</p>
-                <p>{{$driver->gender}}, {{$driver->birthDate}}</p>
-                <p>{{$driver->created_at}}</p>
+                <div class="row">
+                  <div class="col">
+                    <span>{{$driver->gender}}, {{$driver->birthDate}}</span>
+                  </div>
+                  <div class="col text-end">
+                    <i class="bi bi-pencil-square"></i>
+                  </div>
+                </div>
             </div>
           </div>
           <div class="col-4">
-            <div class="cell shadow"></div>
+            <div class="cell shadow p-4">
+              <div class="row">
+                <div class="col-10">
+                  <h1 class="fs-3">Last Race Classification</h1>
+                </div>
+                <div class="col-1">
+                  <i class="bi bi-question-circle-fill"></i>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <div class="d-flex justify-content-center">
+                    <i class="bi bi-gift"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
           <div class="col-3">
-            <div class="cell shadow"></div>
+            <div class="cell shadow red-cell"></div>
           </div>
         </div>
         <div class="row no-gutters">
