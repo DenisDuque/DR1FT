@@ -32,11 +32,12 @@ class PDFController extends Controller
     public function generateRacePDF($raceId){
         // Obtener la carrera específica por su ID junto con los datos de los pilotos que participan en ella
         $race = Race::with('drivers')->find($raceId);
-    
+        $driversWithDorsal = $race->drivers()->whereNotNull('dorsal')->get();
+
         // Datos de la carrera
         $raceData = [
             'race' => $race,
-            'participants' => $race->drivers->pluck('name')->toArray(), // Obtener solo los nombres de los participantes
+            'drivers' => $driversWithDorsal,
         ];
     
         // Generar el PDF usando la vista 'race_details' y los datos proporcionados

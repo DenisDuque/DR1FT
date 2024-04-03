@@ -47,12 +47,14 @@
             <thead>
                 <tr>
                     <th>Nombre del Participante</th>
+                    <th>Dorsal</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($participants as $participant)
+                @foreach($drivers as $driver)
                 <tr>
-                    <td>{{ $participant }}</td>
+                    <td>{{ $driver->name }}</td>
+                    <td>{{ $driver->pivot->dorsal }}</td>
                 </tr>
                 @endforeach
             </tbody>
