@@ -42,7 +42,29 @@ class Admin_Edit_Races {
                         this.photosInput.addEventListener('change', function(event) {
                             let files = event.target.files;
                             console.log(files);
-                            self.displayFilesList(files);
+                            let validExtensions = ['jpg', 'jpeg', 'png', 'gif']; // Extensiones válidas
+                            let invalidFiles = [];
+
+                            // Validar las extensiones de los archivos
+                            for (let i = 0; i < files.length; i++) {
+                                let fileExtension = files[i].name.split('.').pop().toLowerCase();
+                                if (!validExtensions.includes(fileExtension)) {
+                                    invalidFiles.push(files[i].name);
+                                }
+                            }
+
+                            // Mostrar mensaje de error si se encontraron archivos no válidos
+                            if (invalidFiles.length > 0) {
+                                let errorMessage = 'Los siguientes archivos no son imágenes válidas:\n';
+                                errorMessage += invalidFiles.join('\n');
+                                alert(errorMessage);
+                                // Limpiar el campo de entrada de archivos
+                                event.target.value = '';
+                            } else {
+                                // Procesar los archivos si todos son válidos
+                                self.displayFilesList(files);
+                            }
+                            //self.displayFilesList(files);
                         });
                     }
                 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use App\Models\RacePhoto;
 class ImageController extends Controller {
 
 
@@ -60,6 +61,11 @@ class ImageController extends Controller {
     
 
     public static function gallery(){
-        return view('page.gallery');
+
+        // Obtener todas las fotos de la tabla race_photo
+        $photos = RacePhoto::all();
+
+        // Devolver la vista con las rutas de las imágenes
+        return view('page.gallery', ['photos' => $photos]);
     }
 }

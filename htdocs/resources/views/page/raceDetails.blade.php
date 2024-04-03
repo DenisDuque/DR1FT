@@ -113,9 +113,31 @@
                 </div>
                 <div class="col-xs-12 content" id="five">
                     
-                    <p>
-                        five
-                    </p>
+                    <div id="carouselExampleIndicators" class="carousel slide d-block" data-bs-ride="carousel">
+                        <div class="carousel-indicators d-block text-center">
+                            @foreach ($photos as $key => $photo)
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $key }}" class="{{ $key === 0 ? 'active' : '' }}" aria-label="Slide {{ $key + 1 }}"></button>
+                            @endforeach
+                          {{-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button> --}}
+                        </div>
+                        <div class="carousel-inner rounded d-block" style="max-height: 22rem">
+                            @foreach ($photos as $key => $photo)
+                                <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
+                                    <img src="{{ asset('storage/race_photos/'.$photo->path) }}" class="img-fluid d-block w-100" alt="...">
+                                </div>
+                            @endforeach
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Previous</span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                          <span class="visually-hidden">Next</span>
+                        </button>
+                      </div>
                 </div>
             </section>
         </main>
@@ -132,7 +154,7 @@
             <!-- Modal -->
             <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg text-white">
-                <div class="modal-content">
+                <div class="modal-content bg-admin">
                     <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Registration Form</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -196,7 +218,7 @@
                             </div>
                             <div class="col-12">
                                 <label for="driverAddress" class="form-label ">Address</label>
-                                <input type="text" name="driverAddress" class="form-control" id="driverAddress" placeholder="1234 Main St" value="{{old('driverAddress')}}">
+                                <input type="text" name="driverAddress" class="form-control" id="driverAddress" placeholder="" value="{{old('driverAddress')}}">
                             </div>
                             <div class="col-md-12">
                                 <label for="driverEmail" class="form-label ">Email</label>
@@ -229,15 +251,4 @@
         </div>
     </div>
 
-    
-
-    <!-- Aquí puedes agregar el contenido específico para esta vista -->
-    {{-- <div class="col-lg-12 col-md-12 preview-container my-5">
-        <div class="d-flex justify-content-center">
-            <h3 class="text-uppercase breadcrumb-item active fs-5 mx-2 text-white" role="button">gallery</h3>
-            <h3 class="text-uppercase breadcrumb-item fs-5 mx-2 text-white" role="button">classification</h3>
-        </div>
-        
-        
-    </div> --}}
 @endsection

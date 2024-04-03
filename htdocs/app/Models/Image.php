@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Image extends Model
 {
+    protected $table = 'race_photo';
 
     public function race() {
         return $this->belongsToMany(Race::class);

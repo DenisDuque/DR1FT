@@ -5,7 +5,9 @@
 @section('content')
 <h1 class="index-page-headers my-5">GALLERY</h1>
 <figure>
-    <img src="https://picsum.photos/800">
+    @foreach ($photos as $photo)
+        <img src="{{asset('storage/race_photos/'.$photo->path)}}">
+    @endforeach
     <img src="https://picsum.photos/801">
     <img src="https://picsum.photos/802">
     <img src="https://picsum.photos/803">

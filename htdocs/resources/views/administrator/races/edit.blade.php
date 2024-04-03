@@ -1,14 +1,5 @@
 @extends('administrator.layouts.master')
 
-@if ($errors->any())
-    @foreach ($errors->all() as $error)
-        <div class="alert alert-danger alert-dismissible fade show" role="alert">
-            <strong>Error: </strong> {{$error}}
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>
-    @endforeach
-@endif
-
 @section('content')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <input id="edit-races-race-id" type="hidden" value="{{$race->id}}">
@@ -66,7 +57,7 @@
                     @include('administrator.layouts.forms.race-edit-drivers')
                     @include('administrator.layouts.forms.race-edit-photos')
                     <div class="col-12 text-end">
-                        <button type="submit" class="btn btn-success text-white">Save<i class="bi bi-chevron-double-right"></i></button>
+                        <button type="submit" class="btn btn-success text-white">Save</button>
                     </div>
                 </form>
 
