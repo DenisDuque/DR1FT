@@ -500,12 +500,24 @@ class RaceController extends Controller {
     
         // Si el conductor ya existe, mostrar un mensaje de error
         return redirect()->back()->with('error', 'User with provided email already exists. Please log in or use a different email.');
-
-
     
     }
 
+    public static function getTopRaces() {
 
-
+        $topRaces = Race::withCount('drivers')
+        ->orderByRaw('drivers_count * registrationPrice DESC')
+        ->take(3)
+        ->get();
+        //dd($topRaces);
+        return $topRaces;
+    }
     
+    public static function nextRace() {
+        $race = Race::where('date', '>=', Carbon::today())
+            ->orderBy('date', 'asc')
+            ->first();
+
+        return $race;
+    }
 }

@@ -115,5 +115,15 @@ class InsuranceController extends Controller
 
         return response()->json($insurances);
     }
+
+    public static function getTopInsurances() {
+
+        $topSponsors = Insurance::withSum('races', 'sponsorCost')
+        ->orderByDesc('races_sum_sponsor_cost')
+        ->take(3)
+        ->get();
+
+        return $topSponsors;
+    }
     
 }

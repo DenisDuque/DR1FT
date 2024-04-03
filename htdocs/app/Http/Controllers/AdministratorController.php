@@ -11,8 +11,10 @@ class AdministratorController extends Controller
     public function showAdministratorPanel() {
         $topDrivers = DriverController::getTopDrivers();
         $topSponsors = SponsorController::getTopSponsors();
-        
-        return view('administrator.dashboard')->with(compact('topDrivers'));
+        //$topInsurances = InsuranceController::getTopInsurances();
+        $topRaces = RaceController::getTopRaces();
+        $nextRace = RaceController::nextRace();
+        return view('administrator.dashboard')->with(compact('topDrivers', 'topSponsors', 'topRaces', 'nextRace'));
     }
 
     public function showLogin() {

@@ -126,10 +126,29 @@
                 </div>
                 <div class="row gy-2">
                     <div class="col-6 card">
-                        
-
-                            <h1 class="admin-form-title">Main Event</h1>
-                        
+                        <input type="hidden" id="countdownDate" name="nextRaceDate" value="{{$nextRace->date}}">
+                        <section>
+                            <h1 class="admin-form-title">{{$nextRace->name}}</h1>
+                            <i class="bi bi-clock-history"></i>
+                            <div id="countdown">
+                                <div>
+                                    <span id="days"></span>
+                                    <p>DAYS</p>
+                                </div>
+                                <div>
+                                    <span id="hours"></span>
+                                    <p>HOURS</p>
+                                </div>
+                                <div>
+                                    <span id="minutes"></span>
+                                    <p>MINUTES</p>
+                                </div>
+                                <div>
+                                    <span id="seconds"></span>
+                                    <p>SECONDS</p>
+                                </div>
+                            </div>
+                        </section>
                     </div>
                     <div class="col-6 card">
                         
@@ -144,23 +163,44 @@
         <div class="row g-2">
             <div class="col-12 card">
                 <h1 class="admin-form-title">Best Sponsors</h1>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe suscipit dicta repellendus hic, aut repellat consequatur ullam veritatis placeat maxime inventore eaque laudantium, enim dolorem sequi laboriosam necessitatibus quas veniam.
+                @foreach ($topSponsors as $sponsor)
+                    <div>
+                        <div>
+                            <i class="bi bi-briefcase"></i>
+                            <h5>{{$sponsor->name}}</h5>
+                        </div>
+                        <div>
+                            <i class="bi bi-cash-coin"></i>
+                            <p>{{$sponsor->races_sum_sponsor_cost}}</p>
+                        </div>
+                    </div>
+                @endforeach
             </div>
             <div class="col-12 card">
                 <h1 class="admin-form-title">Most Paid Races</h1>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore, iure ratione. Quo, sed. Dignissimos, autem. Eveniet qui modi doloremque minus velit commodi saepe dolorum autem, quae optio quos quis culpa.
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero, dolorem. Ad iste dignissimos minus itaque accusamus eligendi animi vel libero eveniet dolor, ex quia consequatur repudiandae eaque ratione corrupti vitae.
+                @foreach ($topRaces as $race)
+                    <div>
+                        <div>
+                            <i class="bi bi-briefcase"></i>
+                            <h5>{{$race->name}}</h5>
+                        </div>
+                        <div>
+                            <i class="bi bi-cash-coin"></i>
+                            <p>{{$race->drivers_count * $race->registrationPrice}}</p>
+                        </div>
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
     <div class="col-3 card">
         <h1 class="admin-form-title">Top Drivers</h1>
         @foreach ($topDrivers as $driver)
-        <div>
-            <i class="bi bi-trophy"></i>
-            <h5>{{$driver->name}}</h5>
-            <p>{{$driver->points}}</p>
-        </div>
+            <div>
+                <i class="bi bi-trophy"></i>
+                <h5>{{$driver->name}}</h5>
+                <p>{{$driver->points}}</p>
+            </div>
         @endforeach
     </div>
   </div>
