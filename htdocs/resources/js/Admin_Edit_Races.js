@@ -38,11 +38,13 @@ class Admin_Edit_Races {
                         });
                     }
                     this.photosInput = document.getElementById('gropFile');
-                    this.photosInput.addEventListener('change', function(event) {
-                        let files = event.target.files;
-                        console.log(files);
-                        self.displayFilesList(files);
-                    });
+                    if (this.photosInput) {
+                        this.photosInput.addEventListener('change', function(event) {
+                            let files = event.target.files;
+                            console.log(files);
+                            self.displayFilesList(files);
+                        });
+                    }
                 }
             }
         });
