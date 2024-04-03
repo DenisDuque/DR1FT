@@ -51,7 +51,7 @@
                             <li class="breadcrumb-item edit-race-insurances me-2" aria-current="page">INSURANCES</li>
                             <li class="breadcrumb-item edit-race-sponsors me-2" aria-current="page">SPONSORS</li>
                             <li class="breadcrumb-item edit-race-drivers me-2" aria-current="page">DRIVERS</li>
-                            @if (strtotime($race->date) < strtotime(now()))
+                            @if (strtotime($race->date) > strtotime(now()))
                                 <li class="breadcrumb-item edit-race-photos me-2" aria-current="page">PHOTOS</li>
                             @endif
                         </ol>
