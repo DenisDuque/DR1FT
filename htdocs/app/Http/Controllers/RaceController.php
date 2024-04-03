@@ -369,11 +369,14 @@ class RaceController extends Controller {
         $race = Race::find($id);
         $insurances = $race->insurances;
         $sponsors = $race->sponsors;
+        $photos = $race->photos;
+        //dd($photos);
 
         return view('page.raceDetails', [
             'race' => $race, 
             'insurances' => $insurances,
-            'sponsors' => $sponsors
+            'sponsors' => $sponsors,
+            'photos' => $photos
         ]);
     }
     
@@ -494,6 +497,8 @@ class RaceController extends Controller {
             $raceDriver->race_id = $request->race_id;
             $raceDriver->driver_id = $driver->id;
             $raceDriver->save();
+
+            // RaceDriverInsurance
     
             return redirect()->back()->with('success', 'You have been successfully registered for the race!');
         }

@@ -30,7 +30,7 @@ class Race extends Model
         return $this->belongsToMany(Insurance::class, 'race_insurance');
     }
 
-    public function images() {
+    public function photos() {
         return $this->hasMany(Image::class);
     }
 

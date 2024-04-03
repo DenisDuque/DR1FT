@@ -21,7 +21,6 @@
         - [EDITAR]
             - [CSS] vista formularios editar
             - [NOTICE] edit races sin cambios
-            - [PHP] insurances y sponsors con el checked si lo tienen
 
 ===================== PÁGINAS USUARIO =====================
 
@@ -56,3 +55,5 @@
 [HOW TO SCROLL] => https://codepen.io/flexcode/pen/poxVRpN 
 [HOW TO TOGGLE BTN] => https://codepen.io/HiddeDeRidder/pen/REYmQB 
 [HOW TO GRID] => https://codepen.io/cdtapay/pen/wNdWXb
+[HOW TO SCRATCH 'N' WIN] => https://codepen.io/Pedro-Ondiviela/pen/gOEdJmK 
+                         => https://codepen.io/halavasty/pen/abXGRvd <-
