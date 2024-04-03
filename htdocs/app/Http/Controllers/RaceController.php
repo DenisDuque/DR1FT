@@ -219,7 +219,7 @@ class RaceController extends Controller {
             RaceController::updateInsurances($race, request());
             RaceController::updateSponsors($race, request());
             RaceController::updatePhotos($race, request());
-            echo("FUNCIONA");
+            return redirect()->route('admin.races')->with('success', 'Race saved successfully');
         } else {
             return redirect()->route('admin.races')->with('error', 'Race not found.');
         }
@@ -404,9 +404,9 @@ class RaceController extends Controller {
                             ->where('race_id', $raceId)
                             ->pluck('dorsal')
                             ->toArray();
-                            
+
         foreach ($driversWithNullDorsal as $driver) {
-            for ($i = 0; $i < $maxParticipants; $i++) { 
+            for ($i = 0; $i <= $maxParticipants; $i++) { 
                 if (!in_array($i, $assignedNumbers) && $driver->dorsal === NULL) {
                     $driver->dorsal = $i;
                     array_push($assignedNumbers, $i);
