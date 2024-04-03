@@ -114,12 +114,15 @@
                 <div class="col-xs-12 content" id="five">
                     
                     <div id="carouselExampleIndicators" class="carousel slide d-block" data-bs-ride="carousel">
-                        <div class="carousel-indicators d-block">
-                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <div class="carousel-indicators d-block text-center">
+                            @foreach ($photos as $key => $photo)
+                                <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $key }}" class="{{ $key === 0 ? 'active' : '' }}" aria-label="Slide {{ $key + 1 }}"></button>
+                            @endforeach
+                          {{-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
                           <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                          <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button> --}}
                         </div>
-                        <div class="carousel-inner d-block" style="max-height: 22rem">
+                        <div class="carousel-inner rounded d-block" style="max-height: 22rem">
                             @foreach ($photos as $key => $photo)
                                 <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
                                     <img src="{{ asset('storage/race_photos/'.$photo->path) }}" class="img-fluid d-block w-100" alt="...">
