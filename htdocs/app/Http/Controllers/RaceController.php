@@ -362,8 +362,6 @@ class RaceController extends Controller {
                 RacePhoto::insert($data);
             }
         
-        } else {
-            dd("NO FUNCIONA");
         }
     }
 
