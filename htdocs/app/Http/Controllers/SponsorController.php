@@ -114,10 +114,11 @@ class SponsorController extends Controller
     }
 
     public static function getTopSponsors() {
+
         $topSponsors = Sponsor::withSum('races', 'sponsorCost')
-            ->orderByDesc('races_sum_sponsorCost')
-            ->take(4)
-            ->get();
+        ->orderByDesc('races_sum_sponsor_cost')
+        ->take(4)
+        ->get();
 
         return $topSponsors;
     }

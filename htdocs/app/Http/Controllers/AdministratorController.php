@@ -10,7 +10,7 @@ class AdministratorController extends Controller
 {
     public function showAdministratorPanel() {
         $topDrivers = DriverController::getTopDrivers();
-        //$topSponsors = SponsorController::getTopSponsors();
+        $topSponsors = SponsorController::getTopSponsors();
         
         return view('administrator.dashboard')->with(compact('topDrivers'));
     }
