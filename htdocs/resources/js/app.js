@@ -10,13 +10,8 @@ import './Admin_Edit_Races';
 import './race_details';
 import './admin_race';
 import './btn_toggle';
-<<<<<<< HEAD
 import './page_scroll';
 import './Countdown';
-=======
-//import './page_scroll';
-
->>>>>>> 3d511b02edbf56404f095440f3fe10628ec1bd98
 
 
 $(document).ready(function() {
