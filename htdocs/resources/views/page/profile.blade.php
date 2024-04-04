@@ -55,21 +55,42 @@
             </div>
           </div>
           <div class="col-3">
-            <div class="cell shadow red-cell"></div>
+            <div class="cell shadow red-cell p-4">
+              <div class="row">
+                <div class="col-12">
+                  <h1 class="fs-3">Your Points</h1>
+                </div>
+                <div class="col-12">
+                  <h1 class="text-center fs-1">{{$driver->points}}</h1>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div class="row no-gutters">
           <div class="col-9">
             <div class="cell shadow cell__big p-4">
-              <div class="row">
+              <div class="row w-100">
                 <div class="col-12">
                   <h1 class="fs-3">All Races</h1>
                 </div>
                 <div class="col-12">
                   <div class="row">
+                    <span class="col-1 text-white fw-bold">Date</span>
+                    <span class="col-4 text-white fw-bold">Name</span>
+                    <span class="col-5 text-white fw-bold">Location</span>
+                    <span class="col-1 text-white fw-bold">Position</span>
+                    <span class="col-1 text-white fw-bold">Points</span>
+                  </div>
+                  <div class="row">
                     @foreach ($races as $race)
-                      <div class="col-12 red-cell rounded">
-                        <p class="text-white">{{$race->name}}</p>
+                      <div class="col-12 red-cell p-2 shadow mb-2" style="border-radius: 10px;">
+                        <div class="row">
+                          <span class="col-1 text-white">{{$race->date}}</span>
+                          <span class="col-4 text-white">{{$race->name}}</span>
+                          <span class="col-5 text-white">{{$race->startingPlace}}</span>
+                          <span class="col-1 text-white">0</span><span class="col-1 text-white">{{$driver->points}}</span>
+                        </div>
                       </div>
 
                     @endforeach
@@ -79,7 +100,16 @@
             </div>
         </div>
           <div class="col-3">
-              <div class="cell shadow cell__big"></div>
+              <div class="cell shadow cell__big p-4">
+                <div class="row">
+                  <div class="col-12">
+                    <h1 class="fs-3">Stadistics</h1>
+                  </div>
+                  <div class="col-12">
+                    {{-- CONTENT --}}
+                  </div>
+                </div>
+              </div>
           </div>
       </div>
   </div>

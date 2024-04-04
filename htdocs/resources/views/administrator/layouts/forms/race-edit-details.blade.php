@@ -86,7 +86,7 @@
     </div>
     <div class="col-md-12">
         <label for="raceDescription" class="form-label">Description</label>
-        <textarea name="raceDescription" class="form-control" id="raceDescription" value="{{$race->description}}" placeholder="Type Something..."></textarea>
+        <textarea name="raceDescription" class="form-control" id="raceDescription" value="{{$race->description}}" placeholder="Type Something...">{{$race->description}}</textarea>
     </div>
     
 </div>

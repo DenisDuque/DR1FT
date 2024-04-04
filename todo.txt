@@ -36,13 +36,9 @@
     => PROFILE
 
     => DETALLE CARRERA
-        - [JS] Slider de imagenes
         - Classificación
         - Inscripción -> CASI ACABADA
-        - [INFO] SOLO los corredores PRO tienen número de federación.
-        - [INFO] SOLO se pueden inscribir si falta justo 1 mes
-        - [INFO] EL DRIVER ELIJE UNA INSURANCE DE LA LISTA DE RACE_INSURANCES
-        - [INFO] Si es MEMBER tendrá descuentos en el momento de inscribirse
+        - [TODO] Si es MEMBER tendrá descuentos en el momento de inscribirse
 
     => LISTAR CARRERAS
         - [JS] Filtro Order by
