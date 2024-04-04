@@ -46,5 +46,20 @@ class PDFController extends Controller
         // Descargar el PDF
         return $pdf->download('race_details.pdf');
     }
+
+    public function generateDorsalsPDF($raceId, $driverId) {
+
+        $driver = DB::table('race_driver')
+            ->where('race_id', $raceId)
+            ->where('driver_id', $driverId)
+            ->pluck('dorsal')
+            ->toArray();
+
+        // Generar el PDF usando la vista 'race_details' y los datos proporcionados
+        $pdf = PDF::loadView('page.pdfs.driver_dorsal', $driver);
+    
+        // Descargar el PDF
+        return $pdf->download('driver_dorsal.pdf');
+    }
     
 }
