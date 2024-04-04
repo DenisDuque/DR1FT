@@ -42,17 +42,17 @@ class Admin_Edit_Races {
                         this.photosInput.addEventListener('change', function(event) {
                             let files = event.target.files;
                             console.log(files);
-                            let validExtensions = ['jpg', 'jpeg', 'png', 'gif']; // Extensiones válidas
+                            let validMimeTypes = ['image/jpeg', 'image/png', 'image/gif']; // Tipos MIME válidos
                             let invalidFiles = [];
-
-                            // Validar las extensiones de los archivos
+                    
+                            // Validar los tipos MIME de los archivos
                             for (let i = 0; i < files.length; i++) {
-                                let fileExtension = files[i].name.split('.').pop().toLowerCase();
-                                if (!validExtensions.includes(fileExtension)) {
+                                let fileMimeType = files[i].type;
+                                if (!validMimeTypes.includes(fileMimeType)) {
                                     invalidFiles.push(files[i].name);
                                 }
                             }
-
+                    
                             // Mostrar mensaje de error si se encontraron archivos no válidos
                             if (invalidFiles.length > 0) {
                                 let errorMessage = 'Los siguientes archivos no son imágenes válidas:\n';
@@ -64,9 +64,9 @@ class Admin_Edit_Races {
                                 // Procesar los archivos si todos son válidos
                                 self.displayFilesList(files);
                             }
-                            //self.displayFilesList(files);
                         });
                     }
+                    
                 }
             }
         });
