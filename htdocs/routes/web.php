@@ -9,6 +9,7 @@ use App\Http\Controllers\SponsorController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\ImageController;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\PaypalController;
 
 Route::get('/', [RaceController::class, 'mainPage'])->name('main.page');
 Route::get('/races', [RaceController::class, 'allRaces'])->name('races.all');
@@ -88,3 +89,10 @@ Route::middleware(['ajax'])->group(function () {
 Route::post('/generateDorsals', [RaceController::class, 'generateDorsals'])->name('admin.races.generateDorsals');
 Route::post('/races/find', [RaceController::class, 'find'])->name('admin.races.find');
 Route::get('/races/find/{id}', [RaceController::class, 'find'])->name('admin.races.find');
+
+
+
+//Route::get('/paywithpaypal', array('as' => 'paywithpaypal','uses' => 'PaypalController@payWithPaypal',));
+Route::get('/paywithpaypal', [PaypalController::class, 'payWithPaypal']);
+Route::post('paypal', array('as' => 'paypal','uses' => 'PaypalController@postPaymentWithpaypal',));
+Route::get('paypal', array('as' => 'status','uses' => 'PaypalController@getPaymentStatus',));
