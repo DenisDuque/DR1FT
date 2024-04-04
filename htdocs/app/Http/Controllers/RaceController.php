@@ -530,4 +530,13 @@ class RaceController extends Controller {
 
         return $race;
     }
+
+    public static function nextRaces() {
+        $races = Race::where('date', '>=', Carbon::today())
+            ->orderBy('date', 'asc')
+            ->take(3)
+            ->get();
+
+        return $races;
+    }
 }
