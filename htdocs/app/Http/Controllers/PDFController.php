@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sponsor;
 use App\Models\Race;
+//use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use PDF;
 
 class PDFController extends Controller
@@ -47,7 +48,7 @@ class PDFController extends Controller
         return $pdf->download('race_details.pdf');
     }
 
-    public function generateDorsalsPDF($raceId, $driverId) {
+    public function generateDorsalPDF($raceId, $driverId) {
 
         $driver = DB::table('race_driver')
             ->where('race_id', $raceId)
@@ -55,10 +56,15 @@ class PDFController extends Controller
             ->pluck('dorsal')
             ->toArray();
 
-        // Generar el PDF usando la vista 'race_details' y los datos proporcionados
-        $pdf = PDF::loadView('page.pdfs.driver_dorsal', $driver);
-    
-        // Descargar el PDF
+        $qrLink= 'localhost/generateQR?race='.$raceId.'&driver='.$driverId;
+
+        $data = [
+            'name' => $driver->name,
+            'dorsal' => $driver->dorsal,
+            'link' => $qrLink
+        ];
+
+        $pdf = PDF::loadView('page.pdfs.driver_dorsal', $data);
         return $pdf->download('driver_dorsal.pdf');
     }
     

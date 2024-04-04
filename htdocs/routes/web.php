@@ -17,6 +17,8 @@ Route::get('/gallery', [ImageController::class, 'gallery'])->name('page.gallery'
 Route::post('/race/register', [RaceController::class, 'registerDriver'])->name('race.register');
 Route::get('/profile/{driver}', [DriverController::class, 'profile'])->name('page.profile');
 
+Route::get('/generateDorsalPDF/{raceId}/{driverId}', [PDFController::class, 'generateDorsalPDF'])->name('generateQR');
+
 Route::get('/login', [DriverController::class, 'showLogin'])->name('user.showLogin');
 Route::post('/login', [DriverController::class, 'auth'])->name('user.login');
 Route::get('/logout', [DriverController::class, 'logout'])->name('user.logout');
