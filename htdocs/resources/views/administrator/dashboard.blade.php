@@ -96,18 +96,14 @@
             <div class="col-12 rounded bg-red-gradient">
                 <h1 class="admin-form-title">Coming Soon</h1>
                 <div class="row">
-                    <div class="col-4  text-center">
-                        <i class="bi bi-card-image"></i>
-                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat voluptatem temporibus 
-                    </div>
-                    <div class="col-4  text-center">
-                        <i class="bi bi-card-image"></i>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Modi, officia explicabo aut amet, 
-                    </div>
-                    <div class="col-4 text-center">
-                        <i class="bi bi-card-image"></i>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
-                    </div>
+                    @foreach ($nextRaces as $race)
+                        <div class="col-4  text-center">
+                            <img src="{{$race->map}}" alt="Race Map">
+                            <i class="bi bi-people-fill"></i>{{$race->drivers->count()}}
+                            <i class="bi bi-card-image"></i>
+                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat voluptatem temporibus 
+                        </div>
+                    @endforeach
                 </div>
             </div>
             <div class="col-6 card">
