@@ -22,7 +22,12 @@
                 <p>{{$driver->email}}</p>
                 <div class="row">
                   <div class="col">
-                    <span>{{$driver->gender}}, {{$driver->birthDate}}</span>
+                    @if ($driver->gender == 0)
+                      <span>{{$driver->gender = 'Female'}}</span>
+                    @else
+                      <span>{{$driver->gender = 'Male'}}</span>
+                    @endif
+                    <span>, {{$age}}</span>
                   </div>
                   <div class="col text-end">
                     <i class="bi bi-pencil-square"></i>
@@ -55,13 +60,22 @@
         </div>
         <div class="row no-gutters">
           <div class="col-9">
-            <div class="cell shadow cell__big">
-                <div>
+            <div class="cell shadow cell__big p-4">
+              <div class="row">
+                <div class="col-12">
+                  <h1 class="fs-3">All Races</h1>
+                </div>
+                <div class="col-12">
+                  <div class="row">
                     @foreach ($races as $race)
+                      <div class="col-12 red-cell rounded">
                         <p class="text-white">{{$race->name}}</p>
+                      </div>
 
                     @endforeach
+                  </div>
                 </div>
+              </div>
             </div>
         </div>
           <div class="col-3">

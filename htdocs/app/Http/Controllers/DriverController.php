@@ -51,9 +51,14 @@ class DriverController extends Controller
         $driver = Driver::findOrFail($id);
         $races = $driver->races;
 
+        // Calcular la edad a partir de la fecha de nacimiento
+        $birthDate = Carbon::parse($driver->birthDate);
+        $age = $birthDate->age;
+
         return view("page.profile", [
             'driver' => $driver,
-            'races' => $races
+            'races' => $races,
+            'age' => $age // Pasar la edad a la vista
         ]);
     }
 
