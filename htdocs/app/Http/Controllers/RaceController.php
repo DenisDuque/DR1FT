@@ -523,6 +523,11 @@ class RaceController extends Controller {
             ->orderBy('date', 'asc')
             ->first();
 
+        if ($race) {
+            $formattedDate = str_replace('/', '-', $race->date);
+            $race->date = $formattedDate;
+        }
+
         return $race;
     }
 }
