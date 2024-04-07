@@ -10,9 +10,8 @@ import './Admin_Edit_Races';
 import './race_details';
 import './admin_race';
 import './btn_toggle';
-import './page_scroll';
 import './Countdown';
-//import './page_scroll';
+import './page_scroll';
 
 
 $(document).ready(function() {
