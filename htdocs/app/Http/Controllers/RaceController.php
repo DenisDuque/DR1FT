@@ -547,11 +547,16 @@ class RaceController extends Controller {
 
         if ($driver) {
             // Actualizar el campo 'time' al timestamp actual
-            $driver->time = Carbon::now()->toDateTimeString();
-            $driver->save();
-            return view('administrator.races.timeSaved')->with([
-                'driver' => $driver
-            ]);
+            if ($driver->time = null) {
+                $driver->time = Carbon::now()->toDateTimeString();
+                $driver->save();
+                return view('administrator.races.timeSaved')->with([
+                    'driver' => $driver
+                ]);
+            } else {
+                dd('El tiempo ya se ha asignado!');
+            }
+            
                 
         } else {
             dd('El registro no existe');
