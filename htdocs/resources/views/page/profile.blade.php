@@ -9,7 +9,7 @@
 
     <div class="container-fluid profile-container">
         <div class="row no-gutters">
-          <div class="col-5">
+          <div class="col-6">
             <div class="cell shadow text-white p-4">
                 <div class="row">
                   <div class="col">
@@ -54,7 +54,7 @@
               </div>
             </div>
           </div>
-          <div class="col-3">
+          <div class="col-2">
             <div class="cell shadow red-cell p-4">
               <div class="row">
                 <div class="col-12">
@@ -68,7 +68,7 @@
           </div>
         </div>
         <div class="row no-gutters">
-          <div class="col-9">
+          <div class="col-12">
             <div class="cell shadow cell__big p-4">
               <div class="row w-100">
                 <div class="col-12">
@@ -99,18 +99,7 @@
               </div>
             </div>
         </div>
-          <div class="col-3">
-              <div class="cell shadow cell__big p-4">
-                <div class="row">
-                  <div class="col-12">
-                    <h1 class="fs-3">Stadistics</h1>
-                  </div>
-                  <div class="col-12">
-                    {{-- CONTENT --}}
-                  </div>
-                </div>
-              </div>
-          </div>
+          
       </div>
   </div>
   

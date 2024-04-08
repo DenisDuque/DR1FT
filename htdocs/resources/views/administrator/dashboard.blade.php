@@ -1,5 +1,7 @@
 @extends('administrator.layouts.master')
 
+@section('title', 'Admin Dashboard')
+
 @section('content')
 <section class="my-5">
     <h1 class="admin-form-title">Quick Actions</h1>
@@ -13,7 +15,7 @@
                             <p class="card-text">Encourage everyone to push their limits.</p>
                         </div>
                         <div class="col-3">
-                            <a href="/admin/races/new" class="btn btn-primary">Start</a>
+                            <a href="/admin/races/new" class="btn btn-primary text-white">Start</a>
                         </div>
                     </div>
                 </div>
@@ -28,7 +30,7 @@
                             <p class="card-text">Register a insurance to ensure your races.</p>
                         </div>
                         <div class="col-3">
-                            <a href="/admin/insurances/new" class="btn btn-primary">Start</a>
+                            <a href="/admin/insurances/new" class="btn btn-primary text-white">Start</a>
                         </div>
                     </div>
                 </div>
@@ -43,7 +45,7 @@
                             <p class="card-text">Register sponsors to enhance your earnings.</p>
                         </div>
                         <div class="col-3">
-                            <a href="/admin/sponsors/new" class="btn btn-primary">Start</a>
+                            <a href="/admin/sponsors/new" class="btn btn-primary text-white">Start</a>
                         </div>
                     </div>
                 </div>
@@ -92,13 +94,13 @@
 <div class="container-fluid text-white mt-5 h-dashboard">
   <div class="row g-4">
     <div class="col-6">
-        <div class="row g-2">
-            <div class="col-12 rounded bg-red-gradient">
+        <div class="row g-2 mb-1">
+            <div class="col-12 rounded bg-red-gradient p-4">
                 <h1 class="admin-form-title">Coming Soon</h1>
                 <div class="row">
                     @foreach ($nextRaces as $race)
                         <div class="col-4  text-center">
-                            <img src="{{$race->map}}" alt="Race Map">
+                            <img class="img-thumbnail" src="{{asset('storage/race_maps/'.$race->map)}}" alt="{{$race->name}}">
                             <i class="bi bi-people-fill"></i>{{$race->drivers->count()}}
                             <i class="bi bi-card-image"></i>
                             Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat voluptatem temporibus 
@@ -106,81 +108,85 @@
                     @endforeach
                 </div>
             </div>
-            <div class="col-6 card">
+        </div>
+        <div class="row g-4">
+            <div class="col-6 card p-4">
+                
                 <h1 class="admin-form-title">Best Insurances</h1>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
+                </p>
+                
             </div>
             <div class="col-6">
                 <div class="row g-2">
-                    <div class="col-12 card">
-                    <h1 class="admin-form-title">Last Race Winner</h1>
-                    </div>
-                </div>
-                <div class="row gy-2">
-                    <div class="col-6 card">
-                        <input type="hidden" id="countdownDate" name="nextRaceDate" value="{{$nextRace->date}}">
-                        <section>
-                            <h1 class="admin-form-title">{{$nextRace->name}}</h1>
-                            <i class="bi bi-clock-history"></i>
-                            <div id="countdown">
-                                <div>
-                                    <span id="days"></span>
-                                    <p>DAYS</p>
-                                </div>
-                                <div>
-                                    <span id="hours"></span>
-                                    <p>HOURS</p>
-                                </div>
-                                <div>
-                                    <span id="minutes"></span>
-                                    <p>MINUTES</p>
-                                </div>
-                                <div>
-                                    <span id="seconds"></span>
-                                    <p>SECONDS</p>
-                                </div>
-                            </div>
-                        </section>
-                    </div>
-                    <div class="col-6 card">
+                    <div class="col-12 card p-4">
                         
                         <h1 class="admin-form-title">Last Race</h1>
+                        <p>
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
+                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
+                        </p>
+                    </div>
+                    <div class="col-12 card p-4">
+                        
+                            <input type="hidden" id="countdownDate" name="nextRaceDate" value="{{$nextRace->date}}">
+                            <section>
+                                <h1 class="admin-form-title">{{$nextRace->name}}</h1>
+                                <i class="bi bi-clock-history"></i>
+                                <div id="countdown" class="d-flex">
+                                    <div>
+                                        <span id="days"></span>
+                                        <p>DAYS</p>
+                                    </div>
+                                    <div>
+                                        <span id="hours"></span>
+                                        <p>HOURS</p>
+                                    </div>
+                                    <div>
+                                        <span id="minutes"></span>
+                                        <p>MINUTES</p>
+                                    </div>
+                                    <div>
+                                        <span id="seconds"></span>
+                                        <p>SECONDS</p>
+                                    </div>
+                                </div>
+                            </section>
                         
                     </div>
+                    
                 </div>
             </div>
         </div>
     </div>
     <div class="col-3">
         <div class="row g-2">
-            <div class="col-12 card">
+            <div class="col-12 card p-4">
                 <h1 class="admin-form-title">Best Sponsors</h1>
                 @foreach ($topSponsors as $sponsor)
-                    <div>
-                        <div>
+                    <div class="d-flex">
+                        <div class="d-flex">
                             <i class="bi bi-briefcase"></i>
                             <h5>{{$sponsor->name}}</h5>
                         </div>
-                        <div>
+                        <div class="d-flex">
                             <i class="bi bi-cash-coin"></i>
                             <p>{{$sponsor->races_sum_sponsor_cost}}</p>
                         </div>
                     </div>
                 @endforeach
             </div>
-            <div class="col-12 card">
+            <div class="col-12 card p-4">
                 <h1 class="admin-form-title">Most Paid Races</h1>
                 @foreach ($topRaces as $race)
-                    <div>
-                        <div>
+                    <div class="d-flex">
+                        <div class="d-flex">
                             <i class="bi bi-briefcase"></i>
                             <h5>{{$race->name}}</h5>
-                        </div>
-                        <div>
+                        </div class="d-flex">
+                        <div class="d-flex"> 
                             <i class="bi bi-cash-coin"></i>
                             <p>{{$race->drivers_count * $race->registrationPrice}}</p>
                         </div>

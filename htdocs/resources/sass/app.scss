@@ -90,6 +90,12 @@
     }
 }
 
+.center {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .section-heading {
     position: absolute;
     top: 50%;

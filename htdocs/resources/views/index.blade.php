@@ -11,7 +11,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
-        <title>@yield('title')</title>
+        <title>DR1FT</title>
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         <!-- jQuery -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -80,23 +80,6 @@
             overflow: hidden;
             }
             
-            /* .second .bg {
-                /* background-image: linear-gradient(
-                180deg,
-                rgba(0, 0, 0, 0.6) 0%,
-                rgba(0, 0, 0, 0.3) 100%
-                ),
-                url("https://64.media.tumblr.com/3de2c2eab9cbac5aa7c1f641eb4e7ccc/tumblr_nj8curbq8F1sbh9awo1_500.jpg");
-
-            } */
-            /* .third .bg {
-                background-image: linear-gradient(
-                180deg,
-                rgba(0, 0, 0, 0.6) 0%,
-                rgba(0, 0, 0, 0.3) 100%
-                ),
-                url(https://i0.wp.com/oregongirlaroundtheworld.com/wp-content/uploads/2015/07/img_3494.jpg?fit=3754%2C1738);
-            } */
             .fourth .bg {
                 background-image: linear-gradient(
                 180deg,
@@ -191,34 +174,37 @@
                             <div class="row mt-5">
                                 @foreach ($races as $race)
                                 
-                                    <div class="flip-card col-3" tabIndex="0">
+                                    <div class="flip-card col-lg-3 col-md-6 col-sm-12" tabIndex="0">
                                         <div class="flip-card-inner">
-                                            <div class="flip-card-front p-4">
-                                                <h3>Hover</h3>
+                                            <div class="flip-card-front ">
+                                                
+                                                <img src="{{asset('storage/race_banners/'.$race->banner)}}" alt="{{$race->name}}">
                                             </div>
                                             <div class="flip-card-back p-4">
-                                                <h4>{{$race->name}}</h4>
+                                                <h4 class="fw-bold">{{$race->name}}</h4>
                                                
-                                                <span class=" badge rounded-pill bg-light text-dark"><i class="bi bi-calendar2-week-fill"></i>{{$race->date}}</span>
+                                                <span class=" badge rounded-pill bg-light text-dark"><i class="bi bi-calendar2-week-fill me-1"></i>{{$race->date}}</span>
                                                 @if ($race->pro == 1)
                                                     <span class=" badge rounded-pill bg-warning text-dark">PRO</span>
                                                 @endif
-                                                <span class=" badge rounded-pill bg-info text-dark"><i class="bi bi-people-fill"></i>Max. {{$race->maxParticipants}}</span>
+                                                <span class=" badge rounded-pill bg-info text-dark"><i class="bi bi-people-fill me-1"></i>Max. {{$race->maxParticipants}}</span>
                                                 <span class=" badge rounded-pill bg-badge-purple">{{$race->length}} Km</span>
 
-                                                <h5>Location</h5>
-                                                <p><i class="bi bi-geo-alt-fill"></i>{{$race->startingPlace}}</p>
+                                                <h5 class="mt-3">Location</h5>
+                                                <p><i class="bi bi-geo-alt-fill me-1"></i>{{$race->startingPlace}}</p>
 
-                                                <h5>Main Sponsors</h5>
+                                                <h5 class="mb-1 mt-3">Main Sponsors</h5>
                                                 
                                                 @foreach($race->sponsors as $sponsor)
                                                     @if($sponsor->pivot->mainSponsor == 1)
-                                                        <img class="img-thumbnail mb-1" src="{{ asset('storage/sponsor_logos/' . $sponsor->logo) }}" alt="{{$sponsor->name}}">
+                                                        <img class="img-thumbnail mb-1" src="{{ asset('storage/sponsor_logos/' . $sponsor->logo) }}" alt="{{$sponsor->name}}" title="{{$sponsor->name}}">
                                                     @endif
                                                 @endforeach
                                                 
-                                                <h5>More Information</h5>
+                                                <h5 class="mb-1 mt-3">More Information</h5>
                                                 <p>{{$race->description}}</p>
+                                                <a href="{{route('race.detail', ['race' => $race->id])}}">See More</a>
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -238,9 +224,8 @@
                                 <div class="row">
                                     <h2 class="index-page-headers">MEMBERSHIP PLANS</h2>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        
+                                <div class="row my-4">
+                                    <div class="col-12 center">
                                         <div class="select-left" id="container">
                                             <div id="item"></div>
                                             <div class="left">
@@ -250,7 +235,6 @@
                                                 <span>YEARLY</span>
                                             </div>
                                         </div>
-                                        
                                     </div>
                                 </div>
                                 <div class="row pricing-container gx-5 mt-5">

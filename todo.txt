@@ -28,10 +28,8 @@
         - [NOTICE] avisar al usuario de credenciales incorrectos
 
     => INDEX
-        - [CSS] próximas carreras
         - [CSS] cartas de membership
         - footer
-        - [CSS] filtro al video principal
 
     => PROFILE
 
@@ -43,7 +41,7 @@
     => LISTAR CARRERAS
         - [JS] Filtro Order by
         - [CSS] estilos cartas
-        - [RESPONSIVE] cambiar tamaño columnas cartas
+        - [RESPONSIVE] cambiar tamaño columnas cartas (row-cols-x)
 
     => GALLERY -> Imagenes de carreras aleatorias
 
