@@ -98,20 +98,23 @@
     z-index: 1; /* Asegúrate de que el texto esté encima del video */
     color: #ffffff;
     width: 100%;
-    //max-width: 1850px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
     span {
         color: $defaultRed;
     }
 
     h2 { 
-        //max-width: 1200px;
+        max-width: 1200px;
         &:first-child{
             font-size: 128px;
-            letter-spacing: 0.7vw;
+            letter-spacing: 13px;
         }
         &:last-child{
             font-size: 96px;
-            letter-spacing: 1.3vw;
+            letter-spacing: 20px;
         }
     }
 }

@@ -54,19 +54,9 @@
                 bottom: 0;
                 min-width: 100%;
                 min-height: 100%;
-                
+                filter: brightness(0.25);
             }
-            #video-background::before {
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                content: '';
-
-                /* Any overlay color that you want, here I use black with 25% opacity */
-                background-color: rgba(0,0,0,0.80);
-            }
+            
             section .outer,
             section .inner {
             width: 100%;
@@ -179,8 +169,10 @@
                                 Your browser does not support the video tag.
                             </video>
                             <div class="section-heading">
-                                <h2>CHASE <span>VICTORY</span></h2>
-                                <h2>DRIVE THE DREAM</h2>
+                                <div>
+                                    <h2>CHASE <span>VICTORY</span></h2>
+                                    <h2>DRIVE THE DREAM</h2>
+                                </div>
                             </div>
                         </div>
                     
