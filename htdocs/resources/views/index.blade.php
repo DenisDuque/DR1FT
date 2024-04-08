@@ -54,7 +54,18 @@
                 bottom: 0;
                 min-width: 100%;
                 min-height: 100%;
-                filter: brightness(0.8);
+                
+            }
+            #video-background::before {
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                content: '';
+
+                /* Any overlay color that you want, here I use black with 25% opacity */
+                background-color: rgba(0,0,0,0.80);
             }
             section .outer,
             section .inner {

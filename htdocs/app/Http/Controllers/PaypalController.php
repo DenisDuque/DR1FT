@@ -74,7 +74,8 @@ class PaypalController extends Controller
             ->setTransactions(array($transaction));            
         try {
             $payment->create($this->_api_context);
-        } catch (\PayPal\Exception\PPConnectionException $ex) {
+        } catch (\Exception $ex) {
+            dd($ex->getMessage());
             if (\Config::get('app.debug')) {
                 \Session::put('error','Connection timeout');
                 return Redirect::route('paywithpaypal');                
