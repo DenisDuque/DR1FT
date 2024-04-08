@@ -189,13 +189,24 @@
             </div>
         </div>
     </div>
-    <div class="col-3 card">
+    <div class="col-3 card p-4 dashboard-top-drivers">
         <h1 class="admin-form-title">Top Drivers</h1>
         @foreach ($topDrivers as $driver)
-            <div>
-                <i class="bi bi-trophy"></i>
-                <h5>{{$driver->name}}</h5>
-                <p>{{$driver->points}}</p>
+            @if ($loop->first)
+                <div class="top-driver-first">
+                    <img src="" alt="driver-first">
+            @elseif ($loop->iteration == 2)
+                <div class="top-driver-podium">
+                    <img src="" alt="driver-second">
+            @elseif ($loop->iteration == 3)
+                <div class="top-driver-podium">
+                    <img src="" alt="driver-third">
+            @else
+                <div class="top-driver-no-podium">
+                    <i class="bi bi-person"></i>
+            @endif
+            <h5>{{$driver->name}}</h5>
+            <p>{{$driver->points}}</p>
             </div>
         @endforeach
     </div>

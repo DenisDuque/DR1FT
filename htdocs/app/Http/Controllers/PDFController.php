@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sponsor;
 use App\Models\Race;
-//use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use Illuminate\Support\Facades\DB;
 use PDF;
 
 class PDFController extends Controller
@@ -49,23 +49,28 @@ class PDFController extends Controller
     }
 
     public function generateDorsalPDF($raceId, $driverId) {
-
+        
         $driver = DB::table('race_driver')
-            ->where('race_id', $raceId)
-            ->where('driver_id', $driverId)
-            ->pluck('dorsal')
-            ->toArray();
+            ->join('drivers', 'drivers.id', '=', 'race_driver.driver_id') // Unir la tabla 'race_driver' con la tabla 'driver'
+            ->where('race_driver.race_id', $raceId)
+            ->where('race_driver.driver_id', $driverId)
+            ->select('race_driver.*', 'drivers.name as driver_name') // Seleccionamos todos los campos de race_driver y también el campo 'name' de la tabla 'driver' con el alias 'driver_name'
+            ->first(); // Obtener el primer resultado
+        if ($driver && $driver->dorsal != null) {
 
-        $qrLink= 'localhost/generateQR?race='.$raceId.'&driver='.$driverId;
-
-        $data = [
-            'name' => $driver->name,
-            'dorsal' => $driver->dorsal,
-            'link' => $qrLink
-        ];
-
-        $pdf = PDF::loadView('page.pdfs.driver_dorsal', $data);
-        return $pdf->download('driver_dorsal.pdf');
+            $qrLink= 'localhost/generateQR?race='.$raceId.'&driver='.$driverId;
+            $data = [
+                'name' => $driver->driver_name,
+                'dorsal' => $driver->dorsal,
+                'link' => $qrLink
+            ];
+    
+            $pdf = PDF::loadView('page.pdfs.driver_dorsal', ['data' => $data]);
+            return $pdf->download('driver_dorsal.pdf');
+        } else {
+            dd("NO FUNCA");
+        }
+        
     }
     
 }

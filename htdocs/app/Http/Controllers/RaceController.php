@@ -539,4 +539,27 @@ class RaceController extends Controller {
 
         return $races;
     }
+
+    public static function setTimeToDriver($raceId, $driverId) {
+        $driver = RaceDriver::where('race_id', $raceId)
+            ->where('driver_id', $driverId)
+            ->first();
+
+        if ($driver) {
+            // Actualizar el campo 'time' al timestamp actual
+            if ($driver->time = null) {
+                $driver->time = Carbon::now()->toDateTimeString();
+                $driver->save();
+                return view('administrator.races.timeSaved')->with([
+                    'driver' => $driver
+                ]);
+            } else {
+                dd('El tiempo ya se ha asignado!');
+            }
+            
+                
+        } else {
+            dd('El registro no existe');
+        }
+    }
 }

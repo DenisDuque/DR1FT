@@ -57,3 +57,4 @@
 [HOW TO PAYPAL] => https://vidvatek.com/post/how-to-integrate-paypal-payment-gateway-in-laravel-10 
 
 [BOOTSTRAP FILTERS]=> https://www.w3schools.com/bootstrap/bootstrap_filters.asp
+[HOW TO QR] https://packagist.org/packages/simplesoftwareio/simple-qrcode

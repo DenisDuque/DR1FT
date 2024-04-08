@@ -525,3 +525,23 @@ main.race-details-nav-tabs-container {
     }
 }
 
+.dashboard-top-drivers {
+    div {
+        display: flex;
+        flex-direction: row;
+        border-radius: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .top-driver-first {
+        @include backgroundGradient($gradientRed1, $gradientRed2);
+    }
+
+    .top-driver-podium {
+        @include backgroundGradient($primaryBlack, #2f2f2f);
+    }
+
+    .top-driver-no-podium {
+        @include backgroundGradient($primaryBlack, $secondaryBlack);
+    }
+}
