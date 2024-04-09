@@ -30,7 +30,7 @@
                 @endif
                 <div class="panel-heading"><b>Paywith Paypal</b></div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" id="payment-form" role="form" action="{!! URL::route('/paypal') !!}" >
+                    <form class="form-horizontal" method="POST" id="payment-form" role="form" action="/paypal" >
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('amount') ? ' has-error' : '' }}">
