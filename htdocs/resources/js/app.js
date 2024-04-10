@@ -10,6 +10,7 @@ import './Admin_Edit_Races';
 import './race_details';
 import './admin_race';
 import './btn_toggle';
+import './Membership';
 import './Countdown';
 import './scrach_and_win';
 import './page_scroll';

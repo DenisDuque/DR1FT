@@ -17,7 +17,7 @@ Route::get('/races/{race}', [RaceController::class, 'show'])->name('race.detail'
 Route::get('/gallery', [ImageController::class, 'gallery'])->name('page.gallery');
 Route::post('/race/register', [RaceController::class, 'registerDriver'])->name('race.register');
 Route::get('/profile/{driver}', [DriverController::class, 'profile'])->name('page.profile');
-
+Route::get('/membership', [DriverController::class, 'membership'])->name('page.membership');
 Route::get('/generateDorsalPDF/{raceId}/{driverId}', [PDFController::class, 'generateDorsalPDF'])->name('generateQR');
 Route::get('/setTimeToDriver/{raceId}/{driverId}', [RaceController::class, 'setTimeToDriver'])->name('setTimeToDriver');
 Route::get('raceClassification/{raceId}', [RaceController::class, 'getClassification'])->name('classificationTest');

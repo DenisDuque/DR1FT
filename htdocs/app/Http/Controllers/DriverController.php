@@ -62,6 +62,11 @@ class DriverController extends Controller
         ]);
     }
 
+    public function membership() {
+        return view("page.membership", [
+        ]);
+    }
+
     public function index() {
         $drivers = Driver::get();
 
