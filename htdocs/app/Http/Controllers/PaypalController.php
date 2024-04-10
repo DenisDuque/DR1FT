@@ -78,10 +78,10 @@ class PaypalController extends Controller
             dd($ex->getMessage());
             if (\Config::get('app.debug')) {
                 \Session::put('error','Connection timeout');
-                return Redirect::route('paywithpaypal');                
+                return Redirect::route('/paywithpaypal');                
             } else {
                 \Session::put('error','Some error occur, sorry for inconvenient');
-                return Redirect::route('paywithpaypal');                
+                return Redirect::route('/paywithpaypal');                
             }
         }
 
@@ -99,7 +99,7 @@ class PaypalController extends Controller
         }
 
         \Session::put('error','Unknown error occurred');
-    	return Redirect::route('paywithpaypal');
+    	return Redirect::route('/paywithpaypal');
     }
 
     public function getPaymentStatus(Request $request)
@@ -109,7 +109,7 @@ class PaypalController extends Controller
         Session::forget('paypal_payment_id');
         if (empty($request->input('PayerID')) || empty($request->input('token'))) {
             \Session::put('error','Payment failed');
-            return Redirect::route('paywithpaypal');
+            return Redirect::route('/paywithpaypal');
         }
         $payment = Payment::get($payment_id, $this->_api_context);        
         $execution = new PaymentExecution();
@@ -118,10 +118,10 @@ class PaypalController extends Controller
         
         if ($result->getState() == 'approved') {         
             \Session::put('success','Payment success !!');
-            return Redirect::route('paywithpaypal');
+            return Redirect::route('/paywithpaypal');
         }
 
         \Session::put('error','Payment failed !!');
-		return Redirect::route('paywithpaypal');
+		return Redirect::route('/paywithpaypal');
     }
 }
