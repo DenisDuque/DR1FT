@@ -598,10 +598,8 @@ class RaceController extends Controller {
             $raceDriver->driver->birthDate = Carbon::createFromFormat('d-m-Y', $raceDriver->driver->birthDate);
         }
 
-        return view('page.pdfs.raceClassification', [
-            'drivers' => $raceDrivers,
-            'race' => $race
-        ]);
+        $pdf = PDFController::downloadRaceClassification($raceDrivers, $race);
 
+        return $pdf;
     }
 }

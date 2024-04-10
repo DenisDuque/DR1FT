@@ -73,8 +73,11 @@ class PDFController extends Controller
         
     }
 
-    public static function downloadRaceClassification($raceDrivers) {
-        $pdf = PDF::loadView('page.pdfs.driver_dorsal', ['drivers' => $raceDrivers]);
+    public static function downloadRaceClassification($raceDrivers, $race) {
+        $pdf = PDF::loadView('page.pdfs.raceClassification', [
+            'drivers' => $raceDrivers,
+            'race' => $race
+        ]);
         return $pdf->download('classification.pdf');
     }
     

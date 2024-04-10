@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Dorsal</title>
+    <title>Classification</title>
     <style>
         /* Estilos de etiqueta*/
         body {
@@ -69,7 +69,7 @@
         </tbody>
     </table>
     <div class="filter">
-    <h2>Gender classification: Male</h2>
+        <h2>Gender classification: Male</h2>
     </div>
     <table>
         <thead>
