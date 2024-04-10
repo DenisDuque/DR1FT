@@ -333,11 +333,18 @@
             p {
                 font-size: 14px;
                 font-weight: 600;
-                letter-spacing: 3px;
-
+                letter-spacing: 2px;
+                i {
+                    font-size: 16px;
+                }
                 .bi-check-circle-fill { color: #79CA52; width: 25px; }
 
                 .bi-x-circle-fill { color: $defaultRed; width: 25px; }
+            }
+
+            .membership-button {
+                border-radius: 20px;
+                height: 40px;
             }
             
         }
@@ -553,5 +560,19 @@ main.race-details-nav-tabs-container {
 
     .top-driver-no-podium {
         @include backgroundGradient($primaryBlack, $secondaryBlack);
+    }
+}
+
+.membership-price {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    h1 {
+        width: fit-content;
+        display: inline;
+    }
+    small {
+        width: fit-content;
     }
 }
