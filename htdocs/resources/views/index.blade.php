@@ -126,10 +126,10 @@
                                 <a class="nav-link" href="{{route('races.all')}}">RACES</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">GALLERY</a>
+                                <a class="nav-link" href="{{route('page.gallery')}}">GALLERY</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link " href="#">MEMBERSHIP</a>
+                                <a class="nav-link " href="{{route('page.membership')}}">MEMBERSHIP</a>
                             </li>
                             <li class="nav-item">
                                 @if(session()->has('user_id'))

@@ -80,8 +80,8 @@ if (!scratchWin || !coin || !canvas) {
   coin.addEventListener("touchstart", startDragging);
 
   const mouseFunction = (event) => {
+    // Si no estás arrastrando la moneda
     if (!isDragging) {
-      // Evitar el rascado si no estás arrastrando la moneda
       return;
     }
 
@@ -102,7 +102,6 @@ if (!scratchWin || !coin || !canvas) {
     }
   };
 
-  // In a real life example you should throttle these
   window.addEventListener("mousemove", mouseFunction);
   window.addEventListener("touchmove", mouseFunction);
 }
