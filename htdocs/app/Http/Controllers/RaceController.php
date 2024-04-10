@@ -17,6 +17,7 @@ use App\Models\RacePhoto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
+use function PHPUnit\Framework\isNull;
 
 class RaceController extends Controller {
 
@@ -541,14 +542,35 @@ class RaceController extends Controller {
     }
 
     public static function setTimeToDriver($raceId, $driverId) {
+
+        $raceDrivers = RaceDriver::where('race_id', $raceId)->get();
+
+        $finishedRace = 0;
+
+        foreach ($raceDrivers as $raceDriver) {
+            if (!is_null($raceDriver->time)) {
+                $finishedRace++;
+            }
+        }
+
         $driver = RaceDriver::where('race_id', $raceId)
             ->where('driver_id', $driverId)
             ->first();
 
         if ($driver) {
             // Actualizar el campo 'time' al timestamp actual
-            if ($driver->time = null) {
+
+            if (is_null($driver->time)) {
                 $driver->time = Carbon::now()->toDateTimeString();
+
+                if ($finishedRace == 0) {
+                    $driver->driver->points += 1000;
+                } else if ($finishedRace == 1) {
+                    $driver->driver->points += 500;
+                } else if ($finishedRace == 2) {
+                    $driver->driver->points += 300;
+                }
+                $driver->driver->save();
                 $driver->save();
                 return view('administrator.races.timeSaved')->with([
                     'driver' => $driver

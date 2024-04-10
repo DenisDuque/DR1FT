@@ -58,7 +58,7 @@ class PDFController extends Controller
             ->first(); // Obtener el primer resultado
         if ($driver && $driver->dorsal != null) {
 
-            $qrLink= 'localhost/generateQR?race='.$raceId.'&driver='.$driverId;
+            $qrLink= 'localhost/setTimeToDriver?race='.$raceId.'&driver='.$driverId;
             $data = [
                 'name' => $driver->driver_name,
                 'dorsal' => $driver->dorsal,
