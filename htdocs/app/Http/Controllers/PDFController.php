@@ -58,7 +58,7 @@ class PDFController extends Controller
             ->first(); // Obtener el primer resultado
         if ($driver && $driver->dorsal != null) {
 
-            $qrLink= 'localhost/generateQR?race='.$raceId.'&driver='.$driverId;
+            $qrLink= 'localhost/setTimeToDriver?race='.$raceId.'&driver='.$driverId;
             $data = [
                 'name' => $driver->driver_name,
                 'dorsal' => $driver->dorsal,
@@ -71,6 +71,14 @@ class PDFController extends Controller
             dd("NO FUNCA");
         }
         
+    }
+
+    public static function downloadRaceClassification($raceDrivers, $race) {
+        $pdf = PDF::loadView('page.pdfs.raceClassification', [
+            'drivers' => $raceDrivers,
+            'race' => $race
+        ]);
+        return $pdf->download('classification.pdf');
     }
     
 }

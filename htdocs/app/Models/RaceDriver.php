@@ -17,4 +17,9 @@ class RaceDriver extends Model
         'dorsal', 
         'time'
     ];
+
+    public function driver()
+    {
+        return $this->belongsTo(Driver::class, 'driver_id');
+    }
 }
