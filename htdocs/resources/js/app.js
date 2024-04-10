@@ -12,7 +12,7 @@ import './admin_race';
 import './btn_toggle';
 import './Countdown';
 import './scrach_and_win';
-import './page_scroll';
+//import './page_scroll';
 
 
 $(document).ready(function() {

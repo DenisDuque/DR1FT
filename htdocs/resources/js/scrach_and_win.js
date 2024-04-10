@@ -41,12 +41,54 @@ if (!scratchWin || !coin || !canvas) {
     return alphaValues.length / maxPixels;
   };
 
-  const mouseFunction = (mouse) => {
-    // Move coin
-    const clientX = mouse.clientX ? mouse.clientX : mouse.touches[0].clientX;
-    const clientY = mouse.clientY ? mouse.clientY : mouse.touches[0].clientY;
-    coin.style = `--top: ${clientY}px; --left: ${clientX}px;`;
+  let isDragging = false;
+
+  const startDragging = (event) => {
+    event.preventDefault();
+    isDragging = true;
+    const clientX = event.clientX || event.touches[0].clientX;
+    const clientY = event.clientY || event.touches[0].clientY;
+
+    const coinPosition = coin.getBoundingClientRect();
+    const offsetX = clientX - coinPosition.left;
+    const offsetY = clientY - coinPosition.top;
+
+    const moveCoin = (event) => {
+      if (!isDragging) return;
+      const clientX = event.clientX || event.touches[0].clientX;
+      const clientY = event.clientY || event.touches[0].clientY;
+
+      coin.style.top = `${clientY - offsetY}px`;
+      coin.style.left = `${clientX - offsetX}px`;
+    };
+
+    const stopDragging = () => {
+      isDragging = false;
+      document.removeEventListener("mousemove", moveCoin);
+      document.removeEventListener("touchmove", moveCoin);
+      document.removeEventListener("mouseup", stopDragging);
+      document.removeEventListener("touchend", stopDragging);
+    };
+
+    document.addEventListener("mousemove", moveCoin);
+    document.addEventListener("touchmove", moveCoin);
+    document.addEventListener("mouseup", stopDragging);
+    document.addEventListener("touchend", stopDragging);
+  };
+
+  coin.addEventListener("mousedown", startDragging);
+  coin.addEventListener("touchstart", startDragging);
+
+  const mouseFunction = (event) => {
+    if (!isDragging) {
+      // Evitar el rascado si no estás arrastrando la moneda
+      return;
+    }
+
     // Scratch
+    const clientX = event.clientX || event.touches[0].clientX;
+    const clientY = event.clientY || event.touches[0].clientY;
+
     const canvasPosition = canvas.getBoundingClientRect();
     const canvasX = clientX - canvasPosition.left;
     const canvasY = clientY - canvasPosition.top;

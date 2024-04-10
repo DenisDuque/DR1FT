@@ -50,22 +50,7 @@
                 <div class="col">
                   <div class="d-flex justify-content-center">
                     <i class="bi bi-gift"></i>
-                    <div id="scratch-win" class="scratch-win">
-                      <div class="scratch-win__title"> Scratch & win</div>
-                      <div class="scratch-win__scratcher">
-                        <div class="scratch-win__background">1st</div>
-                        <canvas id="canvas" class="scratch-win__foreground"></canvas>
-                      </div>
-                    </div>
                     
-                    <div id="coin" class="scratch-win__coin">
-                      <div class="scratch-win__coin-side"></div>
-                      <div class="scratch-win__coin-base"></div>
-                    </div>
-                    
-                    <div id="confetti" class="confetti">
-                    
-                    </div>
                   </div>
                 </div>
               </div>
@@ -120,4 +105,22 @@
       </div>
   </div>
   
+  <div class="row">
+    <div class="col-5">
+      <div id="scratch-win" class="scratch-win">
+        <div class="scratch-win__title"> Scratch & win</div>
+        <div class="scratch-win__scratcher">
+          <div class="scratch-win__background">1st</div>
+          <canvas id="canvas" class="scratch-win__foreground"></canvas>
+        </div>
+      </div>
+      
+    </div>
+    <div class="col-2">
+      <div id="coin" class="scratch-win__coin" draggable="true">
+        <div class="scratch-win__coin-base" draggable="true"></div>
+      </div>
+    </div>
+  </div>
+
 @endsection

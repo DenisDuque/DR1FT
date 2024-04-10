@@ -53,7 +53,7 @@ $green: #80c0a1;
     animation: shinning;
     animation-duration: 6s;
     animation-iteration-count: infinite;
-    pointer-events: none;
+    //pointer-events: none;
   }
   &__title {
     width: 100%;
@@ -109,33 +109,12 @@ $green: #80c0a1;
   &__coin {
     position: absolute;
     z-index: 2;
-    top: calc(var(--top) - 5rem);
-    left: calc(var(--left) - 3rem);
+    top: calc(var(--top) + 5rem);
+    left: calc(var(--left));
     width: 6rem;
     height: 6rem;
-    pointer-events: none;
-  }
-  &__coin-side {
-    position: absolute;
-    top: -0.4rem;
-    left: 0;
-    z-index: -1;
-    width: calc(100% + 0.6rem);
-    height: calc(100% + 0.6rem);
-    border-radius: 50%;
-    outline: 0.1rem solid $gold--dark;
-    @supports (-webkit-hyphens: none) {
-      // removing outline in Safari
-      outline: none;
-    }
-    background: repeating-linear-gradient(
-      90deg,
-      $gold 0,
-      $gold 0.5rem,
-      $yellow--light 0.5rem,
-      $yellow--light 0.7rem
-    );
-    box-shadow: 0 1rem 1rem -0.5rem rgba($black, 0.5);
+    cursor: grab;
+    //pointer-events: none;
   }
   &__coin-base {
     position: absolute;
@@ -173,42 +152,6 @@ $green: #80c0a1;
       background: -webkit-linear-gradient($yellow--light -50%, $gold);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-    }
-  }
-}
-
-.confetti {
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 3;
-  width: 100%;
-  height: 200%;
-  pointer-events: none;
-  --top-position: -350vh;
-  &__item {
-    position: absolute;
-    box-shadow: 1rem 1rem 1rem 0 rgba($black, 0.5);
-    // Positioning confetti
-    $confetti-number: 120;
-    @for $i from 1 through $confetti-number {
-      &:nth-child(#{$i}) {
-        top: calc(#{random()} * 150% + var(--top-position));
-        left: calc(#{random()} * 100%);
-        transform: scale(max(#{random() * 5}, 2)) rotate(#{random() * 90}deg);
-      }
-    }
-  }
-  &--active {
-    --top-position: 200vh;
-    .confetti__item {
-      transition: top 10s ease;
-      &:nth-child(3n) {
-        transition: top 8s ease;
-      }
-      &:nth-child(4n) {
-        transition: top 12s ease;
-      }
     }
   }
 }

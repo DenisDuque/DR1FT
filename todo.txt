@@ -52,6 +52,8 @@
 [HOW TO SCRATCH 'N' WIN] => https://codepen.io/Pedro-Ondiviela/pen/gOEdJmK 
                          => https://codepen.io/halavasty/pen/abXGRvd <-
 
+[GIFT ANIMATION] => https://codepen.io/brentwm/pen/OJOBXdB 
+
 [HOW TO PAYPAL] => https://vidvatek.com/post/how-to-integrate-paypal-payment-gateway-in-laravel-10 
 [FIX PAYPAL] =Z https://github.com/paypal/PayPal-PHP-SDK/commit/1df6286dc95039e1e2a41cd24ddcfe492ac20544 
 

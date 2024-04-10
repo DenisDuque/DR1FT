@@ -2,3 +2,5 @@
 !.gitignore
 !static/
 !static/*
+!video/
+!video/*
