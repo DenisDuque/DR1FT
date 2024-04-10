@@ -97,6 +97,6 @@ Route::get('/races/find/{id}', [RaceController::class, 'find'])->name('admin.rac
 
 
 //Route::get('/paywithpaypal', array('as' => 'paywithpaypal','uses' => 'PaypalController@payWithPaypal',));
-Route::get('/paywithpaypal', [PaypalController::class, 'payWithPaypal']);
+Route::get('/paywithpaypal', [PaypalController::class, 'payWithPaypal'])->name('paywithpaypal');
 Route::post('/paypal', array('as' => 'paypal','uses' => 'App\Http\Controllers\PaypalController@postPaymentWithpaypal'));
 Route::get('/paypal', array('as' => 'status','uses' => 'App\Http\Controllers\PaypalController@getPaymentStatus'));
