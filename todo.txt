@@ -1,5 +1,3 @@
-- nav responsive (en proceso)
-
 ===================== PÁGINAS ADMIN =======================
 
     => DASHBOARD
@@ -35,7 +33,6 @@
 
     => DETALLE CARRERA
         - Classificación
-        - Inscripción -> CASI ACABADA
         - [TODO] Si es MEMBER tendrá descuentos en el momento de inscribirse
 
     => LISTAR CARRERAS
@@ -43,7 +40,8 @@
         - [CSS] estilos cartas
         - [RESPONSIVE] cambiar tamaño columnas cartas (row-cols-x)
 
-    => GALLERY -> Imagenes de carreras aleatorias
+
+
 
 [HOW TO PDF] => https://www.itsolutionstuff.com/post/laravel-10-generate-pdf-file-using-dompdf-exampleexample.html
 [HOW TO SCROLL] => https://codepen.io/flexcode/pen/poxVRpN 
