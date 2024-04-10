@@ -20,6 +20,7 @@ Route::get('/profile/{driver}', [DriverController::class, 'profile'])->name('pag
 
 Route::get('/generateDorsalPDF/{raceId}/{driverId}', [PDFController::class, 'generateDorsalPDF'])->name('generateQR');
 Route::get('/setTimeToDriver/{raceId}/{driverId}', [RaceController::class, 'setTimeToDriver'])->name('setTimeToDriver');
+Route::get('raceClassification/{raceId}', [RaceController::class, 'getClassification'])->name('classificationTest');
 
 Route::get('/login', [DriverController::class, 'showLogin'])->name('user.showLogin');
 Route::post('/login', [DriverController::class, 'auth'])->name('user.login');

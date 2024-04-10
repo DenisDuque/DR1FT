@@ -584,4 +584,15 @@ class RaceController extends Controller {
             dd('El registro no existe');
         }
     }
+
+    public static function getClassification($raceId) {
+        $raceDrivers = RaceDriver::where('race_id', $raceId)
+            ->whereNotNull('time')
+            ->orderBy('time', 'asc')
+            ->get();
+
+        dd($raceDrivers);
+
+        
+    }
 }
