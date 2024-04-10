@@ -586,13 +586,22 @@ class RaceController extends Controller {
     }
 
     public static function getClassification($raceId) {
+
+        $race = Race::find($raceId);
+
         $raceDrivers = RaceDriver::where('race_id', $raceId)
             ->whereNotNull('time')
             ->orderBy('time', 'asc')
             ->get();
-
-        dd($raceDrivers);
-
         
+        foreach ($raceDrivers as $raceDriver) {
+            $raceDriver->driver->birthDate = Carbon::createFromFormat('d-m-Y', $raceDriver->driver->birthDate);
+        }
+
+        return view('page.pdfs.raceClassification', [
+            'drivers' => $raceDrivers,
+            'race' => $race
+        ]);
+
     }
 }
