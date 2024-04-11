@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('maxParticipants');
             $table->float('length');
             $table->string('banner');
-            $table->date('date');
+            $table->dateTime('date');
             $table->string('startingPlace');
             $table->float('sponsorCost');
             $table->float('registrationPrice');
