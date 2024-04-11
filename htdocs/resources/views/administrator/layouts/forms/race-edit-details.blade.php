@@ -5,7 +5,7 @@
     </div>
     <div class="col-md-4">
         <label for="raceDate" class="form-label">Date</label>
-        <input type="date" name="raceDate" class="form-control" id="raceDate" value="{{$race->date}}">
+        <input type="datetime-local" name="raceDate" class="form-control" id="raceDate" value="{{$race->date}}">
     </div>
     <div class="col-7">
         {{-- <input type="range" name="raceMaxParticipants" class="form-range" id="raceMaxParticipants" min="8" max="32"> --}}
