@@ -91,7 +91,7 @@
                           <span class="col-1 text-white">{{$race->date}}</span>
                           <span class="col-4 text-white">{{$race->name}}</span>
                           <span class="col-5 text-white">{{$race->startingPlace}}</span>
-                          <span class="col-1 text-white">0</span><span class="col-1 text-white">{{$driver->points}}</span>
+                          <span class="col-1 text-white">{{$race->driverPosition}}</span><span class="col-1 text-white">{{$driver->points}}</span>
                         </div>
                       </div>
 

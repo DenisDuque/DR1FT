@@ -597,4 +597,22 @@ class RaceController extends Controller {
 
         return $pdf;
     }
+
+    public static function getDriverPosition($raceId, $driverId) {
+        // Obtener la lista de conductores de la carrera ordenados por tiempo
+        $raceDrivers = RaceDriver::where('race_id', $raceId)
+            ->whereNotNull('time')
+            ->orderBy('time', 'asc')
+            ->get();
+    
+        $position = 0;
+    
+        foreach ($raceDrivers as $index => $raceDriver) {
+            if ($raceDriver->driver_id == $driverId) {
+                $position = $index + 1;
+            }
+        }
+    
+        return $position;
+    }
 }
