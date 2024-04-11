@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Race extends Model
 {
@@ -36,6 +37,19 @@ class Race extends Model
 
     public function sponsors() {
         return $this->belongsToMany(Sponsor::class)->withPivot('mainSponsor');
+    }
+
+    public static function getRaceClassification($raceId) {
+        $raceDrivers = RaceDriver::where('race_id', $raceId)
+            ->whereNotNull('time')
+            ->orderBy('time', 'asc')
+            ->get();
+        
+        foreach ($raceDrivers as $raceDriver) {
+            $raceDriver->driver->birthDate = Carbon::createFromFormat('d-m-Y', $raceDriver->driver->birthDate);
+        }
+
+        return $raceDrivers;
     }
     
 

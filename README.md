@@ -16,8 +16,7 @@ Now in the new terminal, we install de required libraries and update node.
 
 ```bash
 # Composer Libraries
-composer require barryvdh/laravel-dompdf
-composer require simplesoftwareio/simple-qrcode
+composer install
 
 # Update node using npm
 npm cache clean -f
@@ -29,6 +28,13 @@ n stable
 # Node Libraries
 npm install gsap
 npm install bootstrap
+
+# Then
+npm run dev
+npm run build
+
+# Setting permissions
+
 ```
 
 ## Database Setup

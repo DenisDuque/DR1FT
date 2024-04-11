@@ -106,10 +106,29 @@
                     <p><i class="bi bi-geo-alt-fill me-1"></i>{{$race->startingPlace}}</p>
                 </div>
                 <div class="col-xs-12 content" id="four">
-                    
-                    <p>
-                        four
-                    </p>
+                    <a class="btn-primary" href="/raceClassification/{{$race->id}}">Download Classifications</a>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Dorsal</th>
+                                <th>Name</th>
+                                <th>Gender</th>
+                                <th>Age</th>
+                                <th>Finished at</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($classification as $driver)
+                                <tr>
+                                    <td>{{$driver->dorsal}}</td>
+                                    <td>{{$driver->driver->name}}</td>
+                                    <td>{{$driver->driver->gender ? 'M' : 'F'}}</td>
+                                    <td>{{$driver->driver->birthDate->age}}</td>
+                                    <td>{{$driver->time}}</td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
                 <div class="col-xs-12 content" id="five">
                     
