@@ -23,6 +23,7 @@ class RaceController extends Controller {
 
     public function mainPage() {
         // Obtener la fecha actual formateada como día - mes - año
+        
         $today = Carbon::now()->format('Y-m-d');
     
         // Obtener las próximas 4 carreras
@@ -563,8 +564,8 @@ class RaceController extends Controller {
             // Actualizar el campo 'time' al timestamp actual
 
             if (is_null($driver->time)) {
-                $driver->time = Carbon::now()->toDateTimeString();
-
+                $time = Carbon::now();
+                $driver->time = $time->copy()->setTimezone('Europe/Madrid')->toDateTimeString();
                 if ($finishedRace == 0) {
                     $driver->driver->points += 1000;
                 } else if ($finishedRace == 1) {
