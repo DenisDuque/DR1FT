@@ -36,7 +36,7 @@
                                 <input type="hidden" name="member" value="1">
                                 <input type="hidden" name="race_id" value="{{ $race->id }}">
                                 <input type="hidden" name="amount" value="{{$race->registrationPrice}}">
-                                <button type="button" class="btn btn-primary text-white" @if ($raceDate <= $nextMonth || $raceDate <= $today) disabled @endif>
+                                <button type="submit" class="btn btn-primary text-white">
                                     Participate ({{$race->registrationPrice}}$)
                                 </button>
                             </form>
@@ -71,6 +71,13 @@
                                 This race is disabled until there's 1 month left
                             </div>
                         </div>
+                    @endif
+                    @if ($message = Session::get('success'))
+                        <div class="custom-alerts alert alert-success fade in">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                            {!! $message !!}
+                        </div>
+                        <?php Session::forget('success');?>
                     @endif
                 </div>
 

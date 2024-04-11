@@ -118,7 +118,7 @@ class PaypalController extends Controller
         
         if ($result->getState() == 'approved') {         
             \Session::put('success','Payment success !!');
-            return redirect()->route('paywithpaypal');
+            return redirect()->route('race.detail', ['race' => $request->race_id] );
         }
 
         \Session::put('error','Payment failed !!');
