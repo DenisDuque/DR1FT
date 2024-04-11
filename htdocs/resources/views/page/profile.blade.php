@@ -97,9 +97,10 @@
                   <div class="row">
                     <span class="col-1 text-white fw-bold">Date</span>
                     <span class="col-4 text-white fw-bold">Name</span>
-                    <span class="col-5 text-white fw-bold">Location</span>
+                    <span class="col-4 text-white fw-bold">Location</span>
                     <span class="col-1 text-white fw-bold">Position</span>
                     <span class="col-1 text-white fw-bold">Points</span>
+                    <span class="col-1 text-white fw-bold">Actions</span>
                   </div>
                   <div class="row">
                     @foreach ($races as $race)
@@ -107,8 +108,10 @@
                         <div class="row">
                           <span class="col-1 text-white">{{$race->date}}</span>
                           <span class="col-4 text-white">{{$race->name}}</span>
-                          <span class="col-5 text-white">{{$race->startingPlace}}</span>
-                          <span class="col-1 text-white">0</span><span class="col-1 text-white">{{$driver->points}}</span>
+                          <span class="col-4 text-white">{{$race->startingPlace}}</span>
+                          <span class="col-1 text-white">{{$race->driverPosition}}</span>
+                          <span class="col-1 text-white">{{$driver->points}}</span>
+                          <span class="col-1 text-white"><a href="/raceClassification/{{$race->id}}">Classification</a></span>
                         </div>
                       </div>
 

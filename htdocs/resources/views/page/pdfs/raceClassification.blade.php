@@ -110,7 +110,7 @@
         </thead>
         <tbody>
             @foreach ($drivers as $driver)
-                @if (!$driver->gender)
+                @if (!$driver->driver->gender)
                     <tr>
                         <td>{{$driver->dorsal}}</td>
                         <td>{{$driver->driver->name}}</td>

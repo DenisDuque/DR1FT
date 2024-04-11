@@ -8,6 +8,7 @@
                 <th scope="col" class="py-3">NºFederation</th>
                 <th scope="col" class="py-3">Name</th>
                 <th scope="col" class="py-3">Email</th>
+                <th scope="col" class="py-3">Actions</th>
             </tr>
         </thead>
         <tbody id="drivers-races-table-body">
@@ -19,6 +20,7 @@
                     <td class="py-3 align-middle">{{$driver->federationNumber}}</td>
                     <td class="py-3 align-middle">{{$driver->name}}</td>
                     <td class="py-3 align-middle">{{$driver->email}}</td>
+                    <td class="py-3 align-middle"><a href="/admin/races/generateDorsalPDF/{{$race->id}}/{{$driver->id}}">PDF</a></td>
                 </tr>
             @endforeach   
         </tbody>

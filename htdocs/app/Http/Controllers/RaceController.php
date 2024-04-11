@@ -372,13 +372,15 @@ class RaceController extends Controller {
         $insurances = $race->insurances;
         $sponsors = $race->sponsors;
         $photos = $race->photos;
+        $classification = Race::getRaceClassification($race->id);
         //dd($photos);
 
         return view('page.raceDetails', [
             'race' => $race, 
             'insurances' => $insurances,
             'sponsors' => $sponsors,
-            'photos' => $photos
+            'photos' => $photos,
+            'classification' => $classification
         ]);
     }
     
@@ -595,17 +597,28 @@ class RaceController extends Controller {
 
         $race = Race::find($raceId);
 
-        $raceDrivers = RaceDriver::where('race_id', $raceId)
-            ->whereNotNull('time')
-            ->orderBy('time', 'asc')
-            ->get();
-        
-        foreach ($raceDrivers as $raceDriver) {
-            $raceDriver->driver->birthDate = Carbon::createFromFormat('d-m-Y', $raceDriver->driver->birthDate);
-        }
+        $raceDrivers = Race::getRaceClassification($raceId);
 
         $pdf = PDFController::downloadRaceClassification($raceDrivers, $race);
 
         return $pdf;
+    }
+
+    public static function getDriverPosition($raceId, $driverId) {
+        // Obtener la lista de conductores de la carrera ordenados por tiempo
+        $raceDrivers = RaceDriver::where('race_id', $raceId)
+            ->whereNotNull('time')
+            ->orderBy('time', 'asc')
+            ->get();
+    
+        $position = 0;
+    
+        foreach ($raceDrivers as $index => $raceDriver) {
+            if ($raceDriver->driver_id == $driverId) {
+                $position = $index + 1;
+            }
+        }
+    
+        return $position;
     }
 }
