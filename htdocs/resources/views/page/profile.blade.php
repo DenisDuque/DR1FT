@@ -9,7 +9,7 @@
 
     <div class="container-fluid profile-container">
         <div class="row no-gutters">
-          <div class="col-6">
+          <div class="col-lg-5">
             <div class="cell shadow text-white p-4">
                 <div class="row">
                   <div class="col">
@@ -35,28 +35,45 @@
                 </div>
             </div>
           </div>
-          <div class="col-4">
+          <div class="col-lg-5">
             <div class="cell shadow p-4">
               <div class="row">
                 <div class="col-10">
                   <h1 class="fs-3">Last Race Classification</h1>
                 </div>
-                <div class="col-1">
+                <div class="col-2 text-end">
                   <i class="bi bi-question-circle-fill"></i>
-
+                </div>
+                <div class="row">
+                  <div class="col-10">
+                    <div id="scratch-win" class="scratch-win">
+                      {{-- <div class="scratch-win__title"> Scratch & win</div> --}}
+                      <div class="scratch-win__scratcher">
+                        <div class="scratch-win__background">1st</div>
+                        <canvas id="canvas" class="scratch-win__foreground"></canvas>
+                      </div>
+                    </div>
+                    
+                  </div>
+                  <div class="col-1">
+                    <div id="coin" class="scratch-win__coin" draggable="true">
+                      <div class="scratch-win__coin-base" draggable="true"></div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div class="row">
+              
+              {{-- <div class="row">
                 <div class="col">
                   <div class="d-flex justify-content-center">
                     <i class="bi bi-gift"></i>
                     
                   </div>
                 </div>
-              </div>
+              </div> --}}
             </div>
           </div>
-          <div class="col-2">
+          <div class="col-lg-2">
             <div class="cell shadow red-cell p-4">
               <div class="row">
                 <div class="col-12">
@@ -105,22 +122,6 @@
       </div>
   </div>
   
-  <div class="row">
-    <div class="col-5">
-      <div id="scratch-win" class="scratch-win">
-        <div class="scratch-win__title"> Scratch & win</div>
-        <div class="scratch-win__scratcher">
-          <div class="scratch-win__background">1st</div>
-          <canvas id="canvas" class="scratch-win__foreground"></canvas>
-        </div>
-      </div>
-      
-    </div>
-    <div class="col-2">
-      <div id="coin" class="scratch-win__coin" draggable="true">
-        <div class="scratch-win__coin-base" draggable="true"></div>
-      </div>
-    </div>
-  </div>
+  
 
 @endsection

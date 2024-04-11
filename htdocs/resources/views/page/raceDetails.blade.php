@@ -35,14 +35,17 @@
                                 @csrf
                                 <input type="hidden" name="member" value="1">
                                 <input type="hidden" name="race_id" value="{{ $race->id }}">
-                                <button type="submit" class="btn btn-primary text-white">Participate</button>
+                                <input type="hidden" name="amount" value="{{$race->registrationPrice}}">
+                                <button type="button" class="btn btn-primary text-white" @if ($raceDate <= $nextMonth || $raceDate <= $today) disabled @endif>
+                                    Participate ({{$race->registrationPrice}}$)
+                                </button>
                             </form>
                         </div>
                 
                     @else
                         <div class="col-2">
                             <button type="button" class="btn btn-primary text-white" data-bs-toggle="modal" data-bs-target="#exampleModal" @if ($raceDate <= $nextMonth || $raceDate <= $today) disabled @endif>
-                                Participate
+                                Participate ({{$race->registrationPrice}}$)
                             </button>
                         </div>
                         <div class="col-10">
@@ -54,7 +57,14 @@
                     @endif
                 
                 <div class="col-10">
-                    @if ($raceDate <= $nextMonth || $raceDate <= $today)
+                    @if ($raceDate <= $today)
+                        <div class="alert alert-primary d-flex align-items-center" role="alert">
+                            <i class="bi bi-info-circle-fill me-1"></i>
+                            <div>
+                                This race is currently finished
+                            </div>
+                        </div>
+                        @elseif ($raceDate <= $nextMonth)
                         <div class="alert alert-primary d-flex align-items-center" role="alert">
                             <i class="bi bi-info-circle-fill me-1"></i>
                             <div>
@@ -233,9 +243,7 @@
                                 <input type="password" name="driverPasswordConfirm" class="form-control" id="driverPasswordConfirm" value="{{old('driverPasswordConfirm')}}">
                             </div>
                            
-                            
-
-                            <button type="submit" class="btn btn-success"><i class="bi bi-check-lg"></i> Save</button>
+                            <button type="submit" class="btn btn-success"><i class="bi bi-check-lg"></i> Participate ({{$race->registrationPrice}}$)</button>
                             
                         </form>
                     </div>

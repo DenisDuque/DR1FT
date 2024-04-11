@@ -229,10 +229,10 @@
                                         <div class="select-left" id="container">
                                             <div id="item"></div>
                                             <div class="left">
-                                                <span>MONTHLY</span>
+                                                <span class="fw-bold">MONTHLY</span>
                                             </div>
                                             <div class="right">
-                                                <span>YEARLY</span>
+                                                <span class="fw-bold">YEARLY</span>
                                             </div>
                                         </div>
                                     </div>
@@ -242,53 +242,55 @@
                                     <div class="col-4">
                                         <div class="pricing-card p-3">
                                             <span class="badge rounded-pill bg-badge-purple">FREE</span>
-                                            <h1 class="text-center">100</h1>
+                                            <input type="hidden" name="monthly-free-price" value="0">
+                                            <div class="membership-price text-center w-100"><h1>0$</h1><small class="membership-length align-bottom">/monthly</small></div>
                                             <hr>
                                             <div class="px-4 py-2">
                                                 <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>PRIORITY QUEUE</p>
                                                 <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>25% OFF IN MERCHANDISING</p>
-                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
-                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
-                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
-                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
-                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
-                                               
+                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>DISCOUNT OF 15% PER RACE</p>
+                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>PRIORITY SUPPORT</p>
+                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>SPECIAL CONTESTS & GIVEAWAYS</p>
+                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>EXCLUSIVE NEWSLETTER ACCESS</p>
+                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>VIP EVENT INVITATIONS</p>
                                             </div>
+                                            <button class="membership-button btn-primary w-100 fw-bold">SUBSCRIBE NOW</button>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="pricing-card p-3">
                                             <span class="badge rounded-pill bg-badge-blue">PREMIUM</span>
-                                            <h1 class="text-center">100</h1>
+                                            <input id="monthly-premium-price" type="hidden" name="monthly-premium-price" value="25">
+                                            <div class="membership-price text-center w-100"><h1 id="monthly-premium-price-show">25$</h1><small class="membership-length align-bottom">/monthly</small></div>
                                             <hr>
                                             <div class="px-4 py-2">
                                                 <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>PRIORITY QUEUE</p>
                                                 <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>25% OFF IN MERCHANDISING</p>
-                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
-                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
-                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
-                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
-                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>PRIORITY QUEUE</p>
-                                                
-                                                
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i></i>DISCOUNT OF 15% PER RACE</p>
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i></i>PRIORITY SUPPORT</p>
+                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>SPECIAL CONTESTS & GIVEAWAYS</p>
+                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>EXCLUSIVE NEWSLETTER ACCESS</p>
+                                                <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>VIP EVENT INVITATIONS</p>
                                             </div>
+                                            <button class="btn-primary w-100 membership-button fw-bold">SUBSCRIBE NOW</button>
                                         </div>
                                     </div>
                                     <div class="col-4">
                                         <div class="pricing-card p-3">
                                             <span class="badge rounded-pill bg-badge-gold">VIP</span>
-                                            <h1 class="text-center">100</h1>
+                                            <input id="monthly-vip-price" type="hidden" name="monthly-vip-price" value="50">
+                                            <div class="membership-price text-center w-100"><h1 id="monthly-vip-price-show">50$</h1><small class="membership-length align-bottom">/monthly</small></div>
                                             <hr>
                                             <div class="px-4 py-2">
                                                 <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>PRIORITY QUEUE</p>
                                                 <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>25% OFF IN MERCHANDISING</p>
-                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>PRIORITY QUEUE</p>
-                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>PRIORITY QUEUE</p>
-                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>PRIORITY QUEUE</p>
-                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>PRIORITY QUEUE</p>
-                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i>PRIORITY QUEUE</p>
-                                                
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i></i>DISCOUNT OF 15% PER RACE</p>
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i></i>PRIORITY SUPPORT</p>
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i></i>SPECIAL CONTESTS & GIVEAWAYS</p>
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i></i>EXCLUSIVE NEWSLETTER ACCESS</p>
+                                                <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i></i>VIP EVENT INVITATIONS</p>
                                             </div>
+                                            <button class="membership-button btn-primary w-100 fw-bold">SUBSCRIBE NOW</button>
                                         </div>
                                     </div>
                                 </div>
