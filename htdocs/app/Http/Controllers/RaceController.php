@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Race;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\PaypalController;
 use App\Models\Sponsor;
 use App\Models\Insurance;
 use App\Models\Driver;
@@ -456,6 +457,11 @@ class RaceController extends Controller {
             if ($existingRaceDriver) {
                 return redirect()->back()->with('error', 'You are already registered for this race.');
             }
+
+            $paypal = new PaypalController();
+            $response = $paypal->postPaymentWithpaypal($request);
+            
+            return $response;
 
             // Crear un nuevo registro en la tabla RaceDriver
             $raceDriver = new RaceDriver();

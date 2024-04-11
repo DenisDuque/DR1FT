@@ -12,10 +12,10 @@
             <div class="select-left" id="container">
                 <div id="item"></div>
                 <div class="left">
-                    <span>MONTHLY</span>
+                    <span class="fw-bold">MONTHLY</span>
                 </div>
                 <div class="right">
-                    <span>YEARLY</span>
+                    <span class="fw-bold">YEARLY</span>
                 </div>
             </div>
         </div>
@@ -37,7 +37,7 @@
                     <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>EXCLUSIVE NEWSLETTER ACCESS</p>
                     <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>VIP EVENT INVITATIONS</p>
                 </div>
-                <button class="membership-button">SUBSCRIBE NOW</button>
+                <button class="membership-button btn-primary w-100 fw-bold">SUBSCRIBE NOW</button>
             </div>
         </div>
         <div class="col-4">
@@ -54,8 +54,8 @@
                     <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>SPECIAL CONTESTS & GIVEAWAYS</p>
                     <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>EXCLUSIVE NEWSLETTER ACCESS</p>
                     <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>VIP EVENT INVITATIONS</p>
-                    <button class="btn-primary w-100 membership-button">SUBSCRIBE NOW</button>
                 </div>
+                <button class="btn-primary w-100 membership-button fw-bold">SUBSCRIBE NOW</button>
             </div>
         </div>
         <div class="col-4">
@@ -73,7 +73,7 @@
                     <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i></i>EXCLUSIVE NEWSLETTER ACCESS</p>
                     <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i></i>VIP EVENT INVITATIONS</p>
                 </div>
-                <button class="membership-button">SUBSCRIBE NOW</button>
+                <button class="membership-button btn-primary w-100 fw-bold">SUBSCRIBE NOW</button>
             </div>
         </div>
     </div>
