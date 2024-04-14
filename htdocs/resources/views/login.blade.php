@@ -10,31 +10,26 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Racing+Sans+One&display=swap" rel="stylesheet">
 </head>
 
 <body class="container background-admin-gradient d-flex justify-content-center align-items-center">
-  
-    @if (session('error'))
-        <div class="alert alert-danger">
-            {{ session('error') }}
-        </div>
-    @endif
-    @if ($errors->any())
-        @foreach ($errors->all() as $error)
-            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>Error: </strong> {{$error}}
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>
-        @endforeach
-    @endif
-
     <!-- START Box -->
     <div class="animated-border-box-glow"></div>
     <div class="animated-border-box">
       <div class="card shadow">
         <div class="card-title text-center mt-4">
+          <h1 class="drift">DR1FT</h1>
           <h2 class="p-3">Login</h2>
           <p class="text-md-center">Please enter your details.</p>
+          @if ($errors->any())
+                @foreach ($errors->all() as $error)
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Error: </strong> {{$error}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                @endforeach
+              @endif
         </div>
         <div class="card-body">
           <form action="{{route('user.login')}}" method="post">
@@ -48,11 +43,10 @@
               <input type="password" class="form-control  text-white" name="password" value="{{old('password')}}" placeholder="Password"/>
             </div>
             <div class="mb-4">
-              <input type="checkbox" class="form-check-input" name="remember" value="{{old('remember')}}"/>
-              <label for="remember" class="form-label">Remember Me</label>
+              
             </div>
-            <div class="d-grid">
-              <button type="submit" class="btn btn-primary">Sign in</button>
+            <div class="">
+              <button type="submit" class="w-100 btn btn-primary">Sign in</button>
             </div>
           </form>
         </div>

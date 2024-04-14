@@ -1,0 +1,55 @@
+# Usamos la imagen base de Ubuntu 22.04
+FROM ubuntu:22.04
+
+# Etiquetas y argumentos del Dockerfile
+LABEL maintainer="John Doe <info@app.com>" \
+      description="docker-compose-lamp-laravel-environment" \
+      Vendor="http://app.com"
+
+ARG DEBIAN_FRONTEND=noninteractive
+
+ENV TZ=Europe/Berlin
+
+# Configuración de la zona horaria
+RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+# Actualización de paquetes e instalación de herramientas y dependencias
+RUN apt-get update && apt-get install -y \
+    curl wget graphviz mysql-client apt-utils iputils-ping net-tools netcat less \
+    apache2 libapache2-mod-fcgid php php-curl php-zip php-common php-mbstring php-dev php-gd php-xdebug php-intl php-mysql php-imap php-sqlite3 php-pear php-apcu \
+    make \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Instalación de extensiones adicionales de PHP
+RUN apt-get update && apt-get install -y \
+    php-xml php-imagick php-redis \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+# Habilitar extensiones de PHP
+RUN phpenmod xml imagick redis
+
+# Configuración de Apache y copia de archivos del proyecto
+COPY docker/apache/vhost.txt /etc/apache2/sites-available/docker-php.conf
+COPY htdocs /var/www
+
+# Configuración de Apache
+RUN chown www-data: /var/www -R && chmod -R 777 /var/www \
+    && a2dissite 000-default && a2enmod rewrite \
+    && cp /etc/apache2/sites-available/docker-php.conf /etc/apache2/sites-enabled/
+
+# Configurar el nombre del servidor
+RUN echo "ServerName app.local" >> /etc/apache2/apache2.conf
+
+# Exponer el puerto 80
+EXPOSE 80
+
+# Habilitar módulos de Apache
+RUN a2enmod proxy_fcgi && a2dismod mpm_event && a2enmod mpm_prefork
+
+# Establecer el directorio de trabajo
+WORKDIR /var/www
+
+# Comando predeterminado para ejecutar Apache en primer plano
+CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]

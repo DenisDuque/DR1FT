@@ -8,7 +8,7 @@
             <img class="img-fluid rounded" src="{{asset('storage/race_banners/'.$race->banner)}}" alt="{{$race->name}}">
         </div>
         <div class="col-md-8 text-white">
-            <h1 class="text-white race-detail-header">{{$race->name}}
+            <h1 class="text-white race-detail-header fs-sm-3">{{$race->name}}
                 @if ($race->pro == 1)
                     <span class="badge rounded-pill bg-warning text-dark">PRO</span>
                 @endif

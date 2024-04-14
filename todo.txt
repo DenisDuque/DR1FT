@@ -26,7 +26,6 @@
         - [NOTICE] avisar al usuario de credenciales incorrectos
 
     => INDEX
-        - [CSS] cartas de membership
         - footer
 
     => PROFILE

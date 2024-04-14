@@ -22,7 +22,7 @@
     </div>
     <div class="row pricing-container gx-5 mt-5">
         
-        <div class="col-4">
+        <div class="col-lg-4 col-sm-12 mb-3 col">
             <div class="pricing-card p-3">
                 <span class="badge rounded-pill bg-badge-purple">FREE</span>
                 <input type="hidden" name="monthly-free-price" value="0">
@@ -40,7 +40,7 @@
                 <button class="membership-button btn-primary w-100 fw-bold">SUBSCRIBE NOW</button>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-lg-4 col-sm-12 mb-3 col">
             <div class="pricing-card p-3">
                 <span class="badge rounded-pill bg-badge-blue">PREMIUM</span>
                 <input id="monthly-premium-price" type="hidden" name="monthly-premium-price" value="25">
@@ -58,7 +58,7 @@
                 <button class="btn-primary w-100 membership-button fw-bold">SUBSCRIBE NOW</button>
             </div>
         </div>
-        <div class="col-4">
+        <div class="col-lg-4 col-sm-12 mb-3 col">
             <div class="pricing-card p-3">
                 <span class="badge rounded-pill bg-badge-gold">VIP</span>
                 <input id="monthly-vip-price" type="hidden" name="monthly-vip-price" value="50">
