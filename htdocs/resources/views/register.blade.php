@@ -77,8 +77,9 @@
                   <label class="form-check-label" for="driverMember">Member</label>
               </div>
             </div>
-            <div class="">
+            <div class="mt-2">
               <button type="submit" class="w-100 btn btn-primary">Sign up</button>
+              <a href="{{route('user.showLogin')}}">Back to Login</a>
             </div>
           </form>
         </div>

@@ -43,7 +43,7 @@
               <input type="password" class="form-control  text-white" name="password" value="{{old('password')}}" placeholder="Password"/>
             </div>
             <div class="mb-4">
-              
+              <a href="{{route('user.showRegister')}}">Not registered? Try sign up</a>
             </div>
             <div class="">
               <button type="submit" class="w-100 btn btn-primary">Sign in</button>
