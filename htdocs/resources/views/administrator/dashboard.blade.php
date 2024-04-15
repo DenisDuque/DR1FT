@@ -199,24 +199,24 @@
             </div>
         </div>
     </div>
-    <div class="col-3 card p-4 dashboard-top-drivers">
+    <div class="d-flex col-3 card p-4 dashboard-top-drivers">
         <h1 class="admin-form-title">Top Drivers</h1>
         @foreach ($topDrivers as $driver)
             @if ($loop->first)
-                <div class="top-driver-first">
-                    <img src="" alt="driver-first">
+                <div class="top-driver-first d-flex align-items-center justify-content-between p-1">
+                    <img src="{{ asset('storage/static/top-drivers-1.png') }}" alt="driver-first" class="ms-2">
             @elseif ($loop->iteration == 2)
-                <div class="top-driver-podium">
-                    <img src="" alt="driver-second">
+                <div class="d-flex align-items-center top-driver-podium justify-content-between p-1">
+                    <img src="{{ asset('storage/static/top-drivers-2.png') }}" alt="driver-second" class="ms-2">
             @elseif ($loop->iteration == 3)
-                <div class="top-driver-podium">
-                    <img src="" alt="driver-third">
+                <div class="d-flex align-items-center top-driver-podium justify-content-between p-1">
+                    <img src="{{ asset('storage/static/top-drivers-3.png') }}" alt="driver-third" class="ms-2">
             @else
-                <div class="top-driver-no-podium">
-                    <i class="bi bi-person"></i>
+                <div class="d-flex align-items-center top-driver-no-podium justify-content-between p-1">
+                    <i class="bi bi-person ms-2"></i>
             @endif
-            <h5>{{$driver->name}}</h5>
-            <p>{{$driver->points}}</p>
+                <span class="text-nowrap">{{$driver->name}}</span>
+                <p class="me-2 text-nowrap mt-3">{{$driver->points}} pts</p>
             </div>
         @endforeach
     </div>

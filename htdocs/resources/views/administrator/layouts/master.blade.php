@@ -26,7 +26,7 @@
             <nav class="navbar-expand-lg navbar-expand-md d-none d-lg-block">
                 <ul class="nav">
                     <li class="nav-item mx-4">
-                        <a class="nav-link {{ request()->is('admin/dashboard') ? 'active' : '' }}" aria-current="page" href="/admin/dashboard">DASHBOARD</a>
+                        <a class="nav-link {{ Request::is('admin/dashboard') ? 'active' : '' }}" aria-current="page" href="/admin/dashboard">DASHBOARD</a>
                     </li>
                     <li class="nav-item mx-4">
                         <a class="nav-link {{ request()->is('admin/races') ? 'active' : '' }}" href="/admin/races">RACES</a>

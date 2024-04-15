@@ -43,17 +43,20 @@ if (typeof gsap !== 'undefined'){
       );
     }
     gsap.set(sections[index], { autoAlpha: 1, zIndex: 1 });
-    tl.fromTo(
-      [outerWrappers[index], innerWrappers[index]],
-      {
-        yPercent: (i) => (i ? -100 * dFactor : 100 * dFactor)
-      },
-      {
-        yPercent: 0
-      },
-      0
-    )
-      .fromTo(images[index], { yPercent: 15 * dFactor }, { yPercent: 0 }, 0)
+    if (tl) {
+      tl.fromTo(
+        [outerWrappers[index], innerWrappers[index]],
+        {
+          yPercent: (i) => (i ? -100 * dFactor : 100 * dFactor)
+        },
+        {
+          yPercent: 0
+        },
+        0
+      )
+        .fromTo(images[index], { yPercent: 15 * dFactor }, { yPercent: 0 }, 0)
+        currentIndex = index;
+    }
       // .fromTo(
       //   splitHeadings[index].chars,
       //   {
@@ -72,8 +75,7 @@ if (typeof gsap !== 'undefined'){
       //   },
       //   0.2
       // );
-  
-    currentIndex = index;
+
   }
   
   Observer.create({

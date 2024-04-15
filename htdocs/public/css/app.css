@@ -12782,12 +12782,12 @@ textarea.form-control-lg {
 .pricing-container {
   color: white;
 }
-.pricing-container .col-4 .pricing-card {
+.pricing-container .col .pricing-card {
   border-radius: 15px;
   position: relative;
   background: linear-gradient(to top left, #151418, #1e1e1e) !important;
 }
-.pricing-container .col-4 .pricing-card .badge {
+.pricing-container .col .pricing-card .badge {
   width: 6rem;
   position: absolute;
   left: 50%;
@@ -12795,40 +12795,44 @@ textarea.form-control-lg {
   top: -10px;
   z-index: 1;
 }
-.pricing-container .col-4 .pricing-card p {
+.pricing-container .col .pricing-card p {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 2px;
 }
-.pricing-container .col-4 .pricing-card p i {
+.pricing-container .col .pricing-card p i {
   font-size: 16px;
 }
-.pricing-container .col-4 .pricing-card p .bi-check-circle-fill {
+.pricing-container .col .pricing-card p .bi-check-circle-fill {
   color: #79CA52;
   width: 25px;
 }
-.pricing-container .col-4 .pricing-card p .bi-x-circle-fill {
+.pricing-container .col .pricing-card p .bi-x-circle-fill {
   color: #DC2E25;
   width: 25px;
 }
-.pricing-container .col-4 .pricing-card .membership-button {
+.pricing-container .col .pricing-card .membership-button {
   border-radius: 20px;
   height: 40px;
 }
-.pricing-container .col-4:nth-child(1) .pricing-card {
+.pricing-container .col .pricing-card:hover {
+  transform: translateY(-1rem);
+  transition: transform 1s ease-in;
+}
+.pricing-container .col:nth-child(1) .pricing-card {
   border: 2px solid #EBE5FC;
 }
-.pricing-container .col-4:nth-child(2) .pricing-card {
+.pricing-container .col:nth-child(2) .pricing-card {
   border: 2px solid #CFF4FC;
 }
-.pricing-container .col-4:nth-child(2) .pricing-card .bg-badge-blue {
+.pricing-container .col:nth-child(2) .pricing-card .bg-badge-blue {
   background-color: #CFF4FC;
   color: #055160;
 }
-.pricing-container .col-4:nth-child(3) .pricing-card {
+.pricing-container .col:nth-child(3) .pricing-card {
   border: 2px solid #FFF3CD;
 }
-.pricing-container .col-4:nth-child(3) .pricing-card .bg-badge-gold {
+.pricing-container .col:nth-child(3) .pricing-card .bg-badge-gold {
   background-color: #FFF3CD;
   color: #664D03;
 }
