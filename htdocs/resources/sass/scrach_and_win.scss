@@ -1,20 +1,21 @@
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap");
 
-$yellow: #ffbf00;
-$yellow--light: #ffdc73;
-$gold: #d4af37;
-$gold--dark: #a67c00;
-$black: #000038;
-$grey: #888;
-$white: #fff;
-$light-blue: #78d6c6;
-$dark-blue: #12486b;
-$green: #80c0a1;
+$yellow: #DC2E25;
+$yellow--light: #E93F36;
+$gold: #252328;
+$gold--dark: #151418;
+$black: #151418;
+$sw-grey: #E0DFDE;
+$sw-white: #252328;
+$light-blue: #252328;
+$dark-blue: #151418;
+$green: #252328;
 
 
 .scratch-win {
   position: relative;
-  padding: 1rem 2rem 2rem 2rem;
+  padding: 0;
+  width: fit-content;
   background: linear-gradient($light-blue -150%, $dark-blue);
   border: 0.2rem solid $yellow--light;
   border-radius: 1rem;
@@ -38,7 +39,7 @@ $green: #80c0a1;
       -70deg,
       transparent,
       transparent 50%,
-      rgba($white, 0.1) 57%,
+      rgba($sw-white, 0.1) 57%,
       transparent 60%
     );
     background-size: 300% 100%;
@@ -69,7 +70,7 @@ $green: #80c0a1;
   &__scratcher {
     position: relative;
     width: 20rem;
-    height: 10rem;
+    height: 4rem;
   }
   &__background,
   &__foreground {
@@ -83,8 +84,8 @@ $green: #80c0a1;
     display: none;
     justify-content: center;
     align-items: center;
-    color: $grey;
-    background-color: $white;
+    color: $sw-grey;
+    background-color: $sw-white;
     text-transform: uppercase;
     font-size: 3.6rem;
     &:after {
@@ -97,8 +98,8 @@ $green: #80c0a1;
       background: repeating-linear-gradient(
         transparent,
         transparent 0.5rem,
-        $grey 0.5rem,
-        $grey 0.6rem
+        $sw-grey 0.5rem,
+        $sw-grey 0.6rem
       );
       opacity: 0.5;
     }

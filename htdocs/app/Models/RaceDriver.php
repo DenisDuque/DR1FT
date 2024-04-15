@@ -24,5 +24,4 @@ class RaceDriver extends Model
     }
 
     
-    
 }
