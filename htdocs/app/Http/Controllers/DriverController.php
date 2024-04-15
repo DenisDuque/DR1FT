@@ -10,6 +10,10 @@ use Carbon\Carbon;
 class DriverController extends Controller
 {
 
+    public function showRegister() {
+        return view('register');
+    }
+
     public function showLogin() {
         return view('login');
     }
@@ -33,6 +37,32 @@ class DriverController extends Controller
         } else {
             // Las credenciales son incorrectas o el usuario no existe
             return redirect()->route('user.login')->with('error', 'Credenciales incorrectas');
+        }
+    }
+
+    public function register() {
+
+        $data = request()->validate([
+            'driverName' => 'string',
+            'driverEmail' => 'email',
+            'driverPassword' => 'nullable|string',
+            'driverAddress' => 'string',
+            'driverBirthDate' => 'date',
+            'driverGender' => 'integer',
+            'driverFederation' => 'string',
+        ]);
+
+        Driver::create($data);
+
+        $user = Driver::where('email', $data['driverEmail'])->first();
+
+        if ($user && Auth::guard('user')->attempt(['email' => $data['driverEmail'], 'password' => $data['driverPassword']])) {
+            session(['user_id' => $user->id]);
+            //dd('user id:'.session('user_id'));
+            return redirect()->route('main.page');
+        } else {
+            // Las credenciales son incorrectas o el usuario no existe
+            return redirect()->route('user.register')->with('error', 'Error al registrar el usuario.');
         }
     }
 

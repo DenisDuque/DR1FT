@@ -102,8 +102,8 @@
                         <div class="col-4  text-center">
                             <img class="img-thumbnail" src="{{asset('storage/race_maps/'.$race->map)}}" alt="{{$race->name}}">
                             <i class="bi bi-people-fill"></i>{{$race->drivers->count()}}
-                            <i class="bi bi-card-image"></i>
-                            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Placeat voluptatem temporibus 
+                            <i class="bi bi-geo-alt-fill"></i><span>{{$race->name}}</span>
+                            <i class="bi bi-calendar"></i><span>{{$race->date}}</span>
                         </div>
                     @endforeach
                 </div>
@@ -113,10 +113,14 @@
             <div class="col-6 card p-4">
                 
                 <h1 class="admin-form-title">Best Insurances</h1>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
-                </p>
+                @foreach ($topInsurances as $insurance)
+                    <div class="col-4  text-center">
+                        <img class="img-thumbnail" src="{{asset('storage/insurance_logos/'.$insurance->logo)}}" alt="{{$insurance->name}}">
+                        <strong>{{$insurance->name}}</strong>
+                        <p>{{$insurance->cif}}</p>
+                        <span>{{$insurance->address}}</span>
+                    </div>
+                @endforeach
                 
             </div>
             <div class="col-6">

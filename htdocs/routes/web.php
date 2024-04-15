@@ -21,6 +21,8 @@ Route::get('/membership', [DriverController::class, 'membership'])->name('page.m
 Route::get('/setTimeToDriver/{raceId}/{driverId}', [RaceController::class, 'setTimeToDriver'])->name('setTimeToDriver');
 Route::get('raceClassification/{raceId}', [RaceController::class, 'getClassification'])->name('classificationTest');
 
+Route::get('/register', [DriverController::class, 'showRegister'])->name('user.showRegister');
+Route::post('/register', [DriverController::class, 'register'])->name('user.register');
 Route::get('/login', [DriverController::class, 'showLogin'])->name('user.showLogin');
 Route::post('/login', [DriverController::class, 'auth'])->name('user.login');
 Route::get('/logout', [DriverController::class, 'logout'])->name('user.logout');

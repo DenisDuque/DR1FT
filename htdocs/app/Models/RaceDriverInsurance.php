@@ -3,6 +3,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class RaceDriverInsurance extends Model
 {
@@ -26,5 +27,18 @@ class RaceDriverInsurance extends Model
     public function insurance()
     {
         return $this->belongsTo(Insurance::class);
+    }
+
+    public static function getTopInsurances($number) {
+        $topInsurancesIds = RaceDriverInsurance::select('insurance_id', DB::raw('COUNT(*) as appearance_count'))
+        ->groupBy('insurance_id')
+        ->orderByDesc('appearance_count')
+        ->take($number)
+        ->pluck('insurance_id');
+
+        $insurancesInfo = Insurance::whereIn('id', $topInsurancesIds)->get();
+
+        return $insurancesInfo;
+
     }
 }

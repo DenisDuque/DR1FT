@@ -5,17 +5,18 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Administrator;
+use App\Models\RaceDriverInsurance;
 
 class AdministratorController extends Controller
 {
     public function showAdministratorPanel() {
         $topDrivers = DriverController::getTopDrivers();
         $topSponsors = SponsorController::getTopSponsors();
-        //$topInsurances = InsuranceController::getTopInsurances();
+        $topInsurances = RaceDriverInsurance::getTopInsurances(3);
         $topRaces = RaceController::getTopRaces();
         $nextRace = RaceController::nextRace();
         $nextRaces = RaceController::nextRaces();
-        return view('administrator.dashboard')->with(compact('topDrivers', 'topSponsors', 'topRaces', 'nextRace', 'nextRaces'));
+        return view('administrator.dashboard')->with(compact('topDrivers', 'topSponsors', 'topInsurances', 'topRaces', 'nextRace', 'nextRaces'));
     }
 
     public function showLogin() {
