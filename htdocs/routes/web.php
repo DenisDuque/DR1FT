@@ -19,6 +19,7 @@ Route::post('/race/register', [RaceController::class, 'registerDriver'])->name('
 Route::get('/membership', [DriverController::class, 'membership'])->name('page.membership');
 Route::get('/setTimeToDriver/{raceId}/{driverId}', [RaceController::class, 'setTimeToDriver'])->name('setTimeToDriver');
 Route::get('raceClassification/{raceId}', [RaceController::class, 'getClassification'])->name('classificationTest');
+Route::post('/payMembership', [DriverController::class, 'payMembership'])->name('payMembership');
 
 Route::middleware(['user.auth'])->group(function () {
     Route::get('/profile', [DriverController::class, 'profile'])->name('page.profile');

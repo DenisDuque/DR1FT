@@ -16,6 +16,20 @@ import './Membership';
 import './scrach_and_win';
 import './page_scroll';
 
+// Encuentra el elemento del toast por su ID
+var myToast = document.getElementById('myToast');
+
+// Configura las opciones del toast
+var toastOptions = {
+  autohide: false // Evita que el toast se oculte automáticamente
+};
+
+// Crea una instancia de Toast de Bootstrap con las opciones
+var toast = new bootstrap.Toast(myToast, toastOptions);
+
+// Muestra el toast
+toast.show();
+
 
 $(document).ready(function() {
     console.log('document ready');

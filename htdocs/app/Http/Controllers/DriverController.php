@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\PaypalController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use App\Models\Driver;
@@ -207,5 +208,18 @@ class DriverController extends Controller
                         ->limit(10)
                         ->get();
         return $topDrivers;
+    }
+
+    public static function payMembership(Request $request) {
+        
+        $driver = Driver::findOrFail(session('user_id'));
+        $driver->member = 1;
+        $driver->save();
+
+        $paypal = new PaypalController();
+        $response = $paypal->postPaymentWithpaypal($request);
+        
+        return $response;
+        
     }
 }

@@ -112,6 +112,8 @@
         </style>
     </head>
     <body>
+            
+
             <div class="container fixed-top z-index-1 mt-3">
                 <div class="row">
                     <div class="col-2">
@@ -139,6 +141,10 @@
                                 @endif
                             </li>
                         </ul>
+
+                    </div>
+                    <div class="position-fixed bottom-0 end-0 w-25">
+                        @include('administrator.layouts.notice')
                     </div>
                 </div>
             </div>

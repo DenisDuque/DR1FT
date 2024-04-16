@@ -29,10 +29,10 @@
                       <div class="col-md-9">
                         <div class="card-body">
                             <h5 class="card-title">{{$race->name}}
+                                <span class="badge rounded-pill text-bg-light"><i class="me-1 bi bi-calendar2-week-fill"></i>{{date('d-m-Y H:i A', strtotime($race->date))}}</span>
                                 @if ($race->pro == 1)
                                     <span class="badge rounded-pill bg-warning text-dark">PRO</span>
                                 @endif
-                                <span class="badge rounded-pill text-bg-light"><i class="me-1 bi bi-calendar2-week-fill"></i>{{$race->date}}</span>
                                 <span class=" badge rounded-pill bg-info text-dark"><i class="bi bi-people-fill"></i>Max. {{$race->maxParticipants}}</span>
                                 <span class=" badge rounded-pill bg-badge-purple">{{$race->length}} Km</span>
                             </h5>

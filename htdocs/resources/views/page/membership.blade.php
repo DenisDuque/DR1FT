@@ -55,7 +55,16 @@
                     <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>EXCLUSIVE NEWSLETTER ACCESS</p>
                     <p class="py-2"><i class="bi bi-x-circle-fill me-1"></i></i>VIP EVENT INVITATIONS</p>
                 </div>
-                <button class="btn-primary w-100 membership-button fw-bold">SUBSCRIBE NOW</button>
+                    @if (session()->has('user_id'))
+                        <form action="{{route('payMembership')}}" method="POST">
+                            @csrf
+                            <input type="hidden" name="amount" value="25">
+
+                            <input type="submit" class="btn-primary w-100 membership-button fw-bold" value="SUBSCRIBE NOW">
+                        </form>
+                    @else
+                        <a href="{{route('user.showLogin')}}" class="membership-button btn-primary w-100 fw-bold center text-decoration-none">SUBSCRIBE NOW</a>
+                    @endif
             </div>
         </div>
         <div class="col-lg-4 col-sm-12 mb-3 col">
@@ -73,7 +82,17 @@
                     <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i></i>EXCLUSIVE NEWSLETTER ACCESS</p>
                     <p class="py-2"><i class="bi bi-check-circle-fill me-1"></i></i>VIP EVENT INVITATIONS</p>
                 </div>
-                <button class="membership-button btn-primary w-100 fw-bold">SUBSCRIBE NOW</button>
+                
+                @if (session()->has('user_id'))
+                    <form action="{{route('payMembership')}}" method="POST">
+                        @csrf
+                        <input type="hidden" name="amount" value="50">
+
+                        <input class="membership-button btn-primary w-100 fw-bold" type="submit" value="SUBSCRIBE NOW">
+                    </form>
+                @else
+                    <a href="{{route('user.showLogin')}}" class="membership-button btn-primary w-100 fw-bold center text-decoration-none">SUBSCRIBE NOW</a>
+                @endif
             </div>
         </div>
     </div>

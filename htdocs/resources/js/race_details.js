@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-    if (window.location.pathname.match(/^\/admin\/race\/edit\//)) {
+    if (window.location.pathname.match(/^\/admin\/race\/edit\//) || window.location.pathname.match(/^\/races\/\d+$/)) {
         // Ocultar el input al cargar la página si el checkbox no está marcado
         if (!$('#driverPro').prop('checked')) {
             $('#driverFederation').hide();
@@ -60,5 +60,7 @@ $(document).ready(function() {
             });
         });
     }
+    
+    
 });
 

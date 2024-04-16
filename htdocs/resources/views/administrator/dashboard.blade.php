@@ -114,11 +114,13 @@
                 
                 <h1 class="admin-form-title">Best Insurances</h1>
                 @foreach ($topInsurances as $insurance)
-                    <div class="col-4  text-center">
-                        <img class="img-thumbnail" src="{{asset('storage/insurance_logos/'.$insurance->logo)}}" alt="{{$insurance->name}}">
+                    <div class="col-4  text-center d-flex">
+                        <div>
+                            <img class="img-thumbnail" src="{{asset('storage/insurance_logos/'.$insurance->logo)}}" alt="{{$insurance->name}}">
+                        </div>
                         <strong>{{$insurance->name}}</strong>
                         <p>{{$insurance->cif}}</p>
-                        <span>{{$insurance->address}}</span>
+                        
                     </div>
                 @endforeach
                 
@@ -215,20 +217,20 @@
         <h1 class="admin-form-title">Top Drivers</h1>
         @foreach ($topDrivers as $driver)
             @if ($loop->first)
-                <div class="top-driver-first d-flex align-items-center justify-content-between p-1">
+                <div class="top-driver-first d-flex align-items-center justify-content-between p-2">
                     <img src="{{ asset('storage/static/top-drivers-1.png') }}" alt="driver-first" class="ms-2">
             @elseif ($loop->iteration == 2)
-                <div class="d-flex align-items-center top-driver-podium justify-content-between p-1">
+                <div class="d-flex align-items-center top-driver-podium justify-content-between p-2">
                     <img src="{{ asset('storage/static/top-drivers-2.png') }}" alt="driver-second" class="ms-2">
             @elseif ($loop->iteration == 3)
-                <div class="d-flex align-items-center top-driver-podium justify-content-between p-1">
+                <div class="d-flex align-items-center top-driver-podium justify-content-between p-2">
                     <img src="{{ asset('storage/static/top-drivers-3.png') }}" alt="driver-third" class="ms-2">
             @else
-                <div class="d-flex align-items-center top-driver-no-podium justify-content-between p-1">
+                <div class="d-flex align-items-center top-driver-no-podium justify-content-between p-2">
                     <i class="bi bi-person ms-2"></i>
             @endif
-                <span class="text-nowrap w-50 text-left">{{$driver->name}}</span>
-                <p class="me-2 text-nowrap mt-3">{{$driver->points}} pts</p>
+                <span class="w-50 text-start">{{$driver->name}}</span>
+                <span class="me-2">{{$driver->points}} pts</span>
             </div>
         @endforeach
     </div>

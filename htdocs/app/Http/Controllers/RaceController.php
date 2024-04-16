@@ -517,6 +517,11 @@ class RaceController extends Controller {
             $raceDriverInsurance->insurance_id = $request->input('driverInsurance');
             $raceDriverInsurance->save();
 
+            $insurance = Insurance::find($raceDriverInsurance->insurance_id);
+
+            
+            $request->merge(['amount' => $request->input('amount') + $insurance->pricePerRace]);
+
             $paypal = new PaypalController();
             $response = $paypal->postPaymentWithpaypal($request);
             

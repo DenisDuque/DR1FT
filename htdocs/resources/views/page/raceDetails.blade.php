@@ -15,7 +15,7 @@
             </h1>
             <div class="row py-2">
                 <div class="col">
-                    <span class="badge rounded-pill text-bg-light"><i class="me-1 bi bi-calendar2-week-fill"></i>{{$race->date}}</span>
+                    <span class="badge rounded-pill text-bg-light"><i class="me-1 bi bi-calendar2-week-fill"></i>{{date('d-m-Y H:i A', strtotime($race->date))}}</span>
                     <span class=" badge rounded-pill bg-info text-dark"><i class="bi bi-people-fill"></i>Max. {{$race->maxParticipants}}</span>
                     <span class=" badge rounded-pill bg-badge-purple"><i class="bi bi-speedometer2"></i>{{$race->length}} Km</span>
                 </div>
@@ -103,7 +103,7 @@
                     
                 </nav>
             </header>
-            <section class="row px-4 py-2">
+            <section class="row px-4 py-2" id="race-info-container">
                 <div class="col-xs-12 content activ" id="one">
                     <p>
                         {{$race->description}}
@@ -111,8 +111,7 @@
                     <p><strong>Registration Price: {{$race->registrationPrice}}$</strong></p>
                     <h4>Sponsors</h4>
                     @foreach ($sponsors as $sponsor)
-                        <img class="img-thumbnail rounded" src="{{asset('storage/sponsor_logos/'.$sponsor->logo)}}" alt="{{$sponsor->name}}">
-                        
+                        <img class="img-thumbnail rounded" src="{{asset('storage/sponsor_logos/'.$sponsor->logo)}}" alt="{{$sponsor->name}}" title="{{$sponsor->name}}">
                     @endforeach
                 </div>
                 <div class="col-xs-12 content" id="two">
@@ -123,29 +122,39 @@
                     <p><i class="bi bi-geo-alt-fill me-1"></i>{{$race->startingPlace}}</p>
                 </div>
                 <div class="col-xs-12 content" id="four">
-                    <a class="btn-primary" href="/raceClassification/{{$race->id}}">Download Classifications</a>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Dorsal</th>
-                                <th>Name</th>
-                                <th>Gender</th>
-                                <th>Age</th>
-                                <th>Finished at</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($classification as $driver)
-                                <tr>
-                                    <td>{{$driver->dorsal}}</td>
-                                    <td>{{$driver->driver->name}}</td>
-                                    <td>{{$driver->driver->gender ? 'M' : 'F'}}</td>
-                                    <td>{{$driver->driver->birthDate->age}}</td>
-                                    <td>{{$driver->time}}</td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
+                        @if ($raceDate < $today)
+                            <table class="col-8">
+                                <thead>
+                                    <tr>
+                                        <th>Dorsal</th>
+                                        <th>Name</th>
+                                        <th>Gender</th>
+                                        <th>Age</th>
+                                        <th>Finished at</th>
+                                        <th><a class="btn-primary col-2" href="/raceClassification/{{$race->id}}" title="Download Classifications"><i class="bi bi-file-earmark-arrow-down-fill"></i></a></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($classification as $driver)
+                                        <tr>
+                                            <td>{{$driver->dorsal}}</td>
+                                            <td>{{$driver->driver->name}}</td>
+                                            <td>{{$driver->driver->gender ? 'M' : 'F'}}</td>
+                                            <td>{{$driver->driver->birthDate->age}}</td>
+                                            <td>{{$driver->time}}</td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            
+                        @else
+                            <section class="alert alert-primary d-flex align-items-center p-3" role="alert">
+                                <i class="bi bi-info-circle-fill me-1"></i>
+                                <section>
+                                    This race is not finished, wait util de race end to know if you're the winner!
+                                </section>
+                            </section>
+                        @endif
                 </div>
                 <div class="col-xs-12 content" id="five">
                     
@@ -202,12 +211,6 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        {{-- PARA COMPROBAR SI ES MEMEBRER O NO --}}
-                        {{-- @if(session()->has('user_id'))
-                                <a class="nav-link " href="{{route('user.login')}}">PROFILE</a>
-                            @else
-                                <a class="nav-link " href="{{route('user.login')}}">SIGN IN</a>
-                            @endif --}}
                         <form class="row g-3 text-white" action="{{route('race.register')}}" method="post">
                               
 

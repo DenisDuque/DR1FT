@@ -118,8 +118,7 @@ class PaypalController extends Controller
         
         if ($result->getState() == 'approved') {         
            
-            //dd($request);
-            return redirect()->route('race.detail', ['race' => session('race_id')])->with('success', 'Payment success!');
+            return redirect()->route('main.page')->with('success', 'Payment success!');
 
         }
 
