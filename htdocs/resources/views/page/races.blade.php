@@ -3,9 +3,16 @@
 @section('title', 'All Races')
 
 @section('content')
+    <input type="text" name="searchRaces" id="races-user-search">
+    <select name="filterRaces" id="races-user-filter">
+        <option value="0">PRO</option>
+        <option value="1">NO PRO</option>
+        <option value="2">Higher Price</option>
+        <option value="3">Lower Price</option>
+    </select>
     <!-- Aquí puedes agregar el contenido específico para esta vista -->
     <h1 class="index-page-headers my-5">ALL RACES</h1>
-    <div class="row g-4">
+    <div id="races-content-body" class="row g-4">
         @foreach ($races as $race)
             <div class="col-md-4 col-sm-6">
                 <div class="card mb-3" style="max-width: 30rem;">

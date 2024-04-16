@@ -52,7 +52,7 @@ class DriverController extends Controller
             'driverFederation' => 'string',
         ]);
 
-        Driver::create($data);
+        Driver::createWithParameters($data);
 
         $user = Driver::where('email', $data['driverEmail'])->first();
 

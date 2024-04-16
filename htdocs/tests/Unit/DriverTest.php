@@ -26,7 +26,7 @@ class DriverTest extends TestCase
             'driverFederation' => 123456,
         ];
 
-        Driver::create($driverData);
+        Driver::createWithParameters($driverData);
 
         $this->assertDatabaseHas('drivers', [
             'name' => 'John Doe',

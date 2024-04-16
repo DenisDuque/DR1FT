@@ -1,5 +1,6 @@
 import './bootstrap';
 import './range';
+import './User_Races_Search';
 import './Admin_Drivers_Search';
 import './Admin_Insurances_Search';
 import './Admin_Insurances_Races_Search';
