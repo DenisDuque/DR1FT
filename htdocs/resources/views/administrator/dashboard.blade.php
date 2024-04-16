@@ -137,23 +137,33 @@
                         
                             <input type="hidden" id="countdownDate" name="nextRaceDate" value="{{$nextRace->date}}">
                             <section>
-                                <h1 class="admin-form-title">{{$nextRace->name}}</h1>
-                                <i class="bi bi-clock-history"></i>
-                                <div id="countdown" class="d-flex">
-                                    <div>
-                                        <span id="days"></span>
+                                <h1 class="admin-form-title text-center">{{$nextRace->name}}</h1>
+                                <i class="bi bi-clock-history countdown-svg"></i>
+                                <div id="countdown" class="d-flex justify-content-center">
+                                    <div class="countdown-div">
+                                        <span id="days" class="countdown-span"></span>
                                         <p>DAYS</p>
                                     </div>
-                                    <div>
-                                        <span id="hours"></span>
+                                    <div class="countdown-breadcumb d-flex flex-column">
+                                    </div>
+                                    <div class="countdown-div">
+                                        <span id="hours" class="countdown-span"></span>
                                         <p>HOURS</p>
                                     </div>
-                                    <div>
-                                        <span id="minutes"></span>
+                                    <div class="countdown-breadcumb d-flex flex-column">
+                                        <i class="bi bi-dot"></i>
+                                        <i class="bi bi-dot"></i>
+                                    </div>
+                                    <div class="countdown-div">
+                                        <span id="minutes" class="countdown-span"></span>
                                         <p>MINUTES</p>
                                     </div>
-                                    <div>
-                                        <span id="seconds"></span>
+                                    <div class="countdown-breadcumb d-flex flex-column">
+                                        <i class="bi bi-dot"></i>
+                                        <i class="bi bi-dot"></i>
+                                    </div>
+                                    <div class="countdown-div">
+                                        <span id="seconds" class="countdown-span"></span>
                                         <p>SECONDS</p>
                                     </div>
                                 </div>
@@ -167,8 +177,9 @@
     </div>
     <div class="col-3">
         <div class="row g-2">
-            <div class="col-12 card p-4">
+            <div class="col-12 card p-4 admin-dashboard-best-section">
                 <h1 class="admin-form-title">Best Sponsors</h1>
+                <p>Based on race incomes</p>
                 @foreach ($topSponsors as $sponsor)
                     <div class="d-flex">
                         <div class="d-flex">
@@ -182,8 +193,9 @@
                     </div>
                 @endforeach
             </div>
-            <div class="col-12 card p-4">
+            <div class="col-12 card p-4 admin-dashboard-best-section">
                 <h1 class="admin-form-title">Most Paid Races</h1>
+                <p>Based on registration incomes</p>
                 @foreach ($topRaces as $race)
                     <div class="d-flex">
                         <div class="d-flex">
@@ -215,7 +227,7 @@
                 <div class="d-flex align-items-center top-driver-no-podium justify-content-between p-1">
                     <i class="bi bi-person ms-2"></i>
             @endif
-                <span class="text-nowrap">{{$driver->name}}</span>
+                <span class="text-nowrap w-50 text-left">{{$driver->name}}</span>
                 <p class="me-2 text-nowrap mt-3">{{$driver->points}} pts</p>
             </div>
         @endforeach

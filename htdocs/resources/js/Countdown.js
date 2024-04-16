@@ -5,7 +5,7 @@ class Countdown {
             const dateInput = document.getElementById('countdownDate');
             self.time = {}
             if(dateInput) {
-                self.clock = new Date(dateInput.value + " 5:00:00 PM");
+                self.clock = new Date(dateInput.value);
                 self.time.days = document.getElementById('days');
                 self.time.hours = document.getElementById('hours');
                 self.time.minutes = document.getElementById('minutes');
@@ -13,6 +13,8 @@ class Countdown {
 
                 self.showDate();
                 self.interval = window.setInterval(() => self.showDate(), 1000);
+            } else {
+                console.log("Contador no iniciado.");
             }
         });
     }

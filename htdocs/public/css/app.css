@@ -13041,4 +13041,75 @@ main.race-details-nav-tabs-container section div.content h4, main.race-details-n
 }
 #races-user-filter:focus-visible {
   outline: none;
+}
+
+.countdown-span {
+  background: linear-gradient(to top left, #A52622, #E93F36) !important;
+  display: flex;
+  width: 3rem;
+  height: 3rem;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  color: #F7F7F5;
+  font-size: 1rem;
+}
+
+.countdown-div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.countdown-breadcumb {
+  padding-top: 0.6rem;
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+.countdown-breadcumb i {
+  display: flex;
+  text-align: center;
+  width: 1rem;
+  height: 1rem;
+  margin-left: -0.3rem;
+  margin-right: -0.7rem;
+}
+
+.countdown-svg {
+  display: flex;
+  font-size: 2rem;
+  width: 100%;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.admin-dashboard-best-section p {
+  color: #cdcdcd;
+}
+.admin-dashboard-best-section div {
+  display: flex;
+  width: 100%;
+  text-align: left;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  white-space: nowrap;
+  height: 2rem;
+  align-items: center;
+}
+.admin-dashboard-best-section div i {
+  font-size: 1.3rem;
+}
+.admin-dashboard-best-section div div:first i {
+  color: #F7F7F5;
+  align-items: start;
+}
+.admin-dashboard-best-section div div:first h5, .admin-dashboard-best-section div div:first .h5 {
+  margin: 0;
+}
+.admin-dashboard-best-section div div:last-child i {
+  color: #79CA52;
+}
+.admin-dashboard-best-section div div:last-child p {
+  margin: 0;
 }/*# sourceMappingURL=app.css.map */

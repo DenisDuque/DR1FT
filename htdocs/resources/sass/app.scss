@@ -14,6 +14,7 @@
 // Bootstrap
 @import '../../node_modules/bootstrap/scss/bootstrap';
 
+// TODO: Revisar porque se ve en rojo el badge de PRO en localhost/races
 
 * {
     font-family: "Montserrat", sans-serif;
@@ -620,5 +621,84 @@ main.race-details-nav-tabs-container {
     }
     &:focus-visible {
         outline: none;
+    }
+}
+
+.countdown-span {
+    @include backgroundGradient($gradientRed1, $gradientRed2);
+    display: flex;
+    width: 3rem;
+    height: 3rem;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    color: $white;
+    font-size: 1rem;
+}
+
+.countdown-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.countdown-breadcumb {
+    padding-top: 0.6rem;
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    i {
+        display: flex;
+        text-align: center;
+        width: 1rem;
+        height: 1rem;
+        margin-left: -0.3rem;
+        margin-right: -0.7rem;
+    }
+}
+
+.countdown-svg {
+    display: flex;
+    font-size: 2rem;
+    width: 100%;
+    justify-content: center;
+    margin: 1rem 0;
+}
+
+.admin-dashboard-best-section {
+    p {
+        color: $grey;
+    }
+
+    div {
+        display: flex;
+        width: 100%;
+        text-align: left;
+        text-overflow: ellipsis;
+        text-wrap: nowrap;
+        white-space: nowrap;
+        height: 2rem;
+        align-items: center;
+        i {
+            font-size: 1.3rem;
+        }
+        div:first {
+            i {
+                color: $white;
+                align-items: start;
+            }
+            h5 {
+                margin: 0;
+            }
+        }
+
+        div:last-child {
+            i {
+                color: #79CA52;
+            }
+            p {
+                margin: 0;
+            }
+        }
     }
 }
