@@ -41,6 +41,17 @@ class RaceController extends Controller {
     public function allRaces() {
         
         $races = Race::where('active', 1)->get();
+
+        if (session()->has('user_id')) {
+            $driver = Driver::find(session('user_id'));
+            if($driver->member === 1) {
+                foreach ($races as $race) {
+                    $discount = $race->registrationPrice * 0.15;
+                    $race->registrationPrice -= $discount;
+                    $race->registrationPrice = round($race->registrationPrice, 2);
+                }
+            }
+        }
         
         return view('page.races', ['races' => $races]);
     }
@@ -375,6 +386,14 @@ class RaceController extends Controller {
         $photos = $race->photos;
         $classification = Race::getRaceClassification($race->id);
         //dd($photos);
+        if (session()->has('user_id')) {
+            $driver = Driver::find(session('user_id'));
+            if($driver->member === 1) {
+                $discount = $race->registrationPrice * 0.15;
+                $race->registrationPrice -= $discount;
+                $race->registrationPrice = round($race->registrationPrice, 2);
+            }
+        }
 
         return view('page.raceDetails', [
             'race' => $race, 
