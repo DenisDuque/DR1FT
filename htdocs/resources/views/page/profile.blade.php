@@ -49,7 +49,13 @@
                     <div id="scratch-win" class="scratch-win">
                       {{-- <div class="scratch-win__title"> Scratch & win</div> --}}
                       <div class="scratch-win__scratcher">
-                        <div class="scratch-win__background">{{$lastRace->driverPosition}}</div>
+                        <div class="scratch-win__background">
+                          @if ($lastRace)
+                              {{$lastRace->driverPosition}}
+                          @else
+                              NONE
+                          @endif
+                        </div>
                         <canvas id="canvas" class="scratch-win__foreground"></canvas>
                       </div>
                     </div>
