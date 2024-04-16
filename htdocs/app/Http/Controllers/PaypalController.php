@@ -117,7 +117,7 @@ class PaypalController extends Controller
         $result = $payment->execute($execution, $this->_api_context);
         
         if ($result->getState() == 'approved') {         
-           
+            PDFController::downloadPaypal($request->input('amount'));
             return redirect()->route('main.page')->with('success', 'Payment success!');
 
         }

@@ -134,12 +134,15 @@
             <div class="col-6">
                 <div class="row g-2">
                     <div class="col-12 card p-4">
-                        
-                        <h1 class="admin-form-title">Last Race</h1>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi placeat facere molestias
-                        </p>
+                        @if ($lastRace)
+                            <h1 class="admin-form-title">{{$lastRace->name}}</h1>
+                            <p>
+                                Last Race
+                            </p>
+                            
+                        @else
+                            <p class="text-center">No races has been celebrated!</p>
+                        @endif
                     </div>
                     <div class="col-12 card p-4">
                         

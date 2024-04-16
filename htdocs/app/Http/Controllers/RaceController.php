@@ -577,6 +577,20 @@ class RaceController extends Controller {
         return $race;
     }
 
+    public static function lastRace() {
+        $race = Race::where('date', '<=', Carbon::today())
+            ->orderBy('date', 'asc')
+            ->first();
+
+        if ($race) {
+            $formattedDate = str_replace('/', '-', $race->date);
+            $race->date = $formattedDate;
+        }
+
+        return $race;
+    }
+
+
     public static function nextRaces() {
         $races = Race::where('date', '>=', Carbon::today())
             ->orderBy('date', 'asc')
