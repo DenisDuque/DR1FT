@@ -581,3 +581,44 @@ main.race-details-nav-tabs-container {
         width: fit-content;
     }
 }
+
+.search-div-user {
+    margin-bottom: 3rem;
+}
+
+.search-bar-user {
+    border-bottom: 1px solid $gradientRed1;
+
+    i {
+        color: $grey;
+        margin-right: 0.3rem;
+    }
+
+    #races-user-search {
+        background: none;
+        border: none;
+        color: $white;
+        width: 30rem;
+        height: 2rem;
+        &:focus-visible {
+            outline: none;
+        }
+    }
+}
+
+#races-user-filter {
+    border: none;
+    border-bottom: 1px solid $gradientRed1;
+    background: none;
+    color: $white;
+    height: 2rem;
+    option {
+        background: $secondaryBlack;
+        &:focus-visible {
+            outline: none;
+        }
+    }
+    &:focus-visible {
+        outline: none;
+    }
+}
