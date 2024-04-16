@@ -8,7 +8,7 @@
     <div class="w-100 d-flex align-center justify-content-center search-div-user">
         <div class="search-bar-user">
             <label for="searchRaces"><i class="bi bi-search"></i></label>
-            <input type="text" name="searchRaces" id="races-user-search">
+            <input type="text" name="searchRaces" id="races-user-search" placeholder="Search...">
         </div>
         <select name="filterRaces" id="races-user-filter" class="ms-4">
             <option value="0"></option>

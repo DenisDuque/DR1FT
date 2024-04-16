@@ -1,6 +1,6 @@
 <div id="edit-race-drivers" class="editRaceSection d-none table-responsive" style="max-height: 35rem;">
     <button id="load-dorsals" class="btn btn-primary"><i class="fa-solid fa-arrows-rotate"></i>Load Dorsal Numbers</button>
-    <table class="table table-dark table-hover overflow-hidden mt-2">
+    <table class="table table-transparent table-hover overflow-hidden mt-2 edit-race-table">
         <thead>
             <tr>
                 <th scope="col" class="py-3 text-center">#</th>

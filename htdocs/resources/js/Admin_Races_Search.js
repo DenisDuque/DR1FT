@@ -101,7 +101,7 @@ class Admin_Races_Search {
             <td class=" align-middle text-center w-10"><span class="badge rounded-pill bg-badge-purple">${race.sponsorCost}$</span></td>
             <td class="align-middle text-center w-10"><span class="badge rounded-pill bg-badge-purple">${race.registrationPrice}$</span></td>
             <td class="py-3 text-center align-middle">
-                <a class="admin-link me-3" href="{{ route('admin.races.show', ['id' => ${race.id}]) }}"><i class="bi bi-info-circle"></i>Details</a>
+                <a href="{{ route('generate.race.pdf', ['raceId' => ${race.id}]) }}" class="admin-link me-1"><i class="bi bi-file-earmark-arrow-down"></i>PDF</a>
                 <a class="admin-link" href="{{ route('admin.races.edit', ['id' => ${race.id}]) }}"><i class="bi bi-pencil-square"></i>Edit</a>
             </td>
         </tr>`;

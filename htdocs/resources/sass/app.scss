@@ -290,12 +290,46 @@
     }
 }
 
-#gropFile {
-    width: 20rem;
-    height: 10rem;
-    opacity: 0;
-    border: 1px solid black;
+.editRaceSection {
+    max-height: 30rem;
+}
 
+.gropFileContainer {
+    position: relative;
+    width: 100%;
+    height: 10rem;
+    background-color: $secondaryBlack !important;
+    border: 1px dashed $grey;
+    border-radius: 10px;
+}
+
+.gropFileInfo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    i {
+        color: #0D6EFD;
+        font-size: 3rem;
+    }
+    span {
+        color: $white;
+        font-size: 1.2rem;
+    }
+    p {
+        color: $grey;
+        font-size: 0.8rem;
+    }
+}
+
+#gropFile {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
     img {
         height: inherit;
     }
@@ -306,10 +340,36 @@
     height: inherit;
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
     flex-wrap: wrap;
+    margin-top: 2rem;
 
-    img {
-        height: 10rem;
+    .files-list {
+        width: 15rem;
+        height: 5rem;
+        margin-bottom: 1rem;
+        border-radius: 1px;
+        border: 1px solid $grey;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 1rem;
+        p {
+            margin: 0 !important;
+            color: #0D6EFD;
+            max-width: 5rem;
+            text-overflow: ellipsis ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            text-wrap: nowrap;
+        }
+        img {
+            height: 4.9rem;
+            width: 4.9rem;
+            object-fit: cover;
+            box-sizing: border-box;
+        }
     }
 }
 
@@ -701,3 +761,29 @@ main.race-details-nav-tabs-container {
         }
     }
 }
+
+.table-transparent {
+    --bs-table-bg: $white !important;
+    background: transparent !important;
+    border-radius: 15px !important;
+    color: $white !important;
+    thead {
+        tr {
+            th {
+                color: $white !important;
+            }
+        }
+    }
+    tbody {
+        tr {
+            td {
+                color: $white !important;
+            }
+        }
+    }
+}
+
+#load-dorsals {
+    color: $white !important;
+}
+

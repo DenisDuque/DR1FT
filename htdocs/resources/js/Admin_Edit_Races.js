@@ -193,6 +193,7 @@ class Admin_Edit_Races {
             <td class="py-3 align-middle">${driver.federationNumber}</td>
             <td class="py-3 align-middle">${driver.name}</td>
             <td class="py-3 align-middle">${driver.email}</td>
+            <td class="py-3 align-middle"><a href="/admin/races/generateDorsalPDF/${this.raceId}/${driver.id}">PDF</a></td>
         </tr>`;
       }
 }
