@@ -19,6 +19,8 @@
         - [EDITAR]
             - [CSS] vista formularios editar
             - [NOTICE] edit races sin cambios
+        
+        - PDF CSS
 
 ===================== PÁGINAS USUARIO =====================
 
@@ -29,15 +31,21 @@
         - footer
 
     => PROFILE
+        - Editar Perfil
 
     => DETALLE CARRERA
-        - Classificación
+        - [CSS] Classificación
+        - [TODO] si no es PRO y selecciona una insurance que se la añada el coste al precio final
         - [TODO] Si es MEMBER tendrá descuentos en el momento de inscribirse
 
     => LISTAR CARRERAS
         - [JS] Filtro Order by
         - [CSS] estilos cartas
         - [RESPONSIVE] cambiar tamaño columnas cartas (row-cols-x)
+
+    => MEMBERSHIP
+        - si no esta registrado, redirigir al login o al register
+        
 
 
 

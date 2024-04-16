@@ -177,6 +177,12 @@
                 </div>
             </section>
         </main>
+        @if(Session::has('success'))
+            <div class="alert alert-success">
+                {{ Session::get('success') }}
+            </div>
+        @endif
+
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -268,7 +274,7 @@
                                 <label for="driverPasswordConfirm" class="form-label ">Confirm Password</label>
                                 <input type="password" name="driverPasswordConfirm" class="form-control" id="driverPasswordConfirm" value="{{old('driverPasswordConfirm')}}">
                             </div>
-                           
+                            <input type="hidden" name="amount" value="{{$race->registrationPrice}}">
                             <button type="submit" class="btn btn-success"><i class="bi bi-check-lg"></i> Participate ({{$race->registrationPrice}}$)</button>
                             
                         </form>

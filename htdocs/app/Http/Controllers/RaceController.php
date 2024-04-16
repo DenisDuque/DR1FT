@@ -431,6 +431,7 @@ class RaceController extends Controller {
 
     public function registerDriver(Request $request)
     {
+        session(['race_id' => $request->race_id]);
         $race = Race::find($request->race_id);
         $participantCount = RaceDriver::where('race_id', $request->race_id)->count();
 
@@ -458,16 +459,17 @@ class RaceController extends Controller {
                 return redirect()->back()->with('error', 'You are already registered for this race.');
             }
 
-            $paypal = new PaypalController();
-            $response = $paypal->postPaymentWithpaypal($request);
-            
-            return $response;
 
             // Crear un nuevo registro en la tabla RaceDriver
             $raceDriver = new RaceDriver();
             $raceDriver->race_id = $request->race_id;
             $raceDriver->driver_id = auth('user')->id();
             $raceDriver->save();
+
+            $paypal = new PaypalController();
+            $response = $paypal->postPaymentWithpaypal($request);
+            
+            return $response;
 
             return redirect()->back()->with('success', 'You have been successfully registered for the race!');
 
@@ -501,7 +503,7 @@ class RaceController extends Controller {
             $driver->member = $request->input('member');
             $driver->points = 0;
             $driver->save();
-    
+
             // Crear el registro en RaceDriver
             $raceDriver = new RaceDriver();
             $raceDriver->race_id = $request->race_id;
@@ -509,6 +511,16 @@ class RaceController extends Controller {
             $raceDriver->save();
 
             // RaceDriverInsurance
+            $raceDriverInsurance = new RaceDriverInsurance();
+            $raceDriverInsurance->race_id = $request->race_id;
+            $raceDriverInsurance->driver_id = $driver->id;
+            $raceDriverInsurance->insurance_id = $request->input('driverInsurance');
+            $raceDriverInsurance->save();
+
+            $paypal = new PaypalController();
+            $response = $paypal->postPaymentWithpaypal($request);
+            
+            return $response;
     
             return redirect()->back()->with('success', 'You have been successfully registered for the race!');
         }

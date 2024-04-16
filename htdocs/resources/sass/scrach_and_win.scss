@@ -5,7 +5,7 @@ $yellow--light: #ffdc73;
 $gold: #d4af37;
 $gold--dark: #a67c00;
 $black: #000038;
-$grey: #888;
+$grey-scratch: #888;
 $white: #fff;
 $light-blue: #78d6c6;
 $dark-blue: #12486b;
@@ -83,7 +83,7 @@ $green: #80c0a1;
     display: none;
     justify-content: center;
     align-items: center;
-    color: $grey;
+    color: $grey-scratch;
     background-color: $white;
     text-transform: uppercase;
     font-size: 3.6rem;
@@ -97,8 +97,8 @@ $green: #80c0a1;
       background: repeating-linear-gradient(
         transparent,
         transparent 0.5rem,
-        $grey 0.5rem,
-        $grey 0.6rem
+        $grey-scratch 0.5rem,
+        $grey-scratch 0.6rem
       );
       opacity: 0.5;
     }
