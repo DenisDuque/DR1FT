@@ -28,9 +28,8 @@ class Driver extends Model implements Authenticatable
         return $this->belongsToMany(Race::class, 'race_driver')->withPivot('dorsal', 'time');
     }
 
-    public static function create($data) {
+    public static function createWithParameters($data) {
         $driver = new self;
-
         $driver->name = $data['driverName'];
         $driver->email = $data['driverEmail'];
         $driver->password = Hash::make($data['driverPassword']);

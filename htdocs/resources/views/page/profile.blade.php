@@ -49,7 +49,7 @@
                     <div id="scratch-win" class="scratch-win">
                       {{-- <div class="scratch-win__title"> Scratch & win</div> --}}
                       <div class="scratch-win__scratcher">
-                        <div class="scratch-win__background">1st</div>
+                        <div class="scratch-win__background">{{$lastRace->driverPosition}}</div>
                         <canvas id="canvas" class="scratch-win__foreground"></canvas>
                       </div>
                     </div>
@@ -110,18 +110,26 @@
                           <span class="col-4 text-white">{{$race->name}}</span>
                           <span class="col-4 text-white">{{$race->startingPlace}}</span>
                           <span class="col-1 text-white">{{$race->driverPosition}}</span>
-                          <span class="col-1 text-white">{{$driver->points}}</span>
+                          <span class="col-1 text-white">
+                            @if ($race->driverPosition === 1)
+                                1000
+                            @elseif ($race->driverPosition === 2)
+                                500
+                            @elseif ($race->driverPosition === 3)
+                                300
+                            @else
+                                0
+                            @endif
+                          </span>
                           <span class="col-1 text-white"><a href="/raceClassification/{{$race->id}}">Classification</a></span>
                         </div>
                       </div>
-
                     @endforeach
                   </div>
                 </div>
               </div>
             </div>
         </div>
-          
       </div>
   </div>
   

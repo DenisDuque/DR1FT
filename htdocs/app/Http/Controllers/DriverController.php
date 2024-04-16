@@ -52,7 +52,7 @@ class DriverController extends Controller
             'driverFederation' => 'string',
         ]);
 
-        Driver::create($data);
+        Driver::createWithParameters($data);
 
         $user = Driver::where('email', $data['driverEmail'])->first();
 
@@ -77,12 +77,17 @@ class DriverController extends Controller
         return redirect()->back();
     }
 
-    public function profile($id) {
-        $driver = Driver::findOrFail($id);
+    public function profile() {
+        $driver = Driver::findOrFail(session('user_id'));
         $races = $driver->races;
 
+        $lastRaces = [];
+        $today = now();
         foreach ($races as $race) {
             $race->driverPosition = RaceController::getDriverPosition($race->id, $driver->id);
+            if ($race->date < $today) {
+                $lastRaces[] = $race;
+            }
         }
 
         // Calcular la edad a partir de la fecha de nacimiento
@@ -91,7 +96,8 @@ class DriverController extends Controller
 
         return view("page.profile", [
             'driver' => $driver,
-            'races' => $races,
+            'races' => $lastRaces,
+            'lastRace' => $lastRaces[0],
             'age' => $age // Pasar la edad a la vista
         ]);
     }

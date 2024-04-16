@@ -49,6 +49,7 @@
     <table>
         <thead>
             <tr>
+                <th>Position</th>
                 <th>Dorsal</th>
                 <th>Name</th>
                 <th>Gender</th>
@@ -57,8 +58,9 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($drivers as $driver)
+            @foreach ($drivers as $index => $driver)
                 <tr>
+                    <td>{{$index + 1}}</td>
                     <td>{{$driver->dorsal}}</td>
                     <td>{{$driver->driver->name}}</td>
                     <td>{{$driver->driver->gender ? 'M' : 'F'}}</td>
@@ -74,6 +76,7 @@
     <table>
         <thead>
             <tr>
+                <th>Position</th>
                 <th>Dorsal</th>
                 <th>Name</th>
                 <th>Gender</th>
@@ -82,9 +85,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($drivers as $driver)
+            @foreach ($drivers as $index => $driver)
                 @if ($driver->driver->gender)
                     <tr>
+                        <td>{{$index + 1}}</td>
                         <td>{{$driver->dorsal}}</td>
                         <td>{{$driver->driver->name}}</td>
                         <td>M</td>
@@ -101,6 +105,7 @@
     <table>
         <thead>
             <tr>
+                <th>Position</th>
                 <th>Dorsal</th>
                 <th>Name</th>
                 <th>Gender</th>
@@ -109,9 +114,10 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($drivers as $driver)
+            @foreach ($drivers as $index => $driver)
                 @if (!$driver->driver->gender)
                     <tr>
+                        <td>{{$index + 1}}</td>
                         <td>{{$driver->dorsal}}</td>
                         <td>{{$driver->driver->name}}</td>
                         <td>F</td>
