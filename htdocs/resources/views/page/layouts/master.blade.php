@@ -28,7 +28,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-2">
-                    <h1 class="drift text-sm-end">DR1FT</h1>
+                    <h1 class="drift">DR1FT</h1>
                 </div>
                 <div class="col-10">
                     <nav class="navbar-expand-lg navbar-expand-md d-none d-lg-block">

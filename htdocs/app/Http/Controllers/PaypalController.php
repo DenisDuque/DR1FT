@@ -58,6 +58,8 @@ class PaypalController extends Controller
         $amount->setCurrency('USD')
             ->setTotal($request->get('amount'));
 
+        session(['amount' => $amount]);
+
         $transaction = new Transaction();
         $transaction->setAmount($amount)
             ->setItemList($item_list)
@@ -116,10 +118,13 @@ class PaypalController extends Controller
         $execution->setPayerId($request->input('PayerID'));        
         $result = $payment->execute($execution, $this->_api_context);
         
-        if ($result->getState() == 'approved') {         
-            PDFController::downloadPaypal($request->input('amount'));
-            return redirect()->route('main.page')->with('success', 'Payment success!');
+        if ($result->getState() == 'approved') {  
+        
+            
+            $pdf = PDFController::downloadPaypal($request->get('amount'));
+            //return redirect()->route('main.page')->with('success', 'Payment success!')->with('pdf', $pdf);
 
+            return $pdf;
         }
 
         \Session::put('error','Payment failed !!');

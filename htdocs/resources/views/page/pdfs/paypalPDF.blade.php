@@ -32,7 +32,7 @@
             Email: info@dr1ft.com
             Website: www.dr1ft.com
         </p>
-        <h1>Total: {{$data['totalCost']}}</h1>
+        <h1>Total: {{$totalCost}}</h1>
     </div> 
 </body>
 </html>

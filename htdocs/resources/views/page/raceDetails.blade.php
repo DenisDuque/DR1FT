@@ -56,7 +56,7 @@
                         </div>
                     @endif
                 
-                <div class="col-10">
+                <div class="col-lg-10 col-12">
                     @if ($raceDate <= $today)
                         <div class="alert alert-primary d-flex align-items-center" role="alert">
                             <i class="bi bi-info-circle-fill me-1"></i>
@@ -89,7 +89,7 @@
             </div>
             
 
-            <main class="race-details-nav-tabs-container">
+            <main class="race-details-nav-tabs-container d-lg-block d-none">
             <header class="clearfix">
                 <nav class="container-fluid">
                     <ul class="clearfix">
@@ -103,7 +103,7 @@
                     
                 </nav>
             </header>
-            <section class="row px-4 py-2" id="race-info-container">
+            <section class="row px-4 py-2 " id="race-info-container">
                 <div class="col-xs-12 content activ" id="one">
                     <p>
                         {{$race->description}}
@@ -185,6 +185,83 @@
                       </div>
                 </div>
             </section>
+        </main>
+        <main class="d-lg-none">
+            <h4>Information</h4>
+            <p>
+                {{$race->description}}
+            </p>
+            <p><i class="bi bi-geo-alt-fill me-1"></i>{{$race->startingPlace}}</p>
+            <p><strong>Registration Price: {{$race->registrationPrice}}$</strong></p>
+            <h4>Sponsors</h4>
+            @foreach ($sponsors as $sponsor)
+                <img class="img-thumbnail rounded" src="{{asset('storage/sponsor_logos/'.$sponsor->logo)}}" alt="{{$sponsor->name}}" title="{{$sponsor->name}}">
+            @endforeach
+            <hr>
+            <h4>Race Map</h4>
+            <img class="img-fluid rounded" src="{{asset('storage/race_maps/'.$race->map)}}" alt="{{$race->name}}">
+            <hr>
+            <h4>Classification</h4>
+            @if ($raceDate < $today)
+                <table class="col-8">
+                    <thead>
+                        <tr>
+                            <th>Dorsal</th>
+                            <th>Name</th>
+                            <th>Gender</th>
+                            <th>Age</th>
+                            <th>Finished at</th>
+                            <th><a class="btn-primary col-2" href="/raceClassification/{{$race->id}}" title="Download Classifications"><i class="bi bi-file-earmark-arrow-down-fill"></i></a></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($classification as $driver)
+                            <tr>
+                                <td>{{$driver->dorsal}}</td>
+                                <td>{{$driver->driver->name}}</td>
+                                <td>{{$driver->driver->gender ? 'M' : 'F'}}</td>
+                                <td>{{$driver->driver->birthDate->age}}</td>
+                                <td>{{$driver->time}}</td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+                
+            @else
+                <section class="alert alert-primary d-flex align-items-center p-3" role="alert">
+                    <i class="bi bi-info-circle-fill me-1"></i>
+                    <section>
+                        This race is not finished, wait util de race end to know if you're the winner!
+                    </section>
+                </section>
+            @endif
+            <hr>
+            <h4>Gallery</h4>
+            <div id="carouselExampleIndicators" class="carousel slide d-block" data-bs-ride="carousel">
+                <div class="carousel-indicators d-block text-center">
+                    @foreach ($photos as $key => $photo)
+                        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="{{ $key }}" class="{{ $key === 0 ? 'active' : '' }}" aria-label="Slide {{ $key + 1 }}"></button>
+                    @endforeach
+                  {{-- <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                  <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button> --}}
+                </div>
+                <div class="carousel-inner rounded d-block" style="max-height: 22rem">
+                    @foreach ($photos as $key => $photo)
+                        <div class="carousel-item{{ $key === 0 ? ' active' : '' }}">
+                            <img src="{{ asset('storage/race_photos/'.$photo->path) }}" class="img-fluid d-block w-100" alt="...">
+                        </div>
+                    @endforeach
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Next</span>
+                </button>
+              </div>
         </main>
         @if(Session::has('success'))
             <div class="alert alert-success">

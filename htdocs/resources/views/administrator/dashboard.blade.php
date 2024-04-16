@@ -135,11 +135,15 @@
                 <div class="row g-2">
                     <div class="col-12 card p-4">
                         @if ($lastRace)
-                            <h1 class="admin-form-title">{{$lastRace->name}}</h1>
+                            <h1 class="admin-form-title">Last Race</h1>
                             <p>
-                                Last Race
+                                {{$lastRace->name}}, {{$lastRace->date}}
+                                
                             </p>
-                            
+                            <p>
+                                {{$lastRace->startingPlace}}
+                                
+                            </p>
                         @else
                             <p class="text-center">No races has been celebrated!</p>
                         @endif

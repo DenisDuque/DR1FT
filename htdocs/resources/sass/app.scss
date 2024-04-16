@@ -787,3 +787,20 @@ main.race-details-nav-tabs-container {
     color: $white !important;
 }
 
+@media (max-width: 767px) { 
+    .responsive-cards {
+        width: 100%;
+        overflow: visible;
+        overflow-x: scroll;
+        .flip-card {
+            margin-right: 1rem;
+        }
+    }
+    .pricing-container-res {
+        width: 100%;
+        overflow: visible;
+        overflow-x: scroll;
+
+        > div { margin-right: 1rem; }
+    }
+}
