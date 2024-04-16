@@ -1,5 +1,5 @@
 <div id="edit-race-sponsors" class="editRaceSection d-none table-responsive" style="max-height: 35rem;">
-    <table class="table table-dark table-hover overflow-hidden mt-2">
+    <table class="table table-transparent table-hover overflow-hidden mt-2">
         <thead>
             <tr>
                 <th scope="col" class="py-3 text-center">#</th>

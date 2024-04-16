@@ -1,5 +1,5 @@
 <div id="edit-race-insurances" class="editRaceSection table-responsive d-none" style="max-height: 35rem;">
-        <table class="table table-dark table-hover overflow-hidden" style="height: 20rem;">
+        <table class="table table-transparent table-hover overflow-hidden" style="height: 20rem;">
             <thead>
                 <tr>
                 <th scope="col">#</th>

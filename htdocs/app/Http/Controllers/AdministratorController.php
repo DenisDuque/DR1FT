@@ -14,9 +14,10 @@ class AdministratorController extends Controller
         $topSponsors = SponsorController::getTopSponsors();
         $topInsurances = RaceDriverInsurance::getTopInsurances(3);
         $topRaces = RaceController::getTopRaces();
+        $lastRace = RaceController::lastRace();
         $nextRace = RaceController::nextRace();
         $nextRaces = RaceController::nextRaces();
-        return view('administrator.dashboard')->with(compact('topDrivers', 'topSponsors', 'topInsurances', 'topRaces', 'nextRace', 'nextRaces'));
+        return view('administrator.dashboard')->with(compact('topDrivers', 'topSponsors', 'topInsurances', 'topRaces', 'lastRace', 'nextRace', 'nextRaces'));
     }
 
     public function showLogin() {

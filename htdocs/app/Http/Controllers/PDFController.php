@@ -80,5 +80,12 @@ class PDFController extends Controller
         ]);
         return $pdf->download('classification.pdf');
     }
+
+    public static function downloadPaypal($amount) {
+        $pdf = PDF::loadView('page.pdfs.paypalPDF', [
+            'totalCost' => $amount
+        ]);
+        return $pdf->download('payment.pdf');
+    }
     
 }
