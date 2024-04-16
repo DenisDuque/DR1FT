@@ -94,11 +94,12 @@ class DriverController extends Controller
         // Calcular la edad a partir de la fecha de nacimiento
         $birthDate = Carbon::parse($driver->birthDate);
         $age = $birthDate->age;
+        $firstLastRace = !empty($lastRaces) ? $lastRaces[0] : null;
 
         return view("page.profile", [
             'driver' => $driver,
             'races' => $lastRaces,
-            'lastRace' => $lastRaces[0],
+            'lastRace' => $firstLastRace,
             'age' => $age // Pasar la edad a la vista
         ]);
     }
