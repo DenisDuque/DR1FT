@@ -97,13 +97,18 @@
         <div class="row g-2 mb-1">
             <div class="col-12 rounded bg-red-gradient p-4">
                 <h1 class="admin-form-title">Coming Soon</h1>
-                <div class="row">
+                <div class="row gy-2">
                     @foreach ($nextRaces as $race)
-                        <div class="col-4  text-center">
-                            <img class="img-thumbnail" src="{{asset('storage/race_maps/'.$race->map)}}" alt="{{$race->name}}">
-                            <i class="bi bi-people-fill"></i>{{$race->drivers->count()}}
-                            <i class="bi bi-geo-alt-fill"></i><span>{{$race->name}}</span>
-                            <i class="bi bi-calendar"></i><span>{{$race->date}}</span>
+                        <div class="col-4 bg-admin rounded position-relative">
+
+                            <img class="img-fluid" src="{{asset('storage/race_maps/'.$race->map)}}" alt="{{$race->name}}" style="filter: brightness(0.2);">
+                            <span class="position-absolute top-0 end-0 d-flex">
+                                <i class="bi bi-people-fill"></i>{{$race->drivers->count()}}
+                            </span>
+                            <span class="position-absolute bottom-0 ">
+                                <span><i class="bi bi-geo-alt-fill"></i>{{$race->name}}</span><br>
+                                <span ><i class="bi bi-calendar"></i>{{$race->date}}</span>
+                            </span>
                         </div>
                     @endforeach
                 </div>
@@ -113,13 +118,14 @@
             <div class="col-6 card p-4">
                 
                 <h1 class="admin-form-title">Best Insurances</h1>
+                <small>Top insurance companies</small>
                 @foreach ($topInsurances as $insurance)
-                    <div class="col-4  text-center d-flex">
-                        <div>
-                            <img class="img-thumbnail" src="{{asset('storage/insurance_logos/'.$insurance->logo)}}" alt="{{$insurance->name}}">
+                    <div class="col-12 d-flex w-100 my-2">
+                        <img class="img-thumbnail" src="{{asset('storage/insurance_logos/'.$insurance->logo)}}" alt="{{$insurance->name}}">
+                        <div class="d-flex flex-column ms-2">
+                            <strong>{{$insurance->name}}</strong>
+                            <small>{{$insurance->cif}}</small>
                         </div>
-                        <strong>{{$insurance->name}}</strong>
-                        <p>{{$insurance->cif}}</p>
                         
                     </div>
                 @endforeach
@@ -178,43 +184,60 @@
         </div>
     </div>
     <div class="col-3">
-        <div class="row g-2">
+        <div class="row g-2" style="height: 100%">
             <div class="col-12 card p-4 admin-dashboard-best-section">
                 <h1 class="admin-form-title">Best Sponsors</h1>
-                <p>Based on race incomes</p>
-                @foreach ($topSponsors as $sponsor)
-                    <div class="d-flex">
-                        <div class="d-flex">
-                            <i class="bi bi-briefcase"></i>
-                            <h5>{{$sponsor->name}}</h5>
-                        </div>
-                        <div class="d-flex">
-                            <i class="bi bi-cash-coin"></i>
-                            <p>{{$sponsor->races_sum_sponsor_cost}}</p>
-                        </div>
-                    </div>
-                @endforeach
+                <small>Based on race incomes</small>
+                <table class="mt-2">
+                    <tbody>
+                        @foreach ($topSponsors as $sponsor)
+                            <tr>
+                                <td class="py-1">
+                                    <i class="bi bi-briefcase"></i>
+                                </td>
+                                <td>
+                                    {{$sponsor->name}}
+                                </td>
+                                <td style="color: #79CA52;">
+                                    <i class="bi bi-cash-coin"></i>
+                                </td>
+                                <td style="color: #79CA52;">
+                                    {{$sponsor->races_sum_sponsor_cost}}$
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
             <div class="col-12 card p-4 admin-dashboard-best-section">
                 <h1 class="admin-form-title">Most Paid Races</h1>
-                <p>Based on registration incomes</p>
-                @foreach ($topRaces as $race)
-                    <div class="d-flex">
-                        <div class="d-flex">
-                            <i class="bi bi-briefcase"></i>
-                            <h5>{{$race->name}}</h5>
-                        </div class="d-flex">
-                        <div class="d-flex"> 
-                            <i class="bi bi-cash-coin"></i>
-                            <p>{{$race->drivers_count * $race->registrationPrice}}</p>
-                        </div>
-                    </div>
-                @endforeach
+                <small>Based on registration incomes</small>
+                <table class="mt-2">
+                    <tbody>
+                        @foreach ($topRaces as $race)
+                            <tr>
+                                <td class="py-1">
+                                    <i class="bi bi-briefcase"></i>
+                                </td>
+                                <td>
+                                    {{$race->name}}
+                                </td>
+                                <td style="color: #79CA52;">
+                                    <i class="bi bi-cash-coin"></i>
+                                </td>
+                                <td style="color: #79CA52;">
+                                    {{$race->drivers_count * $race->registrationPrice}}
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
     <div class="d-flex col-3 card p-4 dashboard-top-drivers">
         <h1 class="admin-form-title">Top Drivers</h1>
+        <small>Based on points</small>
         @foreach ($topDrivers as $driver)
             @if ($loop->first)
                 <div class="top-driver-first d-flex align-items-center justify-content-between p-2">
