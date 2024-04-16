@@ -5,10 +5,11 @@
 @section('content')
     <input type="text" name="searchRaces" id="races-user-search">
     <select name="filterRaces" id="races-user-filter">
-        <option value="0">PRO</option>
-        <option value="1">NO PRO</option>
-        <option value="2">Higher Price</option>
-        <option value="3">Lower Price</option>
+        <option value="0"></option>
+        <option value="1">PRO</option>
+        <option value="2">NO PRO</option>
+        <option value="3">Higher Price</option>
+        <option value="4">Lower Price</option>
     </select>
     <!-- Aquí puedes agregar el contenido específico para esta vista -->
     <h1 class="index-page-headers my-5">ALL RACES</h1>

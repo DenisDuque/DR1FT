@@ -6,11 +6,11 @@ class User_Races_Search {
             this.searchFilter = document.getElementById('races-user-filter');
             this.sort = 0;
             this.sortTerms = {
-                0 : none,
-                1 : isPro()(),
-                2 : isntPro(),
-                3 : higherPrice(),
-                4 : lowerPrice()
+                0 : this.none,
+                1 : this.isPro,
+                2 : this.isntPro,
+                3 : this.higherPrice,
+                4 : this.lowerPrice
             }
             this.searchTerm = "";
 
@@ -76,7 +76,8 @@ class User_Races_Search {
                             registrationPrice: race.registrationPrice
                         };
                     });
-                    const contentRaces = racesJSON.map(race => this.generateRaceCard(race)).join('');
+                    const filteredRaces = this.sortTerms[this.sort](racesJSON);
+                    const contentRaces = filteredRaces.map(race => this.generateRaceCard(race)).join('');
                     resolve(contentRaces);
                 } else {
                     resolve("<p>No results match your search.</p>");
@@ -89,6 +90,28 @@ class User_Races_Search {
             });
         });
     }
+
+    none(races) {
+        return races;
+    }
+
+    isPro(races) {
+        return races.filter(race => race.pro === 1);
+    }
+
+    isntPro(races) {
+        return races.filter(race => race.pro !== 1);
+    }
+
+    higherPrice(races) {
+        return races.sort((a, b) => b.registrationPrice - a.registrationPrice);
+    }
+
+    lowerPrice(races) {
+        return races.sort((a, b) => a.registrationPrice - b.registrationPrice);
+    }
+    
+    
 
     generateRaceCard(race) {
         const racePro = race.pro == 1 ? '<span class="badge rounded-pill bg-warning text-dark">PRO</span>' : '';
