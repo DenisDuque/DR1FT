@@ -658,7 +658,8 @@ main.race-details-nav-tabs-container {
         background: none;
         border: none;
         color: $white;
-        width: 30rem;
+        width: 100%;
+        max-width: 30rem;
         height: 2rem;
         &:focus-visible {
             outline: none;
@@ -788,6 +789,22 @@ main.race-details-nav-tabs-container {
 }
 
 @media (max-width: 767px) { 
+
+    .section-heading {
+        h2 { 
+            max-width: 1200px;
+            &:first-child{
+                font-size: 28px;
+                letter-spacing: 10px;
+            }
+            &:last-child{
+                font-size: 22px;
+                letter-spacing: 10px;
+            }
+        }
+    }
+    
+
     .responsive-cards {
         width: 100%;
         overflow: auto;
