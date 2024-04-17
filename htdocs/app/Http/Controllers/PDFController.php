@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Sponsor;
 use App\Models\Race;
+use App\Models\Driver;
 use Illuminate\Support\Facades\DB;
 use PDF;
 
@@ -74,8 +75,11 @@ class PDFController extends Controller
     }
 
     public static function downloadRaceClassification($raceDrivers, $race) {
+
+        $drivers = Driver::calculateDriversTimes($raceDrivers, $race);
+        
         $pdf = PDF::loadView('page.pdfs.raceClassification', [
-            'drivers' => $raceDrivers,
+            'drivers' => $drivers,
             'race' => $race
         ]);
         return $pdf->download('classification.pdf');

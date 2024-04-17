@@ -54,7 +54,7 @@
                 <th>Name</th>
                 <th>Gender</th>
                 <th>Age</th>
-                <th>Finished at</th>
+                <th>Time</th>
             </tr>
         </thead>
         <tbody>

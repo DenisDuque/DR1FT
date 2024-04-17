@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Contracts\Auth\Authenticatable;
 use Illuminate\Auth\Authenticatable as AuthenticatableTrait;
 use Illuminate\Support\Facades\Hash;
+use Carbon\Carbon;
 
 class Driver extends Model implements Authenticatable
 {
@@ -41,6 +42,19 @@ class Driver extends Model implements Authenticatable
         $driver->federationNumber = $data['driverFederation'];
         $driver->points = 0;
         $driver->save();
+    }
+
+    public static function calculateDriversTimes($raceDrivers, $race) {
+        
+        foreach ($raceDrivers as $driver) {
+            $driverTime = Carbon::parse($driver->time);
+            $difference = $driverTime->diffInSeconds($race->date, false);
+            $formattedTime = $driverTime->diff($race->date)->format('%h:%i:%s');
+            $driver->time = $formattedTime;
+        }
+        
+        $drivers = $raceDrivers;
+        return $drivers;
     }
 
     use HasFactory;
