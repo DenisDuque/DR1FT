@@ -177,8 +177,7 @@
                             <div class="row">
                                 <h2 class="index-page-headers">COMING SOON</h2>
                             </div>
-                            <div class="lg-row mt-5 d-flex responsive-cards" style="overflow: auto;
-                            white-space: nowrap;">
+                            <div class="lg-row mt-5 d-flex responsive-cards">
                                 @foreach ($races as $race)
                                 
                                     <div class="flip-card col-lg-3" tabIndex="0">
