@@ -22,9 +22,10 @@
             </div>         
 
             @php
+                date_default_timezone_set('Europe/Madrid');
                 $nextMonth = date('Y-m-d', strtotime('+1 month')); // Fecha del próximo mes
-                $today = date('Y-m-d'); // Fecha de hoy
-                $raceDate = date('Y-m-d', strtotime($race->date)); // Convertir la fecha de la carrera al formato Y-m-d
+                $today = date('Y-m-d H:i'); // Fecha de hoy
+                $raceDate = date('Y-m-d H:i', strtotime($race->date)); // Convertir la fecha de la carrera al formato Y-m-d
             @endphp
             <div class="row my-4">
                     <!-- Botón para corredores registrados -->
@@ -122,7 +123,7 @@
                     <p><i class="bi bi-geo-alt-fill me-1"></i>{{$race->startingPlace}}</p>
                 </div>
                 <div class="col-xs-12 content" id="four">
-                        @if ($raceDate < $today)
+                        @if ($raceDate <= $today)
                             <table class="col-8">
                                 <thead>
                                     <tr>

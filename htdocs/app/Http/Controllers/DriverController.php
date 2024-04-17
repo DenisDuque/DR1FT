@@ -83,10 +83,13 @@ class DriverController extends Controller
         $races = $driver->races;
 
         $lastRaces = [];
-        $today = now();
+        $today = date('Y-m-d H:i'); // Fecha de hoy
+        $todayTimestamp = strtotime($today);
+        date_default_timezone_set('Europe/Madrid');
         foreach ($races as $race) {
             $race->driverPosition = RaceController::getDriverPosition($race->id, $driver->id);
-            if ($race->date < $today) {
+            $raceDate = strtotime($race->date);
+            if ($raceDate <= $today) {
                 $lastRaces[] = $race;
             }
         }
