@@ -32,10 +32,10 @@ $(document).ready(function() {
             }
         });
     
-        var links = $('nav ul li a');
+        var links = $('.nav-slide .ul-slide .li-slide .a-slide');
         var content = $('div.content');
         var border = $('span');
-        var lis = $('nav ul li');
+        var lis = $('.nav-slide .ul-slide .li-slide');
     
         links.each(function(i) {
             $(this).on('click', function(e) {

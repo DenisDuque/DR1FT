@@ -91,13 +91,13 @@
 
             <main class="race-details-nav-tabs-container d-lg-block d-none">
             <header class="clearfix">
-                <nav class="container-fluid">
-                    <ul class="clearfix">
-                        <li><a href="#one" class="activ">INFORMATION</a></li>
-                        <li><a href="#two">MAP</a></li>
-                        <li><a href="#three">LOCATION</a></li>
-                        <li><a href="#four">CLASSIFICATION</a></li>
-					<li><a href="#five">GALLERY</a></li>
+                <nav class="container-fluid nav-slide">
+                    <ul class="clearfix ul-slide">
+                        <li class="li-slide"><a href="#one" class="activ a-slide">INFORMATION</a></li>
+                        <li class="li-slide"><a href="#two" class="a-slide">MAP</a></li>
+                        <li class="li-slide"><a href="#three" class="a-slide">LOCATION</a></li>
+                        <li class="li-slide"><a href="#four" class="a-slide">CLASSIFICATION</a></li>
+					    <li class="li-slide"><a href="#five" class="a-slide">GALLERY</a></li>
                     </ul>
                     <span></span>
                     
