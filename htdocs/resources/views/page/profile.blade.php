@@ -41,9 +41,7 @@
                 <div class="col-10">
                   <h1 class="fs-3">Last Race Classification</h1>
                 </div>
-                <div class="col-2 text-end">
-                  <i class="bi bi-question-circle-fill"></i>
-                </div>
+               
                 <div class="row">
                   @if ($lastRace)
                     <div class="col-10">
@@ -86,7 +84,11 @@
                   <h1 class="fs-3">Your Points</h1>
                 </div>
                 <div class="col-12">
-                  <h1 class="text-center fs-1">{{$driver->points}}</h1>
+                  @if ($races)
+                    <h1 class="text-center fs-1">{{$driver->points}}</h1>
+                  @else
+                    <h1 class="text-center fs-1">0</h1>
+                  @endif
                 </div>
               </div>
             </div>

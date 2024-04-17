@@ -790,8 +790,9 @@ main.race-details-nav-tabs-container {
 @media (max-width: 767px) { 
     .responsive-cards {
         width: 100%;
-        overflow: visible;
+        overflow: auto;
         overflow-x: scroll;
+        white-space: nowrap;
         .flip-card {
             margin-right: 1rem;
         }
@@ -800,6 +801,7 @@ main.race-details-nav-tabs-container {
         width: 100%;
         overflow: visible;
         overflow-x: scroll;
+        white-space: nowrap;
 
         > div { margin-right: 1rem; }
     }

@@ -120,6 +120,7 @@
                         <h1 class="drift">DR1FT</h1>
                     </div>
                     <div class="col-10">
+                        <nav class="navbar-expand-lg navbar-expand-md d-none d-lg-block">
                         <ul class="nav justify-content-end user-nav">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">HOME</a>
@@ -141,7 +142,47 @@
                                 @endif
                             </li>
                         </ul>
-
+                        </nav>
+                        <nav class="navbar d-lg-none fixed-top">
+                            <div class="container">
+                              <button class="navbar-toggler text-white" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
+                                <span class="navbar-toggler-icon text-white"></span>
+                              </button>
+                              
+                              <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                                <div class="offcanvas-header">
+                                  <h5 class="offcanvas-title dr1ft" id="offcanvasNavbarLabel" class="drift">DR1FT</h5>
+                                  <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                                </div>
+                                <div class="offcanvas-body">
+                                  <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                                    <li class="nav-item mx-4">
+                                        <a class="nav-link active" aria-current="page" href="{{route('main.page')}}">HOME</a>
+                                    </li>
+                                    <li class="nav-item mx-4">
+                                        <a class="nav-link" href="{{route('races.all')}}">RACES</a>
+                                    </li>
+                                    <li class="nav-item mx-4">
+                                        <a class="nav-link" href="{{route('page.gallery')}}">GALLERY</a>
+                                    </li>
+                                    <li class="nav-item mx-4">
+                                        <a class="nav-link " href="{{route('page.membership')}}">MEMBERSHIP</a>
+                                    </li>
+                                    <li class="nav-item mx-4">
+                                        @if(session()->has('user_id'))
+                                            <a class="nav-link" href="{{ route('page.profile') }}">PROFILE</a>
+                                        @else
+                                            <a class="nav-link " href="{{route('user.login')}}">SIGN IN</a>
+                                        @endif
+    
+                                    </li>
+                                    
+                                  </ul>
+            
+                                </div>
+                              </div>
+                            </div>
+                          </nav>
                     </div>
                     <div class="position-fixed bottom-0 end-0 w-25">
                         @include('administrator.layouts.notice')
@@ -177,8 +218,7 @@
                             <div class="row">
                                 <h2 class="index-page-headers">COMING SOON</h2>
                             </div>
-                            <div class="lg-row mt-5 d-flex responsive-cards" style="overflow: auto;
-                            white-space: nowrap;">
+                            <div class="lg-row mt-5 d-flex responsive-cards">
                                 @foreach ($races as $race)
                                 
                                     <div class="flip-card col-lg-3" tabIndex="0">
@@ -244,7 +284,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="lg-row pricing-container pricing-container-res gx-5 mt-5">
+                                <div class="lg-row pricing-container d-flex pricing-container-res gx-5 mt-5">
                                     
                                     <div class="col-lg-4 col col-12">
                                         <div class="pricing-card p-3">
