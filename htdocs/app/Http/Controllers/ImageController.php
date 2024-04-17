@@ -11,7 +11,7 @@ class ImageController extends Controller {
     public static function storeImage(Request $request, $path, $fieldName = 'image') {
         try {
             $request->validate([
-                $fieldName => 'required|array'
+                $fieldName => 'mimes:png,jpg,jpeg'
             ]);
 
             $image = $request->file($fieldName);

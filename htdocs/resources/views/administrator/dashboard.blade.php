@@ -150,8 +150,9 @@
                     </div>
                     <div class="col-12 card p-4">
                         
-                            <input type="hidden" id="countdownDate" name="nextRaceDate" value="{{$nextRace->date}}">
-                            <section>
+                        <section>
+                            @if ($nextRace)
+                                <input type="hidden" id="countdownDate" name="nextRaceDate" value="{{$nextRace->date}}">
                                 <h1 class="admin-form-title text-center">{{$nextRace->name}}</h1>
                                 <i class="bi bi-clock-history countdown-svg"></i>
                                 <div id="countdown" class="d-flex justify-content-center">
@@ -182,6 +183,9 @@
                                         <p>SECONDS</p>
                                     </div>
                                 </div>
+                            @else
+                                    <p class="text-center">There are no races planned!</p>
+                                @endif
                             </section>
                         
                     </div>

@@ -36,7 +36,7 @@
                                 <input type="hidden" name="member" value="1">
                                 <input type="hidden" name="race_id" value="{{ $race->id }}">
                                 <input type="hidden" name="amount" value="{{$race->registrationPrice}}">
-                                <button type="submit" class="btn btn-primary text-white">
+                                <button type="submit" class="btn btn-primary text-white" @if ($raceDate <= $nextMonth || $raceDate <= $today) disabled @endif>
                                     Participate ({{$race->registrationPrice}}$)
                                 </button>
                             </form>
@@ -68,7 +68,7 @@
                         <div class="alert alert-primary d-flex align-items-center" role="alert">
                             <i class="bi bi-info-circle-fill me-1"></i>
                             <div>
-                                This race is disabled until there's 1 month left
+                                You can't participate in this race.
                             </div>
                         </div>
                     @endif
